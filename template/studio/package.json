@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "sanity-clean-studio",
-  "version": "1.0.14",
+  "name": "clean-muna-studio",
+  "version": "0.0.0",
   "main": "package.json",
-  "author": "Sanity <hello@sanity.io>",
+  "author": "Tarje Sælen Lavik <tarje.lavik@uib.no>",
   "scripts": {
     "build": "sanity build",
     "dev": "sanity start",
