@@ -1,12 +1,10 @@
-# sanity-template-clean
+# sanity-template-muna
 
-_[Sanity.io](https://sanity.io) starter template with a clean studio._
+_[Sanity.io](https://sanity.io) starter template with a Muna based studio._
 
-This template repo is used by Sanity.io to easily create deployed and configured projects through a web interface. You can test it out by [creating this project](https://www.sanity.io/create/?template=sanity-io%2Fsanity-template-clean).
+This template repo is used by Sanity.io to easily create deployed and configured projects through a web interface. You can test it out by [creating this project](https://www.sanity.io/create/?template=tarjelavik%2Fsanity-template-muna).
 
 The template contains a Sanity Studio. It can be deployed on Netlify.
-
-Want to make a template for Sanity and your favourite front-end framework? We’re still maturing [sanity.io/create](https://sanity.io/create) and our APIs, but do tell us about it on [slack.sanity.io](https://slack.sanity.io).
 
 ## Local development
 
