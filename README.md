@@ -1,8 +1,10 @@
 # sanity-template-muna
 
-_[Sanity.io](https://sanity.io) starter template with a Muna based studio._
+**Not working!** sanity.io/create only works with *sanity-io/...* templates. Totally understandable and fine, but maybe one day the "Create" application will be released. The reasoning for having the ability to create Sanity studios based on a schema for digital humanities project, with plugins (eg. integration of api.nb.no resources) and a default website.
 
-This template repo is used by Sanity.io to easily create deployed and configured projects through a web interface. You can test it out by [creating this project](https://www.sanity.io/create/?template=tarjelavik%2Fsanity-template-muna).
+_[Sanity.io](https://sanity.io) starter template with a [Muna](https://muna-docs.vercel.app/) based studio._
+
+This template repo is used by Sanity.io to easily create deployed and configured Muna-projects through a web interface. You can test it out by [creating this project](https://www.sanity.io/create/?template=tarjelavik%2Fsanity-template-muna).
 
 The template contains a Sanity Studio. It can be deployed on Netlify.
 
