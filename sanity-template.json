@@ -1,11 +1,11 @@
 {
   "version": 0,
-  "title": "Clean",
-  "description": "Template starter with a clean studio.",
+  "title": "Muna Studio",
+  "description": "Template starter with a Muna schema.",
   "previewMedia": {
     "type": "image",
-    "src": "assets/studio.jpg",
-    "alt": "A preview image of Sanity Studio."
+    "src": "assets/studio.png",
+    "alt": "A preview image of Sanity Studio with Muna."
   },
   "technologies": [
     {

@@ -1,8 +1,5 @@
 export default {
   widgets: [
-    {
-      name: 'sanity-tutorials'
-    },
     {name: 'structure-menu'},
     {
       name: 'project-info',
