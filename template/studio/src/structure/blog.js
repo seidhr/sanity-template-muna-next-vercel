@@ -23,16 +23,16 @@ const blog = S.listItem()
           .schemaType('post')
           .icon(BlogIcon)
           .child(
-            S.documentList('post')
+            S.documentTypeList('post')
               .title('Published posts')
               .menuItems(S.documentTypeList('post').getMenuItems())
               .filter('_type == "post" && publishedAt < now() && !(_id in path("drafts.**"))')
-              .child((documentId) =>
+              /* .child((documentId) =>
                 S.document()
                   .documentId(documentId)
                   .schemaType('post')
-                  // .views([S.view.form(), PreviewIFrame()])
-              )
+                  .views([S.view.form(), PreviewIFrame()])
+              ) */
           ),
         S.documentTypeListItem('post').title('All posts').icon(AllIcon)/* ,
         S.listItem()

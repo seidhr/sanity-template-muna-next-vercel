@@ -23,6 +23,7 @@ const types = S.listItem()
         S.documentTypeListItem('storageType').title('Lagringstype'),
         S.documentTypeListItem('material').title('Material'),
         S.documentTypeListItem('measurementUnit').title('Måleenhet'),
+        S.documentTypeListItem('appelationType').title('Navnetype'),
         S.documentTypeListItem('objectType').title('Objekttype'),
         S.documentTypeListItem('reportType').title('Rapporttype'),
         S.documentTypeListItem('role').title('Rolle'),

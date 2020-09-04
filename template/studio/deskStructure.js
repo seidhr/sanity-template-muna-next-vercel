@@ -1,5 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {FaCog, FaBookDead, FaGlasses, FaMapMarkedAlt} from 'react-icons/fa'
+import {FaCog, FaGlasses, FaMapMarkedAlt} from 'react-icons/fa'
 import {GiCalendar, GiBoltSpellCast} from 'react-icons/gi'
 import {TiGroup, TiUser} from 'react-icons/ti'
 import {BsFileRichtext} from 'react-icons/bs'
@@ -8,6 +8,7 @@ import blog from './src/structure/blog'
 import pageBuilder from './src/structure/pageBuilder'
 import types from './src/structure/types'
 import management from './src/structure/management'
+import madeObject from './src/structure/madeObject'
 
 const hiddenDocTypes = listItem =>
   ![
@@ -51,6 +52,7 @@ const hiddenDocTypes = listItem =>
     'conditionType',
     'activityType',
     'acquisitionType',
+    'appelationType',
     'role',
     'navigationMenu',
     'navigationItem',
@@ -65,78 +67,7 @@ export default () =>
   S.list()
     .title('Innhold')
     .items([
-      S.listItem()
-        .title('Objekt')
-        .icon(FaBookDead)
-        .child(
-          S.list()
-            .title('Objekter')
-            .items([
-              S.listItem()
-                .title('Objekt etter type')
-                .icon(FaBookDead)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('objectType')
-                    .title('Objekt etter type')
-                    .filter('_type == "objectType"')
-                    .child(catId =>
-                      // List out project documents where the _id for the selected
-                      // category appear as a _ref in the project’s categories array
-                      S.documentList()
-                        .schemaType('madeObject')
-                        .title('Objekt')
-                        .filter('_type == "madeObject" && $catId in hasType[]._ref')
-                        .params({catId})
-                    )
-                ),
-              S.listItem()
-                .title('Objekt etter deltype')
-                .icon(FaBookDead)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('sectionType')
-                    .title('Objekt etter deltype')
-                    .filter('_type == "sectionType"')
-                    .child(catId =>
-                      // List out project documents where the _id for the selected
-                      // category appear as a _ref in the project’s categories array
-                      S.documentList()
-                        .schemaType('madeObject')
-                        .title('Objekt')
-                        .filter('_type == "madeObject" && $catId in hasType[]._ref')
-                        .params({catId})
-                    )
-                ),
-              S.listItem()
-                .title('Upubliserte objekter')
-                .icon(FaBookDead)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('madeObject')
-                    .title('Upubliserte objekter')
-                    .filter('_type == "madeObject" && accessState == "secret"')
-                ),
-              S.listItem()
-                .title('Til gjennomgang')
-                .icon(FaBookDead)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('madeObject')
-                    .title('Til gjennomgang')
-                    .filter('_type == "madeObject" && editorialState == "review"')
-                ),
-              S.listItem()
-                .title('Alle objekter')
-                .icon(FaBookDead)
-                .child(
-                  S.documentList()
-                    .title('Alle objekter')
-                    .schemaType('madeObject')
-                    .filter('_type == "madeObject"')
-                )
-            ])
-        ),
+      madeObject,
       S.documentTypeListItem('work').title('Verk'),
       S.documentTypeListItem('visualItem').title('Visuell ting'),
       S.divider(),
