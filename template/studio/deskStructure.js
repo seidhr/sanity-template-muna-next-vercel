@@ -42,6 +42,7 @@ const hiddenDocTypes = listItem =>
     'actorType',
     'groupType',
     'textType',
+    'workType',
     'technique',
     'storageType',
     'sectionType',

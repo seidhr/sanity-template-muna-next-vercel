@@ -17,8 +17,16 @@
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
-    "muna"
+    "muna",
+    "@sanity/vision"
   ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
   "parts": [
     {
       "name": "part:@sanity/base/schema",

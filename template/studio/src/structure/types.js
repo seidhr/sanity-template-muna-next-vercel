@@ -33,7 +33,8 @@ const types = S.listItem()
         S.documentTypeListItem('technique').title('Teknikk'),
         S.documentTypeListItem('textType').title('Tekststype'),
         S.documentTypeListItem('conditionType').title('Tilstandstype'),
-        S.documentTypeListItem('exhibitionType').title('Utstillingstype')
+        S.documentTypeListItem('exhibitionType').title('Utstillingstype'),
+        S.documentTypeListItem('workType').title('Verkstype')
       ])
   )
 
