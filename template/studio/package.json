@@ -24,8 +24,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
+    "sanity-plugin-asset-source-marcus": "^0.0.2",
+    "sanity-plugin-asset-source-nbiiif": "^0.0.7",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.10",
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
+    "sanity-plugin-media": "^0.2.13",
     "sanity-plugin-muna": "^0.2.7"
   },
   "devDependencies": {

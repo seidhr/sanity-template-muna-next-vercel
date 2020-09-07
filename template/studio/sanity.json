@@ -18,7 +18,10 @@
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
     "muna",
-    "@sanity/vision"
+    "@sanity/vision",
+    "asset-source-nbiiif",
+    "media",
+    "asset-source-marcus"
   ],
   "env": {
     "development": {
@@ -39,6 +42,10 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "./dashboardConfig.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input/image/asset-sources",
+      "path": "./src/parts/assetSources.js"
     }
   ]
 }
