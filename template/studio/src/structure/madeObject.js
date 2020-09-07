@@ -22,10 +22,8 @@ const madeObject = S.listItem()
           .title('Alle objekter')
           .icon(SingleIcon)
           .child(
-            S.documentList()
+            S.documentTypeList('madeObject')
               .title('Alle objekter')
-              .schemaType('madeObject')
-              .filter('_type == "madeObject"')
           ),
         S.listItem()
           .title('Objekt etter type')
@@ -48,6 +46,7 @@ const madeObject = S.listItem()
                   .params({catId})
               )
           ),
+        /* Could be used for parts of a book
         S.listItem()
           .title('Objekt etter deltype')
           .icon(SingleIcon)
@@ -65,7 +64,7 @@ const madeObject = S.listItem()
                   .filter('_type == "madeObject" && $catId in hasType[]._ref')
                   .params({catId})
               )
-          ),
+          ), */
         S.listItem()
           .title('Upubliserte objekter')
           .icon(SingleIcon)

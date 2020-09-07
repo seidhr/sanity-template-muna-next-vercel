@@ -119,10 +119,8 @@ export default () =>
                 .title('Alle tekster')
                 .icon(FaGlasses)
                 .child(
-                  S.documentList()
+                  S.documentTypeList('writtenText')
                     .title('Alle tekster')
-                    .schemaType('writtenText')
-                    .filter('_type == "writtenText"')
                 )
             ])
         ),
@@ -173,10 +171,8 @@ export default () =>
                 .title('Alle utstillinger')
                 .icon(FaGlasses)
                 .child(
-                  S.documentList()
+                  S.documentTypeList('exhibition')
                     .title('Alle utstillinger')
-                    .schemaType('exhibition')
-                    .filter('_type == "exhibition"')
                 )
             ])
         ),
@@ -209,10 +205,8 @@ export default () =>
                 .title('Alle tidslinjer')
                 .icon(GiCalendar)
                 .child(
-                  S.documentList()
+                  S.documentTypeList('timeline')
                     .title('Alle tidslinjer')
-                    .schemaType('timeline')
-                    .filter('_type == "timeline"')
                 )
             ])
         ),
@@ -268,10 +262,8 @@ export default () =>
                 .title('Alle Aktører')
                 .icon(TiUser)
                 .child(
-                  S.documentList()
+                  S.documentTypeList('actor')
                     .title('Alle Aktører')
-                    .schemaType('actor')
-                    .filter('_type == "actor"')
                 )
             ])
         ),
@@ -322,10 +314,8 @@ export default () =>
                 .title('Alle grupper')
                 .icon(TiGroup)
                 .child(
-                  S.documentList()
+                  S.documentTypeList('group')
                     .title('Alle grupper')
-                    .schemaType('group')
-                    .filter('_type == "group"')
                 )
             ])
         ),
@@ -361,10 +351,8 @@ export default () =>
                 .title('Alle steder')
                 .icon(FaMapMarkedAlt)
                 .child(
-                  S.documentList()
+                  S.documentTypeList('place')
                     .title('Alle steder')
-                    .schemaType('place')
-                    .filter('_type == "place"')
                 )
             ])
         ),
@@ -398,10 +386,8 @@ export default () =>
                 .title('Alle hendelser')
                 .icon(MdEvent)
                 .child(
-                  S.documentList()
+                  S.documentTypeList('event')
                     .title('Alle hendelser')
-                    .schemaType('event')
-                    .filter('_type == "event"')
                 )
             ])
         ),
@@ -435,10 +421,8 @@ export default () =>
                 .title('Alle aktiviteter')
                 .icon(GiBoltSpellCast)
                 .child(
-                  S.documentList()
+                  S.documentTypeList('activity')
                     .title('Alle aktiviteter')
-                    .schemaType('activity')
-                    .filter('_type == "activity"')
                 )
             ])
         ),
