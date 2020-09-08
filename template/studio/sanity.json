@@ -21,7 +21,9 @@
     "@sanity/vision",
     "asset-source-nbiiif",
     "media",
-    "asset-source-marcus"
+    "asset-source-marcus",
+    "import-tool",
+    "muna-logo"
   ],
   "env": {
     "development": {
