@@ -1,6 +1,7 @@
 export default {
   widgets: [
     {name: 'structure-menu'},
+    {name: 'muna-docs-widget'},
     {
       name: 'project-info',
       options: {

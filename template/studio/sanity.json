@@ -23,7 +23,8 @@
     "media",
     "asset-source-marcus",
     "import-tool",
-    "muna-logo"
+    "muna-logo",
+    "muna-docs-widget"
   ],
   "env": {
     "development": {
