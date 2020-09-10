@@ -1,10 +1,9 @@
-import React from 'react'
-import ImportTool from './ImportTool'
+import App from './App'
 import ImportToolIcon from './ImportToolIcon'
 
 export default {
-  title: 'Import',
+  title: 'ᛏᚨᚴᚨ',
   name: 'import-tool',
   icon: ImportToolIcon,
-  component: ImportTool
+  component: App
 }

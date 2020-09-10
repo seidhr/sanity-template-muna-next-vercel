@@ -21,6 +21,7 @@
     "@sanity/desk-tool": "^1.150.7",
     "@sanity/vision": "^1.150.6",
     "bcp47": "^1.1.2",
+    "buffer": "^5.6.0",
     "get-it": "^4.1.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

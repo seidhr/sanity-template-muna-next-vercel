@@ -9,5 +9,5 @@ import React from 'react'
  *   studio, we suggest these rules are followed
  **/
 export default () => (
-  "ᛏᚨᚴᚨ"
+  '⚔️'
 )
