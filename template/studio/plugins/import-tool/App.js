@@ -1,6 +1,6 @@
 import React, {useReducer, useEffect, useState} from 'react'
 import client from 'part:@sanity/base/client'
-import fetch from 'unfetch'
+// import fetch from 'unfetch'
 import Header from './Header'
 import Preview from './Preview'
 import Search from './Search'
@@ -57,8 +57,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [searchParameter, setSearchParameter] = useState('')
 
-  const chooseItem = (item) => {
-    console.log(item)
+  const chooseItem = async (item) => {
     // Get a 200x200px thumbnail. Maybe change to a bigger size based on thumbnail_custom.
     const imageUrl = item._links.thumbnail_large.href
 
@@ -75,67 +74,129 @@ const App = () => {
     }
 
     /* TODO
-      Important to include iiif manifest in asset metadata as the asset could be reused else where in the dataset
-      const asset = {
-      kind: 'url',
-      value: item._links.thumbnail_large.href,
-      assetDocumentProps: {
-        originalFilename: item.id, // Use this filename when the asset is saved as a file by someone.
-        source: {
-          // The source this image is from
-          name: 'nb.no',
-          url: item._links.presentation.href,
-          // A string that uniquely idenitfies it within the source.
-          // In this example the URL is the closest thing we have as an actual ID.
-          id: item.id
-        },
-        description: item.metadata.title,
-        creditLine: 'From nb.no'
-      }
-    } */
+      Important to include iiif manifest in asset metadata as the asset could be reused else where in the dataset */
+    const assetMeta = {
+      source: {
+        // The source this image is from
+        name: 'nb.no',
+        url: item._links.presentation.href,
+        // A string that uniquely idenitfies it within the source.
+        // In this example the URL is the closest thing we have as an actual ID.
+        id: item.id
+      },
+      description: item.metadata.title,
+      creditLine: 'From nb.no'
+    }
 
-    fetch(imageUrl)
-      .then(response => response.blob)
-      .then(rs => {
-        const reader = rs.getReader()
+    const getImageBlob = async (url) => {
+      const response = fetch(url)
+        .then(response => response.body)
+        .then(rs => {
+          const reader = rs.getReader()
 
-        return new ReadableStream({
-          async start (controller) {
-            while (true) {
-              const {done, value} = await reader.read()
+          return new ReadableStream({
+            async start (controller) {
+              while (true) {
+                const {done, value} = await reader.read()
 
-              // When no more data needs to be consumed, break the reading
-              if (done) {
-                break
+                // When no more data needs to be consumed, break the reading
+                if (done) {
+                  break
+                }
+
+                // Enqueue the next data chunk into our target stream
+                controller.enqueue(value)
               }
 
-              // Enqueue the next data chunk into our target stream
-              controller.enqueue(value)
+              // Close the stream
+              controller.close()
+              reader.releaseLock()
             }
+          })
+        })
+      // Create a new response out of the stream
+        .then(rs => new Response(rs))
+      // Create an object URL for the response
+        .then(response => response.blob())
+      return response
+    }
 
-            // Close the stream
-            controller.close()
-            reader.releaseLock()
+    const uploadImageBlob = async (blob) => {
+      const res = client.assets
+        .upload('image', blob, {contentType: blob.type, filename: `imported.${state.sourceAPI}.${item.id}`})
+        .then(document => {
+          console.log('The image was uploaded!', document)
+          return document
+        })
+        .catch(error => {
+          console.error('Upload failed:', error.message)
+        })
+      return res
+    }
+
+    const createDoc = async (doc) => {
+      const res = client
+        .createIfNotExists(doc)
+        .then(result => {
+          console.log(`${result._id} was imported!`)
+          return result
+        })
+      return res
+    }
+
+    const setAssetRef = async (docID, assetID) => {
+      await client
+        .patch(docID)
+        .set({
+          mainRepresentation: {
+            _type: 'mainRepresentation',
+            asset: {
+              _type: 'reference',
+              _ref: assetID
+            }
           }
         })
-      })
-    // Create a new response out of the stream
-      .then(rs => new Response(rs))
-    // Create an object URL for the response
-      .then(response => response.blob())
-      .then(blob => URL.createObjectURL(blob))
-      .then(buffer => client.assets.upload('image', buffer, {filename: 'myImage.jpg'}))
-      .then(document => {
-        console.log('The file was uploaded!', document)
-      })
-      .catch(error => {
-        console.error('Upload failed:', error.message)
-      })
+        .commit()
+        .then(document => {
+          console.log('The asset was hooked up!', document)
+        })
+        .catch(error => {
+          console.error('Failed:', error.message)
+        })
+    }
 
-    client
-      .createIfNotExists(doc).then(res => {
-        console.log(`${res._id} was imported!`)
-      })
+    const patchAssetMeta = async (id, meta) => {
+      client
+        .patch(id)
+        .set(meta)
+        .commit()
+        .then(document => {
+          console.log('The image was patched!', document)
+        })
+        .catch(error => {
+          console.error('Patch failed:', error.message)
+        })
+    }
+
+    try {
+      const imageResonse = await getImageBlob(imageUrl)
+      const asset = await uploadImageBlob(imageResonse)
+      await patchAssetMeta(asset._id, assetMeta)
+
+      const document = await createDoc(doc)
+      if (asset && document) {
+        await setAssetRef(document._id, asset._id)
+      }
+
+      return {
+        statusCode: 200,
+        body: JSON.stringify(document, asset)
+      }
+    } catch (err) {
+      console.log('There was an error', err)
+    }
+
+    // getImageBlob(imageUrl)
   }
 
   useEffect(() => {
@@ -182,7 +243,6 @@ const App = () => {
     <div className={styles.container}>
       <Header />
       <Search search={search} />
-      <p className='App-intro'>Sharing a few of our favourite movies</p>
       <div className={styles.grid}>
         {loading && !errorMessage ? (
           <span>loading... </span>
