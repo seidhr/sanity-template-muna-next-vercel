@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "sanity-template-muna",
+  "description": "Muna (remember) is a Sanity Studio tieh a data schema for describing and presenting cultural heritage objects.",
   "scripts": {
     "build": "sanity-template build --template-values dev/template-values-production.json",
     "copy-node-modules": "npm run copy-studio-node-modules",

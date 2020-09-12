@@ -1,10 +1,11 @@
 import React, {useReducer, useEffect, useState} from 'react'
 import client from 'part:@sanity/base/client'
 // import fetch from 'unfetch'
-import Header from './Header'
-import Preview from './Preview'
-import Search from './Search'
+import Header from './components/Header'
+import Preview from './components/Preview'
+import Search from './components/Search'
 import styles from './ImportTool.css'
+import {mapMediatypes} from './helpers'
 
 const IMPORT_API_URL = 'https://api.nb.no/catalog/v1/items/?'
 
@@ -61,6 +62,8 @@ const App = () => {
     // Get a 200x200px thumbnail. Maybe change to a bigger size based on thumbnail_custom.
     const imageUrl = item._links.thumbnail_large.href
 
+    const types = mapMediatypes(item.metadata.mediaTypes)
+
     // TODO:  Map moronic 'bøker' to hasType.ref: 9c8240d2-23b6-45f4-8501-bc2723fbf75e
     const doc = {
       _type: 'madeObject',
@@ -70,7 +73,8 @@ const App = () => {
       license: item.accessInfo && item.accessInfo.isPublicDomain ? 'https://creativecommons.org/publicdomain/mark/1.0/' : 'https://rightsstatements.org/vocab/CNE/1.0/',
       label: item.metadata.title,
       preferredIdentifier: item.id,
-      subjectOfManifest: item._links.presentation.href
+      subjectOfManifest: item._links.presentation.href,
+      hasType: types
     }
 
     /* TODO
@@ -219,7 +223,7 @@ const App = () => {
     })
 
     fetch(IMPORT_API_URL + new URLSearchParams({
-      q: searchParameter,
+      q: searchValue,
       digitalAccessibleOnly: true}))
       .then(response => response.json())
       .then(jsonResponse => {

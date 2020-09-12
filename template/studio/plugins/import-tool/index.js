@@ -1,5 +1,5 @@
-import App from './App'
-import ImportToolIcon from './ImportToolIcon'
+import App from './src/app'
+import ImportToolIcon from './src/ImportToolIcon'
 
 export default {
   title: 'ᛏᚨᚴᚨ',
