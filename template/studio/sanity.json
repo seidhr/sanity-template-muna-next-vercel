@@ -10,6 +10,8 @@
   "plugins": [
     "@sanity/base",
     "@sanity/components",
+    "@sanity/code-input",
+    "@sanity/color-input",
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/dashboard",
@@ -17,14 +19,14 @@
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
-    "muna",
     "@sanity/vision",
     "asset-source-nbiiif",
     "media",
     "asset-source-marcus",
     "import-tool",
     "muna-logo",
-    "muna-docs-widget"
+    "muna-docs-widget",
+    "iiif-manifest-input"
   ],
   "env": {
     "development": {
