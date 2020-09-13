@@ -67,7 +67,7 @@ const App = () => {
     // TODO:  Map moronic 'bøker' to hasType.ref: 9c8240d2-23b6-45f4-8501-bc2723fbf75e
     const doc = {
       _type: 'madeObject',
-      _id: `imported.${state.sourceAPI}.${item.id}`,
+      _id: `import.${state.sourceAPI}.${item.id}`,
       accessState: 'open',
       editorialState: 'published',
       license: item.accessInfo && item.accessInfo.isPublicDomain ? 'https://creativecommons.org/publicdomain/mark/1.0/' : 'https://rightsstatements.org/vocab/CNE/1.0/',
@@ -127,7 +127,7 @@ const App = () => {
 
     const uploadImageBlob = async (blob) => {
       const res = client.assets
-        .upload('image', blob, {contentType: blob.type, filename: `imported.${state.sourceAPI}.${item.id}`})
+        .upload('image', blob, {contentType: blob.type, filename: `import.${state.sourceAPI}.${item.id}`})
         .then(document => {
           console.log('The image was uploaded!', document)
           return document
@@ -136,6 +136,19 @@ const App = () => {
           console.error('Upload failed:', error.message)
         })
       return res
+    }
+
+    const patchAssetMeta = async (id, meta) => {
+      client
+        .patch(id)
+        .set(meta)
+        .commit()
+        .then(document => {
+          console.log('The image was patched!', document)
+        })
+        .catch(error => {
+          console.error('Patch failed:', error.message)
+        })
     }
 
     const createDoc = async (doc) => {
@@ -166,19 +179,6 @@ const App = () => {
         })
         .catch(error => {
           console.error('Failed:', error.message)
-        })
-    }
-
-    const patchAssetMeta = async (id, meta) => {
-      client
-        .patch(id)
-        .set(meta)
-        .commit()
-        .then(document => {
-          console.log('The image was patched!', document)
-        })
-        .catch(error => {
-          console.error('Patch failed:', error.message)
         })
     }
 
