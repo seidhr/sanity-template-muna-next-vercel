@@ -1,5 +1,6 @@
 import React, {useReducer, useEffect, useState} from 'react'
 import client from 'part:@sanity/base/client'
+import {nanoid} from 'nanoid'
 // import fetch from 'unfetch'
 import Header from './components/Header'
 import Preview from './components/Preview'
@@ -73,6 +74,25 @@ const App = () => {
       license: item.accessInfo && item.accessInfo.isPublicDomain ? 'https://creativecommons.org/publicdomain/mark/1.0/' : 'https://rightsstatements.org/vocab/CNE/1.0/',
       label: item.metadata.title,
       preferredIdentifier: item.id,
+      identifiedBy: [
+        {
+          _type: 'identifier',
+          _key: 'bce70cc6a075',
+          content: item.id,
+          hasType: {
+            _type: 'reference',
+            _key: nanoid(),
+            _ref: 'de22df48-e3e7-47f2-9d29-cae1b5e4d728'
+          }
+        }
+      ],
+      hasCurrentOwner: [
+        {
+          _type: 'reference',
+          _key: nanoid(),
+          _ref: '37f7376a-c635-420b-8ec6-ec0fd4c4a55c'
+        }
+      ],
       subjectOfManifest: item._links.presentation.href,
       hasType: types
     }
@@ -215,7 +235,7 @@ const App = () => {
       })
   }, [])
 
-  const search = searchValue => {
+  const search = (searchValue, page) => {
     setSearchParameter(searchValue)
 
     dispatch({

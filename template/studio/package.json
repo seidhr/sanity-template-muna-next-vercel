@@ -6,7 +6,7 @@
   "main": "package.json",
   "author": "Tarje Sælen Lavik <tarje.lavik@uib.no>",
   "scripts": {
-    "build": "sanity build",
+    "start": "sanity start",
     "dev": "sanity start",
     "test": "sanity check"
   },
