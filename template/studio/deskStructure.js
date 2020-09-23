@@ -1,8 +1,9 @@
 import S from '@sanity/desk-tool/structure-builder'
 import {FaCog, FaGlasses, FaMapMarkedAlt} from 'react-icons/fa'
-import {GiCalendar, GiBoltSpellCast} from 'react-icons/gi'
+import {GiBoltSpellCast} from 'react-icons/gi'
 import {TiGroup, TiUser} from 'react-icons/ti'
 import {BsFileRichtext} from 'react-icons/bs'
+import {FcTimeline} from 'react-icons/Fc'
 import {MdEvent} from 'react-icons/md'
 import blog from './src/structure/blog'
 import pageBuilder from './src/structure/pageBuilder'
@@ -69,151 +70,58 @@ export default () =>
     .title('Innhold')
     .items([
       madeObject,
-      S.documentTypeListItem('work').title('Verk'),
-      S.documentTypeListItem('visualItem').title('Visuell ting'),
-      S.divider(),
       S.listItem()
-        .title('Tekster')
-        .icon(BsFileRichtext)
-        .child(
-          S.list()
-            .title('Tekster')
-            .items([
-              S.listItem()
-                .title('Tekster etter type')
-                .icon(FaGlasses)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('textType')
-                    .title('Tekster etter type')
-                    .filter('_type == "textType"')
-                    .child(catId =>
-                      // List out project documents where the _id for the selected
-                      // category appear as a _ref in the project’s categories array
-                      S.documentList()
-                        .schemaType('writtenText')
-                        .title('Tekster')
-                        .filter('_type == "writtenText" && $catId in hasType[]._ref')
-                        .params({catId})
-                    )
-                ),
-              S.listItem()
-                .title('Upubliserte tekster')
-                .icon(FaGlasses)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('writtenText')
-                    .title('Upubliserte tekster')
-                    .filter('_type == "writtenText" && accessState == "secret"')
-                ),
-              S.listItem()
-                .title('Til gjennomgang')
-                .icon(FaGlasses)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('writtenText')
-                    .title('Til gjennomgang')
-                    .filter('_type == "writtenText" && editorialState == "review"')
-                ),
-              S.listItem()
-                .title('Alle tekster')
-                .icon(FaGlasses)
-                .child(
-                  S.documentTypeList('writtenText')
-                    .title('Alle tekster')
-                )
-            ])
-        ),
-      S.listItem()
-        .title('Utstillinger')
-        .icon(FaGlasses)
-        .child(
-          S.list()
-            .title('Utstillinger')
-            .items([
-              S.listItem()
-                .title('Utstillinger etter type')
-                .icon(FaGlasses)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('exhibitionType')
-                    .title('Utstillinger etter type')
-                    .filter('_type == "exhibitionType"')
-                    .child(catId =>
-                      // List out project documents where the _id for the selected
-                      // category appear as a _ref in the project’s categories array
-                      S.documentList()
-                        .schemaType('exhibition')
-                        .title('Utstillinger')
-                        .filter('_type == "exhibition" && $catId in hasType[]._ref')
-                        .params({catId})
-                    )
-                ),
-              S.listItem()
-                .title('Upubliserte utstillinger')
-                .icon(FaGlasses)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('exhibition')
-                    .title('Upubliserte utstillinger')
-                    .filter('_type == "exhibition" && accessState == "secret"')
-                ),
-              S.listItem()
-                .title('Til gjennomgang')
-                .icon(FaGlasses)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('exhibition')
-                    .title('Til gjennomgang')
-                    .filter('_type == "exhibition" && editorialState == "review"')
-                ),
-              S.listItem()
-                .title('Alle utstillinger')
-                .icon(FaGlasses)
-                .child(
-                  S.documentTypeList('exhibition')
-                    .title('Alle utstillinger')
-                )
-            ])
-        ),
-      S.listItem()
-        .title('Tidslinjer')
-        .icon(GiCalendar)
-        .child(
-          S.list()
-            .title('Tidslinjer')
-            .items([
-              S.listItem()
-                .title('Upubliserte tidslinjer')
-                .icon(GiCalendar)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('timeline')
-                    .title('Upubliserte tidslinjer')
-                    .filter('_type == "timeline" && accessState == "secret"')
-                ),
-              S.listItem()
-                .title('Til gjennomgang')
-                .icon(GiCalendar)
-                .child(
-                  // List out all categories
-                  S.documentTypeList('timeline')
-                    .title('Til gjennomgang')
-                    .filter('_type == "timeline" && editorialState == "review"')
-                ),
-              S.listItem()
-                .title('Alle tidslinjer')
-                .icon(GiCalendar)
-                .child(
-                  S.documentTypeList('timeline')
-                    .title('Alle tidslinjer')
-                )
-            ])
-        ),
-      blog,
-      pageBuilder,
-      S.divider(),
-      management,
+      .title('Utstillinger')
+      .icon(FaGlasses)
+      .child(
+        S.list()
+          .title('Utstillinger')
+          .items([
+            S.listItem()
+              .title('Utstillinger etter type')
+              .icon(FaGlasses)
+              .child(
+                // List out all categories
+                S.documentTypeList('exhibitionType')
+                  .title('Utstillinger etter type')
+                  .filter('_type == "exhibitionType"')
+                  .child(catId =>
+                    // List out project documents where the _id for the selected
+                    // category appear as a _ref in the project’s categories array
+                    S.documentList()
+                      .schemaType('exhibition')
+                      .title('Utstillinger')
+                      .filter('_type == "exhibition" && $catId in hasType[]._ref')
+                      .params({catId})
+                  )
+              ),
+            S.listItem()
+              .title('Upubliserte utstillinger')
+              .icon(FaGlasses)
+              .child(
+                // List out all categories
+                S.documentTypeList('exhibition')
+                  .title('Upubliserte utstillinger')
+                  .filter('_type == "exhibition" && accessState == "secret"')
+              ),
+            S.listItem()
+              .title('Til gjennomgang')
+              .icon(FaGlasses)
+              .child(
+                // List out all categories
+                S.documentTypeList('exhibition')
+                  .title('Til gjennomgang')
+                  .filter('_type == "exhibition" && editorialState == "review"')
+              ),
+            S.listItem()
+              .title('Alle utstillinger')
+              .icon(FaGlasses)
+              .child(
+                S.documentTypeList('exhibition')
+                  .title('Alle utstillinger')
+              )
+          ])
+      ),
       S.divider(),
       S.listItem()
         .title('Aktører')
@@ -319,9 +227,6 @@ export default () =>
                 )
             ])
         ),
-      S.divider(),
-      // TYPE
-      types,
       S.listItem()
         .title('Steder')
         .icon(FaMapMarkedAlt)
@@ -356,6 +261,64 @@ export default () =>
                 )
             ])
         ),
+      S.divider(),
+      S.documentTypeListItem('work').title('Verk'),
+      S.documentTypeListItem('visualItem').title('Visuell ting'),
+      S.listItem()
+        .title('Tekster')
+        .icon(BsFileRichtext)
+        .child(
+          S.list()
+            .title('Tekster')
+            .items([
+              S.listItem()
+                .title('Tekster etter type')
+                .icon(FaGlasses)
+                .child(
+                  // List out all categories
+                  S.documentTypeList('textType')
+                    .title('Tekster etter type')
+                    .filter('_type == "textType"')
+                    .child(catId =>
+                      // List out project documents where the _id for the selected
+                      // category appear as a _ref in the project’s categories array
+                      S.documentList()
+                        .schemaType('writtenText')
+                        .title('Tekster')
+                        .filter('_type == "writtenText" && $catId in hasType[]._ref')
+                        .params({catId})
+                    )
+                ),
+              S.listItem()
+                .title('Upubliserte tekster')
+                .icon(FaGlasses)
+                .child(
+                  // List out all categories
+                  S.documentTypeList('writtenText')
+                    .title('Upubliserte tekster')
+                    .filter('_type == "writtenText" && accessState == "secret"')
+                ),
+              S.listItem()
+                .title('Til gjennomgang')
+                .icon(FaGlasses)
+                .child(
+                  // List out all categories
+                  S.documentTypeList('writtenText')
+                    .title('Til gjennomgang')
+                    .filter('_type == "writtenText" && editorialState == "review"')
+                ),
+              S.listItem()
+                .title('Alle tekster')
+                .icon(FaGlasses)
+                .child(
+                  S.documentTypeList('writtenText')
+                    .title('Alle tekster')
+                )
+            ])
+        ),
+      S.divider(),
+      // TYPE
+      types,
       S.documentTypeListItem('period').title('Perioder'),
       S.listItem()
         .title('Hendelser')
@@ -431,6 +394,44 @@ export default () =>
       // defined in schema.js. We filter out those that we have
       // defined the structure above
       ...S.documentTypeListItems().filter(hiddenDocTypes),
+      blog,
+      S.listItem()
+      .title('Tidslinjer')
+      .icon(FcTimeline)
+      .child(
+        S.list()
+          .title('Tidslinjer')
+          .items([
+            S.listItem()
+              .title('Upubliserte tidslinjer')
+              .icon(FcTimeline)
+              .child(
+                // List out all categories
+                S.documentTypeList('timeline')
+                  .title('Upubliserte tidslinjer')
+                  .filter('_type == "timeline" && accessState == "secret"')
+              ),
+            S.listItem()
+              .title('Til gjennomgang')
+              .icon(FcTimeline)
+              .child(
+                // List out all categories
+                S.documentTypeList('timeline')
+                  .title('Til gjennomgang')
+                  .filter('_type == "timeline" && editorialState == "review"')
+              ),
+            S.listItem()
+              .title('Alle tidslinjer')
+              .icon(FcTimeline)
+              .child(
+                S.documentTypeList('timeline')
+                  .title('Alle tidslinjer')
+              )
+          ])
+      ),
+      pageBuilder,
+      S.divider(),
+      management,
       S.divider(),
       // SETTINGS SINGLETON
       S.listItem()
