@@ -1,12 +1,13 @@
 import S from '@sanity/desk-tool/structure-builder'
 import {GiCrackedGlass} from 'react-icons/'
-import {FaCog, FaGifts, FaProjectDiagram} from 'react-icons/fa'
+import {FaGifts, FaProjectDiagram} from 'react-icons/fa'
+import {ImLibrary} from 'react-icons/Im'
 
 // import PreviewIFrame from '../../src/components/previewIFrame'
 
 const management = S.listItem()
   .title('Samlingsadministrasjon')
-  .icon(FaCog)
+  .icon(ImLibrary)
   .child(
     S.list()
       .title('Samlingsadministrasjon')

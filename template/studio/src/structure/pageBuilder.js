@@ -1,10 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
 // import PreviewIFrame from '../../src/components/previewIFrame'
-
+import {FaSitemap} from 'react-icons/fa'
 import {MdMenu} from 'react-icons/md'
 
 export default S.listItem()
   .title('Page Builder')
+  .icon(FaSitemap)
   .child(
     S.list()
       .title('Landing Pages')
