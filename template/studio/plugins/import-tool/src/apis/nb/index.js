@@ -10,7 +10,7 @@ export const chooseItemNB = async (item) => {
 
   const doc = {
     _type: 'madeObject',
-    _id: `import.${state.sourceAPI}.${item.id}`,
+    _id: `import.${item.id}`,
     accessState: 'open',
     editorialState: 'published',
     license: item.accessInfo && item.accessInfo.isPublicDomain ? 'https://creativecommons.org/publicdomain/mark/1.0/' : 'https://rightsstatements.org/vocab/CNE/1.0/',
@@ -89,7 +89,7 @@ export const chooseItemNB = async (item) => {
 
   const uploadImageBlob = async (blob) => {
     const res = client.assets
-      .upload('image', blob, {contentType: blob.type, filename: `import.${state.sourceAPI}.${item.id}`})
+      .upload('image', blob, {contentType: blob.type, filename: `import.${item.id}`})
       .then(document => {
         console.log('The image was uploaded!', document)
         return document
