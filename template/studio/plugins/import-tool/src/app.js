@@ -4,10 +4,10 @@ import ReactPaginate from 'react-paginate'
 import Header from './components/Header'
 import Preview from './components/Preview'
 import Search from './components/Search'
+import SelectAPI from './components/SelectAPI'
 import styles from './ImportTool.css'
 import {searchReducer} from './reducers/searchReducer'
 import {chooseItemNB} from './apis/nb'
-import DefaultSelect from 'part:@sanity/components/selects/default'
 
 const IMPORT_API_URL = 'https://api.nb.no/catalog/v1/items/?'
 
@@ -28,6 +28,7 @@ const API_URLS = [
 
 export const initialState = {
   sourceAPI: 'nb',
+  apiURL: 'https://api.nb.no/catalog/v1/items/?',
   loading: true,
   searchParameter: '',
   items: [],
@@ -39,10 +40,9 @@ export const initialState = {
 
 const App = () => {
   const [state, dispatch] = useReducer(searchReducer, initialState)
-  // const [searchParameter, setSearchParameter] = useState('')
 
   useEffect(() => {
-    fetch(IMPORT_API_URL + new URLSearchParams({
+    fetch(state.apiURL + new URLSearchParams({
       page: state.page,
       size: state.limit,
       digitalAccessibleOnly: true}))
@@ -65,7 +65,7 @@ const App = () => {
       searchParameter: state.searchParameter
     })
 
-    fetch(IMPORT_API_URL + new URLSearchParams({
+    fetch(state.apiURL + new URLSearchParams({
       q: state.searchParameter ? state.searchParameter : '',
       page: page,
       size: state.limit,
@@ -119,13 +119,19 @@ const App = () => {
       })
   }
 
+  const onSelectAPI = (selectedAPI) => {
+    dispatch({
+      type: 'SET_API',
+      apiURL: selectedAPI
+    })
+  }
+
   const {searchParameter, items, totalElements, page, limit, errorMessage, loading} = state
-  const [apiValue, setAPIValue] = useState('')
 
   return (
     <div className={styles.container}>
       <Header />
-      <DefaultSelect label='Choose API' items={API_URLS} value={apiValue} />
+      <SelectAPI items={API_URLS} onSelect={onSelectAPI} />
       <p>{totalElements}</p>
       <Search search={search} />
       <ReactPaginate

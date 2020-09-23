@@ -33,6 +33,11 @@ export const searchReducer = (state, action) => {
         loading: false,
         errorMessage: action.error
       }
+    case 'SET_API':
+      return {
+        ...state,
+        apiURL: action.apiURL
+      }
     default:
       return state
   }
