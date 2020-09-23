@@ -4,7 +4,8 @@ export const searchReducer = (state, action) => {
       return {
         ...state,
         loading: true,
-        errorMessage: null
+        errorMessage: null,
+        searchParameter: action.searchParameter
       }
     case 'SEARCH_SUCCESS':
       return {

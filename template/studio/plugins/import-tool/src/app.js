@@ -24,7 +24,7 @@ export const initialState = {
 
 const App = () => {
   const [state, dispatch] = useReducer(searchReducer, initialState)
-  const [searchParameter, setSearchParameter] = useState('')
+  // const [searchParameter, setSearchParameter] = useState('')
   
   useEffect(() => {
     fetch(IMPORT_API_URL + new URLSearchParams({
@@ -47,11 +47,12 @@ const App = () => {
     let page = selected;
 
     dispatch({
-      type: 'SEARCH_REQUEST'
+      type: 'SEARCH_REQUEST',
+      searchParameter: state.searchParameter
     })
 
     fetch(IMPORT_API_URL + new URLSearchParams({
-      q: state.searchParameter,
+      q: state.searchParameter ? state.searchParameter : '',
       page: page,
       size: state.limit,
       digitalAccessibleOnly: true}))
@@ -75,10 +76,11 @@ const App = () => {
 
 
   const search = (searchValue) => {
-    setSearchParameter(searchValue)
+    // setSearchParameter(searchValue)
 
     dispatch({
-      type: 'SEARCH_REQUEST'
+      type: 'SEARCH_REQUEST',
+      searchParameter: searchValue
     })
 
     fetch(IMPORT_API_URL + new URLSearchParams({
@@ -104,7 +106,7 @@ const App = () => {
       })
   }
 
-  const {items, totalElements, page, limit, errorMessage, loading} = state
+  const {searchParameter, items, totalElements, page, limit, errorMessage, loading} = state
 
   return (
     <div className={styles.container}>
@@ -115,7 +117,7 @@ const App = () => {
           previousLabel={'previous'}
           nextLabel={'next'}
           breakLabel={'...'}
-          forcePage={state.page}
+          forcePage={page}
           pageCount={totalElements / limit}
           marginPagesDisplayed={2}
           pageRangeDisplayed={3}
