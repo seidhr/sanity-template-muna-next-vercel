@@ -95,6 +95,7 @@ export { default as measurement } from './objects/activities/measurement.js'
 export { default as production } from './objects/activities/production.js'
 export { default as transformation } from './objects/activities/transformation.js'
 
+export { default as alert } from './site/alert.js'
 export { default as navigationItem } from './site/navigationItem.js'
 export { default as navigationMenu } from './site/navigationMenu.js'
 export { default as openGraph } from './site/openGraph.js'

@@ -58,6 +58,7 @@ const hiddenDocTypes = listItem =>
     'role',
     'navigationMenu',
     'navigationItem',
+    'alert',
     'page',
     'post',
     'route',
