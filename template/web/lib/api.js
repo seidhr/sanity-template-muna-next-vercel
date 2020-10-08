@@ -14,9 +14,12 @@ const getUniqueDocuments = (items) => {
 }
 
 const madeObjectFields = `
-  _id,
+  "id": _id,
   label,
-  mainRepresentation
+  mainRepresentation,
+  referredToBy[] {
+    ...
+  }
 `
 
 
@@ -31,7 +34,9 @@ export async function getPreviewMadeObjectByID(id) {
 }
 
 export async function getAllMadeObjectsWithID() {
-  const data = await client.fetch(`*[_type == "madeObject"]{ 'id': _id, label, mainRepresentation }`)
+  const data = await client.fetch(`*[_type == "madeObject"]{ 
+    ${madeObjectFields}
+   }`)
   return data
 }
 
@@ -41,6 +46,16 @@ export async function getMadeObject(id, preview) {
       ${madeObjectFields}
     }`,
     { id }
+    )
+  console.log(results)
+  return results
+}
+
+export async function getAlert(preview) {
+  const results = await getClient(preview)
+    .fetch(`*[_type == "alert"][0] | order(_createdAt desc) {
+     ...
+    }`
     )
   return results
 }

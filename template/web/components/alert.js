@@ -1,7 +1,12 @@
 import Container from './container'
 import cn from 'classnames'
+import PortableTextBlock from '../components/portable-text-block'
 
-export default function Alert({ preview }) {
+export default function Alert({ alert, preview }) {
+  if(!alert) {
+    return null
+  }
+
   return (
     <div
       className={cn('border-b', {
@@ -13,18 +18,11 @@ export default function Alert({ preview }) {
         <div className="py-2 text-center text-sm">
           {preview ? (
             <>
-              This page is a preview.{' '}
-              <a
-                href="/api/exit-preview"
-                className="underline hover:text-cyan duration-200 transition-colors"
-              >
-                Click here
-              </a>{' '}
-              to exit preview mode.
+              {alert?.item?.content}
             </>
           ) : (
             <>
-              Show alerts from Studio here.
+              <PortableTextBlock blocks={alert?.item?.content} />
             </>
           )}
         </div>

@@ -28,10 +28,12 @@ export default function Index({ allItems, preview }) {
         <Container>
           <Header />
           {allItems && allItems.map((item, index) => (
-            <p key={index}>
+            <div key={index}>
               <ItemImage id={item.id} label={item.label} url={item.mainRepresentation} />
-              <Link href={`items/${item.id}`}>{item.label}</Link>
-            </p>
+              <Link href={`items/${encodeURIComponent(item.id)}`}>
+                <a>{item.label}</a>
+              </Link>
+            </div>
           ))}
         </Container>
       </Layout>
