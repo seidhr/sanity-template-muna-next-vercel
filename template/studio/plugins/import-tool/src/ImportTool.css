@@ -1,6 +1,7 @@
 .container {
   padding: 10px;
 }
+
 .grid {
   display: flex;
   flex-flow: row wrap;
