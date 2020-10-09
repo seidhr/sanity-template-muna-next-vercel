@@ -2,6 +2,9 @@ import S from '@sanity/desk-tool/structure-builder'
 // import PreviewIFrame from '../../src/components/previewIFrame'
 import {FaSitemap} from 'react-icons/fa'
 import {MdMenu} from 'react-icons/md'
+import {FcHome} from 'react-icons/fc'
+import {RiPagesLine} from 'react-icons/ri'
+import {AiFillAlert} from 'react-icons/ai'
 
 export default S.listItem()
   .title('Page Builder')
@@ -10,6 +13,15 @@ export default S.listItem()
     S.list()
       .title('Landing Pages')
       .items([
+        S.documentListItem()
+        .title('Frontpage')
+        .schemaType('page')
+        .icon(FcHome)
+        .child(
+          S.document()
+            .schemaType('page')
+            .documentId('frontpage')
+        ),
         S.listItem()
           .title('Navigation Menus')
           .icon(MdMenu)
@@ -30,6 +42,7 @@ export default S.listItem()
           ),
         S.listItem()
           .title('Pages')
+          .icon(RiPagesLine)
           .schemaType('page')
           .child(
             S.documentList('page')
@@ -39,6 +52,7 @@ export default S.listItem()
           ),
         S.listItem()
           .title('Alerts')
+          .icon(AiFillAlert)
           .schemaType('alert')
           .child(
             S.documentList('alert')
