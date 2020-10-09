@@ -16,6 +16,9 @@ const getUniqueDocuments = (items) => {
 const madeObjectFields = `
   "id": _id,
   label,
+  hasType[]-> {
+    ...
+  },
   mainRepresentation,
   referredToBy[] {
     ...

@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import dynamic from 'next/dynamic'
-import Container from '../../components/container'
-import Header from '../../components/header'
-import Layout from '../../components/layout'
-import ItemImage from '../../components/item-image'
+import { Box, Container, Heading, Text } from '@chakra-ui/core'
+import Header from '../../components/Header'
+import Layout from '../../components/Layout'
+import ItemImage from '../../components/ItemImage'
 import { getAllMadeObjectsWithID, getMadeObject } from '../../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
@@ -23,28 +23,41 @@ export default function MadeObject({ item, preview }) {
   }
   return (
     <Layout preview={preview}>
-      <Container>
-        {router.isFallback ? (
-          "Loading…"
-        ) : (
-          <>
-            <Header />
-            <article>
-              <Head>
-                <title>
-                  {item.label}
-                </title>
-              </Head>
-              <h1 className="text-xl text-gray-900 leading-tight">
+      <Head>
+        <title>
+          {item.label + ' | ' + CMS_NAME}
+        </title>
+      </Head>
+
+      {router.isFallback ? (
+        "Loading…"
+      ) : (
+        <>
+          <Header />
+          <main>
+            <Container maxW="xl" centerContent>
+              <Heading>
                 {item.label}
-              </h1>
-              <ItemImage id={item.id} label={item.label} url={item.mainRepresentation} />
+              </Heading>
+
+              <ItemImage 
+                id={item.id} 
+                label={item.label}
+                 url={item.mainRepresentation} />
+
               {/* <MiradorWithNoSSR manifestData={item.mainRepresentation}/> */}
-              {item?.referredToBy?.map(ref => (<PortableTextBlock blocks={ref.body} />))}
-            </article>
-          </>
-        )}
-      </Container>
+              
+              {item?.referredToBy?.map(ref => (
+                <Box maxW="lg">
+                  <Text fontSize="lg">
+                    <PortableTextBlock blocks={ref.body} />
+                  </Text>
+                </Box>
+              ))}
+            </Container>
+          </main>
+        </>
+      )}
     </Layout>
   )
 }

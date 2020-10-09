@@ -1,12 +1,14 @@
 {
-  "name": "cms-sanity",
-  "version": "1.0.0",
+  "name": "muna-starter-website",
+  "version": "0.0.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/core": "^1.0.0-rc.5",
+    "@chakra-ui/icons": "^1.0.0-rc.5",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "1.149.2",
     "@sanity/image-url": "^0.140.19",

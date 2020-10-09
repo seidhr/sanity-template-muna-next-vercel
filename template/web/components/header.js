@@ -1,12 +1,35 @@
 import Link from 'next/link'
+import { Flex, Button, Heading, useColorMode } from "@chakra-ui/core"
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { CMS_NAME } from '../lib/constants'
 
 export default function Header() {
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <h1 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/">
-        <a className="hover:underline">Muna example site</a>
-      </Link>
-      .
-    </h1>
+    <header>
+      <Flex
+        as="nav"
+        align="center"
+        justify="space-between"
+        wrap="wrap"
+        padding="1.5rem"
+      >
+        <Flex
+          as="nav"
+        >
+          <Heading fontSize="xl">
+            <Link href="/">
+              <a>{CMS_NAME}</a>
+            </Link>
+          </Heading>
+        </Flex>
+        <Button onClick={toggleColorMode}>
+          {colorMode === "light" ? 
+            <MoonIcon /> : 
+            <SunIcon />
+          }
+        </Button>
+      </Flex>
+    </header>
   )
 }
