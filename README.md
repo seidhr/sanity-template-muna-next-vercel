@@ -2,7 +2,7 @@
 
 _[Sanity.io](https://sanity.io) starter template with a [Muna](https://docs.muna.xyz/) based studio._
 
-This template repo is used by Sanity.io to easily create deployed and configured Muna-projects through a web interface. You can test it out by [creating this project](https://www.sanity.io/create/?template=tarjelavik%2Fsanity-template-muna).
+This template repo is used by Sanity.io to easily create deployed and configured Muna-projects through a web interface. You can test it out by [creating this project](https://www.sanity.io/create/?template=seidhr/sanity-template-muna).
 
 The template contains a Sanity Studio. It can be deployed on Netlify.
 
