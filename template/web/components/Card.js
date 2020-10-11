@@ -16,7 +16,7 @@ export default function Card({item}) {
           lineHeight="tight"
           isTruncated
         >
-          <Link href={`items/${encodeURIComponent(item.id)}`}>
+          <Link href={`id/${encodeURIComponent(item.id)}`}>
             <a>{item.label}</a>
           </Link>
         </Box>

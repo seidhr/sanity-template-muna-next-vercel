@@ -25,6 +25,15 @@ const madeObjectFields = `
   }
 `
 
+export async function getFrontpage() {
+  const data = await getClient(true).fetch(
+    `*[ _id == "frontpage" ] {
+        "id": _id,
+        ...
+      }`
+  )
+  return data[0]
+}
 
 export async function getPreviewMadeObjectByID(id) {
   const data = await getClient(true).fetch(

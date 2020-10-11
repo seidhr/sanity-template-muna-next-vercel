@@ -1,13 +1,11 @@
 import { CMS_NAME } from '../lib/constants'
 import imageUrlBuilder from "@sanity/image-url";
 import client from '../lib/sanity.js'
-import { getAllMadeObjectsWithID } from '../lib/api'
+import { getFrontpage } from '../lib/api'
 import Head from 'next/head'
-import Link from 'next/link'
-import { SimpleGrid } from '@chakra-ui/core'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
-import Card from '../components/Card'
+import RenderSections from '../components/RenderSection';
 
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client);
@@ -18,7 +16,7 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-export default function Index({ allItems, preview }) {
+export default function Index({ frontpage, preview }) {
   return (
     <>
       <Layout preview={preview}>
@@ -26,23 +24,15 @@ export default function Index({ allItems, preview }) {
           <title>{CMS_NAME}</title>
         </Head>
           <Header />
-          <SimpleGrid 
-            columns={4} 
-            spacing={5}
-            padding={5}
-          >
-            {allItems && allItems.map((item, index) => (
-              <Card key={index} item={item} />
-            ))}
-          </SimpleGrid>
+          {frontpage.content && <RenderSections sections={frontpage.content} />}
       </Layout>
     </>
   )
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allItems = await getAllMadeObjectsWithID(preview)
+  const frontpage = await getFrontpage(preview)
   return {
-    props: { allItems, preview },
+    props: { frontpage, preview },
   }
 }
