@@ -12,11 +12,8 @@ const builder = imageUrlBuilder(client);
 // Then we like to make a simple function like this that gives the
 // builder an image and returns the builder for you to specify additional
 // parameters:
-function urlFor(source) {
-  return builder.image(source);
-}
 
-export default function Index({ frontpage, preview }) {
+export default function Index({ data, preview }) {
   return (
     <>
       <Layout preview={preview}>
@@ -24,15 +21,16 @@ export default function Index({ frontpage, preview }) {
           <title>{CMS_NAME}</title>
         </Head>
           <Header />
-          {frontpage.content && <RenderSections sections={frontpage.content} />}
+          {data.frontpage[0].content && <RenderSections sections={data.frontpage[0].content} />}
       </Layout>
     </>
   )
 }
 
 export async function getStaticProps({ preview = false }) {
-  const frontpage = await getFrontpage(preview)
+  const data = await getFrontpage(preview)
+  console.log(data)
   return {
-    props: { frontpage, preview },
+    props: { data, preview },
   }
 }

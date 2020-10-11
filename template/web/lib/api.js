@@ -27,12 +27,22 @@ const madeObjectFields = `
 
 export async function getFrontpage() {
   const data = await getClient(true).fetch(
-    `*[ _id == "frontpage" ] {
+    `{
+      "frontpage": *[ _id == "frontpage" ] {
         "id": _id,
-        ...
-      }`
+          ...
+        },
+      "latest": *[ _type == "madeObject"][0..10] {
+        "id": _id,
+        label,
+        hasType[]-> {
+          ...
+        },
+        mainRepresentation,	
+      }
+    }`
   )
-  return data[0]
+  return data
 }
 
 export async function getPreviewMadeObjectByID(id) {
@@ -66,7 +76,7 @@ export async function getMadeObject(id, preview) {
 export async function getAlert(preview) {
   const results = await getClient(preview)
     .fetch(`*[_type == "alert"][0] | order(_createdAt desc) {
-     ...
+      ...
     }`
     )
   return results
