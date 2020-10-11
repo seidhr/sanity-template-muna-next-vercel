@@ -1,5 +1,5 @@
 import { imageBuilder } from '../../lib/sanity'
-import { Box, Heading, Text } from '@chakra-ui/core'
+import { Grid, Box, Heading, Image } from '@chakra-ui/core'
 import styles from './PageHeader.module.css'
 import { useColorMode, useColorModeValue } from "@chakra-ui/core"
 import PortableTextBlock from '../portable-text-block'
@@ -18,26 +18,23 @@ export default function PageHeader(props) {
   const bgImage = `url(${imageBuilder.image(image).width('2000').url()})`
 
   return (
-    <Box 
-      display="relative"
-      backgroundImage={bgImage}
-      backgroundPosition="center"
-      backgroundRepeat="no-repeat"
-      backgroundSize="100%"
-      height={{
-        base: "20vh", // 0-48em
-        md: "50vh", // 48em-80em,
-        xl: "50vh", // 80em+
-      }}
+    <Grid 
+      gridTemplateAreas="hero"
+      height="65vh"
+      maxHeight="600px"
     >
       <Box
+        gridArea="hero"
         backgroundColor={bg}
         color={color}
-        position="relative"
-        top= "20%"
-        left="10%"
         p="10"
-        display="inline-block"
+        height="65vh"
+        maxHeight="30%"
+        zIndex="1"
+        marginLeft="5%"
+        marginTop="5%"
+        maxWidth="35%"
+        minWidth="30ch"
       >
         <Heading
           size="2xl"
@@ -45,11 +42,19 @@ export default function PageHeader(props) {
           {props.title}
         </Heading>
         {props?.subtitle && (
-          <Text size="xl">
-            <PortableTextBlock blocks={props.subtitle} />
-          </Text>
+          <Box size="xl">
+            <PortableTextBlock blocks={props.tagsubtitleline} />
+          </Box>
         )}
       </Box>
-    </Box>
+      <Image 
+        gridArea="hero"
+        objectFit="cover"
+        height="100%"
+        width="100%"
+        justifyContent="end"
+        src={imageBuilder.image(image).url()} alt={"No label"} 
+      />
+    </Grid>
   )
 }

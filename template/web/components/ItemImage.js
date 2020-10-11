@@ -4,6 +4,6 @@ import { Image } from '@chakra-ui/core'
 export default function ItemImage({ label, url, id }) {
 
   return (
-    <Image src={imageBuilder.image(url).url()} alt={label} />
+    <Image src={imageBuilder.image(url).url()} alt={label || "No label"} />
   )
 }
