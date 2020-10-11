@@ -22,17 +22,17 @@ export default function TwoColumn(props) {
       <Grid templateColumns="repeat(2, 1fr)" gap={6} p="10">
         <Box>
           {props?.firstColumn && (
-            <Text size="xl">
+            <Box size="xl">
               <PortableTextBlock blocks={props.firstColumn} />
-            </Text>
+            </Box>
           )}
         </Box>
         <Box>
         {props?.secondColumn && (
-            <Text size="xl">
-              <PortableTextBlock blocks={props.secondColumn} />
-            </Text>
-          )}
+          <Box size="xl">
+            <PortableTextBlock blocks={props.secondColumn} />
+          </Box>
+        )}
         </Box>
       </Grid>
     </Box>
