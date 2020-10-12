@@ -1,6 +1,10 @@
 const BlockContent = require('@sanity/block-content-to-react')
 
 export default function PortableTextBlock(props) {
+  if(!props.blocks) {
+    return null
+  }
+
   const serializers = {
     types: {
       code: props => (

@@ -45,6 +45,28 @@ export async function getFrontpage() {
   return data
 }
 
+export async function getRoutes() {
+  const data = await getClient(true).fetch(
+    `*[ _type == "route" ] {
+        "id": _id,
+        ...
+    }`
+  )
+  return data
+}
+
+export async function getRouteBySlug(id) {
+  const data = await getClient(true).fetch(
+    `*[ _type == "route" && slug.current == $id ] {
+        "id": _id,
+        ...,
+        page->{...}
+    }`,
+    { id }
+  )
+  return data
+}
+
 export async function getPreviewMadeObjectByID(id) {
   const data = await getClient(true).fetch(
     `*[_type == "madeObject" && _id == $id]{

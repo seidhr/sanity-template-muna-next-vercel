@@ -1,40 +1,45 @@
-import { Grid, Box, Center, Heading, Text } from '@chakra-ui/core'
+import { Grid, Container, Box, Center, Heading, Text } from '@chakra-ui/core'
 import styles from './PageHeader.module.css'
 import PortableTextBlock from '../portable-text-block'
 
 export default function TwoColumn(props) {
   return (
-    <Box>
-      <Center>
-        <Heading
-          size="2xl"
-        >
-          {props.title}
-        </Heading>
-      </Center>
-      <Center>
-        {props?.subtitle && (
-          <Text size="xl">
-            <PortableTextBlock blocks={props.subtitle} />
-          </Text>
-        )}
-      </Center>
-      <Grid templateColumns="repeat(2, 1fr)" gap={6} p="10">
-        <Box>
-          {props?.firstColumn && (
+    <Container 
+      maxW="4xl" 
+      marginTop="10"
+    >
+      <Box>
+        <Center>
+          <Heading
+            size="2xl"
+          >
+            {props.title}
+          </Heading>
+        </Center>
+        <Center>
+          {props?.subtitle && (
             <Box size="xl">
-              <PortableTextBlock blocks={props.firstColumn} />
+              <PortableTextBlock blocks={props.subtitle} />
             </Box>
           )}
-        </Box>
-        <Box>
-        {props?.secondColumn && (
-          <Box size="xl">
-            <PortableTextBlock blocks={props.secondColumn} />
+        </Center>
+        <Grid templateColumns="repeat(auto-fit, minmax(300px, 1fr))" gap={6} p="10">
+          <Box>
+            {props?.firstColumn && (
+              <Box size="xl">
+                <PortableTextBlock blocks={props.firstColumn} />
+              </Box>
+            )}
           </Box>
-        )}
-        </Box>
-      </Grid>
-    </Box>
+          <Box>
+          {props?.secondColumn && (
+            <Box size="xl">
+              <PortableTextBlock blocks={props.secondColumn} />
+            </Box>
+          )}
+          </Box>
+        </Grid>
+      </Box>
+    </Container>
   )
 }

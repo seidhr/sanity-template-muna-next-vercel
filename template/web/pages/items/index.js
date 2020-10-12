@@ -30,10 +30,12 @@ export default function Index({ allItems, preview }) {
             columns={4} 
             spacing={5}
             padding={5}
-          ></SimpleGrid>
+          >
             {allItems && allItems.map((item, index) => (
               <Card key={index} item={item} />
             ))}
+          </SimpleGrid>
+            
       </Layout>
     </>
   )

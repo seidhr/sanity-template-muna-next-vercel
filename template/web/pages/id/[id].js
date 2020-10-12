@@ -16,7 +16,6 @@ import PortableTextBlock from '../../components/portable-text-block'
 ) */
 
 export default function MadeObject({ item, preview }) {
-  console.log(item)
   const router = useRouter()
   if (!router.isFallback && !item?.id) {
     return <ErrorPage statusCode={404} />
