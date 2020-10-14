@@ -4,13 +4,24 @@ import {mapMediatypes} from '../../helpers'
 
 export const chooseItemNB = async (item) => {
   // Get a 200x200px thumbnail. Maybe change to a bigger size based on thumbnail_custom.
-  const imageUrl = item._links.thumbnail_large.href
+  const imageUrl = item._links.thumbnail_custom.href
+
+  function customImageSize (image, h, w) {
+    if(!image) {
+      console.error('No image input')
+      return error
+    }
+    const height = "600" || h,
+      width = "600" || w
+    const template = image.replace('{height}', height).replace('{width}', width)
+    return template
+  }
 
   const types = mapMediatypes(item.metadata.mediaTypes)
 
   const doc = {
     _type: 'madeObject',
-    _id: `import.${item.id}`,
+    _id: `${item.id}`,
     accessState: 'open',
     editorialState: 'published',
     license: item.accessInfo && item.accessInfo.isPublicDomain ? 'https://creativecommons.org/publicdomain/mark/1.0/' : 'https://rightsstatements.org/vocab/CNE/1.0/',
@@ -19,7 +30,7 @@ export const chooseItemNB = async (item) => {
     identifiedBy: [
       {
         _type: 'identifier',
-        _key: 'bce70cc6a075',
+        _key: nanoid(),
         content: item.id,
         hasType: {
           _type: 'reference',
@@ -36,7 +47,27 @@ export const chooseItemNB = async (item) => {
       }
     ],
     subjectOfManifest: item._links.presentation.href,
-    hasType: types
+    hasType: types,
+    wasOutputOf: [
+      {
+        _type: 'dataTransferEvent',
+        _key: nanoid(),
+        _id: nanoid(36),
+        transferred: {
+          _type: 'digitalObject',
+          _key: nanoid(),
+          _id: item.id,
+          value: `"${JSON.stringify(item, null, 0)}"`
+        },
+        date: new Date(),
+        hasSender: {
+          _type: 'digitalDevice',
+          _key: nanoid(),
+          _id: nanoid(36),
+          label: "api.nb.no"
+        }
+      }
+    ]
   }
 
   /* TODO
@@ -89,7 +120,7 @@ export const chooseItemNB = async (item) => {
 
   const uploadImageBlob = async (blob) => {
     const res = client.assets
-      .upload('image', blob, {contentType: blob.type, filename: `import.${item.id}`})
+      .upload('image', blob, {contentType: blob.type, filename: `${item.id}`})
       .then(document => {
         console.log('The image was uploaded!', document)
         return document
@@ -145,7 +176,7 @@ export const chooseItemNB = async (item) => {
   }
 
   try {
-    const imageResonse = await getImageBlob(imageUrl)
+    const imageResonse = await getImageBlob(customImageSize(imageUrl))
     const asset = await uploadImageBlob(imageResonse)
     await patchAssetMeta(asset._id, assetMeta)
 
