@@ -89,14 +89,14 @@ export default {
       const block = blocks[0];
 
       return {
-        title: title,
-        subtitle: block
+        title: block
           ? block.children
-              .filter((child) => child._type === "span")
-              .map((span) => span.text)
-              .join("")
-          : "No description"
-      };
+          .filter((child) => child._type === "span")
+          .map((span) => span.text)
+          .join("")
+          : "No description",
+        subtitle: title,
+      }
     },
   },
 };
