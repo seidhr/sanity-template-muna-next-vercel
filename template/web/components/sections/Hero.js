@@ -2,7 +2,7 @@ import { imageBuilder } from '../../lib/sanity'
 import { Grid, Box, Heading, Image, Badge } from '@chakra-ui/core'
 import styles from './Hero.module.css'
 import { useColorMode, useColorModeValue } from "@chakra-ui/core"
-import PortableTextBlock from '../portable-text-block'
+import PortableTextBlock from '../PortableTextBlock'
 
 export default function Hero(props) {
   const { colorMode, toggleColorMode } = useColorMode()

@@ -1,6 +1,6 @@
 import { Grid, Container, Box, Center, Heading, Text } from '@chakra-ui/core'
 import styles from './PageHeader.module.css'
-import PortableTextBlock from '../portable-text-block'
+import PortableTextBlock from '../PortableTextBlock'
 
 export default function TwoColumn(props) {
   return (

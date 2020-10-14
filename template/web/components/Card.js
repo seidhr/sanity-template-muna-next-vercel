@@ -6,7 +6,9 @@ export default function Card({item}) {
 
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="md" overflow="hidden">
-      <CardImage id={item.id} label={item.label} url={item.mainRepresentation} />
+      {item.mainRepresentation && (
+        <CardImage id={item.id} label={item.label} url={item.mainRepresentation} />
+      )}
 
       <Box p="5">
         <Box
@@ -22,9 +24,11 @@ export default function Card({item}) {
         </Box>
 
         <Box d="flex" alignItems="baseline">
-          <Badge borderRadius="full" px="2" colorScheme="teal">
-            {item.hasType[0]?.label?.nor}
-          </Badge>
+          {item.hasType && item.hasType.map(type => (
+            <Badge key={type._id} borderRadius="full" px="2" colorScheme="teal">
+              {type.label?.nor}
+            </Badge>)
+          )}
         </Box>
       </Box>
     </Box>

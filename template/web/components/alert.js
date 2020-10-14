@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/core'
-import PortableTextBlock from './portable-text-block'
+import PortableTextBlock from './PortableTextBlock'
 
 export default function Alert({ alert, preview }) {
   if(!alert) {

@@ -2,7 +2,7 @@ import { imageBuilder } from '../../lib/sanity'
 import { Grid, Container, Box, Heading, Image } from '@chakra-ui/core'
 import styles from './PageHeader.module.css'
 import { useColorMode, useColorModeValue } from "@chakra-ui/core"
-import PortableTextBlock from '../portable-text-block'
+import PortableTextBlock from '../PortableTextBlock'
 
 export default function PageHeader(props) {
   const { colorMode, toggleColorMode } = useColorMode()

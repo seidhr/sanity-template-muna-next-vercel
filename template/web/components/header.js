@@ -53,6 +53,7 @@ export default function Header() {
           flexGrow={1}
         >
           <MenuItems><Link href="/items">Items</Link></MenuItems>
+          <MenuItems><Link href="/actors">Actors</Link></MenuItems>
           <MenuItems><Link href="/about">About</Link></MenuItems>
           <Spacer />
           <Button onClick={toggleColorMode}>

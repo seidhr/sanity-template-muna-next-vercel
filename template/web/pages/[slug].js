@@ -39,7 +39,7 @@ export async function getStaticPaths() {
   const routes = await getRoutes()
   return {
     paths:
-    routes?.map((item) => ({
+      routes?.map((item) => ({
         params: {
           slug: item.slug.current,
         },
