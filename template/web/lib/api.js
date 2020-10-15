@@ -22,12 +22,33 @@ const getUniqueDocuments = (items) => {
 const madeObjectFields = `
   "id": _id,
   _type,
+  depicts[]-> {
+    ...
+  },
   label,
   hasType[]-> {
     ...
   },
   mainRepresentation,
+  identifiedBy[] {
+    ...,
+    hasType[]-> {
+      ...
+    },
+    language[]-> {
+      ...
+    }
+  },
   referredToBy[] {
+    ...,
+    hasType[]-> {
+      ...
+    },
+    language[]-> {
+      ...
+    }
+  },
+  subject[]-> {
     ...
   }
 `
