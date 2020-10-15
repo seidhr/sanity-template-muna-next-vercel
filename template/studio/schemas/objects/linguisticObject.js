@@ -83,9 +83,10 @@ export default {
     select: {
       title: "hasType.0.label.nor",
       blocks: "body",
+      lang: "language.0.label.nor",
     },
     prepare(selection) {
-      const { title, blocks } = selection;
+      const { title, blocks, lang } = selection;
       const block = blocks[0];
 
       return {
@@ -95,7 +96,7 @@ export default {
           .map((span) => span.text)
           .join("")
           : "No description",
-        subtitle: title,
+        subtitle: `${title} ${lang ? "på " + lang : ""}`,
       }
     },
   },
