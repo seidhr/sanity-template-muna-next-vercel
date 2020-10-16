@@ -32,8 +32,9 @@ export default {
       name: "language",
       title: "Språk",
       titleEN: "Language",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "language" }] }],
+      type: "reference", 
+      to: [{ type: "language" }],
+      validation: (Rule) => Rule.required(),
     },
     {
       name: "creator",
@@ -83,7 +84,7 @@ export default {
     select: {
       title: "hasType.0.label.nor",
       blocks: "body",
-      lang: "language.0.label.nor",
+      lang: "language.label.nor",
     },
     prepare(selection) {
       const { title, blocks, lang } = selection;
