@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic'
-import { Box, Grid, Container, Center, Heading, Text } from '@chakra-ui/core'
+import { Box, Grid, Container, Center, Heading } from '@chakra-ui/core'
 import ItemImage from '../ItemImage'
-import PortableTextBlock from '../PortableTextBlock'
 import ReferredToBy from '../ReferredToBy'
 
 const MiradorWithNoSSR = dynamic(
@@ -11,6 +10,7 @@ const MiradorWithNoSSR = dynamic(
 
 export default function MadeObject(item) {
   return (
+    <>
     <Grid 
       w="100%"
       p={5}
@@ -19,8 +19,8 @@ export default function MadeObject(item) {
       gridTemplateAreas={{ xl: `"image image metadata"`, base: `"image" "metadata"`}}
       gridTemplateColumns={{ xl: "1fr 1fr 1fr", base: "1fr" }}
     >
-      <Container gridArea="metadata">
-        <Heading>
+      <Container maxW="md" gridArea="metadata">
+        <Heading mb={10}>
           {item.label}
         </Heading>
 
@@ -44,13 +44,22 @@ export default function MadeObject(item) {
           />
         </Center>
       )}
-      {item.subjectOfManifest && (
+      {item.mainRepresentation.iiifImage && (
         <Box gridArea="image">
-          <MiradorWithNoSSR manifest={item.subjectOfManifest}/>
+          <MiradorWithNoSSR image={item.mainRepresentation.iiifImage.url}/>
         </Box>
       )}
-      
-
+      {item.subjectOfManifest && (
+        <Box gridArea="image">
+          <MiradorWithNoSSR manifest={item.subjectOfManifest} />
+        </Box>
+      )}
     </Grid>
+    <Container maxW="lg">
+      <pre>
+        {JSON.stringify(item, null, 2)}
+      </pre>
+    </Container>
+    </>
   )
 }

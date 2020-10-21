@@ -29,7 +29,12 @@ const madeObjectFields = `
   hasType[]-> {
     ...
   },
-  mainRepresentation,
+  mainRepresentation {
+    ...,
+    "iiifImage": asset-> {
+      url
+    }
+  },
   subjectOfManifest,
   identifiedBy[] {
     ...,
