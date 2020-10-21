@@ -47,8 +47,8 @@ export default function Header() {
         </Box>
 
         <Box
-          display={{ sm: show ? "block" : "none", md: "flex" }}
-          width={{ sm: "full", md: "auto" }}
+          display={{ base: show ? "block" : "none", sm: show ? "block" : "none", md: "flex" }}
+          width={{ base: "full", sm: "full", md: "auto" }}
           alignItems="center"
           flexGrow={1}
         >

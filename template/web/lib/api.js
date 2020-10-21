@@ -30,6 +30,7 @@ const madeObjectFields = `
     ...
   },
   mainRepresentation,
+  subjectOfManifest,
   identifiedBy[] {
     ...,
     hasType[]-> {
@@ -44,7 +45,7 @@ const madeObjectFields = `
     hasType[]-> {
       ...
     },
-    language[]-> {
+    language-> {
       ...
     }
   },
@@ -67,7 +68,12 @@ const groupFields = `
     "id": _id,
     _type,
     label
-  }
+  },
+  "mentionedIn": *[_type in ["madeObject"] && references(^._id)]{ 
+    "id": _id,
+    _type,
+    label
+  },
 `
 
 export async function getFrontpage() {
@@ -168,7 +174,7 @@ export async function getId(id, type, preview) {
   const results = await getClient(preview)
     .fetch(`*[_id == $id] {
       ${type[0].type === "madeObject" ? madeObjectFields : ''}
-      ${type[0].type === "actor" ? madeObjectFields : ''}
+      ${type[0].type === "actor" ? groupFields : ''}
       ${type[0].type === "group" ? groupFields : ''}
     }`,
     { id })

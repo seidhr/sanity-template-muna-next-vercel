@@ -32,6 +32,9 @@ export default function Actor(item) {
       {item.hasMember && item.hasMember.map(member => (
         <Link href={member.id}><a>{member.label}</a></Link>
       ))}
+      {item.mentionedIn && item.mentionedIn.map(mention => (
+        <Link href={mention.id}><a>{mention.label}</a></Link>
+      ))}
     </Container>
   )
 }

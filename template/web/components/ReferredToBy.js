@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text } from '@chakra-ui/core'
+import { Box, Grid, Heading, Text } from '@chakra-ui/core'
 import PortableTextBlock from './PortableTextBlock'
 import {orderBy, head} from 'lodash'
 
@@ -12,7 +12,10 @@ export default function ReferredToBy(array) {
   return (
       <Box maxW="xl">
         {sorted?.map(ref => (
-          <PortableTextBlock blocks={ref.body} />
+          <Grid templateColumns="100px 1fr">
+            <Box>{ref.hasType[0].label.nor}<br/>{ref.language.label.nor}</Box>
+            <PortableTextBlock blocks={ref.body} />
+          </Grid>
         ))}
       </Box>
   )
