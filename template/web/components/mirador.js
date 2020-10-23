@@ -1,49 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import mirador from "mirador";
 import { Box } from '@chakra-ui/core'
 
-async function getImageInfo (image) {
-  const canvas = image.replace("production", "production/iiif")
-  const res = await fetch(`${canvas}/info.json`)
-  const data = await res.json();
-  console.log(JSON.stringify(data))
-  return data
-}
 
 export default function Mirador(props) {
+  const [manifest, setManifest] = useState('');
+
   if(!props) {
     return null
   }
-
-  let manifest = ""
   
-  if(props.manifest) {
-    manifest = props.manifest
-  }
-
-
-  if(props.image) {
-    const canvas = getImageInfo(props.image).then(res => {return res})
-    const d = canvas
-
-    let proxyManifest = {
-      "@context": "http://iiif.io/api/presentation/2/context.json",
-      "@id": "https://example.com/my-manifest",
-      "@type": "sc:Manifest",
-      sequences: []
-    }
-    let seq = {
-      "@context": "http://iiif.io/api/presentation/2/context.json",
-      "@id": "https://example.com/my-sequence",
-      "@type": "sc:Sequence",
-      canvases: []
-    }
-    seq.canvases.push(d)
-    proxyManifest.sequences.push(seq)
-    manifest = proxyManifest
-  }
-
   useEffect(() => {
+    if(props.manifest) {
+      setManifest(props.manifest)
+    }
+    
+    if(props.image) {    
+      setManifest(`/api/manifest/${props.image}`)
+    }
+    
     const config = {
       id: "mirador",
       manifests: {
@@ -52,7 +27,7 @@ export default function Mirador(props) {
         }
       },
       window: {
-        defaultView: "book"
+        defaultView: "book",
       },
       windows: [
         {
@@ -61,16 +36,44 @@ export default function Mirador(props) {
           maximized: true
         }
       ],
+      workspace: {
+        showZoomControls: false,
+      },
+      selectedTheme: 'dark',
+      themes: {
+        dark: {
+          palette: {
+            type: 'dark',
+            primary: {
+              main: '#4db6ac',
+            },
+            secondary: {
+              main: '#4db6ac',
+            },
+            shades: {
+              dark: '#000000',
+              main: '#424242',
+              light: '#616161',
+            }
+          }
+        },
+        light: {
+          palette: {
+            type: 'light',
+          }
+        }
+      },
       thumbnailNavigation: {
         defaultPosition: 'off',
       },
     }
     
     mirador.viewer(config);
-  })
+    return () => console.log('unmounting...');
+  },[manifest])
 
   return (
-    <Box position="relative" h={600}>
+    <Box position="relative" h={700}>
       <Box h="100%" id="mirador" />
     </Box>
   )

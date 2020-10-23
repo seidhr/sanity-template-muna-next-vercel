@@ -194,3 +194,18 @@ export async function getAlert(preview) {
     )
   return results
 }
+
+export async function getManifest(id, preview = false) {
+  const results = await getClient(preview)
+    .fetch(`*[_id == $id] {
+      _id,
+      mainRepresentation {
+        ...,
+        "iiifImage": asset-> {
+          url
+        }
+      }
+    }`,
+    { id })
+  return results
+}
