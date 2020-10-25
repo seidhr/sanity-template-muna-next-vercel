@@ -72,7 +72,7 @@ export default function MadeObject(item) {
         )}
         {item.subjectOfManifest && (
           <Box gridArea="image">
-            <MiradorWithNoSSR manifest={item.subjectOfManifest} />
+            <MiradorWithNoSSR manifest={[item.subjectOfManifest]} />
           </Box>
         )}
       </Grid>

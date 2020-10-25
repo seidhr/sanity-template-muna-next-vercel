@@ -110,6 +110,7 @@ export { default as textWithIllustration } from './site/plugs/textWithIllustrati
 export { default as illustration } from './site/plugs/illustration'
 export { default as uiComponentRef } from './site/plugs/uiComponent'
 export { default as quote } from './site/plugs/quote'
+export { default as miradorGallery } from './site/plugs/miradorGallery'
 export { default as testimonials } from './site/plugs/testimonials'
 export { default as videoPlug } from './site/plugs/videoPlug'
 export { default as pageHeader } from './site/plugs/pageHeader'

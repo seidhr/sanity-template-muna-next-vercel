@@ -24,6 +24,7 @@ export default {
         of: [
           { type: 'pageHeader' },
           { type: 'hero' },
+          { type: 'miradorGallery' },
           { type: 'generalArticle' },
           { type: 'bigText' },
           { type: 'illustration' },

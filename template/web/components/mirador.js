@@ -4,20 +4,35 @@ import { Box } from '@chakra-ui/core'
 
 
 export default function Mirador(props) {
-  const [manifest, setManifest] = useState('');
+  const [manifest, setManifest] = useState([]);
 
   if(!props) {
     return null
   }
+
+  const arrayToWindows = (arr) => {
+    const windows = arr.map(window => (
+      {
+        allowFullscreen: true,
+        manifestId: window,
+      }))
+      return windows[0]
+    }
   
   useEffect(() => {
     if(props.manifest) {
-      setManifest(props.manifest)
+      setManifest(arrayToWindows(props.manifest))
     }
     
     if(props.image) {    
-      setManifest(`/api/manifest/${props.image}`)
+      setManifest([{
+        allowFullscreen: true,
+        manifestId: `/api/manifest/${props.image}`,
+        maximized: true
+      }])
     }
+    
+    console.log(JSON.stringify(manifest, null, 2))
     
     const config = {
       id: "mirador",
@@ -29,13 +44,7 @@ export default function Mirador(props) {
       window: {
         defaultView: "book",
       },
-      windows: [
-        {
-          allowFullscreen: true,
-          manifestId: manifest,
-          maximized: true
-        }
-      ],
+      windows: manifest,
       workspace: {
         showZoomControls: false,
       },
@@ -69,8 +78,11 @@ export default function Mirador(props) {
     }
     
     mirador.viewer(config);
-    return () => console.log('unmounting...');
-  },[manifest])
+    return () => {
+      setManifest([])
+      console.log('unmounting...');
+    }
+  },[])
 
   return (
     <Box position="relative" h={700}>

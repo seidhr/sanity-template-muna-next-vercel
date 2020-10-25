@@ -127,7 +127,18 @@ export async function getRouteBySlug(id) {
         "id": _id,
         ...,
         page->{
-          ...
+          ...,
+          content[] {
+            ...,
+            _type == 'miradorGallery' => @{
+              ...,
+              items[]-> {
+                "id": _id,
+                subjectOfManifest,
+                "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id)
+              }
+            }
+          }
         }
     }`,
     { id }
