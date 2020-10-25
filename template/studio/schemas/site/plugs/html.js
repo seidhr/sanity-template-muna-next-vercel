@@ -5,6 +5,10 @@ export default {
   description: 'Custom HTML',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled'
+    },
+    {
       title: 'Title',
       description: 'Only for internal use',
       name: 'title',

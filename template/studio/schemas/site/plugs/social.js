@@ -17,6 +17,10 @@ export default {
   description: 'A big social. Centered',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled'
+    },
+    {
       name: 'title',
       type: 'string'
     },

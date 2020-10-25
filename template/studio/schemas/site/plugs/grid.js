@@ -16,6 +16,10 @@ export default {
   description: 'A big text. Centered. Keep it short to max 2-3 paragraphs.',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled'
+    },
+    {
       title: 'Title',
       name: 'title',
       type: 'text'

@@ -4,6 +4,10 @@ export default {
   title: 'Testimonial',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled'
+    },
+    {
       name: 'name',
       type: 'string'
     },

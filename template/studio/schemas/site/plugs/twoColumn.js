@@ -4,6 +4,10 @@ export default {
   title: 'Two column',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled'
+    },
+    {
       title: 'Title',
       name: 'title',
       type: 'string'

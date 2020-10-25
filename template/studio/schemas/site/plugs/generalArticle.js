@@ -4,6 +4,10 @@ export default {
   type: 'object',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled'
+    },
+    {
       name: 'title',
       type: 'string'
     },

@@ -4,6 +4,10 @@ export default {
   title: 'Text with illustration',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled'
+    },
+    {
       type: 'string',
       name: 'title',
       title: 'Title',

@@ -14,20 +14,11 @@ export default {
       }
     }
   ],
-  preview: {
-    select: {
-      title: 'title',
-      media: 'posterFrame'
-    },
-    prepare({title, media}) {
-      return {
-        title: 'Video Plug',
-        media,
-        subtitle: title
-      }
-    }
-  },
   fields: [
+    {
+      type: 'boolean',
+      name: 'disabled'
+    },
     {
       name: 'title',
       type: 'string',
@@ -121,8 +112,8 @@ export default {
                   title: selection.file,
                   subtitle: `${Math.round(
                     selection.size / 1024 / 1024
-                  )}Mb ${selection.type || ''} ${selection.media || ''}`
-                }
+                    )}Mb ${selection.type || ''} ${selection.media || ''}`
+                  }
               }
             }
           },
@@ -152,5 +143,18 @@ export default {
         }
       ]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'posterFrame'
+    },
+    prepare({title, media}) {
+      return {
+        title: 'Video Plug',
+        media,
+        subtitle: title
+      }
+    }
+  },
 }

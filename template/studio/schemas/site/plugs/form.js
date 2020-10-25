@@ -4,6 +4,10 @@ export default {
   title: 'Form (deprecated)',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled'
+    },
+    {
       title: 'Title',
       name: 'title',
       type: 'string'
