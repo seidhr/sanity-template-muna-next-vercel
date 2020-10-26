@@ -1,7 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder'
 import {GiCrackedGlass} from 'react-icons/'
 import {FaGifts, FaProjectDiagram} from 'react-icons/fa'
-import {ImLibrary} from 'react-icons/Im'
+import {ImLibrary} from 'react-icons/im'
 
 // import PreviewIFrame from '../../src/components/previewIFrame'
 
