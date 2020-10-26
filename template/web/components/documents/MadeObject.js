@@ -67,7 +67,7 @@ export default function MadeObject(item) {
         )}
         {item.mainRepresentation?.iiifImage?.url && !item.subjectOfManifest && (
           <Box gridArea="image">
-            <MiradorWithNoSSR image={item.id}/>
+            <MiradorWithNoSSR manifest={[item.id]}/>
           </Box>
         )}
         {item.subjectOfManifest && (

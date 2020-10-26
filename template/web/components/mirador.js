@@ -1,40 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import mirador from "mirador";
 import { Box } from '@chakra-ui/core'
 
 
 export default function Mirador(props) {
-  const [manifest, setManifest] = useState([]);
 
   if(!props) {
     return null
   }
+  
+  const arrayToWindows = (data) => {
+    console.log(data)
 
-  const arrayToWindows = (arr) => {
-    const windows = arr.map(window => (
-      {
+    if(data.manifest.length === 1) {
+      const res = [{
         allowFullscreen: true,
-        manifestId: window,
-      }))
-      return windows[0]
+        manifestId: `/api/manifest/${data.manifest[0]}`,
+        maximized: true
+      }]
+      return res
     }
+    if(data.manifest.length > 1) {
+      const windows = data.manifest.map(window => (
+        {
+          allowFullscreen: true,
+          manifestId: window,
+        }
+        ))
+      console.log(windows)
+      return windows
+    }
+    return
+  }
   
   useEffect(() => {
-    if(props.manifest) {
-      setManifest(arrayToWindows(props.manifest))
-    }
+    const manifests = arrayToWindows(props)
     
-    if(props.image) {    
-      setManifest([{
-        allowFullscreen: true,
-        manifestId: `/api/manifest/${props.image}`,
-        maximized: true
-      }])
-    }
+    console.log(JSON.stringify(manifests, null, 2))
     
-    console.log(JSON.stringify(manifest, null, 2))
-    
-    const config = {
+    let config = {
       id: "mirador",
       manifests: {
         test: {
@@ -44,7 +48,7 @@ export default function Mirador(props) {
       window: {
         defaultView: "book",
       },
-      windows: manifest,
+      windows: manifests,
       workspace: {
         showZoomControls: false,
       },
@@ -79,7 +83,7 @@ export default function Mirador(props) {
     
     mirador.viewer(config);
     return () => {
-      setManifest([])
+      //setManifestArray([])
       console.log('unmounting...');
     }
   },[])
