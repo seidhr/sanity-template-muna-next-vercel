@@ -75,6 +75,11 @@ export default function MadeObject(item) {
             <MiradorWithNoSSR manifest={[item.subjectOfManifest]} />
           </Box>
         )}
+        {item.manifest && (
+        <Box gridArea="image">
+          <MiradorWithNoSSR manifest={[item.manifest]} />
+        </Box>
+      )}
       </Grid>
       
       <Modal 

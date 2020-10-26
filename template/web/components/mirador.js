@@ -15,7 +15,7 @@ export default function Mirador(props) {
     if(data.manifest.length === 1) {
       const res = [{
         allowFullscreen: true,
-        manifestId: `/api/manifest/${data.manifest[0]}`,
+        manifestId: data.manifest[0],
         maximized: true
       }]
       return res
