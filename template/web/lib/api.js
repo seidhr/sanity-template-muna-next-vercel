@@ -29,13 +29,9 @@ const madeObjectFields = `
   hasType[]-> {
     ...
   },
-  mainRepresentation {
-    ...,
-    "iiifImage": asset-> {
-      url
-    }
-  },
   subjectOfManifest,
+  mainRepresentation,
+  "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id),
   identifiedBy[] {
     ...,
     hasType[]-> {
@@ -64,6 +60,9 @@ const groupFields = `
   _type,
   label,
   hasType[]-> {
+    ...
+  },
+  mainRepresentation {
     ...
   },
   referredToBy[] {
