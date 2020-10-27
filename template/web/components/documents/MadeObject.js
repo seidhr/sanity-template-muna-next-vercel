@@ -21,6 +21,9 @@ import ItemImage from '../ItemImage'
 import ReferredToBy from '../ReferredToBy'
 import Palette from '../Palette'
 import Depicts from '../Depicts'
+import ActivityStream from '../ActivityStream'
+import HasType from '../HasType'
+import Subject from '../Subject'
 
 const MiradorWithNoSSR = dynamic(
   () => import('../Mirador'),
@@ -47,10 +50,18 @@ export default function MadeObject(item) {
             <Button marginLeft={5} onClick={onOpen}><ViewIcon/></Button>
           </Heading>
 
+          {item.hasType && (
+            <HasType types={item.hasType} />
+          )}
+
           {item?.referredToBy && (
             <Box>
               <ReferredToBy array={item.referredToBy} />
             </Box>
+          )}
+
+        {item.subject && (
+            <Subject subjects={item.subject} />
           )}
           
           {item.mainRepresentation?.palette && (
@@ -87,6 +98,10 @@ export default function MadeObject(item) {
 
       {item.depicts && (
         <Depicts depicted={item.depicts} />
+      )}
+      
+      {item.activityStream && (
+        <ActivityStream stream={item.activityStream} />
       )}
       
       <Modal 

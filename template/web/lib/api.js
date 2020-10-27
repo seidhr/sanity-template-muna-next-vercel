@@ -54,6 +54,55 @@ const madeObjectFields = `
       ...
     }
   },
+  activityStream[]{
+    _type == 'reference' => @->{
+      ...,
+      carriedOutBy[]{
+        ...,
+        actor->{
+          _id,
+          label,
+          mainRepresentation{
+            ...,
+            asset->
+          }
+        }
+      }
+    },
+    ...,
+    tookPlaceAt[]->,
+    movedFrom->{
+      _id,
+      label,
+      geoJSON
+    },
+    movedTo->{
+      _id,
+      label,
+      geoJSON
+    },
+    carriedOutBy[]{
+      _type == 'reference' => @->{
+        'actor': {
+          _id,
+          label,
+          mainRepresentation{
+            ...,
+            asset->
+          }
+        }
+      },
+      ...,
+      actor->{
+        _id,
+        label,
+        mainRepresentation{
+          ...,
+          asset->
+        }
+      }
+    }
+  },
   referredToBy[] {
     ...,
     hasType[]-> {
