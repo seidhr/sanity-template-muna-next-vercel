@@ -17,20 +17,23 @@ export default function Hero(props) {
 
   return (
     <Grid 
-      gridTemplateAreas="hero"
-      height="65vh"
+      gridTemplateAreas='"hero"'
+      w="full"
+      height="100vh"
       maxHeight="600px"
+      marginBottom="10"
     >
       <Box
         gridArea="hero"
         backgroundColor={bg}
         color={color}
         p="10"
-        height="65vh"
+        height="100%"
         maxHeight="30%"
         zIndex="1"
-        marginLeft="5%"
+        selfAlign="center"
         marginTop="5%"
+        marginLeft="5%"
         maxWidth="35%"
         minWidth="30ch"
       >
@@ -51,7 +54,7 @@ export default function Hero(props) {
       <Image 
         gridArea="hero"
         objectFit="cover"
-        height="65vh"
+        height="100vh"
         maxHeight="600px"
         width="100%"
         justifyContent="end"

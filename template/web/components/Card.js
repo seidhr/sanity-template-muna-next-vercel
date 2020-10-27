@@ -10,7 +10,7 @@ export default function Card({item}) {
         <CardImage id={item.id} label={item.label} url={item.mainRepresentation} />
       )}
 
-      <Box p="5">
+      <Box fontFamily="Montserrat" p="5">
         <Box
           mt="1"
           fontWeight="semibold"

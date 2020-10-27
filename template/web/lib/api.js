@@ -23,14 +23,27 @@ const madeObjectFields = `
   "id": _id,
   _type,
   depicts[]-> {
-    ...
+    "id": _id,
+    label,
+    mainRepresentation
   },
   label,
   hasType[]-> {
     ...
   },
   subjectOfManifest,
-  mainRepresentation,
+  mainRepresentation{
+    ...,
+    "palette": asset->.metadata.palette{
+    	darkMuted,
+      darkVibrant,
+      dominant,
+      lightMuted,
+      vibrantMuted,
+      muted,
+      vibrant
+    }
+  },
   "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id),
   identifiedBy[] {
     ...,
@@ -112,9 +125,9 @@ export async function getFrontpage() {
 export async function getRoutes() {
   const data = await getClient(true).fetch(
     `*[ _type == "route" ] {
-        "id": _id,
-        slug,
-        _type
+      "id": _id,
+      slug,
+      _type
     }`
   )
   return data
@@ -129,13 +142,17 @@ export async function getRouteBySlug(id) {
           ...,
           content[] {
             ...,
+            
             _type == 'miradorGallery' => @{
               ...,
-              items[]-> {
-                "id": _id,
+              items[] {
+                "manifest": manifestUrl,
+                _type == 'reference' => @-> {
+                  "id": _id,
                 subjectOfManifest,
                 "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id)
-              }
+                }
+              },
             }
           }
         }

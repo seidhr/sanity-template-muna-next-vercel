@@ -19,6 +19,8 @@ import {
 } from '@chakra-ui/core'
 import ItemImage from '../ItemImage'
 import ReferredToBy from '../ReferredToBy'
+import Palette from '../Palette'
+import Depicts from '../Depicts'
 
 const MiradorWithNoSSR = dynamic(
   () => import('../Mirador'),
@@ -35,7 +37,7 @@ export default function MadeObject(item) {
         w="100%"
         p={5}
         gridGap={5}
-        alignContent= "start"
+        alignContent="start"
         gridTemplateAreas={{ xl: `"image image metadata"`, base: `"image" "metadata"`}}
         gridTemplateColumns={{ xl: "1fr 1fr 1fr", base: "1fr" }}
       >
@@ -50,9 +52,13 @@ export default function MadeObject(item) {
               <ReferredToBy array={item.referredToBy} />
             </Box>
           )}
+          
+          {item.mainRepresentation?.palette && (
+            <Palette colors={item.mainRepresentation.palette} />
+          )}
         </Container>
 
-        {item.mainRepresentation && !item.mainRepresentation?.iiifImage?.url && !item.subjectOfManifest && (
+        {/* {item.mainRepresentation && !item.subjectOfManifest && (
           <Center 
             gridArea="image"
             borderRight={{xl: "1px"}} 
@@ -64,23 +70,24 @@ export default function MadeObject(item) {
               url={item.mainRepresentation} 
             />
           </Center>
-        )}
-        {item.mainRepresentation?.iiifImage?.url && !item.subjectOfManifest && (
-          <Box gridArea="image">
-            <MiradorWithNoSSR manifest={[item.id]}/>
-          </Box>
-        )}
+        )} */}
+
         {item.subjectOfManifest && (
           <Box gridArea="image">
             <MiradorWithNoSSR manifest={[item.subjectOfManifest]} />
           </Box>
         )}
-        {item.manifest && (
-        <Box gridArea="image">
-          <MiradorWithNoSSR manifest={[item.manifest]} />
-        </Box>
-      )}
+
+        {item.manifest && !item.subjectOfManifest && (
+          <Box gridArea="image">
+            <MiradorWithNoSSR manifest={[item.manifest]} />
+          </Box>
+        )}
       </Grid>
+
+      {item.depicts && (
+        <Depicts depicted={item.depicts} />
+      )}
       
       <Modal 
         isOpen={isOpen} 

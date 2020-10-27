@@ -17,7 +17,7 @@ export default function Items({ allItems, preview }) {
         </Head>
           <Header />
           <SimpleGrid 
-            columns={4} 
+            columns={[1,2,4,5]} 
             spacing={5}
             padding={5}
           >

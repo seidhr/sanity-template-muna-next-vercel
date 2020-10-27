@@ -10,8 +10,6 @@ export default function Mirador(props) {
   }
   
   const arrayToWindows = (data) => {
-    console.log(data)
-
     if(data.manifest.length === 1) {
       const res = [{
         allowFullscreen: true,
@@ -27,7 +25,6 @@ export default function Mirador(props) {
           manifestId: window,
         }
         ))
-      console.log(windows)
       return windows
     }
     return
@@ -35,9 +32,7 @@ export default function Mirador(props) {
   
   useEffect(() => {
     const manifests = arrayToWindows(props)
-    
-    console.log(JSON.stringify(manifests, null, 2))
-    
+
     let config = {
       id: "mirador",
       manifests: {

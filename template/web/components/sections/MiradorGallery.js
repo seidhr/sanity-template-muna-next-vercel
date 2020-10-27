@@ -23,19 +23,19 @@ export default function MiradorGallery(props) {
       gridGap={5}
       alignContent= "start"
       gridTemplateAreas={{ xl: `"image image metadata"`, base: `"image" "metadata"`}}
-      gridTemplateColumns={{ xl: "1fr 1fr 1fr", base: "1fr" }}
+      gridTemplateColumns={{ xl: "6fr 6fr 2fr", base: "100%" }}
     >
-      <Container w="4xl" gridArea="metadata">
-        <Heading mb={10}>
+      <Box gridArea="metadata">
+        <Heading fontSize="sm" mb={1} color="gray.600">
           {props.heading}
         </Heading>
 
         {props?.description && (
-          <Box w="4xl">
+          <Box fontSize="xs" fontFamily="Montserrat" fontWeight="200">
             <PortableTextBlock blocks={props.description} />
           </Box>
         )}
-      </Container>
+      </Box>
 
       {manifests && (
         <Box gridArea="image">

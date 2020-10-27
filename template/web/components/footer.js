@@ -8,6 +8,7 @@ export default function Footer() {
         align="center"
         justify="space-between"
         wrap="wrap"
+        marginTop={5}
         padding="1.5rem"
         borderTop="1px" 
         borderColor="gray.200"

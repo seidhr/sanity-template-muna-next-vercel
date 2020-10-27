@@ -20,7 +20,6 @@ const theme = extendTheme({
   },
   styles: {
     global: {
-      // styles for the `body`
       p: {
         fontSize: "1.25em"
       },

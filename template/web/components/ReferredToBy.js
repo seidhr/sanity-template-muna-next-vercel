@@ -10,13 +10,13 @@ export default function ReferredToBy(array) {
   array.array.map(obj => obj.lang = obj.language.identifiedByISO6393)
   const sorted = orderBy(array.array, ['lang'], ['desc'])
   return (
-      <Box maxW="xl">
-        {sorted?.map(ref => (
-          <Grid templateColumns="100px 1fr">
-            <Box>{ref.hasType[0].label.nor}<br/>{ref.language.label.nor}</Box>
-            <PortableTextBlock blocks={ref.body} />
-          </Grid>
-        ))}
-      </Box>
+    <>
+      {sorted?.map(ref => (
+        <Box maxW="xl" marginBottom={5}>
+          <Box>{ref.hasType[0].label.nor} - {ref.language.label.nor}</Box>
+          <PortableTextBlock blocks={ref.body} />
+        </Box>
+       ))}
+    </>
   )
 }
