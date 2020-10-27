@@ -18,20 +18,20 @@ export default function MiradorGallery(props) {
 
   return (
     <Grid 
-      w="100%"
+      w="full"
       p={5}
       gridGap={5}
       alignContent= "start"
       gridTemplateAreas={{ xl: `"image image metadata"`, base: `"image" "metadata"`}}
       gridTemplateColumns={{ xl: "1fr 1fr 1fr", base: "1fr" }}
     >
-      <Container maxW="md" gridArea="metadata">
+      <Container w="4xl" gridArea="metadata">
         <Heading mb={10}>
           {props.heading}
         </Heading>
 
         {props?.description && (
-          <Box>
+          <Box w="4xl">
             <PortableTextBlock blocks={props.description} />
           </Box>
         )}

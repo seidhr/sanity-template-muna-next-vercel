@@ -11,7 +11,7 @@ export default function TwoColumn(props) {
       <Box>
         <Center>
           <Heading
-            size="2xl"
+            size="xl"
           >
             {props.title}
           </Heading>
