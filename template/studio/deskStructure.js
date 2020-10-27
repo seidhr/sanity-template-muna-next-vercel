@@ -436,7 +436,7 @@ export default () =>
       S.divider(),
       // SETTINGS SINGLETON
       S.listItem()
-        .title('Side innstillinger')
+        .title('Nettside-innstillinger')
         .icon(FaCog)
         .child(
           S.editor()
