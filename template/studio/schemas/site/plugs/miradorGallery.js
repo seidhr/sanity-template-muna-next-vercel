@@ -21,6 +21,7 @@ export default {
       type: 'array',
       validation: Rule => Rule.unique(),
       of: [
+        { type: "externalManifest" },
         {
           type: "reference",
           to: [{ type: "madeObject" }],
@@ -33,8 +34,8 @@ export default {
       title: 'heading'
     },
     prepare: ({title}) => ({
-      title: title,
-      subtitle: `Mirador gallery`
+      title: `Mirador gallery`,
+      subtitle: title,
     })
   }
 }
