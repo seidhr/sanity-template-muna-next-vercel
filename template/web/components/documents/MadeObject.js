@@ -5,7 +5,7 @@ import {
   Button,
   Grid, 
   Container, 
-  Center, 
+  Divider,
   Heading, 
   Modal,
   ModalOverlay,
@@ -17,7 +17,6 @@ import {
   useDisclosure,
   useClipboard
 } from '@chakra-ui/core'
-import ItemImage from '../ItemImage'
 import ReferredToBy from '../ReferredToBy'
 import Palette from '../Palette'
 import Depicts from '../Depicts'
@@ -39,13 +38,17 @@ export default function MadeObject(item) {
       <Grid 
         w="100%"
         p={5}
-        gridGap={5}
+        gridGap={{xl: 5, base: 0}}
         alignContent="start"
         gridTemplateAreas={{ xl: `"image image metadata"`, base: `"image" "metadata"`}}
         gridTemplateColumns={{ xl: "1fr 1fr 1fr", base: "1fr" }}
       >
         <Container maxW="md" gridArea="metadata">
-          <Heading mb={10}>
+          {item.mainRepresentation?.palette && (
+            <Palette colors={item.mainRepresentation.palette} />
+          )}
+
+          <Heading mt={5} mb={5}>
             {item.label}
             <Button marginLeft={5} onClick={onOpen}><ViewIcon/></Button>
           </Heading>
@@ -60,13 +63,9 @@ export default function MadeObject(item) {
             </Box>
           )}
 
-        {item.subject && (
+          {item.subject && (
             <Subject subjects={item.subject} />
-          )}
-          
-          {item.mainRepresentation?.palette && (
-            <Palette colors={item.mainRepresentation.palette} />
-          )}
+          )}     
         </Container>
 
         {/* {item.mainRepresentation && !item.subjectOfManifest && (
@@ -95,6 +94,8 @@ export default function MadeObject(item) {
           </Box>
         )}
       </Grid>
+
+      <Divider />
 
       {item.depicts && (
         <Depicts depicted={item.depicts} />

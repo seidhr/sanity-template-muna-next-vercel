@@ -13,7 +13,7 @@ export default function Map({data}) {
   const bounds = fitViewportToFeature(geojson, {padding: 20})
 
   const [viewport, setViewport] = useState({
-    width: 200,
+    width: 300,
     height: 200,
     zoom: 5,
     bearing: 0,

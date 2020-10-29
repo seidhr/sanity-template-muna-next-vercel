@@ -8,7 +8,7 @@ export default function HasType({types}) {
   return (
     <Stack fontFamily="Montserrat" direction="row" marginBottom={5}>
       {types.map(type => (
-        <Badge fontSize="lg">{type.label.nor}</Badge>
+        <Badge fontSize="md">{type.label.nor}</Badge>
       ))}
     </Stack>
   )

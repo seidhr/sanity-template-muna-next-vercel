@@ -11,9 +11,9 @@ export default function Timespan({timespan}) {
   }
   
   return (
-    <>
+    <Box fontFamily="Montserrat">
       {timespan.map(time => (
-        <div>
+        <>
           {time.date && (
             formatDate(time.date)
           )}
@@ -21,6 +21,7 @@ export default function Timespan({timespan}) {
           {time.beginOfTheBegin && (
             formatDate(time.beginOfTheBegin)
           )}
+
           {time.endOfTheBegin && (
             formatDate(time.endOfTheBegin)
           )}
@@ -32,14 +33,16 @@ export default function Timespan({timespan}) {
           {time.beginOfTheEnd && (
             formatDate(time.beginOfTheEnd)
           )}
+
           {time.endOfTheEnd && (
             formatDate(time.endOfTheEnd)
           )}
+          
           {time.description?.nor && (
             <PortableTextBlock blocks={time.description.nor} />
           )}
-        </div>
+        </>
       ))}
-    </>
+    </Box>
   )
 }

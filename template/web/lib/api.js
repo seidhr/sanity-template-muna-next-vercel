@@ -63,7 +63,6 @@ const madeObjectFields = `
           _id,
           label,
           mainRepresentation{
-            ...,
             asset->
           }
         }
@@ -90,7 +89,6 @@ const madeObjectFields = `
           _id,
           label,
           mainRepresentation{
-            ...,
             asset->
           }
         }
@@ -100,9 +98,15 @@ const madeObjectFields = `
         _id,
         label,
         mainRepresentation{
-          ...,
           asset->
         }
+      }
+    },
+    target->{
+      _id,
+      label,
+      mainRepresentation{
+        asset->
       }
     }
   },

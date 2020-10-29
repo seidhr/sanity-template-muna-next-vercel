@@ -8,10 +8,11 @@ export const createGeojson = (data) => {
   }
   
   let features = data
-  .filter(x => {
+    .filter(x => {
       return x._type == "geojsonFeatureCollection"
     })
     .map(fColl => fColl.features)
+
   features = _.flatten(features)
   
   let collection = features.map(feature => {
@@ -27,14 +28,24 @@ export const createGeojson = (data) => {
   
   let extGeojson = data
     .filter(x => {
-      return x._type == "geojson"
+      if(x._type === "geojson") {
+        return x._type === "geojson"
+      } else {
+        return null
+      }
     })
     .map(fColl => fColl.data.code)
-  extGeojson = JSON.parse(extGeojson) 
+
+  let allFeatures = [...collection]
   
+  if(extGeojson.length > 0) {
+    const {features} = JSON.parse(extGeojson) 
+    allFeatures = [...allFeatures, ...features]
+  }
+
   return {
     type: "FeatureCollection",
-    features: [...collection, ...extGeojson.features]
+    features: [...allFeatures]
   }
 }
 
@@ -71,7 +82,7 @@ export const fitViewportToFeature = ( feature, options ) => {
 
   /** Setup WebMercatorViewport instances to fit bounds */
   // const { clientWidth, clientHeight } = map.getContainer();
-  const viewport = new WebMercatorViewport({width: 200, height: 200 });
+  const viewport = new WebMercatorViewport({width: 300, height: 200 });
 
   /** Edge case: if width is less than horizontal padding, remove padding */
   if (
