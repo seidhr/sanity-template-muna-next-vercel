@@ -17,7 +17,7 @@ export default function Document({ item, preview }) {
     <Layout preview={preview}>
       <Head>
         <title>
-          {item.label + ' | ' + CMS_NAME}
+          {item?.label + ' | ' + CMS_NAME}
         </title>
       </Head>
 

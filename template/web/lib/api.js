@@ -70,6 +70,9 @@ const madeObjectFields = `
       }
     },
     ...,
+    hasType[]-> {
+      ...
+    },
     tookPlaceAt[]->,
     movedFrom->{
       _id,
@@ -257,6 +260,7 @@ export async function getId(id, type, preview) {
       ${type[0].type === "madeObject" ? madeObjectFields : ''}
       ${type[0].type === "actor" ? groupFields : ''}
       ${type[0].type === "group" ? groupFields : ''}
+      ${type[0].type === "place" ? groupFields : ''}
     }`,
     { id })
   return results
