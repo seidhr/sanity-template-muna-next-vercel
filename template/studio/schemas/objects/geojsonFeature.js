@@ -7,7 +7,7 @@ export default {
       name: "geometry",
       title: "Geometri",
       titleEN: "Geometry",
-      type: "geojsonFeaturePoint",
+      type: "geojsonPoint",
     },
     {
       name: "properties",
