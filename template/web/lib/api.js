@@ -119,6 +119,10 @@ const madeObjectFields = `
       ...
     }
   },
+  hasCurrentOwner[]-> {
+    _id,
+    label
+  },
   subject[]-> {
     ...
   }

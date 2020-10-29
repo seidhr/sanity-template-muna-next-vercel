@@ -23,6 +23,7 @@ import Depicts from '../Depicts'
 import ActivityStream from '../ActivityStream'
 import HasType from '../HasType'
 import Subject from '../Subject'
+import CurrentOwner from '../CurrentOwner'
 
 const MiradorWithNoSSR = dynamic(
   () => import('../Mirador'),
@@ -65,6 +66,10 @@ export default function MadeObject(item) {
 
           {item.subject && (
             <Subject subjects={item.subject} />
+          )}     
+          
+          {item.hasCurrentOwner && (
+            <CurrentOwner owners={item.hasCurrentOwner} />
           )}     
         </Container>
 
