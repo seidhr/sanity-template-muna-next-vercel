@@ -9,10 +9,12 @@ const MenuItems = ({ children }) => (
   </Text>
 );
 
-export default function Header() {
+export default function Header({menu}) {
   const { colorMode, toggleColorMode } = useColorMode()
   const [show, setShow] = React.useState(false)
   const handleToggle = () => setShow(!show)
+
+  console.log(menu)
 
   return (
     <header>
@@ -52,7 +54,14 @@ export default function Header() {
           alignItems="center"
           flexGrow={1}
         >
-          <MenuItems><Link href="/items">Items</Link></MenuItems>
+          {menu.items && menu.items.map(item => (
+            <MenuItems key={item._key}>
+              <Link href={item.route}>
+                <a>{item.label}</a>
+              </Link>
+            </MenuItems>
+          ))}
+{/*           <MenuItems><Link href="/items">Items</Link></MenuItems>
           <MenuItems><Link href="/actors">Actors</Link></MenuItems>
           <MenuItems><Link href="/about">About</Link></MenuItems>
           <Spacer />
@@ -61,7 +70,7 @@ export default function Header() {
               <MoonIcon /> : 
               <SunIcon />
             }
-          </Button>
+          </Button> */}
         </Box>
         
       </Flex>
