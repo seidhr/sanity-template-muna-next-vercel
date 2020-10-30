@@ -15,7 +15,7 @@ export default function Items({ allItems, preview }) {
         <Head>
           <title>{CMS_NAME}</title>
         </Head>
-          <Header />
+          <Header menu={allItems.navMenu}/>
           <SimpleGrid 
             columns={[1,2,4,5]} 
             spacing={5}
@@ -24,8 +24,7 @@ export default function Items({ allItems, preview }) {
             {allItems && allItems.map((item, index) => (
               <Card key={index} item={item} />
             ))}
-          </SimpleGrid>
-            
+          </SimpleGrid>   
       </Layout>
     </>
   )

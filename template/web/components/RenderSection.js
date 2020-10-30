@@ -2,6 +2,7 @@ import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {upperFirst} from 'lodash'
 import * as SectionComponents from './sections'
+import Header from './Header'
 
 function resolveSections (section) {
   // eslint-disable-next-line import/namespace

@@ -14,8 +14,6 @@ export default function Header({menu}) {
   const [show, setShow] = React.useState(false)
   const handleToggle = () => setShow(!show)
 
-  console.log(menu)
-
   return (
     <header>
       <Flex
@@ -48,31 +46,28 @@ export default function Header({menu}) {
           </svg>
         </Box>
 
-        <Box
+        <Flex
           display={{ base: show ? "block" : "none", sm: show ? "block" : "none", md: "flex" }}
           width={{ base: "full", sm: "full", md: "auto" }}
           alignItems="center"
           flexGrow={1}
         >
-          {menu.items && menu.items.map(item => (
-            <MenuItems key={item._key}>
+          {menu?.items && menu.items.map(item => (
+          <MenuItems key={item._key}>
+            
               <Link href={item.route}>
-                <a>{item.label}</a>
+                <a>{item.title}</a>
               </Link>
-            </MenuItems>
+          </MenuItems>
           ))}
-{/*           <MenuItems><Link href="/items">Items</Link></MenuItems>
-          <MenuItems><Link href="/actors">Actors</Link></MenuItems>
-          <MenuItems><Link href="/about">About</Link></MenuItems>
           <Spacer />
           <Button onClick={toggleColorMode}>
             {colorMode === "light" ? 
               <MoonIcon /> : 
               <SunIcon />
             }
-          </Button> */}
-        </Box>
-        
+          </Button> 
+        </Flex>
       </Flex>
     </header>
   )

@@ -82,12 +82,12 @@ export const fitViewportToFeature = ( feature, options ) => {
 
   /** Setup WebMercatorViewport instances to fit bounds */
   // const { clientWidth, clientHeight } = map.getContainer();
-  const viewport = new WebMercatorViewport({width: 300, height: 200 });
+  const viewport = new WebMercatorViewport({width: 300, height: 200, zoom: 18});
 
   /** Edge case: if width is less than horizontal padding, remove padding */
   if (
     typeof options.padding === 'object' &&
-    clientWidth < (options.padding.left || 0) + (options.padding.right || 0)
+    viewport.width < (options.padding.left || 0) + (options.padding.right || 0)
   ) {
     options.padding = 0;
     console.warn('map width is less than padding width, resetting to 0px');
@@ -96,7 +96,7 @@ export const fitViewportToFeature = ( feature, options ) => {
   /** Edge case: if width is less than vertical padding, remove padding */
   if (
     typeof options.padding === 'object' &&
-    clientHeight < (options.padding.top || 0) + (options.padding.bottom || 0)
+    viewport.height < (options.padding.top || 0) + (options.padding.bottom || 0)
   ) {
     options.padding = 0;
     console.warn('map height is less than padding height, resetting to 0px');

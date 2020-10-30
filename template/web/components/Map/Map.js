@@ -10,14 +10,16 @@ export default function Map({data}) {
     return null
   }
   const geojson = createGeojson(data)
-  const bounds = fitViewportToFeature(geojson, {padding: 20})
+  const bounds = fitViewportToFeature(geojson, {padding: {left: 20, top: 20, right: 20, bottom: 20}})
 
   const [viewport, setViewport] = useState({
+    mapStyle: 'mapbox://styles/mapbox/outdoors-v11',
     width: 300,
     height: 200,
-    zoom: 5,
-    bearing: 0,
-    pitch: 40,
+    pitch: 70,
+    altitude: 3,
+    zoom: 18,
+    attributionControl: false,
     ...bounds
   })
 

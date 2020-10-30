@@ -11,8 +11,8 @@ export default function CurrentOwner({ owners }) {
         {owners.map(owner => (
           <Tag>
             <Link
-              key={owner.id}
-              href={`/id/${owner.id}`}
+              key={owner._id}
+              href={`/id/${owner._id}`}
             >
               {owner.label} 
             </Link>

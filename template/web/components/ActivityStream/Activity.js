@@ -46,7 +46,7 @@ export default function Activity({data}) {
       gridTemplateAreas={{ xl: `"metadata map"`, base: `"metadata map"`}}
       gridTemplateColumns={{ xl: "2fr 1fr", base: "2fr 1fr" }}
     >
-      <Box pt={3} pb={3} pl={6} gridArea="metadata">
+      <Box pt={3} pb={6} pl={6} gridArea="metadata">
         <Heading>
           {data.label ? data.label : capitalize(data._type)}
         </Heading>

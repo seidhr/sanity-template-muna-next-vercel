@@ -19,6 +19,16 @@ const getUniqueDocuments = (items) => {
   })
 }
 
+const navigationFields = `
+  "navMenu": *[_id == "main-menu"]{
+    ...,
+    items[]{
+      ...,
+      "route": landingPageRoute->.slug.current
+    }
+  }
+`
+
 const madeObjectFields = `
   "id": _id,
   _type,
@@ -200,9 +210,15 @@ export async function getRouteBySlug(id) {
         ...,
         page->{
           ...,
+          navMenu->{
+            ...,
+            items[]{
+              ...,
+              "route": landingPageRoute->.slug.current
+            }
+          },
           content[] {
             ...,
-            
             _type == 'miradorGallery' => @{
               ...,
               items[] {
@@ -234,7 +250,8 @@ export async function getPreviewMadeObjectByID(id) {
 
 export async function getAllMadeObjects() {
   const data = await client.fetch(`*[_type == "madeObject"]{ 
-    ${madeObjectFields}
+    ${madeObjectFields},
+    ${navigationFields}
   }`)
   return data
 }
@@ -268,7 +285,8 @@ export async function getId(id, type, preview) {
       ${type[0].type === "madeObject" ? madeObjectFields : ''}
       ${type[0].type === "actor" ? groupFields : ''}
       ${type[0].type === "group" ? groupFields : ''}
-      ${type[0].type === "place" ? groupFields : ''}
+      ${type[0].type === "place" ? groupFields : ''},
+      ${navigationFields}
     }`,
     { id })
   return results
