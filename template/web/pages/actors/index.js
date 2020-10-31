@@ -23,7 +23,7 @@ export default function Actors({ items, preview }) {
             <Avatar size="xl" name={item.label} src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()} />
             <Box p={5}>
               <Heading size="md">
-                <Link href={`id/${item.id}`}><a>{item.label}</a></Link>
+                <Link href={`/id/${item.id}`}><a>{item.label}</a></Link>
               </Heading>
               <Box d="flex" alignItems="baseline">
                 {item.hasType && item.hasType.map(type => (

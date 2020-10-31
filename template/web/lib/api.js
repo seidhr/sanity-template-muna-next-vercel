@@ -159,8 +159,9 @@ const groupFields = `
   "mentionedIn": *[_type in ["madeObject"] && references(^._id)]{ 
     "id": _id,
     _type,
-    label
-  },
+    label,
+    mainRepresentation
+  }
 `
 
 export async function getFrontpage() {
@@ -250,7 +251,13 @@ export async function getPreviewMadeObjectByID(id) {
 
 export async function getAllMadeObjects() {
   const data = await client.fetch(`*[_type == "madeObject"]{ 
-    ${madeObjectFields},
+    "id": _id,
+    _type,
+    label,
+    hasType[]-> {
+      ...
+    },
+    mainRepresentation,
     ${navigationFields}
   }`)
   return data
@@ -258,7 +265,13 @@ export async function getAllMadeObjects() {
 
 export async function getAllActors() {
   const data = await client.fetch(`*[_type in ["actor", "group"]] | order(label, desc){ 
-    ${madeObjectFields}
+    "id": _id,
+    _type,
+    label,
+    hasType[]-> {
+      ...
+    },
+    mainRepresentation
   }`)
   return data
 }
@@ -285,8 +298,7 @@ export async function getId(id, type, preview) {
       ${type[0].type === "madeObject" ? madeObjectFields : ''}
       ${type[0].type === "actor" ? groupFields : ''}
       ${type[0].type === "group" ? groupFields : ''}
-      ${type[0].type === "place" ? groupFields : ''},
-      ${navigationFields}
+      ${type[0].type === "place" ? groupFields : ''}
     }`,
     { id })
   return results
