@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MapGL, {Source, Layer} from 'react-map-gl';
 import { createGeojson, fitViewportToFeature } from './util';
 
@@ -10,22 +9,22 @@ export default function Map({data}) {
     return null
   }
   const geojson = createGeojson(data)
-  const bounds = fitViewportToFeature(geojson, {padding: {left: 20, top: 20, right: 20, bottom: 20}})
+  const {latitude, longitude} = fitViewportToFeature(geojson, {padding: {left: 20, top: 20, right: 20, bottom: 20}})
 
   const [viewport, setViewport] = useState({
-    mapStyle: 'mapbox://styles/mapbox/outdoors-v11',
     width: 300,
     height: 200,
-    pitch: 70,
-    altitude: 3,
-    zoom: 18,
+    zoom: 7,
+    pitch: 30,
     attributionControl: false,
-    ...bounds
+    latitude: latitude,
+    longitude: longitude
   })
 
   return (
     <MapGL
       mapboxApiAccessToken={token}
+      mapStyle="mapbox://styles/mapbox/outdoors-v11"
       {...viewport}
       onViewportChange={nextViewport => setViewport(nextViewport)}
     >

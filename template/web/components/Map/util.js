@@ -82,7 +82,7 @@ export const fitViewportToFeature = ( feature, options ) => {
 
   /** Setup WebMercatorViewport instances to fit bounds */
   // const { clientWidth, clientHeight } = map.getContainer();
-  const viewport = new WebMercatorViewport({width: 300, height: 200, zoom: 18});
+  const viewport = new WebMercatorViewport({width: 300, height: 200});
 
   /** Edge case: if width is less than horizontal padding, remove padding */
   if (
