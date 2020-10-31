@@ -1,30 +1,37 @@
 import Link from 'next/link'
-import { Box, Container, Flex, Heading } from '@chakra-ui/core'
-import ItemImage from '../ItemImage'
+import { Avatar, Badge, Box, Container, Flex, Heading } from '@chakra-ui/core'
 import PortableTextBlock from '../PortableTextBlock'
 import Cards from '../Cards'
+import { imageBuilder } from '../../lib/sanity'
 
 export default function Actor(item) {
 
   return (
     <Container maxW="xl" centerContent>
-      <Flex mb={10}>
-        <Box w="200px">
-          {item.mainRepresentation && (
-            <ItemImage
-              id={item.id} 
-              label={item.label}
-              url={item.mainRepresentation} />
+      <Flex key={item.id}>
+        <Avatar size="2xl" name={item.label} src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()} />
+        <Box p={5}>
+          <Heading size="4xl">
+            <Link href={`/id/${item.id}`}><a>{item.label}</a></Link>
+          </Heading>
+          <Box d="flex" alignItems="baseline">
+            {item.hasType && item.hasType.map(type => (
+              <Badge key={type._id} borderRadius="full" px="2" colorScheme="teal">
+                {type.label?.nor}
+              </Badge>)
+            )}
+            {!item.hasType && (
+              <Badge borderRadius="full" px="2" colorScheme="teal">
+                Person
+              </Badge>
             )}
           </Box>
-        <Heading p={5} flex="1">
-          {item.label}
-        </Heading>
+        </Box>
       </Flex>
-
+      
       <Box maxW="lg">
         {item?.referredToBy?.map(ref => (
-          <PortableTextBlock blocks={ref.body} />
+          <PortableTextBlock key={ref._key} blocks={ref.body} />
         ))}
       </Box>
       {item.hasMember && item.hasMember.map(member => (
