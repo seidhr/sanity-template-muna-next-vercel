@@ -54,10 +54,9 @@ export default function Header({menu}) {
         >
           {menu?.items && menu.items.map(item => (
           <MenuItems key={item._key}>
-            
-              <Link href={item.route}>
-                <a>{item.title}</a>
-              </Link>
+            <Link href={`/${item.route}`}>
+              <a>{item.title}</a>
+            </Link>
           </MenuItems>
           ))}
           <Spacer />

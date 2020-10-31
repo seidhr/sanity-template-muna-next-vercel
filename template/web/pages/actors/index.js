@@ -10,15 +10,15 @@ import Card from '../../components/Card'
 import PortableTextBlock from '../../components/PortableTextBlock'
 
 
-export default function Actors({ items, preview }) {
+export default function Actors({ data, preview }) {
   return (
     <Layout preview={preview}>
       <Head>
         <title>{CMS_NAME}</title>
       </Head>
-      <Header />
+      <Header menu={data.navMenu} />
       <Grid templateColumns="repeat(auto-fit, minmax(400px, 1fr))" gap={6} p="10">
-        {items && items.map((item) => (
+        {data.items && data.items.map((item) => (
           <Flex key={item.id}>
             <Avatar size="xl" name={item.label} src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()} />
             <Box p={5}>
@@ -50,8 +50,8 @@ export default function Actors({ items, preview }) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const items = await getAllActors(preview)
+  const data = await getAllActors(preview)
   return {
-    props: { items, preview },
+    props: { data, preview },
   }
 }

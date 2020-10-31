@@ -12,7 +12,7 @@ export default function ReferredToBy(array) {
   return (
     <>
       {sorted?.map(ref => (
-        <Box maxW="xl" marginBottom={5}>
+        <Box key={ref._key ? ref._key : ref._id} maxW="xl" marginBottom={5}>
           <Box>{ref.hasType[0].label.nor} - {ref.language.label.nor}</Box>
           <PortableTextBlock blocks={ref.body} />
         </Box>

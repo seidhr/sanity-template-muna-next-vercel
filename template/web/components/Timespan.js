@@ -13,7 +13,7 @@ export default function Timespan({timespan}) {
   return (
     <Box fontFamily="Montserrat">
       {timespan.map(time => (
-        <>
+        <Box key={time._key}>
           {time.date && (
             formatDate(time.date)
           )}
@@ -41,7 +41,7 @@ export default function Timespan({timespan}) {
           {time.description?.nor && (
             <PortableTextBlock blocks={time.description.nor} />
           )}
-        </>
+        </Box>
       ))}
     </Box>
   )

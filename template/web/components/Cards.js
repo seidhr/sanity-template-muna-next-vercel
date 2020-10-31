@@ -7,19 +7,14 @@ export default function Cards({items}) {
   }
 
   return (
-    <>
-      <Heading>
-        Forbundet med disse objektene
-      </Heading>
-      <SimpleGrid
-        columns={[1,2,4,5]} 
-        spacing={5}
-        padding={5}
-      >
-        {items.map((item, index) => (
-          <Card key={index} item={item} />
-        ))}
-      </SimpleGrid>
-    </>
+    <SimpleGrid
+      columns={[1,2,4,5]} 
+      spacing={5}
+      padding={5}
+    >
+      {items.map((item, index) => (
+        <Card key={index} item={item} />
+      ))}
+    </SimpleGrid>
   )
 }

@@ -8,16 +8,17 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import RenderDocument from '../../components/RenderDocument'
 
-export default function Document({ item, preview }) {
+export default function Document({ data, preview }) {
+  console.log(data)
   const router = useRouter()
-  if (!router.isFallback && !item.id) {
+  if (!router.isFallback && !data.item.id) {
     return <ErrorPage statusCode={404} />
   }
   return (
     <Layout preview={preview}>
       <Head>
         <title>
-          {item?.label + ' | ' + CMS_NAME}
+          {data.item?.label + ' | ' + CMS_NAME}
         </title>
       </Head>
 
@@ -25,9 +26,9 @@ export default function Document({ item, preview }) {
         "Loading…"
       ) : (
         <>
-          <Header />
+          <Header menu={data.navMenu} />
           <main>
-            {item && <RenderDocument document={item} />}
+            {data.item && <RenderDocument document={data.item} />}
           </main>
         </>
       )}
@@ -42,7 +43,7 @@ export async function getStaticProps({ params, preview = false }) {
   return {
     props: {
       preview,
-      item: data[0] || null,
+      data: data || null,
     },
   }
 }

@@ -1,4 +1,5 @@
 import { Stack, Badge } from '@chakra-ui/core'
+import Link from './Link'
 
 export default function Subject({subjects}) {
   if(!subjects) {
@@ -8,7 +9,9 @@ export default function Subject({subjects}) {
   return (
     <Stack fontFamily="Montserrat" direction="row" marginBottom={5}>
       {subjects.map(subject => (
-        <Badge colorScheme="green" fontSize="lg">{subject.label.nor}</Badge>
+        <Badge key={subject._id} colorScheme="green" fontSize="lg">
+          <Link href={`/id/${subject._id}`}>{subject.label.nor}</Link>
+        </Badge>
       ))}
     </Stack>
   )

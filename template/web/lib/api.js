@@ -4,7 +4,9 @@ const getClient = (preview) => (preview ? previewClient : client)
 const publicDocumentTypes = [
   "madeObject",
   "actor",
-  "group"
+  "group",
+  "concept",
+  "place"
 ]
 
 const getUniqueDocuments = (items) => {
@@ -19,8 +21,8 @@ const getUniqueDocuments = (items) => {
   })
 }
 
-const navigationFields = `
-  "navMenu": *[_id == "main-menu"]{
+const defaultNavMenu = `
+  "navMenu": *[_id == "main-menu"][0] {
     ...,
     items[]{
       ...,
@@ -31,6 +33,7 @@ const navigationFields = `
 
 const madeObjectFields = `
   "id": _id,
+  _id,
   _type,
   depicts[]-> {
     "id": _id,
@@ -140,6 +143,7 @@ const madeObjectFields = `
 
 const groupFields = `
   "id": _id,
+  _id,
   _type,
   label,
   hasType[]-> {
@@ -164,19 +168,23 @@ const groupFields = `
   }
 `
 
+const conceptFields = `
+  "id": _id,
+  _type,
+  label
+`
+
 export async function getFrontpage() {
   const data = await getClient(true).fetch(
     `{
-      "frontpage": *[ _id == "frontpage" ] {
+      "frontpage": *[ _id == "frontpage" ][0] {
         "id": _id,
         ...,
         navMenu-> {
           ...,
           items[] {
             ...,
-            landingPageRoute-> {
-              slug
-            }
+            "route": landingPageRoute->.slug.current
           }
         } 
       },
@@ -206,7 +214,7 @@ export async function getRoutes() {
 
 export async function getRouteBySlug(id) {
   const data = await getClient(true).fetch(
-    `*[ _type == "route" && slug.current == $id ] {
+    `*[ _type == "route" && slug.current == $id ][0] {
         "id": _id,
         ...,
         page->{
@@ -250,28 +258,46 @@ export async function getPreviewMadeObjectByID(id) {
 }
 
 export async function getAllMadeObjects() {
-  const data = await client.fetch(`*[_type == "madeObject"]{ 
-    "id": _id,
-    _type,
-    label,
-    hasType[]-> {
-      ...
+  const data = await client.fetch(`{
+    "items": *[_type == "madeObject"]{ 
+      "id": _id,
+      _type,
+      label,
+      hasType[]-> {
+        ...
+      },
+      mainRepresentation
     },
-    mainRepresentation,
-    ${navigationFields}
+    ${defaultNavMenu}
   }`)
   return data
 }
 
 export async function getAllActors() {
-  const data = await client.fetch(`*[_type in ["actor", "group"]] | order(label, desc){ 
-    "id": _id,
-    _type,
-    label,
-    hasType[]-> {
-      ...
+  const data = await client.fetch(`{
+    "items": *[_type in ["actor", "group"]] | order(label, desc){ 
+      "id": _id,
+      _type,
+      label,
+      hasType[]-> {
+        ...
+      },
+      mainRepresentation
     },
-    mainRepresentation
+    ${defaultNavMenu}
+  }`)
+  return data
+}
+
+export async function getAllConcepts() {
+  const data = await client.fetch(`{
+    "items": *[_type in ["concept", "objectType"]] | order(label.nor, desc){ 
+      "id": _id,
+      _id,
+      _type,
+      label
+    },
+    ${defaultNavMenu}
   }`)
   return data
 }
@@ -294,11 +320,15 @@ export async function getIdPaths(preview) {
 
 export async function getId(id, type, preview) {
   const results = await getClient(preview)
-    .fetch(`*[_id == $id] {
-      ${type[0].type === "madeObject" ? madeObjectFields : ''}
-      ${type[0].type === "actor" ? groupFields : ''}
-      ${type[0].type === "group" ? groupFields : ''}
-      ${type[0].type === "place" ? groupFields : ''}
+    .fetch(`{
+      "item": *[_id == $id][0] {
+        ${type[0].type === "madeObject" ? madeObjectFields : ''}
+        ${type[0].type === "actor" ? groupFields : ''}
+        ${type[0].type === "group" ? groupFields : ''}
+        ${type[0].type === "place" ? groupFields : ''}
+        ${type[0].type === "concept" ? groupFields : ''}
+      },
+      ${defaultNavMenu}
     }`,
     { id })
   return results

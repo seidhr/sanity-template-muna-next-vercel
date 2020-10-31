@@ -9,7 +9,7 @@ export default function CurrentOwner({ owners }) {
     <>
       <Heading fontSize="md">Eier</Heading>
         {owners.map(owner => (
-          <Tag>
+          <Tag key={owner._id}>
             <Link
               key={owner._id}
               href={`/id/${owner._id}`}

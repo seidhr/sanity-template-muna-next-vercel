@@ -13,9 +13,9 @@ export default function Page({ data, preview }) {
           <title>{CMS_NAME}</title>
         </Head>
 
-        <Header menu={data[0].page.navMenu} />
+        <Header menu={data.page.navMenu} />
 
-        {data[0].page.content && <Sections sections={data[0].page.content} />}
+        {data.page.content && <Sections sections={data.page.content} />}
       </Layout>
     </>
   )
