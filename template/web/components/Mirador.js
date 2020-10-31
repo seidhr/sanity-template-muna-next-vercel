@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect } from "react";
 import mirador from "mirador";
 import { Box } from '@chakra-ui/core'
 
@@ -75,12 +75,8 @@ export default function Mirador(props) {
         defaultPosition: 'off',
       },
     }
-    
+
     mirador.viewer(config);
-    return () => {
-      //setManifestArray([])
-      console.log('unmounting...');
-    }
   },[])
 
   return (
