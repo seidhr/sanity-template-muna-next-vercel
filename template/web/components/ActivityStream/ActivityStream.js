@@ -13,7 +13,7 @@ export default function ActivityStream({stream}) {
       </Heading>
       <List spacing={5}>
         {stream.map(activity => (
-          <Activity data={activity} />
+          <Activity key={activity._key} data={activity} />
         ))}
       </List>
     </Container>

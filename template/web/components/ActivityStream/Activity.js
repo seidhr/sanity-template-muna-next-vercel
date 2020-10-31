@@ -65,20 +65,22 @@ export default function Activity({data}) {
           <Timespan timespan={data.timespan} />
         )}
 
-        {data.tookPlaceAt?.length > 0 && data.tookPlaceAt.map(place => (
+        {data.tookPlaceAt?.length > 0 && (
           <HStack mt={2} mb={2}>
-            <Tag size="lg" variant="subtle" colorScheme="cyan">
-              <TagLeftIcon boxSize="12px" as={SunIcon} />
-              <TagLabel>
-                <Link href={`/id/${place._id}`}>
-                  <a>
-                    {place.label.nor}
-                  </a>
-                </Link>
-              </TagLabel>
-            </Tag>
+            {data.tookPlaceAt.map(place => 
+              <Tag key={place._id} size="lg" variant="subtle" colorScheme="cyan">
+                <TagLeftIcon boxSize="12px" as={SunIcon} />
+                <TagLabel>
+                  <Link href={`/id/${place._id}`}>
+                    <a>
+                      {place.label.nor}
+                    </a>
+                  </Link>
+                </TagLabel>
+              </Tag>
+            )}
           </HStack>
-        ))}
+        )}
 
         {data.description && (
           <PortableTextBlock blocks={data.description} />
@@ -88,7 +90,7 @@ export default function Activity({data}) {
         {data.carriedOutBy?.length > 0 && (
           <AvatarGroup size="md">
             {data.carriedOutBy.map(inRole => (
-              <Popover>
+              <Popover key={inRole.actor._id} >
                 <PopoverTrigger>
                   <Avatar   
                     name={inRole.actor.label} 
@@ -102,7 +104,6 @@ export default function Activity({data}) {
                     <PopoverCloseButton />
                     <PopoverBody>
                       <Link
-                        key={inRole.actor._id}
                         href={`/id/${inRole.actor._id}`}
                       >
                         <a>{inRole.actor.label}</a>
@@ -165,6 +166,7 @@ export default function Activity({data}) {
       </Box>
 
       <Box gridArea="map">
+        {/* TODO: FIX */}
         {data.tookPlaceAt?.length > 0 && data.tookPlaceAt.map(place => (
           <>
             {place.definedByGeoJSON && (
@@ -175,6 +177,7 @@ export default function Activity({data}) {
           </>
         ))}
 
+        {/* TODO: Check this */}
         {data.geoJSON && (
           <div>
             <Map data={data.geoJSON} />
