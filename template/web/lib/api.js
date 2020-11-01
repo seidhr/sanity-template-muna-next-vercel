@@ -6,6 +6,7 @@ const publicDocumentTypes = [
   "actor",
   "group",
   "concept",
+  "objectType",
   "place"
 ]
 
@@ -327,6 +328,7 @@ export async function getId(id, type, preview) {
         ${type[0].type === "group" ? groupFields : ''}
         ${type[0].type === "place" ? groupFields : ''}
         ${type[0].type === "concept" ? groupFields : ''}
+        ${type[0].type === "objectType" ? groupFields : ''}
       },
       ${defaultNavMenu}
     }`,

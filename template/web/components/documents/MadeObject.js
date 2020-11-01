@@ -14,8 +14,9 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Wrap,
   useDisclosure,
-  useClipboard
+  useClipboard,
 } from '@chakra-ui/core'
 import ReferredToBy from '../ReferredToBy'
 import Palette from '../Palette'
@@ -51,7 +52,6 @@ export default function MadeObject(item) {
 
           <Heading mt={5} mb={5}>
             {item.label}
-            <Button marginLeft={5} onClick={onOpen}><ViewIcon/></Button>
           </Heading>
 
           {item.hasType && (
@@ -70,7 +70,10 @@ export default function MadeObject(item) {
           
           {item.hasCurrentOwner && (
             <CurrentOwner owners={item.hasCurrentOwner} />
-          )}     
+          )}
+          <Wrap>
+            <Button marginLeft={5} onClick={onOpen}><ViewIcon mr={2} />Data</Button> 
+          </Wrap>
         </Container>
 
         {/* {item.mainRepresentation && !item.subjectOfManifest && (
