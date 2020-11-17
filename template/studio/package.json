@@ -48,6 +48,7 @@
     "sanity-plugin-asset-source-nbiiif": "^0.0.7",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.10",
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
+    "sanity-plugin-graph-view": "^1.0.4",
     "sanity-plugin-media": "^0.4.0"
   },
   "devDependencies": {

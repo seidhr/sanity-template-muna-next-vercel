@@ -26,7 +26,8 @@
     "import-tool",
     "muna-logo",
     "muna-docs-widget",
-    "iiif-manifest-input"
+    "iiif-manifest-input",
+    "graph-view"
   ],
   "env": {
     "development": {
