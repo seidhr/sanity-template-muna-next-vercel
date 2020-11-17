@@ -1,24 +1,19 @@
 import React from 'react'
 import {DataSearch} from '@appbaseio/reactivesearch'
+import styled from 'styled-components'
 
-const navbarStyles = `
+const navbarStyles = styled.div`
   padding: 0 25px;
   background: #08c;
   height: 70px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
   align-items: center;
   position: sticky;
   top: 0px;
   z-index: 20;
   grid-gap: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  .logo {
-    color: white;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-  }
   input {
     font-size: 0.8em;
     padding: 10px 20px 10px 40px;

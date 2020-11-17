@@ -1,7 +1,8 @@
-import React from 'react'
-import {MultiList, SingleList} from '@appbaseio/reactivesearch'
+import React, {useState} from 'react'
+import {MultiList, SingleList, ToggleButton} from '@appbaseio/reactivesearch'
+import styled from 'styled-components'
 
-const buttonStyles = `
+/* const buttonStyles = styled.button`
   padding: 15px;
   border: 0;
   outline: 0;
@@ -16,9 +17,9 @@ const buttonStyles = `
   @media (max-width: 576px) {
     display: block;
   }
-`
+` */
 
-const filterWrapper = isVisible => `
+const filterWrapper = (isVisible) => styled.div`
   position: sticky;
   top: 80px;
   border: 1px solid #e8e8e8;
@@ -40,11 +41,39 @@ const filterWrapper = isVisible => `
 
 const AllFilters = () => (
   <>
+    <ToggleButton
+      componentId='digitized'
+      dataField='isDigitized'
+      data={[
+        {label: 'Only digitized', value: 'Digitalisert'}
+      ]}
+      title='Show'
+      defaultValue={['Digitalisert']}
+      multiSelect
+      showFilter
+      filterLabel='Digitized'
+      URLParams={false}
+    />
+    <ToggleButton
+      componentId='zoom'
+      dataField='hasZoom'
+      data={[
+        {label: 'With zoom', value: 'Med DeepZoom'}
+      ]}
+      defaultValue={['Med DeepZoom']}
+      title=''
+      showFilter
+      filterLabel='Digitized'
+      URLParams={false}
+    />
     <SingleList
       dataField='type.exact'
       title='Types'
       componentId='types'
       queryFormat='and'
+      react={{
+        and: ['digitized', 'zoom']
+      }}
     />
     <MultiList
       dataField='maker.exact'
@@ -52,41 +81,35 @@ const AllFilters = () => (
       title='Makers'
       componentId='makers'
       queryFormat='or'
+      react={{
+        and: ['search', 'digitized', 'zoom', 'types', 'makers']
+      }}
     />
   </>
 )
 
-class Filters extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      isVisible: false
-    }
-  }
+const Filters = () => {
+  // eslint-disable-next-line no-unused-vars
+  const [isVisible, setIsVisible] = useState(true)
 
-  handleMobileView = () => {
-    this.setState(prevState => ({
-      isVisible: !prevState.isVisible
-    }))
-  };
+  /* const handleMobileView = () => {
+    setIsVisible(!isVisible)
+  } */
 
-  render () {
-    const {isVisible} = this.state
-    return (
-      <div>
-        <button
-          type='button'
-          onClick={this.handleMobileView}
-          className={buttonStyles}
-        >
-          {`Show ${isVisible ? 'Results' : 'Filters'}`}
-        </button>
-        <div className={filterWrapper(isVisible)}>
-          <AllFilters />
-        </div>
+  return (
+    <div>
+      {/* <button
+        type='button'
+        onClick={handleMobileView}
+        className={buttonStyles}
+      >
+        {`Show ${isVisible ? 'Results' : 'Filters'}`}
+      </button> */}
+      <div className={filterWrapper(isVisible)}>
+        <AllFilters />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Filters

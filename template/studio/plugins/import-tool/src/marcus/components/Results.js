@@ -3,9 +3,10 @@ import {
   ReactiveList,
   SelectedFilters
 } from '@appbaseio/reactivesearch'
+import styled from 'styled-components'
 import Card from './Card'
 
-const container = `
+const container = styled.div`
   background: white;
   border: 1px solid #e8e8e8;
   padding: 20px;
@@ -36,7 +37,7 @@ const Results = () => {
         paginationAt='both'
         componentId='results'
         react={{
-          and: ['search', 'types', 'makers']
+          and: ['search', 'digitized', 'zoom', 'types', 'makers']
         }}
         dataField='identifier'
       >
