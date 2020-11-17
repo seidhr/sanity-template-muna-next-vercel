@@ -12,6 +12,7 @@
     "test": "sanity check"
   },
   "dependencies": {
+    "@appbaseio/reactivesearch": "^3.13.1",
     "@sanity/base": "^2.0.9",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/cli": "^2.0.9",
@@ -31,6 +32,7 @@
     "dayjs": "^1.8.35",
     "get-it": "^4.1.4",
     "jsonata": "^1.8.3",
+    "jsonld": "^3.2.0",
     "lodash": "^4.17.20",
     "mirador": "^3.0.0-rc.6",
     "openseadragon-react-viewer": "^2.0.5",
@@ -40,6 +42,7 @@
     "react-icons": "^3.11.0",
     "react-instagram-embed": "^1.5.0",
     "react-paginate": "^6.5.0",
+    "react-router-dom": "^5.2.0",
     "react-twitter-embed": "^3.0.3",
     "sanity-plugin-asset-source-marcus": "^0.0.4",
     "sanity-plugin-asset-source-nbiiif": "^0.0.7",

@@ -1,0 +1,150 @@
+/* eslint-disable no-undef */
+import React, {useReducer, useEffect} from 'react'
+import ReactPaginate from 'react-paginate'
+// import fetch from 'unfetch'
+import Preview from './components/Card'
+import Search from './components/Search'
+import styles from '../ImportTool.css'
+import {searchReducer} from './reducers/searchReducer'
+import {chooseItem} from './apis'
+
+export const initialState = {
+  sourceAPI: 'nb',
+  apiURL: 'http://sparql.ub.uib.no/sparql/query?',
+  loading: true,
+  searchParameter: '',
+  items: [],
+  page: 0,
+  totalElements: 0,
+  limit: 30,
+  errorMessage: null
+}
+
+const SearchMarcus = () => {
+  const [state, dispatch] = useReducer(searchReducer, initialState)
+
+  const query = `
+    DESCRIBE
+    ?id
+    WHERE {
+      GRAPH ?g {
+        ?id <http://purl.org/dc/terms/identifier> ?query;
+          <http://data.ub.uib.no/ontology/hasThumbnail> ?thumb.
+        FILTER(strStarts(?query, "${state.searchParameter}"))
+      }
+    }
+    LIMIT 10`
+
+  useEffect(() => {
+    fetch(state.apiURL + new URLSearchParams({
+      query: query,
+      output: 'json'
+    }))
+      .then(response => response.json())
+      .then(jsonResponse => {
+        dispatch({
+          type: 'SEARCH_SUCCESS',
+          payload: jsonResponse._embedded.items,
+          totalElements: jsonResponse.page.totalElements
+        })
+      })
+  }, [])
+
+  const handlePageClick = (data) => {
+    let selected = data.selected
+    let page = selected
+
+    dispatch({
+      type: 'SEARCH_REQUEST',
+      searchParameter: state.searchParameter
+    })
+
+    fetch(state.apiURL + new URLSearchParams({
+      query: query,
+      output: 'json'
+    }))
+      .then(response => response.json())
+      .then(jsonResponse => {
+        if (jsonResponse.page && jsonResponse.page.totalElements) {
+          dispatch({
+            type: 'SEARCH_SUCCESS',
+            payload: jsonResponse._embedded.items,
+            totalElements: jsonResponse.page.totalElements,
+            page: page
+          })
+        } else {
+          dispatch({
+            type: 'SEARCH_FAILURE',
+            error: jsonResponse.Error
+          })
+        }
+      })
+  }
+
+  const search = (searchValue) => {
+    // setSearchParameter(searchValue)
+
+    dispatch({
+      type: 'SEARCH_REQUEST',
+      searchParameter: searchValue
+    })
+
+    fetch(state.apiURL + new URLSearchParams({
+      query: query,
+      output: 'json'
+    }))
+      .then(response => response.json())
+      .then(jsonResponse => {
+        if (jsonResponse.page && jsonResponse.page.totalElements) {
+          dispatch({
+            type: 'SEARCH_SUCCESS',
+            payload: jsonResponse._embedded.items,
+            totalElements: jsonResponse.page.totalElements,
+            page: 0
+          })
+        } else {
+          dispatch({
+            type: 'SEARCH_FAILURE',
+            error: jsonResponse.Error
+          })
+        }
+      })
+  }
+
+  const {searchParameter, items, totalElements, page, limit, errorMessage, loading} = state
+
+  return (
+    <div className={styles.container}>
+      <p>{totalElements}</p>
+      <Search search={search} />
+      <ReactPaginate
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={'...'}
+        forcePage={page}
+        pageCount={totalElements / limit}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        containerClassName={styles.pagination}
+        pageClassName={styles.page}
+        previousClassName={styles.previous}
+        nextClassName={styles.next}
+        breakClassName={styles.break}
+        activeClassName={styles.active}
+        onPageChange={handlePageClick} />
+      <div className={styles.grid}>
+        {loading && !errorMessage ? (
+          <span>loading... </span>
+        ) : errorMessage ? (
+          <div className='errorMessage'>{errorMessage}</div>
+        ) : (
+          items.map((item) => (
+            <Preview key={item.id} item={item} searchValue={searchParameter} onClick={chooseItem} />
+          ))
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default SearchMarcus
