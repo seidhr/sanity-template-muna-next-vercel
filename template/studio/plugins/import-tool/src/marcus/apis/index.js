@@ -1,4 +1,4 @@
-import {mapMediatypes} from '../helpers'
+import {mapMediatypes} from './mapMediatypes'
 import {omit} from 'lodash'
 import getQuery from './getQuery'
 import getFrame from './getFrame'

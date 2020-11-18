@@ -25,8 +25,8 @@ function SearchMarcus () {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 0.3fr 1fr;
-  padding: 20px 0;
-  grid-gap: 20px;
+  padding: 05em 0;
+  grid-gap: 05em;
   @media (max-width: 1240px) {
     grid-template-columns: 0.3fr 1fr;
   }
