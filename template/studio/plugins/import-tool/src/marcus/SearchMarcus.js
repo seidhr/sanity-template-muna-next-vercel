@@ -6,7 +6,7 @@ import Results from './components/Results'
 import Search from './components/Search'
 
 function SearchMarcus () {
-  const marcus = 'https://kirishima.uib.no/elasticsearch'
+  const marcus = 'https://jambo.uib.no/elasticsearch'
 
   return (
     <ReactiveBase
