@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'part:@sanity/components/buttons/default'
 import Card from 'part:@sanity/components/previews/card'
 import DefaultBadge from 'part:@sanity/components/badges/default'
-import DateBadge from './DateBadge'
+import DateBadge from '../../components/DateBadge'
 import styled, {keyframes} from 'styled-components'
 
 const Preview = ({item, searchValue, onClick}) => {
@@ -16,8 +16,8 @@ const Preview = ({item, searchValue, onClick}) => {
         <ul>{item.metadata.creators && item.metadata.creators.map(creator => (<li>{creator}</li>))}</ul>
         <Button inverted onClick={() => onClick(item)}>
           Import
-        </Button> 
-        <a style={{marginLeft: "10px"}} href={`https://www.nb.no/items/${item.id}?searchText=${searchValue}`} target='_blank'>View at nb.no</a>
+        </Button>
+        <a style={{marginLeft: '10px'}} href={`https://www.nb.no/items/${item.id}?searchText=${searchValue}`} target='_blank'>View at nb.no</a>
       </Card>
     </Container>
   )

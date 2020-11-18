@@ -1,10 +1,10 @@
 import React from 'react'
 import DefaultBadge from 'part:@sanity/components/badges/default'
-import { parse, format } from 'date-fns'
-import { sv } from 'date-fns/locale'
+import {parse, format} from 'date-fns'
+import {sv} from 'date-fns/locale'
 
 const DateBadge = (props) => {
-  if(!props.date || props.date.length != 8) {
+  if (!props.date || props.date.length !== 8) {
     return null
   }
 
