@@ -13,7 +13,7 @@ export const chooseItem = async (uri) => {
   async function getObject (id) {
     if (!id) { throw Error }
     // eslint-disable-next-line no-undef
-    const results = await fetch(`http://sparql.ub.uib.no/sparql/query?query=${encodeURIComponent(getQuery(dataUri))}&output=json`)
+    const results = await fetch(`https://sparql.ub.uib.no/sparql/query?query=${encodeURIComponent(getQuery(dataUri))}&output=json`)
     return results
   }
 
