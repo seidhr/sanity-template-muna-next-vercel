@@ -59,6 +59,7 @@ const madeObjectFields = `
     }
   },
   "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id),
+  preferredIdentifier,
   identifiedBy[] {
     ...,
     hasType[]-> {

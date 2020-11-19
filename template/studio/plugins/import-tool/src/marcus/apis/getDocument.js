@@ -86,6 +86,7 @@ export default function getDocument (item, types, assetID) {
       // license: item.accessInfo && item.accessInfo.isPublicDomain ? 'https://creativecommons.org/publicdomain/mark/1.0/' : 'https://rightsstatements.org/vocab/CNE/1.0/',
       label: item.title,
       preferredIdentifier: item.identifier,
+      subjectOfManifest: `https://marcus-manifest-api.vercel.app/api/iiif/manifest/${item.identifier}`,
       identifiedBy: [
         {
           _type: 'identifier',
