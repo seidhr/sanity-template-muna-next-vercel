@@ -28,10 +28,10 @@ export const getImageBlob = async (url) => {
         }
       })
     })
-  // Create a new response out of the stream
+    // Create a new response out of the stream
     // eslint-disable-next-line no-undef
     .then(rs => new Response(rs))
-  // Create an object URL for the response
+    // Create an object URL for the response
     .then(response => response.blob())
   return response
 }
@@ -79,6 +79,8 @@ export const createDoc = async (doc) => {
   return true
 }
 
+/* Not in use
+ */
 export const setAssetRef = async (docID, assetID) => {
   await client
     .patch(docID)
