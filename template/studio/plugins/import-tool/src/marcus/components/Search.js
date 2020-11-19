@@ -28,6 +28,7 @@ const Navbar = () => {
     <div className={navbarStyles}>
       <DataSearch
         dataField={[
+          'identifier',
           'title',
           'label',
           'prefLabel',

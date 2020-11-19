@@ -34,8 +34,14 @@ export default async function getFrame (data, uri) {
       "title": {
         "@id": "http://purl.org/dc/terms/title"
       },
+      "prefLabel": {
+        "@id": "http://www.w3.org/2004/02/skos/core#prefLabel"
+      },
       "depicts": {
         "@id": "http://xmlns.com/foaf/0.1/depicts"
+      },
+      "name": {
+        "@id": "http://xmlns.com/foaf/0.1/name"
       },
       "maker": {
         "@id": "http://xmlns.com/foaf/0.1/maker"
@@ -46,11 +52,20 @@ export default async function getFrame (data, uri) {
       "image": {
         "@id": "http://data.ub.uib.no/ontology/image"
       },
+      "madeAfter": {
+        "@id": "http://data.ub.uib.no/ontology/madeAfter"
+      },
+      "madeBefore": {
+        "@id": "http://data.ub.uib.no/ontology/madeBefore"
+      },
       "label": {
         "@id": "http://www.w3.org/2000/01/rdf-schema#label"
       },
       "description": {
-        "@id": "http://purl.org/dc/elements/1.1/description"
+        "@id": "http://purl.org/dc/terms/description"
+      },
+      "created": {
+        "@id": "http://purl.org/dc/terms/created"
       },
       "identifier": {
         "@id": "http://purl.org/dc/terms/identifier"

@@ -1,9 +1,10 @@
 import App from './src/App'
-import ImportToolIcon from './src/ImportToolIcon'
+// import ImportToolIcon from './src/ImportToolIcon'
+import ChevronDownIcon from 'part:@sanity/base/chevron-down-icon'
 
 export default {
-  title: 'ᛏᚨᚴᚨ',
+  title: 'Import',
   name: 'import-tool',
-  icon: ImportToolIcon,
+  icon: ChevronDownIcon,
   component: App
 }

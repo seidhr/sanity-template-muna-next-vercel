@@ -63,13 +63,20 @@ export const patchAssetMeta = async (id, meta) => {
 }
 
 export const createDoc = async (doc) => {
-  const res = client
-    .createIfNotExists(doc)
-    .then(result => {
-      console.log(`${result._id} was imported!`)
-      return result
+  const transaction = client.transaction()
+
+  doc.forEach(o => {
+    transaction.createIfNotExists(o)
+  })
+
+  transaction.commit()
+    .then(res => {
+      console.log(JSON.stringify(res, null, 2))
     })
-  return res
+    .catch(err => {
+      console.error('Transaction failed: ', err.message)
+    })
+  return true
 }
 
 export const setAssetRef = async (docID, assetID) => {

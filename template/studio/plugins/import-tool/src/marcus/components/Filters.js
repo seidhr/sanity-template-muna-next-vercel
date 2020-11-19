@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {MultiList, SingleList, ToggleButton} from '@appbaseio/reactivesearch'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 /* const buttonStyles = styled.button`
   padding: 15px;
@@ -19,7 +19,7 @@ import styled from 'styled-components'
   }
 ` */
 
-const filterWrapper = (isVisible) => styled.div`
+/* const filterWrapper = (isVisible) => styled.div`
   position: sticky;
   top: 80px;
   border: 1px solid #e8e8e8;
@@ -37,7 +37,7 @@ const filterWrapper = (isVisible) => styled.div`
     top: 70px;
     height: calc(100vh - 70px);
   }
-`
+` */
 
 const AllFilters = () => (
   <>
@@ -90,7 +90,7 @@ const AllFilters = () => (
 
 const Filters = () => {
   // eslint-disable-next-line no-unused-vars
-  const [isVisible, setIsVisible] = useState(true)
+  // const [isVisible, setIsVisible] = useState(true)
 
   /* const handleMobileView = () => {
     setIsVisible(!isVisible)
@@ -105,7 +105,8 @@ const Filters = () => {
       >
         {`Show ${isVisible ? 'Results' : 'Filters'}`}
       </button> */}
-      <div className={filterWrapper(isVisible)}>
+      {/* <div className={filterWrapper(isVisible)}> */}
+      <div>
         <AllFilters />
       </div>
     </div>

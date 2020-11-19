@@ -14,14 +14,16 @@ export default function getQuery (uri) {
     ?uri a ?type ;
         dct:title ?title ; 
         dct:identifier ?id ;
+        dct:description ?description ;
+        dct:created ?created ;
+        ubbont:madeAfter ?madeAfter ;
+        ubbont:madeBefore ?madeBefore ;
+        ubbont:homepage ?homepage ;
         ubbont:image ?image ;
         dct:subject ?subject ;
         dct:spatial ?spatial ;
         foaf:depicts ?depicts ;
-        dct:description ?description ;
-        dct:created ?created ;
-        foaf:maker ?maker ;
-        ubbont:homepage ?homepage .
+        foaf:maker ?maker .
       ?subject ?subjectP ?subjectO .
       ?spatial ?spatialP ?spatialO .
       ?depicts ?depictsP ?depictsO .
@@ -29,9 +31,15 @@ export default function getQuery (uri) {
     } WHERE { 
       GRAPH ?g {
         VALUES ?uri {<${uri}>}
-          ?uri a ?type ;
-            dct:title ?title ; 
-            dct:identifier ?id .
+        ?uri a ?type ;
+          dct:title ?title ; 
+          dct:identifier ?id .
+        BIND(iri(REPLACE(str(?uri), "data.ub.uib.no","marcus.uib.no","i")) as ?homepage) .
+        OPTIONAL { ?uri dct:description ?description . }
+        OPTIONAL { ?uri dct:created ?created . }
+        OPTIONAL { ?uri ubbont:madeAfter ?madeAfter . }
+        OPTIONAL { ?uri ubbont:madeBefore ?madeBefore . }
+        # Get multipage image
         OPTIONAL { 
           ?uri ubbont:hasRepresentation / dct:hasPart ?page .
           ?page ubbont:sequenceNr 1 .
@@ -39,31 +47,34 @@ export default function getQuery (uri) {
           OPTIONAL {?resource ubbont:hasSMView ?smImage.}  
           OPTIONAL {?resource ubbont:hasMDView ?mdImage.}
         }
+        # Get singlepage image
         OPTIONAL { 
           ?uri ubbont:hasRepresentation / dct:hasPart ?part .
           OPTIONAL {?part ubbont:hasMDView ?imgMD .}
           OPTIONAL {?part ubbont:hasSMView ?imgSM .} 
         }
+        BIND (COALESCE(?imgMD,?imgSM,?mdImage,?smImage) AS ?image).
+        # Get relations and filter unwanted props as this makes construct easier
         OPTIONAL { 
           ?uri dct:subject ?subject . 
           ?subject ?subjectP ?subjectO . 
           FILTER(?subjectP != ubbont:isSubjectOf && ?subjectP != skos:related && ?subjectP != skos:inScheme && ?subjectP != skos:narrower && ?subjectP != skos:broader &&?subjectP != ubbont:previousIdentifier)
         }
         OPTIONAL { 
-        ?uri dct:spatial ?spatial . 
-        ?spatial ?spatialP ?spatialO . 
-      FILTER(?spatialP != skos:narrower && ?spatialP != skos:broader && ?spatialP != ubbont:previousIdentifier && ?spatialP != ubbont:locationFor)
-      }
+          ?uri dct:spatial ?spatial . 
+          ?spatial ?spatialP ?spatialO . 
+          FILTER(?spatialP != skos:narrower && ?spatialP != skos:broader && ?spatialP != ubbont:previousIdentifier && ?spatialP != ubbont:locationFor)
+        }
         OPTIONAL { 
           ?uri foaf:depicts ?depicts . 
-        ?depicts ?depictsP ?depictsO .
-        FILTER(?depictsP != foaf:depiction && ?depictsP != foaf:made) .
-      }
-        OPTIONAL { ?uri dct:description ?description . }
-        OPTIONAL { ?uri dct:created ?created . }
-        OPTIONAL { ?uri foaf:maker ?maker . }
-      BIND (COALESCE(?imgMD,?imgSM,?mdImage,?smImage) AS ?image).
-        BIND(iri(REPLACE(str(?uri), "data.ub.uib.no","marcus.uib.no","i")) as ?homepage) .
+          ?depicts ?depictsP ?depictsO .
+          FILTER(?depictsP != foaf:depiction && ?depictsP != foaf:made) .
+        }
+        OPTIONAL { 
+          ?uri foaf:maker ?maker . 
+          ?maker ?makerP ?makerO .
+          FILTER(?makerP != foaf:depiction && ?makerP != foaf:made && ?makerP != ubbont:reproduced) .
+        }
       } 
     }
   `

@@ -1,9 +1,9 @@
-import {mapMediatypes} from './mapMediatypes'
 import {omit} from 'lodash'
 import getQuery from './getQuery'
 import getFrame from './getFrame'
 import getDocument from './getDocument'
-import {createDoc, getImageBlob, patchAssetMeta, setAssetRef, uploadImageBlob} from './storeFunctions'
+import {mapMediatypes} from './mapMediatypes'
+import {createDoc, getImageBlob, patchAssetMeta, uploadImageBlob} from './storeFunctions'
 const jsonld = require('jsonld/dist/jsonld.js')
 
 export const chooseItem = async (uri) => {
@@ -27,19 +27,28 @@ export const chooseItem = async (uri) => {
     const awaitFramed = jsonld.frame(result, await getFrame(result, dataUri))
     const framed = await awaitFramed
 
+    // Make sure we have arrays
+    if (framed.subject && Array.isArray(framed.subject) === false) {
+      framed.subjects = [framed.subjects]
+    }
+    if (framed.spatial && Array.isArray(framed.spatial) === false) {
+      framed.spatial = [framed.spatial]
+    }
+    if (framed.depicts && Array.isArray(framed.depicts) === false) {
+      framed.depicts = [framed.depicts]
+    }
+    if (framed.maker && Array.isArray(framed.maker) === false) {
+      framed.maker = [framed.maker]
+    }
+
     // Remove json-ld context
     const cleanJSON = omit(framed, ['@context'])
 
     // Map type to Sanity types
     const types = mapMediatypes([cleanJSON.type])
-    console.log(types)
-
-    // Get the Sanity document
-    const doc = getDocument(cleanJSON, types)
-    console.log(doc)
 
     /* TODO
-      Include iiif manifest in asset metadata as the asset could be reused elsewhere in the dataset */
+    Include iiif manifest in asset metadata as the asset could be reused elsewhere in the dataset */
     const assetMeta = {
       source: {
         // The source this image is from
@@ -57,11 +66,9 @@ export const chooseItem = async (uri) => {
     const asset = await uploadImageBlob(imageResonse, cleanJSON.identifier)
     await patchAssetMeta(asset._id, assetMeta)
 
-    const document = await createDoc(doc)
-
-    if (asset && document) {
-      await setAssetRef(document._id, asset._id)
-    }
+    // Get the Sanity document
+    const doc = getDocument(cleanJSON, types, asset._id)
+    await createDoc(doc)
 
     return {
       statusCode: 200,
