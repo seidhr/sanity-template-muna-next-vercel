@@ -1,9 +1,9 @@
-import React from 'react';
-import { OpenSeadragonViewer } from "openseadragon-react-viewer"
+import React from 'react'
+import {OpenSeadragonViewer} from 'openseadragon-react-viewer'
 
 export const IIIFManifest = ({manifest}) => {
   // Get your manifest from somewhere
-  const manifestUrl = manifest;
+  const manifestUrl = manifest
 
   // Options to show/hide extra UI features in the viewer
   // height(in pixels) option is default to 800 for wide-screens and 500 for narrow-screens
@@ -13,10 +13,10 @@ export const IIIFManifest = ({manifest}) => {
     showThumbnails: false,
     showToolbar: true,
     deepLinking: false,
-    height: 400,
-  };
+    height: 400
+  }
 
   return (
     <OpenSeadragonViewer manifestUrl={manifestUrl} options={options} />
-  );
+  )
 }

@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import mirador from "mirador";
+import React, {Component} from 'react'
+import mirador from 'mirador'
 
 class Mirador extends Component {
-  useEffect() {
-    const { config } = this.props;
+  useEffect () {
+    const {config} = this.props
 
     const thisOne = {
       id: 'arg',
@@ -12,14 +12,14 @@ class Mirador extends Component {
       },
       window: {
         allowClose: false,
-        allowWindowSideBar: false,
+        allowWindowSideBar: false
       }
     }
-    mirador.viewer(thisOne);
+    mirador.viewer(thisOne)
   }
-  render() {
-    return <div id={thisOne.id} />;
+  render () {
+    return <div id={thisOne.id} />
   }
 }
 
-export default Mirador;
+export default Mirador
