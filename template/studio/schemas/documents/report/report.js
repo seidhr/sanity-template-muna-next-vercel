@@ -1,4 +1,4 @@
-import { GiCrackedGlass } from "react-icons/gi";
+import {GiCrackedGlass} from 'react-icons/gi'
 import {
   editorialState,
   accessState,
@@ -11,7 +11,7 @@ import {
   hasIdentified,
   concerned,
   motivated,
-} from "../../props";
+} from '../../props'
 
 /**
  * Report
@@ -19,44 +19,44 @@ import {
  */
 
 export default {
-  title: "Report",
-  name: "report",
-  type: "document",
+  title: 'Report',
+  name: 'report',
+  type: 'document',
   initialValue: {
-    editorialState: "draft",
-    accessState: "secret",
+    editorialState: 'draft',
+    accessState: 'secret',
   },
   icon: GiCrackedGlass,
   fieldsets: [
     {
-      name: "state",
-      title: "Status",
-      options: { collapsible: true, collapsed: false },
+      name: 'state',
+      title: 'Status',
+      options: {collapsible: true, collapsed: false},
     },
     {
-      name: "minimum",
-      title: "Basic metadata",
-      options: { collapsible: true, collapsed: false },
+      name: 'minimum',
+      title: 'Basic metadata',
+      options: {collapsible: true, collapsed: false},
     },
     {
-      name: "relations",
-      title: "Relations to other stuff",
-      options: { collapsible: true, collapsed: false },
+      name: 'relations',
+      title: 'Relations to other stuff',
+      options: {collapsible: true, collapsed: false},
     },
     {
-      name: "partsAndContent",
-      title: "Felt relatert til deler eller innhold",
-      options: { collapsible: true, collapsed: false },
+      name: 'partsAndContent',
+      title: 'Felt relatert til deler eller innhold',
+      options: {collapsible: true, collapsed: false},
     },
     {
-      name: "technique",
-      title: "Felt relatert til teknikk",
-      options: { collapsible: true, collapsed: false },
+      name: 'technique',
+      title: 'Felt relatert til teknikk',
+      options: {collapsible: true, collapsed: false},
     },
     {
-      name: "documentation",
-      title: "Dokumentasjon",
-      options: { collapsible: true, collapsed: false },
+      name: 'documentation',
+      title: 'Dokumentasjon',
+      options: {collapsible: true, collapsed: false},
     },
   ],
   fields: [
@@ -64,119 +64,115 @@ export default {
     accessState,
     label,
     {
-      name: "hasType",
-      title: "Klassifisert som",
-      titleEN: "Classified as",
-      type: "array",
-      fieldset: "minimum",
+      name: 'hasType',
+      title: 'Klassifisert som',
+      titleEN: 'Classified as',
+      type: 'array',
+      fieldset: 'minimum',
       of: [
         {
-          type: "reference",
-          to: [{ type: "reportType" }],
+          type: 'reference',
+          to: [{type: 'reportType'}],
         },
       ],
       validation: (Rule) => Rule.required(),
     },
     {
       ...referredToBy,
-      fieldset: "minimum",
+      fieldset: 'minimum',
     },
     concerned,
     hasIdentified,
     motivated,
     {
-      name: "activityStream",
-      title: "Aktivitetsstrøm",
-      titleEN: "Activity stream",
-      description: "Hendelser og aktiviteter relatert til rapporten",
-      descriptionEN: "Events and activities connected to this object",
-      type: "array",
-      of: [
-        { type: "measurement" },
-        { type: "sampling" },
-        { type: "treatment" },
-      ],
+      name: 'activityStream',
+      title: 'Aktivitetsstrøm',
+      titleEN: 'Activity stream',
+      description: 'Hendelser og aktiviteter relatert til rapporten',
+      descriptionEN: 'Events and activities connected to this object',
+      type: 'array',
+      of: [{type: 'measurement'}, {type: 'sampling'}, {type: 'treatment'}],
     },
     {
       ...usedGeneralTechnique,
-      fieldset: "technique",
+      fieldset: 'technique',
     },
     {
       ...usedSpecificTechnique,
-      fieldset: "technique",
+      fieldset: 'technique',
     },
     {
       ...usedObjectOfType,
-      fieldset: "technique",
+      fieldset: 'technique',
     },
     {
       ...usedSpecificObject,
-      fieldset: "technique",
+      fieldset: 'technique',
     },
     {
-      name: "documentationImage",
-      title: "Documentasjonsfotografi",
-      titleEN: "Documentation images",
-      fieldset: "documentation",
-      type: "array",
-      of: [{ type: "figure" }],
+      name: 'documentationImage',
+      title: 'Documentasjonsfotografi',
+      titleEN: 'Documentation images',
+      fieldset: 'documentation',
+      type: 'array',
+      of: [{type: 'figure'}],
       options: {
-        layout: "grid",
+        layout: 'grid',
       },
     },
     {
-      name: "documentedIn",
-      title: "Documented in",
-      titleEN: "Dokumentert i",
-      fieldset: "documentation",
-      type: "array",
-      of: [{ type: "file" }],
+      name: 'documentedIn',
+      title: 'Documented in',
+      titleEN: 'Dokumentert i',
+      fieldset: 'documentation',
+      type: 'array',
+      of: [{type: 'file'}],
     },
     {
-      name: "consistsOf",
-      title: "Underrapport",
-      titleEN: "Sub report",
-      type: "array",
-      of: [{ type: "report" }],
+      name: 'consistsOf',
+      title: 'Underrapport',
+      titleEN: 'Sub report',
+      type: 'array',
+      of: [{type: 'report'}],
       options: {
-        editModal: "fullscreen",
+        editModal: 'fullscreen',
       },
     },
   ],
   preview: {
     select: {
-      type: "hasType.0.label.nor",
-      title: "label.nor",
-      blocks: "description.nor",
-      published: "accessState",
+      type: 'hasType.0.label.nor',
+      title: 'label.nor',
+      blocks: 'description.nor',
+      published: 'accessState',
     },
     prepare(selection) {
-      const { type, title, blocks, published } = selection;
-      const block = (blocks || []).find((block) => block._type === "block");
-      const secret = published === "secret" ? "🔒" : "";
+      const {type, title, blocks, published} = selection
+      const block = (blocks || []).find((block) => block._type === 'block')
+      const secret = published === 'secret' ? '🔒' : ''
 
       return {
         title: title,
         subtitle: secret + type,
         description: block
           ? block.children
-              .filter((child) => child._type === "span")
+              .filter((child) => child._type === 'span')
               .map((span) => span.text)
-              .join("")
-          : "",
-      };
+              .join('')
+          : '',
+      }
     },
   },
   orderings: [
     {
-      title: "Tittel, A-Å",
-      name: "title",
-      by: [{ field: "label", direction: "desc" }],
+      title: 'Tittel, A-Å',
+      name: 'title',
+      by: [{field: 'label', direction: 'desc'}],
     },
     {
-      title: "Tittel, Å-A",
-      name: "title",
-      by: [{ field: "label", direction: "asc" }],
+      title: 'Tittel, Å-A',
+      name: 'title',
+      by: [{field: 'label', direction: 'asc'}],
     },
   ],
-};
+}

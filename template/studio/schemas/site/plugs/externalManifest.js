@@ -5,31 +5,31 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       name: 'label',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'manifestUrl',
-      type: 'url'
+      type: 'url',
     },
     {
       name: 'canvasUrl',
-      type: 'url'
+      type: 'url',
     },
   ],
   preview: {
     select: {
       title: 'label',
-      manifestUrl: 'manifestUrl'
+      manifestUrl: 'manifestUrl',
     },
-    prepare({ title, manifestUrl }) {
+    prepare({title, manifestUrl}) {
       return {
         title: 'External manifest',
-        subtitle: manifestUrl
+        subtitle: manifestUrl,
       }
-    }
-  }
+    },
+  },
 }

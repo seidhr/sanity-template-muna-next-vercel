@@ -16,7 +16,7 @@ export default {
     select: {
       content: 'content',
     },
-    prepare({ content }) {
+    prepare({content}) {
       return {
         title: 'Quote',
       }

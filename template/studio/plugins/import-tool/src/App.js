@@ -10,28 +10,32 @@ import SearchMarcus from './marcus/SearchMarcus'
 
 const App = () => {
   return (
-    <Router hashType='noslash'>
+    <Router hashType="noslash">
       <div className={styles.container}>
         <Header />
 
         <div className={styles.apiContainer}>
           <Button
             icon={ArrowRight}
-            kind='simple'
-            padding='small'
+            kind="simple"
+            padding="small"
             /* tone='navbar' */
           />
-          <NavLink activeClassName={styles.active} className={styles.navlink} to='/marcus'>Marcus</NavLink>
-          <NavLink activeClassName={styles.active} className={styles.navlink} to='/nb'>NB Digitalt</NavLink>
+          <NavLink activeClassName={styles.active} className={styles.navlink} to="/marcus">
+            Marcus
+          </NavLink>
+          <NavLink activeClassName={styles.active} className={styles.navlink} to="/nb">
+            NB Digitalt
+          </NavLink>
           {/* <NavLink activeClassName={styles.active} className={styles.navlink} to='/import-tool/kulturnav'>Kulturnav</NavLink> */}
         </div>
 
-        { /* Route components are rendered if the path prop matches the current URL */}
-        <Route path='/marcus'>
+        {/* Route components are rendered if the path prop matches the current URL */}
+        <Route path="/marcus">
           <SearchMarcus />
         </Route>
 
-        <Route path='/nb'>
+        <Route path="/nb">
           <SearchNB />
         </Route>
 

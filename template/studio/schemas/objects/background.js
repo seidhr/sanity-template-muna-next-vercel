@@ -7,13 +7,13 @@ export default {
       name: 'url',
       title: 'Bilde',
       titleEN: 'Image',
-      type: 'image'
+      type: 'image',
     },
     {
       name: 'color',
       title: 'Farge',
       titleEN: 'Color',
-      type: 'color'
-    }
-  ]
+      type: 'color',
+    },
+  ],
 }

@@ -1,4 +1,4 @@
-import { label, definedByGeoJSON } from "../props"
+import {label, definedByGeoJSON} from '../props'
 
 export default {
   title: 'Presence',
@@ -6,9 +6,9 @@ export default {
   type: 'object',
   fieldsets: [
     {
-      name: "minimum",
-      title: "Minimumsregistrering",
-      options: { collapsible: true, collapsed: false },
+      name: 'minimum',
+      title: 'Minimumsregistrering',
+      options: {collapsible: true, collapsed: false},
     },
   ],
   fields: [
@@ -18,39 +18,33 @@ export default {
       title: 'Beskrivelse',
       titleEN: 'Description',
       description: 'A shortish description',
-      type: 'localeBlockSimple'
+      type: 'localeBlockSimple',
     },
     {
       name: 'temporalProjection',
       title: 'Tidsspenn',
       titleEN: 'Timespan',
       type: 'array',
-      of: [{type: 'timespan'}]
+      of: [{type: 'timespan'}],
     },
     {
       name: 'spatialProjection',
       title: 'Fant sted ved',
       titleEN: 'Took place at',
       type: 'array',
-      of: [
-        {type: 'reference',
-          to: [
-            {type: 'place'}
-          ]
-        }
-      ]
+      of: [{type: 'reference', to: [{type: 'place'}]}],
     },
     definedByGeoJSON,
   ],
   preview: {
     select: {
-      title: 'label'
+      title: 'label',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {title} = selection
       return {
-        title: title.nor
+        title: title.nor,
       }
-    }
-  }
+    },
+  },
 }

@@ -3,11 +3,11 @@ export default {
   type: 'image',
   title: 'Painting',
   options: {
-    hotspot: true
+    hotspot: true,
   },
   preview: {
     select: {
       imageUrl: 'asset.url',
-    }
-  }
+    },
+  },
 }

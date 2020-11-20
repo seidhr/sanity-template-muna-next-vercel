@@ -1,69 +1,63 @@
-import { WebMercatorViewport } from 'react-map-gl';
-import bbox from '@turf/bbox';
-var _ = require('lodash');
+import {WebMercatorViewport} from 'react-map-gl'
+import bbox from '@turf/bbox'
+var _ = require('lodash')
 
 export const createGeojson = (data) => {
-  if(!data) {
+  if (!data) {
     return null
   }
-  
+
   let features = data
-    .filter(x => {
-      return x._type == "geojsonFeatureCollection"
+    .filter((x) => {
+      return x._type == 'geojsonFeatureCollection'
     })
-    .map(fColl => fColl.features)
+    .map((fColl) => fColl.features)
 
   features = _.flatten(features)
-  
-  let collection = features.map(feature => {
+
+  let collection = features.map((feature) => {
     return {
-      type: "Feature",
+      type: 'Feature',
       geometry: {
-        type: `${feature.geometry._type.replace("geojson", "")}`,
-        coordinates: createCoordinates(feature.geometry.coordinates)
+        type: `${feature.geometry._type.replace('geojson', '')}`,
+        coordinates: createCoordinates(feature.geometry.coordinates),
       },
-      properties: feature.properties
+      properties: feature.properties,
     }
   })
-  
+
   let extGeojson = data
-    .filter(x => {
-      if(x._type === "geojson") {
-        return x._type === "geojson"
+    .filter((x) => {
+      if (x._type === 'geojson') {
+        return x._type === 'geojson'
       } else {
         return null
       }
     })
-    .map(fColl => fColl.data.code)
+    .map((fColl) => fColl.data.code)
 
   let allFeatures = [...collection]
-  
-  if(extGeojson.length > 0) {
-    const {features} = JSON.parse(extGeojson) 
+
+  if (extGeojson.length > 0) {
+    const {features} = JSON.parse(extGeojson)
     allFeatures = [...allFeatures, ...features]
   }
 
   return {
-    type: "FeatureCollection",
-    features: [...allFeatures]
+    type: 'FeatureCollection',
+    features: [...allFeatures],
   }
 }
 
 const createCoordinates = (coordinates) => {
-  if(Array.isArray(coordinates)) {
-    return coordinates.map(point => {
-      return [
-        point.lng,
-        point.lat
-      ]
+  if (Array.isArray(coordinates)) {
+    return coordinates.map((point) => {
+      return [point.lng, point.lat]
     })
   }
 
-  if(typeof(coordinates) === "object") {
-    return [
-      coordinates.lng,
-      coordinates.lat
-    ]
+  if (typeof coordinates === 'object') {
+    return [coordinates.lng, coordinates.lat]
   }
 }
 
@@ -73,24 +67,24 @@ const createCoordinates = (coordinates) => {
  * @param feature Feature<any> feature to fit the map to
  * @returns Bounds
  */
-export const fitViewportToFeature = ( feature, options ) => {
+export const fitViewportToFeature = (feature, options) => {
   /** Invariants */
-  if (!feature) throw Error('You must pass a feature to fitMapToFeature');
+  if (!feature) throw Error('You must pass a feature to fitMapToFeature')
 
   /** Get bounding box of feature/collection */
-  const bounds = bbox(feature);
+  const bounds = bbox(feature)
 
   /** Setup WebMercatorViewport instances to fit bounds */
   // const { clientWidth, clientHeight } = map.getContainer();
-  const viewport = new WebMercatorViewport({width: 300, height: 200});
+  const viewport = new WebMercatorViewport({width: 300, height: 200})
 
   /** Edge case: if width is less than horizontal padding, remove padding */
   if (
     typeof options.padding === 'object' &&
     viewport.width < (options.padding.left || 0) + (options.padding.right || 0)
   ) {
-    options.padding = 0;
-    console.warn('map width is less than padding width, resetting to 0px');
+    options.padding = 0
+    console.warn('map width is less than padding width, resetting to 0px')
   }
 
   /** Edge case: if width is less than vertical padding, remove padding */
@@ -98,8 +92,8 @@ export const fitViewportToFeature = ( feature, options ) => {
     typeof options.padding === 'object' &&
     viewport.height < (options.padding.top || 0) + (options.padding.bottom || 0)
   ) {
-    options.padding = 0;
-    console.warn('map height is less than padding height, resetting to 0px');
+    options.padding = 0
+    console.warn('map height is less than padding height, resetting to 0px')
   }
 
   /** Fit the bounds we found to the new viewport and return it */
@@ -108,9 +102,9 @@ export const fitViewportToFeature = ( feature, options ) => {
       [bounds[0], bounds[1]],
       [bounds[2], bounds[3]],
     ],
-    options
-  );
-};
+    options,
+  )
+}
 
 /* Eksempel på GeoJSON 
 const definedByGeoJSON = [

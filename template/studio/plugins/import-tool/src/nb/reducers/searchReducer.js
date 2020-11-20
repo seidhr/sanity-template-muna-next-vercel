@@ -5,7 +5,7 @@ export const searchReducer = (state, action) => {
         ...state,
         loading: true,
         errorMessage: null,
-        searchParameter: action.searchParameter
+        searchParameter: action.searchParameter,
       }
     case 'SEARCH_SUCCESS':
       return {
@@ -13,30 +13,30 @@ export const searchReducer = (state, action) => {
         loading: false,
         items: action.payload,
         totalElements: action.totalElements,
-        page: action.page
+        page: action.page,
       }
     case 'SEARCH_FAILURE':
       return {
         ...state,
         loading: false,
-        errorMessage: action.error
+        errorMessage: action.error,
       }
     case 'IMPORT_SUCCESS':
       return {
         ...state,
         loading: false,
-        errorMessage: action.error
+        errorMessage: action.error,
       }
     case 'IMPORT_FAILURE':
       return {
         ...state,
         loading: false,
-        errorMessage: action.error
+        errorMessage: action.error,
       }
     case 'SET_API':
       return {
         ...state,
-        apiURL: action.apiURL
+        apiURL: action.apiURL,
       }
     default:
       return state

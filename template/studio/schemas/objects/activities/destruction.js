@@ -1,19 +1,19 @@
-import { timespan, carriedOutBy, tookPlaceAt } from "../../props";
+import {timespan, carriedOutBy, tookPlaceAt} from '../../props'
 
 export default {
-  title: "Destruction",
-  name: "destruction",
-  type: "object",
+  title: 'Destruction',
+  name: 'destruction',
+  type: 'object',
   fields: [
     {
-      name: "hasType",
-      title: "Klassifisert som",
-      titleEN: "Classified as",
-      type: "array",
+      name: 'hasType',
+      title: 'Klassifisert som',
+      titleEN: 'Classified as',
+      type: 'array',
       of: [
         {
-          type: "reference",
-          to: [{ type: "eventType" }],
+          type: 'reference',
+          to: [{type: 'eventType'}],
         },
       ],
     },
@@ -23,13 +23,13 @@ export default {
   ],
   preview: {
     select: {
-      date: "productionDate",
+      date: 'productionDate',
     },
     prepare(selection) {
-      const { date } = selection;
+      const {date} = selection
       return {
-        title: `Ending${date ? ", dated " + date : ""}`,
-      };
+        title: `Ending${date ? ', dated ' + date : ''}`,
+      }
     },
   },
-};
+}

@@ -5,36 +5,36 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       name: 'label',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'heading',
       type: 'string',
-      title: 'Heading'
+      title: 'Heading',
     },
     {
       name: 'tagline',
-      type: 'simpleBlockContent'
+      type: 'simpleBlockContent',
     },
     {
       name: 'illustration',
-      type: 'illustration'
+      type: 'illustration',
     },
   ],
   preview: {
     select: {
       title: 'heading',
       subtitle: 'label',
-      disabled: 'disabled'
+      disabled: 'disabled',
     },
-    prepare({ title, disabled }) {
+    prepare({title, disabled}) {
       return {
-        title: `Hero: ${disabled ? 'DISABLED' : title}`
+        title: `Hero: ${disabled ? 'DISABLED' : title}`,
       }
-    }
-  }
+    },
+  },
 }

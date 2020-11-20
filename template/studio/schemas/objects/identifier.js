@@ -1,5 +1,5 @@
-import { referredToBy } from "../props"
-import { defaultFieldsets } from "../fieldsets"
+import {referredToBy} from '../props'
+import {defaultFieldsets} from '../fieldsets'
 
 export default {
   title: 'Identifier',
@@ -11,14 +11,14 @@ export default {
       name: 'content',
       title: 'Identifikator',
       titleEN: 'Identifier',
-      type: 'string'
+      type: 'string',
     },
     {
-      name: "hasType",
-      title: "Klassifisert som",
-      titleEN: "Classified as",
-      type: "reference",
-      to: [{ type: "identifierType" }],
+      name: 'hasType',
+      title: 'Klassifisert som',
+      titleEN: 'Classified as',
+      type: 'reference',
+      to: [{type: 'identifierType'}],
       validation: (Rule) => Rule.required(),
     },
     referredToBy,
@@ -26,14 +26,14 @@ export default {
   preview: {
     select: {
       title: 'content',
-      type: "hasType.label.nor",
+      type: 'hasType.label.nor',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {title, type} = selection
       return {
         title: title,
-        subtitle: type
+        subtitle: type,
       }
-    }
-  }
+    },
+  },
 }

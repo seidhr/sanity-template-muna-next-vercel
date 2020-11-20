@@ -1,15 +1,15 @@
 import {FaTag} from 'react-icons/fa'
-import { editorialState, accessState, label, altLabel } from "../../props"
-import { defaultFieldsets } from '../../fieldsets'
-import { coalesceLabel } from '../../helpers/helpers'
+import {editorialState, accessState, label, altLabel} from '../../props'
+import {defaultFieldsets} from '../../fieldsets'
+import {coalesceLabel} from '../../helpers/helpers'
 
 export default {
   title: 'Concept',
   name: 'concept',
   type: 'document',
   initialValue: {
-    editorialState: "published",
-    accessState: "open",
+    editorialState: 'published',
+    accessState: 'open',
   },
   icon: FaTag,
   fieldsets: defaultFieldsets,
@@ -23,9 +23,7 @@ export default {
       title: 'Overordnet term',
       titleEN: 'Broader',
       type: 'array',
-      of: [
-        {type: 'reference', to: [{type: 'concept'}]}
-      ]
+      of: [{type: 'reference', to: [{type: 'concept'}]}],
     },
     /* {
       name: 'narrower',
@@ -52,22 +50,22 @@ export default {
       titleEN: 'Activity stream',
       description: 'Events and activities connected to this object',
       type: 'array',
-      of: [
-        {type: 'creation'}
-      ]
-    }
+      of: [{type: 'creation'}],
+    },
   ],
   preview: {
     select: {
       title: 'label',
-      broader: 'broader'
+      broader: 'broader',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {title, broader} = selection
       return {
         title: coalesceLabel(title),
-        subtitle: coalesceLabel(broader) ? `⬆️` + coalesceLabel(broader) : '🔝 Overordnet type/konsept'
+        subtitle: coalesceLabel(broader)
+          ? `⬆️` + coalesceLabel(broader)
+          : '🔝 Overordnet type/konsept',
       }
-    }
-  }
+    },
+  },
 }

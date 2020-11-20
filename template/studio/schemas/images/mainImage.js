@@ -13,8 +13,8 @@ export default {
       titleEN: 'Caption',
       type: 'string',
       options: {
-        isHighlighted: true
-      }
+        isHighlighted: true,
+      },
     },
     {
       name: 'alt',
@@ -22,13 +22,13 @@ export default {
       titleEN: 'Alternative text',
       description: 'Important for SEO and accessiblity.',
       type: 'string',
-      validation: Rule => Rule.warning('You should to fill out the alternative text.')
-    }
+      validation: (Rule) => Rule.warning('You should to fill out the alternative text.'),
+    },
   ],
   preview: {
     select: {
       imageUrl: 'asset.url',
-      title: 'caption'
-    }
-  }
+      title: 'caption',
+    },
+  },
 }

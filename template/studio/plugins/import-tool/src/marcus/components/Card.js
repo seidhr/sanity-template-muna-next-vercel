@@ -8,26 +8,23 @@ import {chooseItem} from '../apis'
 const Card = ({item}) => {
   return (
     <ResultCard key={item._id}>
-      {item.hasThumbnail && (
-        <ResultCard.Image src={item.hasThumbnail} />
-      )}
+      {item.hasThumbnail && <ResultCard.Image src={item.hasThumbnail} />}
       <ResultCard.Title
         dangerouslySetInnerHTML={{
-          __html: item.label || item.preferredLabel || item.title || item.identifier
+          __html: item.label || item.preferredLabel || item.title || item.identifier,
         }}
       />
       <ResultCard.Description>
         <DefaultBadge style={{marginBottom: '0.5em'}}>{item.type}</DefaultBadge>
         <br />
         {item.hasThumbnail && (
-          <Button
-            inverted
-            onClick={() => chooseItem(item.uri)}
-          >
+          <Button inverted onClick={() => chooseItem(item.uri)}>
             Import
           </Button>
         )}
-        <a target='blank' href={item.uri} style={{marginLeft: '0.5em'}}>View at Marcus</a>
+        <a target="blank" href={item.uri} style={{marginLeft: '0.5em'}}>
+          View at Marcus
+        </a>
       </ResultCard.Description>
     </ResultCard>
   )

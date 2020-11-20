@@ -7,18 +7,18 @@ export default {
       name: 'url',
       title: 'Manifest URL',
       titleEN: 'Manifest URL',
-      type: 'url'
-    }
+      type: 'url',
+    },
   ],
   preview: {
     select: {
-      name: 'url'
+      name: 'url',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {url} = selection
       return {
-        title: `${url}`
+        title: `${url}`,
       }
-    }
-  }
+    },
+  },
 }

@@ -6,23 +6,23 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       title: 'Text',
       name: 'text',
-      type: 'blockContent'
-    }
+      type: 'blockContent',
+    },
   ],
   preview: {
     select: {
-      title: 'title'
+      title: 'title',
     },
     prepare({title}) {
       return {
         title: 'Big Text',
-        subtitle: title
+        subtitle: title,
       }
-    }
-  }
+    },
+  },
 }

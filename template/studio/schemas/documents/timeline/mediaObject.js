@@ -4,7 +4,7 @@ export default {
   type: 'image',
   options: {
     hotspot: true,
-    metadata: ['exif', 'location', 'lqip', 'palette']
+    metadata: ['exif', 'location', 'lqip', 'palette'],
   },
   fields: [
     {
@@ -13,8 +13,8 @@ export default {
       titleEN: 'Url',
       type: 'url',
       options: {
-        isHighlighted: true
-      }
+        isHighlighted: true,
+      },
     },
     {
       name: 'caption',
@@ -22,8 +22,8 @@ export default {
       titleEN: 'Caption',
       type: 'string',
       options: {
-        isHighlighted: true
-      }
+        isHighlighted: true,
+      },
     },
     {
       name: 'credit',
@@ -31,8 +31,8 @@ export default {
       titleEN: 'Credit',
       type: 'string',
       options: {
-        isHighlighted: true
-      }
+        isHighlighted: true,
+      },
     },
     {
       name: 'alt',
@@ -41,9 +41,9 @@ export default {
       description: 'Important for SEO and accessiblity.',
       type: 'string',
       options: {
-        isHighlighted: true
+        isHighlighted: true,
       },
-      validation: Rule => Rule.error('You have to fill out the alternative text.').required()
+      validation: (Rule) => Rule.error('You have to fill out the alternative text.').required(),
     },
     {
       name: 'link',
@@ -52,8 +52,8 @@ export default {
       descriptionEN: 'Optional URL to use as the href for wrapping the media with an <a> tag.',
       type: 'url',
       options: {
-        isHighlighted: true
-      }
+        isHighlighted: true,
+      },
     },
     {
       name: 'linkTarget',
@@ -62,14 +62,14 @@ export default {
       descriptionEN: 'Optional target to be associated with link if used.',
       type: 'string',
       options: {
-        isHighlighted: true
-      }
-    }
+        isHighlighted: true,
+      },
+    },
   ],
   preview: {
     select: {
       imageUrl: 'asset.url',
-      title: 'caption'
-    }
-  }
+      title: 'caption',
+    },
+  },
 }

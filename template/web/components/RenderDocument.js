@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {upperFirst} from 'lodash'
 import * as DocumentComponents from './documents'
 
-function resolveDocument (document) {
+function resolveDocument(document) {
   // eslint-disable-next-line import/namespace
   const Document = DocumentComponents[upperFirst(document._type)]
 
@@ -15,7 +15,7 @@ function resolveDocument (document) {
   return null
 }
 
-function RenderDocument (props) {
+function RenderDocument(props) {
   const {document} = props
 
   if (!document) {
@@ -25,7 +25,11 @@ function RenderDocument (props) {
   const DocumentComponent = resolveDocument(document)
 
   if (!DocumentComponent) {
-    return <div>Missing document type: <strong>{document._type}</strong></div>
+    return (
+      <div>
+        Missing document type: <strong>{document._type}</strong>
+      </div>
+    )
   } else {
     return <DocumentComponent {...document} key={document.id} />
   }
@@ -36,9 +40,9 @@ RenderDocument.propTypes = {
     PropTypes.shape({
       _type: PropTypes.string,
       _key: PropTypes.string,
-      document: PropTypes.instanceOf(PropTypes.object)
-    })
-  )
+      document: PropTypes.instanceOf(PropTypes.object),
+    }),
+  ),
 }
 
 export default RenderDocument

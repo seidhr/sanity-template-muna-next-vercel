@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-  ReactiveList,
-  SelectedFilters
-} from '@appbaseio/reactivesearch'
+import {ReactiveList, SelectedFilters} from '@appbaseio/reactivesearch'
 import styled from 'styled-components'
 import Card from './Card'
 
@@ -34,12 +31,12 @@ const Results = () => {
       <SelectedFilters />
       <ReactiveList
         pagination
-        paginationAt='both'
-        componentId='results'
+        paginationAt="both"
+        componentId="results"
         react={{
-          and: ['search', 'digitized', 'zoom', 'types', 'makers']
+          and: ['search', 'digitized', 'zoom', 'types', 'makers'],
         }}
-        dataField='identifier'
+        dataField="identifier"
       >
         {({loading, data, error}) => {
           if (loading) {
@@ -51,7 +48,7 @@ const Results = () => {
           if (data.length) {
             return (
               <ReactiveList.ResultCardsWrapper>
-                {data.map(item => (
+                {data.map((item) => (
                   <Card item={item} />
                 ))}
               </ReactiveList.ResultCardsWrapper>

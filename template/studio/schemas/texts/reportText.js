@@ -1,11 +1,7 @@
 import React from 'react'
 
-const highlightIcon = () => (
-  <span style={{fontWeight: 'bold'}}>H</span>
-)
-const highlightRender = props => (
-  <span style={{backgroundColor: 'yellow'}}>{props.children}</span>
-)
+const highlightIcon = () => <span style={{fontWeight: 'bold'}}>H</span>
+const highlightRender = (props) => <span style={{backgroundColor: 'yellow'}}>{props.children}</span>
 
 export default {
   name: 'reportText',
@@ -19,11 +15,11 @@ export default {
         {title: 'Normal', value: 'normal'},
         {title: 'H1', value: 'h1'},
         {title: 'H2', value: 'h2'},
-        {title: 'Quote', value: 'blockquote'}
+        {title: 'Quote', value: 'blockquote'},
       ],
       lists: [
         {title: 'Numbered', value: 'number'},
-        {title: 'Bulleted', value: 'bullet'}
+        {title: 'Bulleted', value: 'bullet'},
       ],
       marks: {
         decorators: [
@@ -34,10 +30,10 @@ export default {
             value: 'highlight',
             blockEditor: {
               icon: highlightIcon,
-              render: highlightRender
-            }
+              render: highlightRender,
+            },
           },
-          {title: 'Code', value: 'code'}
+          {title: 'Code', value: 'code'},
         ],
         annotations: [
           {
@@ -48,12 +44,12 @@ export default {
               {
                 title: 'URL',
                 name: 'href',
-                type: 'url'
-              }
-            ]
-          }
-        ]
-      }
+                type: 'url',
+              },
+            ],
+          },
+        ],
+      },
     },
     {type: 'figure'},
     {
@@ -67,8 +63,8 @@ export default {
         {type: 'place'},
         {type: 'material'},
         {type: 'timeline'},
-        {type: 'measurement'}
-      ]
-    }
-  ]
+        {type: 'measurement'},
+      ],
+    },
+  ],
 }

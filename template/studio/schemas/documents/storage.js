@@ -1,4 +1,4 @@
-import { FaBox } from "react-icons/fa";
+import {FaBox} from 'react-icons/fa'
 import {
   timespan,
   editorialState,
@@ -8,17 +8,17 @@ import {
   tookPlaceAt,
   preferredIdentifier,
   identifiedBy,
-} from "../props";
-import { defaultFieldsets } from "../fieldsets";
+} from '../props'
+import {defaultFieldsets} from '../fieldsets'
 
 export default {
-  title: "Storage",
-  name: "storage",
-  description: "Storage is a subclass of place.",
-  type: "document",
+  title: 'Storage',
+  name: 'storage',
+  description: 'Storage is a subclass of place.',
+  type: 'document',
   initialValue: {
-    editorialState: "published",
-    accessState: "secret",
+    editorialState: 'published',
+    accessState: 'secret',
   },
   icon: FaBox,
   fieldsets: defaultFieldsets,
@@ -29,55 +29,51 @@ export default {
     label,
     identifiedBy,
     {
-      name: "hasType",
-      title: "Klassifisert som",
-      titleEN: "Classified as",
-      type: "reference",
-      to: [{ type: "storageType" }],
+      name: 'hasType',
+      title: 'Klassifisert som',
+      titleEN: 'Classified as',
+      type: 'reference',
+      to: [{type: 'storageType'}],
       validation: (Rule) => Rule.required(),
     },
     referredToBy,
     timespan,
     {
-      name: "location",
-      title: "Lokasjon",
-      titleEN: "Location",
-      description: "Where the hell did this happen?!",
-      type: "geopoint",
+      name: 'location',
+      title: 'Lokasjon',
+      titleEN: 'Location',
+      description: 'Where the hell did this happen?!',
+      type: 'geopoint',
     },
     tookPlaceAt,
     {
-      name: "consistsOf",
-      title: "Består av",
-      titleEN: "consistsOf",
-      type: "array",
+      name: 'consistsOf',
+      title: 'Består av',
+      titleEN: 'consistsOf',
+      type: 'array',
       of: [
         {
-          type: "reference",
-          to: [
-            { type: "storage" },
-            { type: "madeObject" },
-            { type: "collection" },
-          ],
+          type: 'reference',
+          to: [{type: 'storage'}, {type: 'madeObject'}, {type: 'collection'}],
         },
       ],
       options: {
-        editModal: "fullscreen",
+        editModal: 'fullscreen',
       },
     },
   ],
   preview: {
     select: {
-      type: "hasType.0.label.nor",
-      title: "label.nor",
+      type: 'hasType.0.label.nor',
+      title: 'label.nor',
     },
     prepare(selection) {
-      const { title, type } = selection;
+      const {title, type} = selection
 
       return {
         title: title,
         subtitle: type,
-      };
+      }
     },
   },
-};
+}

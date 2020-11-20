@@ -13,10 +13,8 @@ export const IIIFManifest = ({manifest}) => {
     showThumbnails: false,
     showToolbar: true,
     deepLinking: false,
-    height: 400
+    height: 400,
   }
 
-  return (
-    <OpenSeadragonViewer manifestUrl={manifestUrl} options={options} />
-  )
+  return <OpenSeadragonViewer manifestUrl={manifestUrl} options={options} />
 }

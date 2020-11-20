@@ -1,13 +1,12 @@
-import { CMS_NAME } from '../../lib/constants'
-import { getAllConcepts } from '../../lib/api'
+import {CMS_NAME} from '../../lib/constants'
+import {getAllConcepts} from '../../lib/api'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Header from '../../components/Header'
-import { Container, List, ListItem } from '@chakra-ui/core'
+import {Container, List, ListItem} from '@chakra-ui/core'
 import Link from '../../components/Link'
 
-
-export default function Concepts({ data, preview }) {
+export default function Concepts({data, preview}) {
   return (
     <>
       <Layout preview={preview}>
@@ -15,12 +14,12 @@ export default function Concepts({ data, preview }) {
           <title>{CMS_NAME}</title>
         </Head>
 
-        <Header menu={data.navMenu}/>
-        
+        <Header menu={data.navMenu} />
+
         <Container maxW="xl">
           {data.items && (
             <List>
-              {data.items.map(item => (
+              {data.items.map((item) => (
                 <ListItem>
                   <Link key={item._id} href={`/id/${item._id}`}>
                     {item.label.nor}
@@ -35,9 +34,9 @@ export default function Concepts({ data, preview }) {
   )
 }
 
-export async function getStaticProps({ preview = false }) {
+export async function getStaticProps({preview = false}) {
   const data = await getAllConcepts(preview)
   return {
-    props: { data, preview },
+    props: {data, preview},
   }
 }

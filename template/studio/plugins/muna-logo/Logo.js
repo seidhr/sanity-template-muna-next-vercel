@@ -2,8 +2,6 @@
 import React from 'react'
 
 // We recommend using SVGs as they have both a small footprint and scale well
-const Logo = () => (
-  "ᛗᚢᚾᚨ"
-)
+const Logo = () => 'ᛗᚢᚾᚨ'
 
 export default Logo

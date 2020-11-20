@@ -8,33 +8,31 @@ export default {
     {
       title: 'Translations',
       name: 'translations',
-      options: {collapsible: true, collapsed: true}
-    }
+      options: {collapsible: true, collapsed: true},
+    },
   ],
-  fields: supportedLanguages.map(lang => (
-    {
-      title: lang.title,
-      name: lang.id,
-      type: 'blockContent',
-      fieldset: lang.isDefault ? null : 'translations'
-    }
-  )),
+  fields: supportedLanguages.map((lang) => ({
+    title: lang.title,
+    name: lang.id,
+    type: 'blockContent',
+    fieldset: lang.isDefault ? null : 'translations',
+  })),
   preview: {
     select: {
-      blocks: 'nor'
+      blocks: 'nor',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {blocks} = selection
-      const block = (blocks || []).find(block => block._type === 'block')
+      const block = (blocks || []).find((block) => block._type === 'block')
 
       return {
         title: block
           ? block.children
-            .filter(child => child._type === 'span')
-            .map(span => span.text)
-            .join('')
-          : 'No description'
+              .filter((child) => child._type === 'span')
+              .map((span) => span.text)
+              .join('')
+          : 'No description',
       }
-    }
-  }
+    },
+  },
 }

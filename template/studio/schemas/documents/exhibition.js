@@ -1,16 +1,25 @@
-import { FaGlasses } from "react-icons/fa";
-import { editorialState, accessState, referredToBy, labelSingleton, identifiedBy, language, usedSpecificObjectSet, tookPlaceAt } from "../props";
-import { defaultFieldsets } from "../fieldsets";
-import { coalesceLabel } from "../helpers/helpers";
+import {FaGlasses} from 'react-icons/fa'
+import {
+  editorialState,
+  accessState,
+  referredToBy,
+  labelSingleton,
+  identifiedBy,
+  language,
+  usedSpecificObjectSet,
+  tookPlaceAt,
+} from '../props'
+import {defaultFieldsets} from '../fieldsets'
+import {coalesceLabel} from '../helpers/helpers'
 
 export default {
-  title: "Exhibition",
-  name: "exhibition",
-  description: "Should be fetched from KulturNav",
-  type: "document",
+  title: 'Exhibition',
+  name: 'exhibition',
+  description: 'Should be fetched from KulturNav',
+  type: 'document',
   initialValue: {
-    editorialState: "draft",
-    accessState: "secret",
+    editorialState: 'draft',
+    accessState: 'secret',
   },
   icon: FaGlasses,
   fieldsets: defaultFieldsets,
@@ -21,15 +30,15 @@ export default {
     identifiedBy,
     language,
     {
-      name: "creator",
-      title: "Skaper",
-      titleEN: "Author",
+      name: 'creator',
+      title: 'Skaper',
+      titleEN: 'Author',
       description:
-        "Registrer en eller flere aktører som har skapt dette dokumentet, gjerne med hvilken rolle de hadde.",
-      type: "array",
+        'Registrer en eller flere aktører som har skapt dette dokumentet, gjerne med hvilken rolle de hadde.',
+      type: 'array',
       of: [
         {
-          type: "actorInRole",
+          type: 'actorInRole',
         },
       ],
     },
@@ -39,25 +48,22 @@ export default {
       titleEN: 'Activity stream',
       description: 'Events and activities connected to this object',
       type: 'array',
-      of: [
-        {type: 'creation'},
-        {type: 'move'}
-      ]
+      of: [{type: 'creation'}, {type: 'move'}],
     },
     tookPlaceAt,
     referredToBy,
-    usedSpecificObjectSet
+    usedSpecificObjectSet,
   ],
   preview: {
     select: {
-      title: "label",
+      title: 'label',
     },
     prepare(selection) {
-      const { title } = selection;
+      const {title} = selection
 
       return {
         title: coalesceLabel(title),
-      };
+      }
     },
   },
-};
+}

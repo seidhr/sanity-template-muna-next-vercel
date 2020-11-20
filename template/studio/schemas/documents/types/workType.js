@@ -1,15 +1,15 @@
-import { FaTag } from "react-icons/fa";
-import { editorialState, accessState, label, altLabel } from "../../props";
-import { defaultFieldsets } from "../../fieldsets";
-import { coalesceLabel } from "../../helpers/helpers";
+import {FaTag} from 'react-icons/fa'
+import {editorialState, accessState, label, altLabel} from '../../props'
+import {defaultFieldsets} from '../../fieldsets'
+import {coalesceLabel} from '../../helpers/helpers'
 
 export default {
-  title: "Verkstype",
-  name: "workType",
-  type: "document",
+  title: 'Verkstype',
+  name: 'workType',
+  type: 'document',
   initialValue: {
-    editorialState: "published",
-    accessState: "open",
+    editorialState: 'published',
+    accessState: 'open',
   },
   icon: FaTag,
   fieldsets: defaultFieldsets,
@@ -19,34 +19,32 @@ export default {
     label,
     altLabel,
     {
-      name: "broader",
-      title: "Overordnet term",
-      titleEN: "Broader",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "objectType" }] }],
+      name: 'broader',
+      title: 'Overordnet term',
+      titleEN: 'Broader',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'objectType'}]}],
     },
     {
-      name: "activityStream",
-      title: "Aktivitetsstrøm",
-      titleEN: "Activity stream",
-      description: "Events and activities connected to this object",
-      type: "array",
-      of: [{ type: "creation" }],
+      name: 'activityStream',
+      title: 'Aktivitetsstrøm',
+      titleEN: 'Activity stream',
+      description: 'Events and activities connected to this object',
+      type: 'array',
+      of: [{type: 'creation'}],
     },
   ],
   preview: {
     select: {
-      title: "label",
-      broader: "broader.0.label.nor",
+      title: 'label',
+      broader: 'broader.0.label.nor',
     },
     prepare(selection) {
-      const { title, broader } = selection;
+      const {title, broader} = selection
       return {
         title: coalesceLabel(title),
-        subtitle: broader
-          ? `⬆️` + broader
-          : "🔝 Toppkonsept",
-      };
+        subtitle: broader ? `⬆️` + broader : '🔝 Toppkonsept',
+      }
     },
   },
-};
+}

@@ -5,31 +5,31 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'subtitle',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Content',
       name: 'content',
-      type: 'simpleBlockContent'
-    }
+      type: 'simpleBlockContent',
+    },
   ],
   preview: {
     select: {
-      title: 'title'
+      title: 'title',
     },
-    prepare({ title }) {
+    prepare({title}) {
       return {
         title: 'Article',
-        subtitle: title
+        subtitle: title,
       }
-    }
-  }
+    },
+  },
 }

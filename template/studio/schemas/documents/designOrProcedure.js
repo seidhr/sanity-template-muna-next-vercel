@@ -1,15 +1,15 @@
-import { FaClipboard } from "react-icons/fa";
-import { editorialState, accessState, label, referredToBy, identifiedBy } from "../props";
-import { defaultFieldsets } from "../fieldsets";
-import { coalesceLabel } from "../helpers/helpers";
+import {FaClipboard} from 'react-icons/fa'
+import {editorialState, accessState, label, referredToBy, identifiedBy} from '../props'
+import {defaultFieldsets} from '../fieldsets'
+import {coalesceLabel} from '../helpers/helpers'
 
 export default {
-  title: "Design or procedure",
-  name: "designOrProcedure",
-  type: "document",
+  title: 'Design or procedure',
+  name: 'designOrProcedure',
+  type: 'document',
   initialValue: {
-    editorialState: "draft",
-    accessState: "secret",
+    editorialState: 'draft',
+    accessState: 'secret',
   },
   icon: FaClipboard,
   fieldsets: defaultFieldsets,
@@ -19,35 +19,35 @@ export default {
     label,
     identifiedBy,
     {
-      name: "body",
-      title: "Tekst",
-      titleEN: "Body",
-      type: "localeBlock",
+      name: 'body',
+      title: 'Tekst',
+      titleEN: 'Body',
+      type: 'localeBlock',
     },
     referredToBy,
     {
-      name: "documentedIn",
-      title: "Dokumentert i",
-      titleEN: "Documented in",
-      type: "array",
+      name: 'documentedIn',
+      title: 'Dokumentert i',
+      titleEN: 'Documented in',
+      type: 'array',
       of: [
         {
-          type: "reference",
-          to: [{ type: "file" }],
+          type: 'reference',
+          to: [{type: 'file'}],
         },
       ],
     },
   ],
   preview: {
     select: {
-      title: "label",
+      title: 'label',
     },
     prepare(selection) {
-      const { title } = selection;
-      
+      const {title} = selection
+
       return {
         title: coalesceLabel(title),
-      };
+      }
     },
   },
-};
+}

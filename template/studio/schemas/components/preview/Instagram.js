@@ -1,7 +1,7 @@
 import React from 'react'
 import InstagramEmbed from 'react-instagram-embed'
 
-const IntagramPreview = ({ value }) => {
+const IntagramPreview = ({value}) => {
   if (!value.url) {
     return null
   }

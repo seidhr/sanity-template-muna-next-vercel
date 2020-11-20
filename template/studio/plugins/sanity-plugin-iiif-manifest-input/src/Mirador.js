@@ -2,22 +2,22 @@ import React, {Component} from 'react'
 import mirador from 'mirador'
 
 class Mirador extends Component {
-  useEffect () {
+  useEffect() {
     const {config} = this.props
 
     const thisOne = {
       id: 'arg',
       windows: {
-        manifestId: config.value
+        manifestId: config.value,
       },
       window: {
         allowClose: false,
-        allowWindowSideBar: false
-      }
+        allowWindowSideBar: false,
+      },
     }
     mirador.viewer(thisOne)
   }
-  render () {
+  render() {
     return <div id={thisOne.id} />
   }
 }

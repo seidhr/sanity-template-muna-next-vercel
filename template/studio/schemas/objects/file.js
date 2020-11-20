@@ -1,4 +1,4 @@
-import { label, license } from '../props'
+import {label, license} from '../props'
 
 export default {
   title: 'Manuscript',
@@ -10,14 +10,14 @@ export default {
       name: 'description',
       title: 'Beskrivelse',
       titleEN: 'Description',
-      type: 'localeBlockSimple'
+      type: 'localeBlockSimple',
     },
     license,
     {
       name: 'souce',
       title: 'Kilde',
       titleEN: 'Source',
-      type: 'url'
-    }
-  ]
+      type: 'url',
+    },
+  ],
 }

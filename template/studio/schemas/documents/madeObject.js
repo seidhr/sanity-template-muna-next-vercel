@@ -23,7 +23,7 @@ import {
   consistsOf,
   labelSingleton,
   iiifStructures,
-  wasPresentAt
+  wasPresentAt,
 } from '../props'
 import {coalesceLabel} from '../helpers/helpers'
 
@@ -35,45 +35,45 @@ export default {
   type: 'document',
   initialValue: {
     editorialState: 'draft',
-    accessState: 'secret'
+    accessState: 'secret',
   },
   icon: FaBookDead,
   fieldsets: [
     {
       name: 'state',
       title: 'Status',
-      options: {collapsible: true, collapsed: false}
+      options: {collapsible: true, collapsed: false},
     },
     {
       name: 'minimum',
       title: 'Basic metadata',
-      options: {collapsible: true, collapsed: false}
+      options: {collapsible: true, collapsed: false},
     },
     {
       name: 'representation',
       title: 'Hovedbilde og IIIF manifest',
-      options: {collapsible: true, collapsed: false}
+      options: {collapsible: true, collapsed: false},
     },
     {
       name: 'relations',
       title: 'Relations to other stuff',
-      options: {collapsible: true, collapsed: false}
+      options: {collapsible: true, collapsed: false},
     },
     {
       name: 'partsAndContent',
       title: 'Felt relatert til deler eller innhold',
-      options: {collapsible: true, collapsed: false}
+      options: {collapsible: true, collapsed: false},
     },
     {
       name: 'physicalDescription',
       title: 'Felt relatert til fysisk beskrivelse',
-      options: {collapsible: true, collapsed: false}
+      options: {collapsible: true, collapsed: false},
     },
     {
       name: 'ownership',
       title: 'Felt relatert til eierskap',
-      options: {collapsible: true, collapsed: false}
-    }
+      options: {collapsible: true, collapsed: false},
+    },
   ],
   fields: [
     editorialState,
@@ -82,11 +82,11 @@ export default {
     labelSingleton,
     {
       ...identifiedBy,
-      fieldset: 'minimum'
+      fieldset: 'minimum',
     },
     {
       ...referredToBy,
-      fieldset: 'minimum'
+      fieldset: 'minimum',
     },
     {
       name: 'hasType',
@@ -99,34 +99,34 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{type: 'objectType'}]
-        }
+          to: [{type: 'objectType'}],
+        },
       ],
-      validation: (Rule) => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       ...subject,
-      fieldset: 'minimum'
+      fieldset: 'minimum',
     },
     {
       ...isSubjectOf,
-      fieldset: 'minimum'
+      fieldset: 'minimum',
     },
     {
       ...license,
-      fieldset: 'minimum'
+      fieldset: 'minimum',
     },
     {
       ...mainRepresentation,
-      fieldset: 'representation'
+      fieldset: 'representation',
     },
     {
       ...subjectOfManifest,
-      fieldset: 'representation'
+      fieldset: 'representation',
     },
     {
       ...iiifStructures,
-      fieldset: 'representation'
+      fieldset: 'representation',
     },
     {
       name: 'activityStream',
@@ -141,49 +141,49 @@ export default {
         {type: 'reference', to: [{type: 'acquisition'}]},
         {type: 'move'},
         {type: 'activity'},
-        {type: 'destruction'}
-      ]
+        {type: 'destruction'},
+      ],
     },
     {
       ...relation,
-      fieldset: 'relations'
+      fieldset: 'relations',
     },
     {
       ...wasPresentAt,
-      fieldset: 'relations'
+      fieldset: 'relations',
     },
     {
       ...depicts,
-      fieldset: 'partsAndContent'
+      fieldset: 'partsAndContent',
     },
     {
       ...showsVisualObject,
-      fieldset: 'partsAndContent'
+      fieldset: 'partsAndContent',
     },
     {
       ...carries,
-      fieldset: 'partsAndContent'
+      fieldset: 'partsAndContent',
     },
     {
       ...composedOf,
-      fieldset: 'partsAndContent'
+      fieldset: 'partsAndContent',
     },
     {
       ...measurement,
-      fieldset: 'physicalDescription'
+      fieldset: 'physicalDescription',
     },
     {
       ...consistsOf,
-      fieldset: 'physicalDescription'
+      fieldset: 'physicalDescription',
     },
     {
       ...hasCurrentOwner,
-      fieldset: 'ownership'
+      fieldset: 'ownership',
     },
     {
       ...hasFormerOrCurrentOwner,
-      fieldset: 'ownership'
-    }
+      fieldset: 'ownership',
+    },
   ],
   preview: {
     select: {
@@ -192,9 +192,9 @@ export default {
       type: 'hasType.0.label',
       blocks: 'description',
       media: 'mainRepresentation',
-      published: 'accessState'
+      published: 'accessState',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {title, id, type, blocks, media, published} = selection
       const expression = jsonata('nor[0]')
       const block = expression.evaluate(blocks)
@@ -205,34 +205,34 @@ export default {
         subtitle: secret + (id ? id + ', ' : '') + coalesceLabel(type),
         description: block
           ? block.children
-            .filter((child) => child._type === 'span')
-            .map((span) => span.text)
-            .join('')
+              .filter((child) => child._type === 'span')
+              .map((span) => span.text)
+              .join('')
           : '',
-        media: media
+        media: media,
       }
-    }
+    },
   },
   orderings: [
     {
       title: 'Tittel, A-Å',
       name: 'title',
-      by: [{field: 'label', direction: 'asc'}]
+      by: [{field: 'label', direction: 'asc'}],
     },
     {
       title: 'Tittel, Å-A',
       name: 'title',
-      by: [{field: 'label', direction: 'desc'}]
+      by: [{field: 'label', direction: 'desc'}],
     },
     {
       title: 'Foretrukket id, Synkende',
       name: 'preferredIdentifier',
-      by: [{field: 'preferredIdentifier', direction: 'desc'}]
+      by: [{field: 'preferredIdentifier', direction: 'desc'}],
     },
     {
       title: 'Foretrukket id, Stigende',
       name: 'preferredIdentifier',
-      by: [{field: 'preferredIdentifier', direction: 'asc'}]
-    }
-  ]
+      by: [{field: 'preferredIdentifier', direction: 'asc'}],
+    },
+  ],
 }

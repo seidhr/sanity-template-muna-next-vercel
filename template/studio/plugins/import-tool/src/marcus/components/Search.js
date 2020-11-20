@@ -27,19 +27,11 @@ const Navbar = () => {
   return (
     <div className={navbarStyles}>
       <DataSearch
-        dataField={[
-          'identifier',
-          'title',
-          'label',
-          'prefLabel',
-          'subject',
-          'maker',
-          'spatial'
-        ]}
+        dataField={['identifier', 'title', 'label', 'prefLabel', 'subject', 'maker', 'spatial']}
         fieldWeights={[2, 1, 2, 2]}
-        componentId='search'
+        componentId="search"
         autosuggest={false}
-        placeholder='Search ...'
+        placeholder="Search ..."
       />
     </div>
   )

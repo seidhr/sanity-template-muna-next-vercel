@@ -8,7 +8,7 @@ export default {
       title: 'Aktør',
       titleEN: 'Actor',
       type: 'reference',
-      to: [{type: 'actor', title: 'Actor'}]
+      to: [{type: 'actor', title: 'Actor'}],
     },
     {
       name: 'role',
@@ -19,21 +19,21 @@ export default {
         {
           type: 'reference',
           to: [{type: 'role'}],
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
   preview: {
     select: {
       actor: 'actor.label',
-      role: 'role.0.label.nor'
+      role: 'role.0.label.nor',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {actor, role} = selection
       return {
         title: actor,
-        subtitle: `${role ? role : ''}`
+        subtitle: `${role ? role : ''}`,
       }
-    }
-  }
+    },
+  },
 }

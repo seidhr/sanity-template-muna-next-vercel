@@ -5,16 +5,16 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       type: 'string',
-      name: 'title'
+      name: 'title',
     },
     {
       type: 'array',
       name: 'rows',
-      of: [{ type: 'textWithIllustration' }]
-    }
-  ]
+      of: [{type: 'textWithIllustration'}],
+    },
+  ],
 }

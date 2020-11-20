@@ -5,37 +5,37 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       name: 'heading',
       type: 'string',
-      title: 'Heading'
+      title: 'Heading',
     },
     {
       name: 'description',
-      type: 'simpleBlockContent'
+      type: 'simpleBlockContent',
     },
     {
       name: 'items',
       type: 'array',
-      validation: Rule => Rule.unique(),
+      validation: (Rule) => Rule.unique(),
       of: [
-        { type: "externalManifest" },
+        {type: 'externalManifest'},
         {
-          type: "reference",
-          to: [{ type: "madeObject" }],
+          type: 'reference',
+          to: [{type: 'madeObject'}],
         },
       ],
-    }
+    },
   ],
   preview: {
     select: {
-      title: 'heading'
+      title: 'heading',
     },
     prepare: ({title}) => ({
       title: `Mirador gallery`,
       subtitle: title,
-    })
-  }
+    }),
+  },
 }

@@ -1,4 +1,4 @@
-export default function getQuery (uri) {
+export default function getQuery(uri) {
   let query = `
     PREFIX dct: <http://purl.org/dc/terms/>
     PREFIX ubbont: <http://data.ub.uib.no/ontology/>

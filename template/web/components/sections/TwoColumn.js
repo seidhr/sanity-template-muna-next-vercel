@@ -1,20 +1,13 @@
-import { Grid, Container, Box, Center, Heading, Text } from '@chakra-ui/core'
+import {Grid, Container, Box, Center, Heading, Text} from '@chakra-ui/core'
 import styles from './PageHeader.module.css'
 import PortableTextBlock from '../PortableTextBlock'
 
 export default function TwoColumn(props) {
   return (
-    <Container 
-      maxW="4xl" 
-      marginTop="10"
-    >
+    <Container maxW="4xl" marginTop="10">
       <Box>
         <Center>
-          <Heading
-            size="xl"
-          >
-            {props.title}
-          </Heading>
+          <Heading size="xl">{props.title}</Heading>
         </Center>
         <Center>
           {props?.subtitle && (
@@ -32,11 +25,11 @@ export default function TwoColumn(props) {
             )}
           </Box>
           <Box>
-          {props?.secondColumn && (
-            <Box size="xl">
-              <PortableTextBlock blocks={props.secondColumn} />
-            </Box>
-          )}
+            {props?.secondColumn && (
+              <Box size="xl">
+                <PortableTextBlock blocks={props.secondColumn} />
+              </Box>
+            )}
           </Box>
         </Grid>
       </Box>

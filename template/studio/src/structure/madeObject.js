@@ -1,14 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {
-  FaBookOpen as SingleIcon,
-  FaBookDead as AllIcon
-} from 'react-icons/fa'
+import {FaBookOpen as SingleIcon, FaBookDead as AllIcon} from 'react-icons/fa'
 
 // import PreviewIFrame from '../../src/components/previewIFrame'
 
 export const icons = {
   SingleIcon,
-  AllIcon
+  AllIcon,
 }
 
 const madeObject = S.listItem()
@@ -21,30 +18,25 @@ const madeObject = S.listItem()
         S.listItem()
           .title('Alle objekter')
           .icon(SingleIcon)
-          .child(
-            S.documentTypeList('madeObject')
-              .title('Alle objekter')
-          ),
+          .child(S.documentTypeList('madeObject').title('Alle objekter')),
         S.listItem()
           .title('Objekt etter type')
           .icon(SingleIcon)
           .child(
-          // List out all categories
+            // List out all categories
             S.documentList('objectType')
               .schemaType('objectType')
               .title('Objekt etter type')
               .filter('_type == "objectType"')
-              .child(catId =>
-              // List out project documents where the _id for the selected
-              // category appear as a _ref in the project’s categories array
+              .child((catId) =>
+                // List out project documents where the _id for the selected
+                // category appear as a _ref in the project’s categories array
                 S.documentList()
                   .schemaType('madeObject')
                   .title('Objekt')
-                  .filter(
-                    '_type == "madeObject" && $catId in hasType[]._ref'
-                  )
-                  .params({catId})
-              )
+                  .filter('_type == "madeObject" && $catId in hasType[]._ref')
+                  .params({catId}),
+              ),
           ),
         /* Could be used for parts of a book
         S.listItem()
@@ -65,25 +57,19 @@ const madeObject = S.listItem()
                   .params({catId})
               )
           ), */
-        S.listItem()
-          .title('Upubliserte objekter')
-          .icon(SingleIcon)
-          .child(
+        S.listItem().title('Upubliserte objekter').icon(SingleIcon).child(
           // List out all categories
-            S.documentTypeList('madeObject')
-              .title('Upubliserte objekter')
-              .filter('_type == "madeObject" && accessState == "secret"')
-          ),
-        S.listItem()
-          .title('Til gjennomgang')
-          .icon(SingleIcon)
-          .child(
+          S.documentTypeList('madeObject')
+            .title('Upubliserte objekter')
+            .filter('_type == "madeObject" && accessState == "secret"'),
+        ),
+        S.listItem().title('Til gjennomgang').icon(SingleIcon).child(
           // List out all categories
-            S.documentTypeList('madeObject')
-              .title('Til gjennomgang')
-              .filter('_type == "madeObject" && editorialState == "review"')
-          )
-      ])
+          S.documentTypeList('madeObject')
+            .title('Til gjennomgang')
+            .filter('_type == "madeObject" && editorialState == "review"'),
+        ),
+      ]),
   )
 
 export default madeObject

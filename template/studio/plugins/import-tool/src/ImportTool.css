@@ -39,12 +39,17 @@
   padding-right: 15px;
 }
 
-.page, .break, .previous, .next {
+.page,
+.break,
+.previous,
+.next {
   display: inline-block;
   padding: 0.5em;
 }
 
-.page:hover, .previous:hover, .next:hover {
+.page:hover,
+.previous:hover,
+.next:hover {
   cursor: pointer;
 }
 

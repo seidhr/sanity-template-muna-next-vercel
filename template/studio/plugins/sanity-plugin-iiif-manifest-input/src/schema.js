@@ -6,6 +6,6 @@
 export default {
   name: 'iiifManifest',
   type: 'string',
-  title: 'IIIF Manifest'
+  title: 'IIIF Manifest',
   // inputComponent: IIIFManifestInput
 }

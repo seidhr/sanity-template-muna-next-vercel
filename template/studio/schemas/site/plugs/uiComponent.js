@@ -5,21 +5,21 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       type: 'string',
-      name: 'name'
-    }
+      name: 'name',
+    },
   ],
   preview: {
     select: {
-      title: 'name'
+      title: 'name',
     },
-    prepare({ title }) {
+    prepare({title}) {
       return {
-        title: `UI reference: ${title}`
+        title: `UI reference: ${title}`,
       }
-    }
-  }
+    },
+  },
 }

@@ -5,17 +5,17 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       title: 'Title',
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Text',
       name: 'text',
-      type: 'simpleBlockContent'
+      type: 'simpleBlockContent',
     },
     {
       title: 'Form type',
@@ -25,30 +25,30 @@ export default {
         list: [
           {
             title: 'Developer invite',
-            value: 'developerInvite'
+            value: 'developerInvite',
           },
           {
             title: 'Contact form',
-            value: 'contactForm'
+            value: 'contactForm',
           },
           {
             title: 'Newsletter signup',
-            value: 'newsletterForm'
-          }
-        ]
-      }
-    }
+            value: 'newsletterForm',
+          },
+        ],
+      },
+    },
   ],
   preview: {
     select: {
       title: 'title',
-      type: 'type'
+      type: 'type',
     },
     prepare({title, type}) {
       return {
         title,
-        subtitle: `FORM: ${type}`
+        subtitle: `FORM: ${type}`,
       }
-    }
-  }
+    },
+  },
 }

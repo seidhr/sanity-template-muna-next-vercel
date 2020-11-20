@@ -10,24 +10,24 @@ import styles from './styles.css'
 export default class IIIFManifestInput extends React.Component {
   static propTypes = {
     type: PropTypes.shape({
-      title: PropTypes.string
+      title: PropTypes.string,
     }).isRequired,
     level: PropTypes.number,
     value: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
   }
 
-  focus () {
+  focus() {
     this._inputElement.focus()
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     const inputValue = event.target.value
     const patch = inputValue === '' ? unset() : set(String(inputValue))
     this.props.onChange(PatchEvent.from(patch))
   }
 
-  render () {
+  render() {
     const {type, value, level} = this.props
     const title = type.title
 
@@ -35,8 +35,8 @@ export default class IIIFManifestInput extends React.Component {
       <div>
         <FormField label={title} level={level} description={type.description}>
           <Input
-            ref={element => this._inputElement = element}
-            type='string'
+            ref={(element) => (this._inputElement = element)}
+            type="string"
             value={value === undefined ? '' : value}
             onChange={this.handleChange}
           />
@@ -44,7 +44,8 @@ export default class IIIFManifestInput extends React.Component {
         {value && (
           <div className={styles.container}>
             <IIIFManifest manifest={value} />
-          </div>)}
+          </div>
+        )}
         {/* <Mirador config={value} /> */}
       </div>
     )

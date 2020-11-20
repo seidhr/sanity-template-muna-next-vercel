@@ -1,10 +1,10 @@
-import { timespan, tookPlaceAt, referredToBy, carriedOutBy } from "../../props";
-import { defaultFieldsets } from "../../fieldsets";
+import {timespan, tookPlaceAt, referredToBy, carriedOutBy} from '../../props'
+import {defaultFieldsets} from '../../fieldsets'
 
 export default {
-  title: "Treatment",
-  name: "treatment",
-  type: "object",
+  title: 'Treatment',
+  name: 'treatment',
+  type: 'object',
   fieldsets: defaultFieldsets,
   fields: [
     carriedOutBy,
@@ -12,22 +12,22 @@ export default {
     tookPlaceAt,
     referredToBy,
     {
-      name: "assessedBy",
-      title: "Vurdert av",
-      titleEN: "Assessment",
-      type: "array",
-      of: [{ type: "treatmentAssessment" }],
+      name: 'assessedBy',
+      title: 'Vurdert av',
+      titleEN: 'Assessment',
+      type: 'array',
+      of: [{type: 'treatmentAssessment'}],
     },
   ],
   preview: {
     select: {
-      date: "productionDate",
+      date: 'productionDate',
     },
     prepare(selection) {
-      const { date } = selection;
+      const {date} = selection
       return {
-        title: `Transformation${date ? ", dated " + date : ""}`,
-      };
+        title: `Transformation${date ? ', dated ' + date : ''}`,
+      }
     },
   },
-};
+}

@@ -3,13 +3,13 @@ import client from 'part:@sanity/base/client'
 export const getImageBlob = async (url) => {
   // eslint-disable-next-line no-undef
   const response = fetch(url)
-    .then(response => response.body)
-    .then(rs => {
+    .then((response) => response.body)
+    .then((rs) => {
       const reader = rs.getReader()
 
       // eslint-disable-next-line no-undef
       return new ReadableStream({
-        async start (controller) {
+        async start(controller) {
           while (true) {
             const {done, value} = await reader.read()
 
@@ -25,25 +25,25 @@ export const getImageBlob = async (url) => {
           // Close the stream
           controller.close()
           reader.releaseLock()
-        }
+        },
       })
     })
     // Create a new response out of the stream
     // eslint-disable-next-line no-undef
-    .then(rs => new Response(rs))
+    .then((rs) => new Response(rs))
     // Create an object URL for the response
-    .then(response => response.blob())
+    .then((response) => response.blob())
   return response
 }
 
 export const uploadImageBlob = async (blob, filename) => {
   const res = client.assets
     .upload('image', blob, {contentType: blob.type, filename: `${filename}`})
-    .then(document => {
+    .then((document) => {
       console.log('The image was uploaded!', document)
       return document
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Upload failed:', error.message)
     })
   return res
@@ -54,10 +54,10 @@ export const patchAssetMeta = async (id, meta) => {
     .patch(id)
     .set(meta)
     .commit()
-    .then(document => {
+    .then((document) => {
       console.log('The image was patched!', document)
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Patch failed:', error.message)
     })
 }
@@ -65,15 +65,16 @@ export const patchAssetMeta = async (id, meta) => {
 export const createDoc = async (doc) => {
   const transaction = client.transaction()
 
-  doc.forEach(o => {
+  doc.forEach((o) => {
     transaction.createIfNotExists(o)
   })
 
-  transaction.commit()
-    .then(res => {
+  transaction
+    .commit()
+    .then((res) => {
       console.log(JSON.stringify(res, null, 2))
     })
-    .catch(err => {
+    .catch((err) => {
       console.error('Transaction failed: ', err.message)
     })
   return true
@@ -89,15 +90,15 @@ export const setAssetRef = async (docID, assetID) => {
         _type: 'mainRepresentation',
         asset: {
           _type: 'reference',
-          _ref: assetID
-        }
-      }
+          _ref: assetID,
+        },
+      },
     })
     .commit()
-    .then(document => {
+    .then((document) => {
       console.log('The asset was hooked up!', document)
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('Failed:', error.message)
     })
 }

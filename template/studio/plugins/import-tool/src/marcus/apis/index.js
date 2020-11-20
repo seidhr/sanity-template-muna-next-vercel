@@ -10,10 +10,16 @@ export const chooseItem = async (uri) => {
   // We get the web uri from ES, so we need to switch to the data uri
   const dataUri = uri.replace('marcus', 'data.ub')
 
-  async function getObject (id) {
-    if (!id) { throw Error }
+  async function getObject(id) {
+    if (!id) {
+      throw Error
+    }
     // eslint-disable-next-line no-undef
-    const results = await fetch(`https://sparql.ub.uib.no/sparql/query?query=${encodeURIComponent(getQuery(dataUri))}&output=json`)
+    const results = await fetch(
+      `https://sparql.ub.uib.no/sparql/query?query=${encodeURIComponent(
+        getQuery(dataUri),
+      )}&output=json`,
+    )
     return results
   }
 
@@ -56,10 +62,10 @@ export const chooseItem = async (uri) => {
         url: dataUri,
         // A string that uniquely idenitfies it within the source.
         // In this example the URL is the closest thing we have as an actual ID.
-        id: cleanJSON.identifier
+        id: cleanJSON.identifier,
       },
       description: cleanJSON.title,
-      creditLine: 'From sparql.ub.uib.no'
+      creditLine: 'From sparql.ub.uib.no',
     }
 
     const imageResonse = await getImageBlob(cleanJSON.image)
@@ -72,7 +78,7 @@ export const chooseItem = async (uri) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify(document, asset)
+      body: JSON.stringify(document, asset),
     }
   } else {
     // Handle errors

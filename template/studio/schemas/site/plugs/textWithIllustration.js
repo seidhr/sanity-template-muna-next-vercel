@@ -5,7 +5,7 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       type: 'string',
@@ -20,7 +20,7 @@ export default {
     {
       type: 'illustration',
       name: 'illustration',
-      title: 'Illustration'
-    }
-  ]
+      title: 'Illustration',
+    },
+  ],
 }

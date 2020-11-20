@@ -8,6 +8,4 @@ import React from 'react'
  *   would like here, but for plugins that are to be used in more than one
  *   studio, we suggest these rules are followed
  **/
-export default () => (
-  '⚔️'
-)
+export default () => '⚔️'

@@ -6,30 +6,30 @@ export default {
     {
       title: 'Title',
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Subtitle',
       name: 'subtitle',
-      type: 'simpleBlockContent'
+      type: 'simpleBlockContent',
     },
     {
       title: 'Illustration',
       name: 'illustration',
-      type: 'illustration'
+      type: 'illustration',
     },
   ],
   preview: {
     select: {
       title: 'title',
-      illustration: 'illustration'
+      illustration: 'illustration',
     },
-    prepare({ title, illustration }) {
+    prepare({title, illustration}) {
       return {
         title: 'Page header',
         subtitle: title,
-        media: illustration.image
+        media: illustration.image,
       }
-    }
+    },
   },
 }

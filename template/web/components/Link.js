@@ -1,8 +1,8 @@
-import { Link as ChakraLink } from '@chakra-ui/core'
-import { Link as NextLink } from 'next/link'
+import {Link as ChakraLink} from '@chakra-ui/core'
+import {Link as NextLink} from 'next/link'
 
 export default function Link({href, children}) {
-  if(!href) {
+  if (!href) {
     return null
   }
 

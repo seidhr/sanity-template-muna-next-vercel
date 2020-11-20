@@ -7,18 +7,18 @@ export default {
       name: 'coordinates',
       title: 'Koordinater',
       titleEN: 'Coordinates',
-      type: 'geopoint'
-    }
+      type: 'geopoint',
+    },
   ],
   preview: {
     select: {
-      type: 'type'
+      type: 'type',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {type} = selection
       return {
-        title: type
+        title: type,
       }
-    }
-  }
+    },
+  },
 }

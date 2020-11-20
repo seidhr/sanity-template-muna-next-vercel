@@ -6,5 +6,5 @@ export default {
   title: 'Import',
   name: 'import-tool',
   icon: ChevronDownIcon,
-  component: App
+  component: App,
 }

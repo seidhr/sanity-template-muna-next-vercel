@@ -8,7 +8,7 @@ export type AssetMetadata = {
     name: string
     url: string
     id: string
-  },
+  }
   description: string
   creditLine: string
 }
@@ -27,9 +27,9 @@ export type MadeObject = {
 
 export type MainRepresentationFragment = {
   mainRepresentation: {
-    _type: 'mainRepresentation',
+    _type: 'mainRepresentation'
     asset: {
-      _type: 'reference',
+      _type: 'reference'
       _ref: string
     }
   }

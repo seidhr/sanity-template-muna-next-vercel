@@ -8,46 +8,32 @@ export default {
       title: 'Tittel',
       titleEN: 'Title',
       type: 'localeString',
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'before',
       title: 'Before',
       type: 'array',
-      of: [
-        {type: 'figure'},
-        {type: 'reference',
-          to: [
-            {type: 'madeObject'}
-          ]
-        }
-      ],
-      validation: Rule => Rule.required()
+      of: [{type: 'figure'}, {type: 'reference', to: [{type: 'madeObject'}]}],
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'after',
       title: 'After',
       type: 'array',
-      of: [
-        {type: 'figure'},
-        {type: 'reference',
-          to: [
-            {type: 'madeObject'}
-          ]
-        }
-      ],
-      validation: Rule => Rule.required()
+      of: [{type: 'figure'}, {type: 'reference', to: [{type: 'madeObject'}]}],
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'caption',
       title: 'Bildetekst',
       titleEN: 'Caption',
-      type: 'localeString'
-    }
+      type: 'localeString',
+    },
   ],
   preview: {
     select: {
-      title: 'label.nor'
-    }
-  }
+      title: 'label.nor',
+    },
+  },
 }

@@ -14,14 +14,10 @@ export default S.listItem()
       .title('Landing Pages')
       .items([
         S.documentListItem()
-        .title('Frontpage')
-        .schemaType('page')
-        .icon(FcHome)
-        .child(
-          S.document()
-            .schemaType('page')
-            .documentId('frontpage')
-        ),
+          .title('Frontpage')
+          .schemaType('page')
+          .icon(FcHome)
+          .child(S.document().schemaType('page').documentId('frontpage')),
         S.listItem()
           .title('Navigation Menus')
           .icon(MdMenu)
@@ -33,12 +29,10 @@ export default S.listItem()
           .child(
             S.documentTypeList('route')
               .title('Routes')
-              .child((documentId) =>
-                S.document()
-                  .documentId(documentId)
-                  .schemaType('route')
-                  // .views([S.view.form(), PreviewIFrame()])
-              )
+              .child(
+                (documentId) => S.document().documentId(documentId).schemaType('route'),
+                // .views([S.view.form(), PreviewIFrame()])
+              ),
           ),
         S.listItem()
           .title('Pages')
@@ -48,7 +42,7 @@ export default S.listItem()
             S.documentList('page')
               .title('Pages')
               .menuItems(S.documentTypeList('page').getMenuItems())
-              .filter('_type == "page" && _id != "frontpage"')
+              .filter('_type == "page" && _id != "frontpage"'),
           ),
         S.listItem()
           .title('Alerts')
@@ -58,7 +52,7 @@ export default S.listItem()
             S.documentList('alert')
               .title('Alerts')
               .menuItems(S.documentTypeList('alert').getMenuItems())
-              .filter('_type == "alert"')
-          )
-      ])
+              .filter('_type == "alert"'),
+          ),
+      ]),
   )

@@ -1,29 +1,25 @@
 import dynamic from 'next/dynamic'
-import { Grid, Container, Box, Center, Heading, Text } from '@chakra-ui/core'
+import {Grid, Container, Box, Center, Heading, Text} from '@chakra-ui/core'
 import styles from './PageHeader.module.css'
 import PortableTextBlock from '../PortableTextBlock'
 
-const MiradorWithNoSSR = dynamic(
-  () => import('../Mirador'),
-  { ssr: false }
-)
+const MiradorWithNoSSR = dynamic(() => import('../Mirador'), {ssr: false})
 
 export default function MiradorGallery(props) {
-
-  if(!props) {
+  if (!props) {
     return null
   }
 
-  const manifests = props.items.map(item => item.manifest)
+  const manifests = props.items.map((item) => item.manifest)
 
   return (
-    <Grid 
+    <Grid
       w="full"
       p={5}
       gridGap={5}
-      alignContent= "start"
-      gridTemplateAreas={{ xl: `"image image metadata"`, base: `"image" "metadata"`}}
-      gridTemplateColumns={{ xl: "6fr 6fr 2fr", base: "100%" }}
+      alignContent="start"
+      gridTemplateAreas={{xl: `"image image metadata"`, base: `"image" "metadata"`}}
+      gridTemplateColumns={{xl: '6fr 6fr 2fr', base: '100%'}}
     >
       <Box gridArea="metadata">
         <Heading fontSize="sm" mb={1} color="gray.600">

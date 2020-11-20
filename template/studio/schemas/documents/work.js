@@ -1,5 +1,5 @@
-import { FaCrown } from 'react-icons/fa'
-import { editorialState, accessState, labelSingleton, identifiedBy } from "../props"
+import {FaCrown} from 'react-icons/fa'
+import {editorialState, accessState, labelSingleton, identifiedBy} from '../props'
 
 export default {
   title: 'Work',
@@ -8,25 +8,25 @@ export default {
   icon: FaCrown,
   fieldsets: [
     {
-      name: "state",
-      title: "Status",
-      options: { collapsible: true, collapsed: false },
+      name: 'state',
+      title: 'Status',
+      options: {collapsible: true, collapsed: false},
     },
   ],
   fields: [
     editorialState,
     accessState,
     {
-      name: "hasType",
-      title: "Klassifisert som",
-      titleEN: "Classified as",
-      description: "",
-      descriptionEN: "",
-      type: "array",
+      name: 'hasType',
+      title: 'Klassifisert som',
+      titleEN: 'Classified as',
+      description: '',
+      descriptionEN: '',
+      type: 'array',
       of: [
         {
-          type: "reference",
-          to: [{ type: "workType" }],
+          type: 'reference',
+          to: [{type: 'workType'}],
         },
       ],
       validation: (Rule) => Rule.required(),
@@ -39,21 +39,19 @@ export default {
       titleEN: 'Activity stream',
       description: 'Events and activities connected to this object',
       type: 'array',
-      of: [
-        {type: 'creation'}
-      ]
-    }
+      of: [{type: 'creation'}],
+    },
   ],
   preview: {
     select: {
-      title: 'label'
+      title: 'label',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {title} = selection
 
       return {
-        title: title
+        title: title,
       }
-    }
-  }
+    },
+  },
 }

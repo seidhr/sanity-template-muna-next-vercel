@@ -11,9 +11,7 @@ const DateBadge = (props) => {
   const parsedDate = parse(props.date, 'yyyyMMdd', new Date())
   const formatedDate = format(parsedDate, 'd. MMMM yyyy', {locale: sv})
 
-  return (
-    <DefaultBadge>{formatedDate}</DefaultBadge>
-  )
+  return <DefaultBadge>{formatedDate}</DefaultBadge>
 }
 
 export default DateBadge

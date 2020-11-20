@@ -1,14 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {
-  GoMegaphone as BlogIcon,
-  GoArchive as AllIcon
-} from 'react-icons/go'
+import {GoMegaphone as BlogIcon, GoArchive as AllIcon} from 'react-icons/go'
 
 // import PreviewIFrame from '../../src/components/previewIFrame'
 
 export const icons = {
   BlogIcon,
-  AllIcon
+  AllIcon,
 }
 
 const blog = S.listItem()
@@ -26,15 +23,19 @@ const blog = S.listItem()
             S.documentTypeList('post')
               .title('Published posts')
               .menuItems(S.documentTypeList('post').getMenuItems())
-              .filter('_type == "post" && publishedAt < now() && !(_id in path("drafts.**"))')
-              /* .child((documentId) =>
+              .filter('_type == "post" && publishedAt < now() && !(_id in path("drafts.**"))'),
+            /* .child((documentId) =>
                 S.document()
                   .documentId(documentId)
                   .schemaType('post')
                   .views([S.view.form(), PreviewIFrame()])
               ) */
           ),
-        S.documentTypeListItem('post').title('All posts').icon(AllIcon)/* ,
+        S.documentTypeListItem('post')
+          .title('All posts')
+          .icon(
+            AllIcon,
+          ) /* ,
         S.listItem()
           .title('Post by author')
           .child(
@@ -54,8 +55,8 @@ const blog = S.listItem()
                   )
                   .params({id})
               )
-          ) */
-      ])
+          ) */,
+      ]),
   )
 
 export default blog

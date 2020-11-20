@@ -6,24 +6,24 @@ export default {
     {
       title: 'Image',
       name: 'image',
-      type: 'mainImage'
-    }
+      type: 'mainImage',
+    },
   ],
   preview: {
     select: {
-      image: 'image'
+      image: 'image',
     },
-    prepare({ image }) {
+    prepare({image}) {
       if (!image) {
-        return { title: 'Illustration with no image' }
+        return {title: 'Illustration with no image'}
       }
       return {
         title: `Illustration`,
-        subtitle: `${image.caption ||
-          image.alt ||
-          'Missing capton or alt text'} | Size: ${image.size || 'default'}`,
-        media: image
+        subtitle: `${image.caption || image.alt || 'Missing capton or alt text'} | Size: ${
+          image.size || 'default'
+        }`,
+        media: image,
       }
-    }
-  }
+    },
+  },
 }

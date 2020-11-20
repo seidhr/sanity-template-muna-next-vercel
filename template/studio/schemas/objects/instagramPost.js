@@ -10,11 +10,11 @@ export default {
       title: 'URL',
       titleEN: 'URL',
       description: 'Visit an Instagram post in a browser and copy the URL',
-      type: 'url'
-    }
+      type: 'url',
+    },
   ],
   preview: {
     select: {url: 'url'},
-    component: InstagramPreview
-  }
+    component: InstagramPreview,
+  },
 }

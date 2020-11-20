@@ -1,4 +1,4 @@
-import { FaMapMarker } from "react-icons/fa";
+import {FaMapMarker} from 'react-icons/fa'
 
 import {
   editorialState,
@@ -7,17 +7,17 @@ import {
   referredToBy,
   identifiedBy,
   definedByGeoJSON,
-} from "../props";
-import { defaultFieldsets } from "../fieldsets";
+} from '../props'
+import {defaultFieldsets} from '../fieldsets'
 
 export default {
-  title: "Place",
-  name: "place",
-  description: "Should be fetched from KulturNav",
-  type: "document",
+  title: 'Place',
+  name: 'place',
+  description: 'Should be fetched from KulturNav',
+  type: 'document',
   initialValue: {
-    editorialState: "published",
-    accessState: "open",
+    editorialState: 'published',
+    accessState: 'open',
   },
   icon: FaMapMarker,
   fieldsets: defaultFieldsets,
@@ -27,14 +27,14 @@ export default {
     label,
     identifiedBy,
     {
-      name: "hasType",
-      title: "Klassifisert som",
-      titleEN: "Classified as",
-      type: "array",
+      name: 'hasType',
+      title: 'Klassifisert som',
+      titleEN: 'Classified as',
+      type: 'array',
       of: [
         {
-          type: "reference",
-          to: [{ type: "placeType" }],
+          type: 'reference',
+          to: [{type: 'placeType'}],
         },
       ],
     },
@@ -43,13 +43,13 @@ export default {
   ],
   preview: {
     select: {
-      title: "label.nor",
+      title: 'label.nor',
     },
     prepare(selection) {
-      const { title } = selection;
+      const {title} = selection
       return {
         title: title,
-      };
+      }
     },
   },
-};
+}

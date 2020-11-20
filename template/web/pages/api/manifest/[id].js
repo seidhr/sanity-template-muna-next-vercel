@@ -1,8 +1,11 @@
-import client, { previewClient } from '../../../lib/sanity'
+import client, {previewClient} from '../../../lib/sanity'
 const getClient = (preview) => (preview ? previewClient : client)
 
 async function constructManifest(object) {
-  const imageId = object[0].mainRepresentation.iiifImage.url.replace("production", "production/iiif")
+  const imageId = object[0].mainRepresentation.iiifImage.url.replace(
+    'production',
+    'production/iiif',
+  )
 
   let manifest = `{
     "@context": "http://iiif.io/api/presentation/3/context.json",
@@ -104,14 +107,14 @@ async function constructManifest(object) {
 
 export default async function handler(req, res) {
   const {
-    query: { id },
+    query: {id},
     method,
   } = req
   const preview = false
 
   async function getObject(id, preview = false) {
-    const results = await getClient(preview)
-      .fetch(`*[_id == $id] {
+    const results = await getClient(preview).fetch(
+      `*[_id == $id] {
         _id,
         label,
         mainRepresentation {
@@ -121,7 +124,8 @@ export default async function handler(req, res) {
           }
         }
       }`,
-      { id })
+      {id},
+    )
     return results
   }
 
@@ -134,7 +138,7 @@ export default async function handler(req, res) {
 
       const manifest = await constructedManifest
 
-      console.log("Manfest served: " + object[0]._id)
+      console.log('Manfest served: ' + object[0]._id)
       res.status(200).json(manifest)
       break
     default:

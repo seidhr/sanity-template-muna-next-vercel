@@ -5,41 +5,41 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       name: 'name',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'url',
-      type: 'url'
+      type: 'url',
     },
     {
       name: 'image',
-      type: 'image'
+      type: 'image',
     },
     {
       name: 'quote',
-      type: 'quote'
+      type: 'quote',
     },
     {
       name: 'tweet',
       type: 'url',
-      description: 'Tweet to embed'
-    }
+      description: 'Tweet to embed',
+    },
   ],
   preview: {
     select: {
       name: 'name',
-      media: 'image'
+      media: 'image',
     },
     prepare({name, media}) {
       return {
         title: 'Testimonial',
         subtitle: name,
-        media
+        media,
       }
-    }
-  }
+    },
+  },
 }

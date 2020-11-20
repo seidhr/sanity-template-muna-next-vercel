@@ -7,14 +7,7 @@ const InstagramPreview = ({value}) => {
     return <p>Missing URL for Instagram post</p>
   }
 
-  return (
-    <InstagramEmbed
-      url={url}
-      maxWidth={480}
-      containerTagName='div'
-      injectScript
-    />
-  )
+  return <InstagramEmbed url={url} maxWidth={480} containerTagName="div" injectScript />
 }
 
 export default InstagramPreview

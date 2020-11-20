@@ -1,7 +1,7 @@
 import React from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 
-const Preview = ({value: {blocks}}) => (<BlockContent blocks={blocks} />)
+const Preview = ({value: {blocks}}) => <BlockContent blocks={blocks} />
 
 export default {
   type: 'object',
@@ -9,25 +9,25 @@ export default {
   title: 'Grid',
   preview: {
     select: {
-      blocks: 'subtitle'
+      blocks: 'subtitle',
     },
-    component: Preview
+    component: Preview,
   },
   description: 'A big text. Centered. Keep it short to max 2-3 paragraphs.',
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       title: 'Title',
       name: 'title',
-      type: 'text'
+      type: 'text',
     },
     {
       title: 'Subtitle',
       name: 'subtitle',
-      type: 'simpleBlockContent'
+      type: 'simpleBlockContent',
     },
     {
       title: 'Columns',
@@ -37,43 +37,45 @@ export default {
         list: [
           {
             title: '1 column',
-            value: 'max1'
+            value: 'max1',
           },
           {
             title: '2 column',
-            value: 'max2'
+            value: 'max2',
           },
           {
             title: '3 column',
-            value: 'max3'
-          }
-        ]
-      }
+            value: 'max3',
+          },
+        ],
+      },
     },
     {
       title: 'Items',
       name: 'items',
       type: 'array',
-      of: [{
-        name: 'item',
-        type: 'object',
-        fields: [
-          {
-            name: 'title',
-            type: 'string'
-          },
-          {
-            name: 'content',
-            type: 'blockContent'
-          }
-        ]
-      }]
+      of: [
+        {
+          name: 'item',
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              type: 'string',
+            },
+            {
+              name: 'content',
+              type: 'blockContent',
+            },
+          ],
+        },
+      ],
     },
     {
       title: 'Anchor',
       name: 'anchor',
-      type: 'string'
-    }
+      type: 'string',
+    },
   ],
   /* preview: {
     select: {

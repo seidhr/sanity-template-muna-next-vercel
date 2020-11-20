@@ -7,8 +7,8 @@ const SelectAPI = (props) => {
   }
 
   return (
-    <form className='chooseAPI'>
-      <DefaultSelect label='Choose API' items={props.items} onChange={handleChange} />
+    <form className="chooseAPI">
+      <DefaultSelect label="Choose API" items={props.items} onChange={handleChange} />
     </form>
   )
 }

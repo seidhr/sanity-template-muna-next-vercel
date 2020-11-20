@@ -1,4 +1,4 @@
-import { timespanAsString } from '../helpers/helpers'
+import {timespanAsString} from '../helpers/helpers'
 
 export default {
   title: 'Timespan',
@@ -10,17 +10,17 @@ export default {
       title: 'Beginning',
       options: {
         collapsible: false,
-        columns: 2
-      }
+        columns: 2,
+      },
     },
     {
       name: 'ending',
       title: 'Ending',
       options: {
         collapsible: false,
-        columns: 2
-      }
-    }
+        columns: 2,
+      },
+    },
   ],
   fields: [
     {
@@ -31,8 +31,8 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'YYYY-MM-DD',
-        calendarTodayLabel: 'Today'
-      }
+        calendarTodayLabel: 'Today',
+      },
       // Validation on min/max date does not work, also handling of undefined is sub par
       // validation: Rule => Rule.max(Rule.valueOfField('endOfTheBegin')).max(Rule.valueOfField('BeginOfTheEnd')).max(Rule.valueOfField('endOfTheEnd'))
     },
@@ -44,8 +44,8 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'YYYY-MM-DD',
-        calendarTodayLabel: 'Today'
-      }
+        calendarTodayLabel: 'Today',
+      },
     },
     {
       name: 'date',
@@ -54,8 +54,8 @@ export default {
       type: 'datetime',
       options: {
         dateFormat: 'YYYY-MM-DD',
-        calendarTodayLabel: 'Today'
-      }
+        calendarTodayLabel: 'Today',
+      },
     },
     {
       name: 'beginOfTheEnd',
@@ -65,8 +65,8 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'YYYY-MM-DD',
-        calendarTodayLabel: 'Today'
-      }
+        calendarTodayLabel: 'Today',
+      },
     },
     {
       name: 'endOfTheEnd',
@@ -76,15 +76,15 @@ export default {
       type: 'date',
       options: {
         dateFormat: 'YYYY-MM-DD',
-        calendarTodayLabel: 'Today'
-      }
+        calendarTodayLabel: 'Today',
+      },
     },
     {
       name: 'description',
       title: 'Beskrivelse',
       titleEN: 'Description',
-      type: 'localeBlock'
-    }
+      type: 'localeBlock',
+    },
   ],
   preview: {
     select: {
@@ -93,22 +93,22 @@ export default {
       date: 'date',
       be: 'beginOfTheEnd',
       ee: 'endOfTheEnd',
-      blocks: 'description.nor'
+      blocks: 'description.nor',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {bb, eb, date, be, ee, blocks} = selection
-      const block = (blocks || []).find(block => block._type === 'block')
+      const block = (blocks || []).find((block) => block._type === 'block')
       const timespan = timespanAsString(bb, eb, date, be, ee, 'nb')
 
       return {
         title: timespan,
-        subtitle: block 
+        subtitle: block
           ? block.children
-            .filter((child) => child._type === "span")
-            .map((span) => span.text)
-            .join("")
-        : "No description"
+              .filter((child) => child._type === 'span')
+              .map((span) => span.text)
+              .join('')
+          : 'No description',
       }
-    }
-  }
+    },
+  },
 }

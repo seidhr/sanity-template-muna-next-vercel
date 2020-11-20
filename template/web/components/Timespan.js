@@ -1,46 +1,32 @@
-import { Box, Grid, Heading } from '@chakra-ui/core'
-import PortableTextBlock from './PortableTextBlock';
+import {Box, Grid, Heading} from '@chakra-ui/core'
+import PortableTextBlock from './PortableTextBlock'
 
 const formatDate = (date) => {
-  return new Date(date).toLocaleDateString();
+  return new Date(date).toLocaleDateString()
 }
 
 export default function Timespan({timespan}) {
-  if(!timespan) {
+  if (!timespan) {
     return null
   }
-  
+
   return (
     <Box fontFamily="Montserrat">
-      {timespan.map(time => (
+      {timespan.map((time) => (
         <Box key={time._key}>
-          {time.date && (
-            formatDate(time.date)
-          )}
-          
-          {time.beginOfTheBegin && (
-            formatDate(time.beginOfTheBegin)
-          )}
+          {time.date && formatDate(time.date)}
 
-          {time.endOfTheBegin && (
-            formatDate(time.endOfTheBegin)
-          )}
-          
-          {time.beginOfTheBegin && time.endOfTheEnd && (
-            <span>&nbsp;-</span>
-          )}
-          
-          {time.beginOfTheEnd && (
-            formatDate(time.beginOfTheEnd)
-          )}
+          {time.beginOfTheBegin && formatDate(time.beginOfTheBegin)}
 
-          {time.endOfTheEnd && (
-            formatDate(time.endOfTheEnd)
-          )}
-          
-          {time.description?.nor && (
-            <PortableTextBlock blocks={time.description.nor} />
-          )}
+          {time.endOfTheBegin && formatDate(time.endOfTheBegin)}
+
+          {time.beginOfTheBegin && time.endOfTheEnd && <span>&nbsp;-</span>}
+
+          {time.beginOfTheEnd && formatDate(time.beginOfTheEnd)}
+
+          {time.endOfTheEnd && formatDate(time.endOfTheEnd)}
+
+          {time.description?.nor && <PortableTextBlock blocks={time.description.nor} />}
         </Box>
       ))}
     </Box>

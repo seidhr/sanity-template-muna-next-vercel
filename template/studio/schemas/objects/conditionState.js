@@ -1,4 +1,4 @@
-import { valueSlider } from "../props"
+import {valueSlider} from '../props'
 
 export default {
   name: 'conditionState',
@@ -12,7 +12,7 @@ export default {
       titleEN: 'Classified as',
       type: 'reference',
       to: [{type: 'conditionType'}],
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     valueSlider,
     {
@@ -24,21 +24,21 @@ export default {
       options: {
         list: [
           {title: 'Missing', value: 'missing'},
-          {title: 'Partial remains', value: 'partialRemains'}
-        ]
-      }
-    }
+          {title: 'Partial remains', value: 'partialRemains'},
+        ],
+      },
+    },
   ],
   preview: {
     select: {
       type: 'hasType.label.nor',
-      value: 'value'
+      value: 'value',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {type, value} = selection
       return {
-        title: type + ': ' + value + ' / 100'
+        title: type + ': ' + value + ' / 100',
       }
-    }
-  }
+    },
+  },
 }

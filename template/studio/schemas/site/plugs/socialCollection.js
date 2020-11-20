@@ -5,22 +5,22 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       name: 'items',
       type: 'array',
-      validation: Rule => Rule.unique(),
-      of: [{type: 'social'}]
-    }
+      validation: (Rule) => Rule.unique(),
+      of: [{type: 'social'}],
+    },
   ],
   preview: {
     select: {
-      items: 'items'
+      items: 'items',
     },
     prepare: ({items}) => ({
       title: 'Social testimoinal collection',
-      subtitle: `${items.length} tweet(s)`
-    })
-  }
+      subtitle: `${items.length} tweet(s)`,
+    }),
+  },
 }

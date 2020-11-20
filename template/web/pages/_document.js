@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { ColorModeScript } from "@chakra-ui/core"
+import Document, {Html, Head, Main, NextScript} from 'next/document'
+import {ColorModeScript} from '@chakra-ui/core'
 
 export default class MyDocument extends Document {
   static getInitialProps(ctx) {

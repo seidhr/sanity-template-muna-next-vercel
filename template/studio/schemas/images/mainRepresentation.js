@@ -4,7 +4,7 @@ export default {
   type: 'image',
   options: {
     hotspot: true,
-    metadata: ['exif', 'location', 'lqip', 'palette']
+    metadata: ['exif', 'location', 'lqip', 'palette'],
   },
   fields: [
     {
@@ -13,14 +13,14 @@ export default {
       titleEN: 'Caption',
       type: 'localeString',
       options: {
-        isHighlighted: true
-      }
+        isHighlighted: true,
+      },
     },
   ],
   preview: {
     select: {
       imageUrl: 'asset.url',
-      title: 'caption'
-    }
-  }
+      title: 'caption',
+    },
+  },
 }

@@ -1,14 +1,7 @@
-import client, { previewClient } from './sanity'
+import client, {previewClient} from './sanity'
 const getClient = (preview) => (preview ? previewClient : client)
 
-const publicDocumentTypes = [
-  "madeObject",
-  "actor",
-  "group",
-  "concept",
-  "objectType",
-  "place"
-]
+const publicDocumentTypes = ['madeObject', 'actor', 'group', 'concept', 'objectType', 'place']
 
 const getUniqueDocuments = (items) => {
   const ids = new Set()
@@ -198,7 +191,7 @@ export async function getFrontpage() {
         },
         mainRepresentation,	
       }
-    }`
+    }`,
   )
   return data
 }
@@ -209,7 +202,7 @@ export async function getRoutes() {
       "id": _id,
       slug,
       _type
-    }`
+    }`,
   )
   return data
 }
@@ -244,7 +237,7 @@ export async function getRouteBySlug(id) {
           }
         }
     }`,
-    { id }
+    {id},
   )
   return data
 }
@@ -254,7 +247,7 @@ export async function getPreviewMadeObjectByID(id) {
     `*[_type == "madeObject" && _id == $id]{
       ${madeObjectFields}
     }`,
-    { id }
+    {id},
   )
   return data[0]
 }
@@ -305,50 +298,53 @@ export async function getAllConcepts() {
 }
 
 export async function getType(id, preview) {
-  const results = await getClient(preview)
-    .fetch(`*[_id == $id] {
+  const results = await getClient(preview).fetch(
+    `*[_id == $id] {
       "type": _type
-    }`, {id})
+    }`,
+    {id},
+  )
   return results
 }
 
 export async function getIdPaths(preview) {
-  const results = await getClient(preview)
-    .fetch(`*[_type in [...$publicDocumentTypes]] {
+  const results = await getClient(preview).fetch(
+    `*[_type in [...$publicDocumentTypes]] {
       "id": _id
-    }`, {publicDocumentTypes})
+    }`,
+    {publicDocumentTypes},
+  )
   return results
 }
 
 export async function getId(id, type, preview) {
-  const results = await getClient(preview)
-    .fetch(`{
+  const results = await getClient(preview).fetch(
+    `{
       "item": *[_id == $id][0] {
-        ${type[0].type === "madeObject" ? madeObjectFields : ''}
-        ${type[0].type === "actor" ? groupFields : ''}
-        ${type[0].type === "group" ? groupFields : ''}
-        ${type[0].type === "place" ? groupFields : ''}
-        ${type[0].type === "concept" ? groupFields : ''}
-        ${type[0].type === "objectType" ? groupFields : ''}
+        ${type[0].type === 'madeObject' ? madeObjectFields : ''}
+        ${type[0].type === 'actor' ? groupFields : ''}
+        ${type[0].type === 'group' ? groupFields : ''}
+        ${type[0].type === 'place' ? groupFields : ''}
+        ${type[0].type === 'concept' ? groupFields : ''}
+        ${type[0].type === 'objectType' ? groupFields : ''}
       },
       ${defaultNavMenu}
     }`,
-    { id })
+    {id},
+  )
   return results
 }
 
 export async function getAlert(preview) {
-  const results = await getClient(preview)
-    .fetch(`*[_type == "alert"][0] | order(_createdAt desc) {
+  const results = await getClient(preview).fetch(`*[_type == "alert"][0] | order(_createdAt desc) {
       ...
-    }`
-    )
+    }`)
   return results
 }
 
 export async function getManifest(id, preview = false) {
-  const results = await getClient(preview)
-    .fetch(`*[_id == $id] {
+  const results = await getClient(preview).fetch(
+    `*[_id == $id] {
       _id,
       mainRepresentation {
         ...,
@@ -357,6 +353,7 @@ export async function getManifest(id, preview = false) {
         }
       }
     }`,
-    { id })
+    {id},
+  )
   return results
 }

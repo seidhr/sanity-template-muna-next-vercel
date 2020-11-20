@@ -10,44 +10,44 @@ export default {
       title: 'Settings',
       options: {
         collapsible: true,
-        collapsed: true
-      }
-    }
+        collapsed: true,
+      },
+    },
   ],
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       name: 'title',
       type: 'string',
-      title: 'Title'
+      title: 'Title',
     },
     {
       name: 'posterFrame',
       type: 'image',
-      title: 'Poster frame'
+      title: 'Poster frame',
     },
     {
       name: 'muted',
       title: 'Muted',
       description: 'Must be true if autoplay',
       type: 'boolean',
-      fieldset: 'settings'
+      fieldset: 'settings',
     },
     {
       name: 'controls',
       title: 'Controls',
       description: 'Show controls like play/pause etc',
       type: 'boolean',
-      fieldset: 'settings'
+      fieldset: 'settings',
     },
     {
       name: 'loop',
       title: 'Loop',
       type: 'boolean',
-      fieldset: 'settings'
+      fieldset: 'settings',
     },
     {
       name: 'preload',
@@ -55,8 +55,8 @@ export default {
       type: 'string',
       fieldset: 'settings',
       options: {
-        list: ['auto', 'none', 'metadata']
-      }
+        list: ['auto', 'none', 'metadata'],
+      },
     },
     {
       name: 'autoplay',
@@ -68,18 +68,18 @@ export default {
         list: [
           {
             title: 'None',
-            value: 'off'
+            value: 'off',
           },
           {
             title: 'Always',
-            value: 'on'
+            value: 'on',
           },
           {
             title: 'When in viewport',
-            value: 'viewport'
-          }
-        ]
-      }
+            value: 'viewport',
+          },
+        ],
+      },
     },
     {
       name: 'versions',
@@ -105,56 +105,56 @@ export default {
                 file: 'file.asset.originalFilename',
                 size: 'file.asset.size',
                 media: 'media',
-                type: 'type'
+                type: 'type',
               },
               prepare(selection) {
                 return {
                   title: selection.file,
-                  subtitle: `${Math.round(
-                    selection.size / 1024 / 1024
-                    )}Mb ${selection.type || ''} ${selection.media || ''}`
-                  }
-              }
-            }
+                  subtitle: `${Math.round(selection.size / 1024 / 1024)}Mb ${
+                    selection.type || ''
+                  } ${selection.media || ''}`,
+                }
+              },
+            },
           },
           fields: [
             {
               name: 'file',
               title: 'File',
-              type: 'file'
+              type: 'file',
             },
             {
               title: 'Type',
               name: 'type',
               type: 'string',
               options: {
-                list: ['video/mp4', 'video/webm', 'video/ogg']
-              }
+                list: ['video/mp4', 'video/webm', 'video/ogg'],
+              },
             },
             {
               title: 'Media',
               name: 'media',
               type: 'string',
               options: {
-                list: ['all and (max-width:768px)', 'all and (min-width:769px)']
-              }
-            }
-          ]
-        }
-      ]
-    }
+                list: ['all and (max-width:768px)', 'all and (min-width:769px)'],
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
   preview: {
     select: {
       title: 'title',
-      media: 'posterFrame'
+      media: 'posterFrame',
     },
     prepare({title, media}) {
       return {
         title: 'Video Plug',
         media,
-        subtitle: title
+        subtitle: title,
       }
-    }
+    },
   },
 }

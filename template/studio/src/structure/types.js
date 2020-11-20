@@ -1,7 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {
-  FaTags
-} from 'react-icons/fa'
+import {FaTags} from 'react-icons/fa'
 
 // import PreviewIFrame from '../../src/components/previewIFrame'
 
@@ -34,8 +32,8 @@ const types = S.listItem()
         S.documentTypeListItem('textType').title('Tekststype'),
         S.documentTypeListItem('conditionType').title('Tilstandstype'),
         S.documentTypeListItem('exhibitionType').title('Utstillingstype'),
-        S.documentTypeListItem('workType').title('Verkstype')
-      ])
+        S.documentTypeListItem('workType').title('Verkstype'),
+      ]),
   )
 
 export default types

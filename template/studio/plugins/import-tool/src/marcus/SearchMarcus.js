@@ -5,14 +5,11 @@ import Filters from './components/Filters'
 import Results from './components/Results'
 import Search from './components/Search'
 
-function SearchMarcus () {
+function SearchMarcus() {
   const marcus = 'https://jambo.uib.no/elasticsearch'
 
   return (
-    <ReactiveBase
-      app='marcus-prod'
-      url={marcus}
-    >
+    <ReactiveBase app="marcus-prod" url={marcus}>
       <Search />
       <Wrapper>
         <Filters />

@@ -19,23 +19,27 @@ export const initialState = {
   page: 0,
   totalElements: 0,
   limit: 30,
-  errorMessage: null
+  errorMessage: null,
 }
 
 const SearchKulturnav = () => {
   const [state, dispatch] = useReducer(searchReducer, initialState)
 
   useEffect(() => {
-    fetch(state.apiURL + new URLSearchParams({
-      page: state.page,
-      size: state.limit,
-      digitalAccessibleOnly: true}))
-      .then(response => response.json())
-      .then(jsonResponse => {
+    fetch(
+      state.apiURL +
+        new URLSearchParams({
+          page: state.page,
+          size: state.limit,
+          digitalAccessibleOnly: true,
+        }),
+    )
+      .then((response) => response.json())
+      .then((jsonResponse) => {
         dispatch({
           type: 'SEARCH_SUCCESS',
           payload: jsonResponse._embedded.items,
-          totalElements: jsonResponse.page.totalElements
+          totalElements: jsonResponse.page.totalElements,
         })
       })
   }, [])
@@ -46,27 +50,31 @@ const SearchKulturnav = () => {
 
     dispatch({
       type: 'SEARCH_REQUEST',
-      searchParameter: state.searchParameter
+      searchParameter: state.searchParameter,
     })
 
-    fetch(state.apiURL + new URLSearchParams({
-      q: state.searchParameter ? state.searchParameter : '',
-      page: page,
-      size: state.limit,
-      digitalAccessibleOnly: true}))
-      .then(response => response.json())
-      .then(jsonResponse => {
+    fetch(
+      state.apiURL +
+        new URLSearchParams({
+          q: state.searchParameter ? state.searchParameter : '',
+          page: page,
+          size: state.limit,
+          digitalAccessibleOnly: true,
+        }),
+    )
+      .then((response) => response.json())
+      .then((jsonResponse) => {
         if (jsonResponse.page && jsonResponse.page.totalElements) {
           dispatch({
             type: 'SEARCH_SUCCESS',
             payload: jsonResponse._embedded.items,
             totalElements: jsonResponse.page.totalElements,
-            page: page
+            page: page,
           })
         } else {
           dispatch({
             type: 'SEARCH_FAILURE',
-            error: jsonResponse.Error
+            error: jsonResponse.Error,
           })
         }
       })
@@ -77,27 +85,31 @@ const SearchKulturnav = () => {
 
     dispatch({
       type: 'SEARCH_REQUEST',
-      searchParameter: searchValue
+      searchParameter: searchValue,
     })
 
-    fetch(IMPORT_API_URL + new URLSearchParams({
-      q: searchValue,
-      page: 0,
-      size: state.limit,
-      digitalAccessibleOnly: true}))
-      .then(response => response.json())
-      .then(jsonResponse => {
+    fetch(
+      IMPORT_API_URL +
+        new URLSearchParams({
+          q: searchValue,
+          page: 0,
+          size: state.limit,
+          digitalAccessibleOnly: true,
+        }),
+    )
+      .then((response) => response.json())
+      .then((jsonResponse) => {
         if (jsonResponse.page && jsonResponse.page.totalElements) {
           dispatch({
             type: 'SEARCH_SUCCESS',
             payload: jsonResponse._embedded.items,
             totalElements: jsonResponse.page.totalElements,
-            page: 0
+            page: 0,
           })
         } else {
           dispatch({
             type: 'SEARCH_FAILURE',
-            error: jsonResponse.Error
+            error: jsonResponse.Error,
           })
         }
       })
@@ -123,15 +135,21 @@ const SearchKulturnav = () => {
         nextClassName={styles.next}
         breakClassName={styles.break}
         activeClassName={styles.active}
-        onPageChange={handlePageClick} />
+        onPageChange={handlePageClick}
+      />
       <div className={styles.grid}>
         {loading && !errorMessage ? (
           <span>loading... </span>
         ) : errorMessage ? (
-          <div className='errorMessage'>{errorMessage}</div>
+          <div className="errorMessage">{errorMessage}</div>
         ) : (
           items.map((item) => (
-            <Preview key={item.id} item={item} searchValue={searchParameter} onClick={chooseItemNB} />
+            <Preview
+              key={item.id}
+              item={item}
+              searchValue={searchParameter}
+              onClick={chooseItemNB}
+            />
           ))
         )}
       </div>

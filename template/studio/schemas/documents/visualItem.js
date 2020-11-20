@@ -11,7 +11,7 @@ export default {
       title: 'Tittel',
       titleEN: 'Title',
       type: 'localeString',
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'activityStream',
@@ -19,21 +19,19 @@ export default {
       titleEN: 'Activity stream',
       description: 'Events and activities connected to this object',
       type: 'array',
-      of: [
-        {type: 'creation'}
-      ]
-    }
+      of: [{type: 'creation'}],
+    },
   ],
   preview: {
     select: {
-      title: 'label.nor'
+      title: 'label.nor',
     },
-    prepare (selection) {
+    prepare(selection) {
       const {title} = selection
 
       return {
-        title: title
+        title: title,
       }
-    }
-  }
+    },
+  },
 }

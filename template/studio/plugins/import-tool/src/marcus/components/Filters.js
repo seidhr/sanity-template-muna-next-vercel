@@ -42,47 +42,43 @@ import {MultiList, SingleList, ToggleButton} from '@appbaseio/reactivesearch'
 const AllFilters = () => (
   <>
     <ToggleButton
-      componentId='digitized'
-      dataField='isDigitized'
-      data={[
-        {label: 'Only digitized', value: 'Digitalisert'}
-      ]}
-      title='Show'
+      componentId="digitized"
+      dataField="isDigitized"
+      data={[{label: 'Only digitized', value: 'Digitalisert'}]}
+      title="Show"
       defaultValue={['Digitalisert']}
       multiSelect
       showFilter
-      filterLabel='Digitized'
+      filterLabel="Digitized"
       URLParams={false}
     />
     <ToggleButton
-      componentId='zoom'
-      dataField='hasZoom'
-      data={[
-        {label: 'With zoom', value: 'Med DeepZoom'}
-      ]}
+      componentId="zoom"
+      dataField="hasZoom"
+      data={[{label: 'With zoom', value: 'Med DeepZoom'}]}
       defaultValue={['Med DeepZoom']}
-      title=''
+      title=""
       showFilter
-      filterLabel='Digitized'
+      filterLabel="Digitized"
       URLParams={false}
     />
     <SingleList
-      dataField='type.exact'
-      title='Types'
-      componentId='types'
-      queryFormat='and'
+      dataField="type.exact"
+      title="Types"
+      componentId="types"
+      queryFormat="and"
       react={{
-        and: ['digitized', 'zoom']
+        and: ['digitized', 'zoom'],
       }}
     />
     <MultiList
-      dataField='maker.exact'
+      dataField="maker.exact"
       showSearch={false}
-      title='Makers'
-      componentId='makers'
-      queryFormat='or'
+      title="Makers"
+      componentId="makers"
+      queryFormat="or"
       react={{
-        and: ['search', 'digitized', 'zoom', 'types', 'makers']
+        and: ['search', 'digitized', 'zoom', 'types', 'makers'],
       }}
     />
   </>

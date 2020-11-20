@@ -1,12 +1,12 @@
 import dynamic from 'next/dynamic'
-import { ViewIcon } from '@chakra-ui/icons'
+import {ViewIcon} from '@chakra-ui/icons'
 import {
   Box,
   Button,
-  Grid, 
-  Container, 
+  Grid,
+  Container,
   Divider,
-  Heading, 
+  Heading,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -26,37 +26,30 @@ import HasType from '../HasType'
 import Subject from '../Subject'
 import CurrentOwner from '../CurrentOwner'
 
-const MiradorWithNoSSR = dynamic(
-  () => import('../Mirador'),
-  { ssr: false }
-)
+const MiradorWithNoSSR = dynamic(() => import('../Mirador'), {ssr: false})
 
 export default function MadeObject(item) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const { hasCopied, onCopy } = useClipboard(JSON.stringify(item, null, 2))
+  const {isOpen, onOpen, onClose} = useDisclosure()
+  const {hasCopied, onCopy} = useClipboard(JSON.stringify(item, null, 2))
 
   return (
     <>
-      <Grid 
+      <Grid
         w="100%"
         p={5}
         gridGap={{xl: 5, base: 0}}
         alignContent="start"
-        gridTemplateAreas={{ xl: `"image image metadata"`, base: `"image" "metadata"`}}
-        gridTemplateColumns={{ xl: "1fr 1fr 1fr", base: "1fr" }}
+        gridTemplateAreas={{xl: `"image image metadata"`, base: `"image" "metadata"`}}
+        gridTemplateColumns={{xl: '1fr 1fr 1fr', base: '1fr'}}
       >
         <Container maxW="md" gridArea="metadata">
-          {item.mainRepresentation?.palette && (
-            <Palette colors={item.mainRepresentation.palette} />
-          )}
+          {item.mainRepresentation?.palette && <Palette colors={item.mainRepresentation.palette} />}
 
           <Heading mt={5} mb={5}>
             {item.label}
           </Heading>
 
-          {item.hasType && (
-            <HasType types={item.hasType} />
-          )}
+          {item.hasType && <HasType types={item.hasType} />}
 
           {item?.referredToBy && (
             <Box>
@@ -64,15 +57,14 @@ export default function MadeObject(item) {
             </Box>
           )}
 
-          {item.subject && (
-            <Subject subjects={item.subject} />
-          )}     
-          
-          {item.hasCurrentOwner && (
-            <CurrentOwner owners={item.hasCurrentOwner} />
-          )}
+          {item.subject && <Subject subjects={item.subject} />}
+
+          {item.hasCurrentOwner && <CurrentOwner owners={item.hasCurrentOwner} />}
           <Wrap>
-            <Button marginLeft={5} onClick={onOpen}><ViewIcon mr={2} />Data</Button> 
+            <Button marginLeft={5} onClick={onOpen}>
+              <ViewIcon mr={2} />
+              Data
+            </Button>
           </Wrap>
         </Container>
 
@@ -105,28 +97,17 @@ export default function MadeObject(item) {
 
       <Divider />
 
-      {item.depicts && (
-        <Depicts depicted={item.depicts} />
-      )}
-      
-      {item.activityStream && (
-        <ActivityStream stream={item.activityStream} />
-      )}
-      
-      <Modal 
-        isOpen={isOpen} 
-        size="full" 
-        onClose={onClose}
-        scrollBehavior="inside"
-      >
+      {item.depicts && <Depicts depicted={item.depicts} />}
+
+      {item.activityStream && <ActivityStream stream={item.activityStream} />}
+
+      <Modal isOpen={isOpen} size="full" onClose={onClose} scrollBehavior="inside">
         <ModalOverlay>
           <ModalContent>
             <ModalHeader>JSON</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-            <pre>
-              {JSON.stringify(item, null, 2)}
-            </pre>
+              <pre>{JSON.stringify(item, null, 2)}</pre>
             </ModalBody>
 
             <ModalFooter>
@@ -134,7 +115,7 @@ export default function MadeObject(item) {
                 Close
               </Button>
               <Button onClick={onCopy} ml={2}>
-                {hasCopied ? "Copied" : "Copy"}
+                {hasCopied ? 'Copied' : 'Copy'}
               </Button>
             </ModalFooter>
           </ModalContent>

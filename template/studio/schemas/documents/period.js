@@ -1,44 +1,37 @@
-import { FaEmpire } from "react-icons/fa";
-import {
-  timespan,
-  editorialState,
-  accessState,
-  label,
-  referredToBy,
-  tookPlaceAt,
-} from "../props";
-import { coalesceLabel } from "../helpers/helpers";
+import {FaEmpire} from 'react-icons/fa'
+import {timespan, editorialState, accessState, label, referredToBy, tookPlaceAt} from '../props'
+import {coalesceLabel} from '../helpers/helpers'
 
 export default {
-  title: "Period",
-  name: "period",
-  description: "Should be fetched from KulturNav",
-  type: "document",
+  title: 'Period',
+  name: 'period',
+  description: 'Should be fetched from KulturNav',
+  type: 'document',
   initialValue: {
-    editorialState: "published",
-    accessState: "open",
+    editorialState: 'published',
+    accessState: 'open',
   },
   icon: FaEmpire,
   fieldsets: [
     {
-      name: "state",
-      title: "Status",
-      options: { collapsible: true, collapsed: false },
+      name: 'state',
+      title: 'Status',
+      options: {collapsible: true, collapsed: false},
     },
     {
-      name: "minimum",
-      title: "Basic metadata",
-      options: { collapsible: true, collapsed: false },
+      name: 'minimum',
+      title: 'Basic metadata',
+      options: {collapsible: true, collapsed: false},
     },
     {
-      name: "timelineMedium",
-      title: "Hovedbilde (brukt i tidslinke)",
-      options: { collapsible: true, collapsed: true },
+      name: 'timelineMedium',
+      title: 'Hovedbilde (brukt i tidslinke)',
+      options: {collapsible: true, collapsed: true},
     },
     {
-      name: "relations",
-      title: "Relations to other stuff",
-      options: { collapsible: true, collapsed: false },
+      name: 'relations',
+      title: 'Relations to other stuff',
+      options: {collapsible: true, collapsed: false},
     },
   ],
   fields: [
@@ -47,55 +40,55 @@ export default {
     label,
     {
       ...referredToBy,
-      fieldset: "minimum",
+      fieldset: 'minimum',
     },
     {
       ...timespan,
-      fieldset: "minimum",
+      fieldset: 'minimum',
     },
     {
       ...tookPlaceAt,
-      fieldset: "minimum",
+      fieldset: 'minimum',
     },
     {
-      name: "media",
-      title: "Media",
-      titleEN: "Media",
-      type: "mediaObject",
-      fieldset: "timelineMedium",
+      name: 'media',
+      title: 'Media',
+      titleEN: 'Media',
+      type: 'mediaObject',
+      fieldset: 'timelineMedium',
     },
     {
-      name: "consistsOf",
-      title: "Består av",
-      titleEN: "consistsOf",
-      type: "array",
-      of: [{ type: "reference", to: [{ type: "period" }, { type: "event" }] }],
+      name: 'consistsOf',
+      title: 'Består av',
+      titleEN: 'consistsOf',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'period'}, {type: 'event'}]}],
       options: {
-        editModal: "fullscreen",
+        editModal: 'fullscreen',
       },
     },
     {
-      name: "definingSTV",
-      title: "Definert av STV",
-      titleEN: "Defining STC",
-      type: "spacetimeVolume",
+      name: 'definingSTV',
+      title: 'Definert av STV',
+      titleEN: 'Defining STC',
+      type: 'spacetimeVolume',
       options: {
-        editModal: "fullscreen",
+        editModal: 'fullscreen',
       },
     },
   ],
   preview: {
     select: {
-      type: "hasType.0.label",
-      title: "label",
+      type: 'hasType.0.label',
+      title: 'label',
     },
     prepare(selection) {
-      const { title, type } = selection;
+      const {title, type} = selection
 
       return {
         title: coalesceLabel(title),
         subtitle: coalesceLabel(type),
-      };
+      }
     },
   },
-};
+}

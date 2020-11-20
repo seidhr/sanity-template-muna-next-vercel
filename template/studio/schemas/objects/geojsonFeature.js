@@ -1,30 +1,30 @@
 export default {
-  title: "Feature",
-  name: "geojsonFeature",
-  type: "object",
+  title: 'Feature',
+  name: 'geojsonFeature',
+  type: 'object',
   fields: [
     {
-      name: "geometry",
-      title: "Geometri",
-      titleEN: "Geometry",
-      type: "geojsonPoint",
+      name: 'geometry',
+      title: 'Geometri',
+      titleEN: 'Geometry',
+      type: 'geojsonPoint',
     },
     {
-      name: "properties",
-      title: "Egenskaper",
-      titleEN: "Propterties",
-      type: "geojsonProperties",
+      name: 'properties',
+      title: 'Egenskaper',
+      titleEN: 'Propterties',
+      type: 'geojsonProperties',
     },
   ],
   preview: {
     select: {
-      type: "properties.type",
+      type: 'properties.type',
     },
     prepare(selection) {
-      const { type } = selection;
+      const {type} = selection
       return {
-        title: type || "Point",
-      };
+        title: type || 'Point',
+      }
     },
   },
-};
+}

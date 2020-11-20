@@ -6,32 +6,32 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       title: 'Title',
       description: 'Only for internal use',
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'html',
       name: 'html',
       type: 'code',
       options: {
-        language: 'html'
-      }
-    }
+        language: 'html',
+      },
+    },
   ],
   preview: {
     select: {
-      title: 'title'
+      title: 'title',
     },
     prepare({title}) {
       return {
         title,
-        subtitle: 'Custom HTML'
+        subtitle: 'Custom HTML',
       }
-    }
-  }
+    },
+  },
 }

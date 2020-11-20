@@ -4,7 +4,7 @@ import {upperFirst} from 'lodash'
 import * as SectionComponents from './sections'
 import Header from './Header'
 
-function resolveSections (section) {
+function resolveSections(section) {
   // eslint-disable-next-line import/namespace
   const Section = SectionComponents[upperFirst(section._type)]
 
@@ -16,7 +16,7 @@ function resolveSections (section) {
   return null
 }
 
-function RenderSections (props) {
+function RenderSections(props) {
   const {sections} = props
 
   if (!sections) {
@@ -26,7 +26,7 @@ function RenderSections (props) {
 
   return (
     <Fragment>
-      {sections.map(section => {
+      {sections.map((section) => {
         const SectionComponent = resolveSections(section)
         if (!SectionComponent) {
           return <div>Missing section {section._type}</div>
@@ -42,9 +42,9 @@ RenderSections.propTypes = {
     PropTypes.shape({
       _type: PropTypes.string,
       _key: PropTypes.string,
-      section: PropTypes.instanceOf(PropTypes.object)
-    })
-  )
+      section: PropTypes.instanceOf(PropTypes.object),
+    }),
+  ),
 }
 
 export default RenderSections

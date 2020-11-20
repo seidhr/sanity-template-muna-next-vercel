@@ -5,44 +5,43 @@ export default {
   fields: [
     {
       type: 'boolean',
-      name: 'disabled'
+      name: 'disabled',
     },
     {
       title: 'Title',
       name: 'title',
-      type: 'string'
+      type: 'string',
     },
     {
       title: 'Subtitle',
       name: 'subtitle',
-      type: 'simpleBlockContent'
+      type: 'simpleBlockContent',
     },
     {
       title: 'First column',
       name: 'firstColumn',
-      type: 'blockContent'
+      type: 'blockContent',
     },
     {
       title: 'Second column',
       name: 'secondColumn',
-      type: 'blockContent'
+      type: 'blockContent',
     },
     {
       title: 'Anchor',
       name: 'anchor',
-      type: 'string'
-    }
-    
+      type: 'string',
+    },
   ],
   preview: {
     select: {
-      title: 'title'
+      title: 'title',
     },
     prepare({title}) {
       return {
         title: 'Two column',
-        subtitle: title
+        subtitle: title,
       }
-    }
-  }
+    },
+  },
 }
