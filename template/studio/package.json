@@ -34,8 +34,6 @@
     "jsonata": "^1.8.3",
     "jsonld": "^3.2.0",
     "lodash": "^4.17.20",
-    "mirador": "^3.0.0-rc.6",
-    "openseadragon-react-viewer": "^2.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
