@@ -6,9 +6,12 @@ class MunaDocs extends React.Component {
     return (
       <div className={styles.container}>
         <header className={styles.header}>
-          <h2 className={styles.title}>Muna resources</h2>
+          <h2 className={styles.title}>ᛗᚢᚾᚨ | MUNA</h2>
         </header>
         <div className={styles.content}>
+          <p>
+            Muna or ᛗᚢᚾᚨ means remember in norse. Muna is a schema and a Studio for Sanity that enables detailed descriptions of cultural heritage objects and knowledge about their contexts.
+          </p>
           <p>
             <a href="https://docs.muna.xyz/docs/model/introduction" target="_blank">
               Muna documentation
