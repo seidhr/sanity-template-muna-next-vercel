@@ -20,6 +20,7 @@ export default function getQuery(uri) {
         ubbont:madeBefore ?madeBefore ;
         ubbont:homepage ?homepage ;
         ubbont:image ?image ;
+        dct:license ?licenseLabel ;
         dct:subject ?subject ;
         dct:spatial ?spatial ;
         foaf:depicts ?depicts ;
@@ -39,6 +40,10 @@ export default function getQuery(uri) {
         OPTIONAL { ?uri dct:created ?created . }
         OPTIONAL { ?uri ubbont:madeAfter ?madeAfter . }
         OPTIONAL { ?uri ubbont:madeBefore ?madeBefore . }
+        OPTIONAL { 
+      	  ?uri dct:license ?license .
+      	  ?license rdfs:label ?licenseLabel .
+    	  }
         # Get multipage image
         OPTIONAL { 
           ?uri ubbont:hasRepresentation / dct:hasPart ?page .
