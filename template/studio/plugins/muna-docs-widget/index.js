@@ -10,7 +10,9 @@ class MunaDocs extends React.Component {
         </header>
         <div className={styles.content}>
           <p>
-            Muna or ᛗᚢᚾᚨ means remember in norse. Muna is a schema and a Studio for Sanity that enables detailed descriptions of cultural heritage objects and knowledge about their contexts.
+            Muna or ᛗᚢᚾᚨ means remember in norse. Muna is a schema and a Studio for Sanity that
+            enables detailed descriptions of cultural heritage objects and knowledge about their
+            contexts.
           </p>
           <p>
             <a href="https://docs.muna.xyz/docs/model/introduction" target="_blank">

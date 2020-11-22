@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import mirador from 'mirador'
 
 class Mirador extends Component {
-  
   componentDidMount() {
     const {manifest} = this.props
 

@@ -17,6 +17,6 @@ export default {
       name: 'timestamp',
       title: 'Timestamp',
       type: 'datetime',
-    }
+    },
   ],
 }

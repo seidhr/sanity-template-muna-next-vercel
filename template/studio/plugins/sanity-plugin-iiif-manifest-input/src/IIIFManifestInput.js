@@ -42,7 +42,7 @@ export default class IIIFManifestInput extends React.Component {
         </FormField>
         {value && (
           <div className={styles.container}>
-            <Mirador config={value} /> 
+            <Mirador config={value} />
           </div>
         )}
       </div>

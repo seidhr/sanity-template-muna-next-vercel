@@ -16,7 +16,7 @@ export default {
     },
     {
       name: 'muna-docs-widget',
-      layout: { width: 'small' },
+      layout: {width: 'small'},
     },
     {name: 'project-users', layout: {height: 'auto'}},
     {

@@ -189,7 +189,7 @@ export default {
       title: 'Was output of',
       type: 'dataTransferEvent',
       hidden: true,
-    }
+    },
   ],
   preview: {
     select: {
