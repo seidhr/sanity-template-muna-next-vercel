@@ -27,8 +27,10 @@ export default function getQuery(uri) {
         foaf:maker ?maker .
       ?subject ?subjectP ?subjectO .
       ?spatial ?spatialP ?spatialO .
-      ?depicts foaf:name ?depictsLabel .
-      ?maker foaf:name ?makerLabel .
+      ?depicts foaf:name ?depictsLabel ;
+        dct:identifier ?depictsIdentifier .
+      ?maker foaf:name ?makerLabel ;
+        dct:identifier ?makerIdentifier .
     } WHERE { 
       GRAPH ?g {
         VALUES ?uri {<${uri}>}
@@ -41,8 +43,7 @@ export default function getQuery(uri) {
         OPTIONAL { ?uri ubbont:madeAfter ?madeAfter . }
         OPTIONAL { ?uri ubbont:madeBefore ?madeBefore . }
         OPTIONAL { 
-      	  ?uri dct:license ?license .
-      	  ?license rdfs:label ?licenseLabel .
+      	  ?uri dct:license / rdfs:label ?licenseLabel .
     	  }
         # Get multipage image
         OPTIONAL { 
@@ -73,10 +74,12 @@ export default function getQuery(uri) {
         OPTIONAL { 
           ?uri foaf:depicts ?depicts . 
           ?depicts foaf:name ?depictsLabel .
+          ?depicts dct:identifier ?depictsIdentifier .
         }
         OPTIONAL { 
           ?uri foaf:maker ?maker . 
           ?maker foaf:name ?makerLabel .
+          ?maker dct:identifier ?makerIdentifier .
         }
       } 
     }

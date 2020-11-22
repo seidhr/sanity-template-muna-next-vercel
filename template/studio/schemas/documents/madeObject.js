@@ -184,6 +184,12 @@ export default {
       ...hasFormerOrCurrentOwner,
       fieldset: 'ownership',
     },
+    {
+      name: 'wasOutputOf',
+      title: 'Was output of',
+      type: 'dataTransferEvent',
+      hidden: true,
+    }
   ],
   preview: {
     select: {

@@ -84,6 +84,7 @@ export default async function getFrame(data, uri) {
       bibo: 'http://purl.org/ontology/bibo/',
     },
     '@type': type,
+    '@embed': '@always',
   }
 
   return frame

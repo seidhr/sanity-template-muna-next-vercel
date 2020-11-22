@@ -49,6 +49,7 @@ export const chooseItem = async (uri) => {
 
     // Remove json-ld context
     const cleanJSON = omit(framed, ['@context'])
+    console.log(cleanJSON)
 
     // Map type to Sanity types
     const types = mapMediatypes([cleanJSON.type])

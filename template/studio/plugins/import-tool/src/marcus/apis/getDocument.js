@@ -1,6 +1,6 @@
 import {nanoid} from 'nanoid'
 import {parse} from 'date-fns'
-import { mapLicenses } from './mapLicenses'
+import {mapLicenses} from './mapLicenses'
 
 export default function getDocument(item, types, assetID) {
   const parseDate = (date) => {
@@ -195,26 +195,24 @@ export default function getDocument(item, types, assetID) {
         },
       ],
       ...(types.length > 0 && {hasType: types}),
-      wasOutputOf: [
-        {
-          _type: 'dataTransferEvent',
+      wasOutputOf: {
+        _type: 'dataTransferEvent',
+        _key: nanoid(),
+        /* _id: nanoid(36), <- Insert if this is to be changed to a reference */
+        transferred: {
+          _type: 'digitalObject',
           _key: nanoid(),
-          _id: nanoid(36),
-          transferred: {
-            _type: 'digitalObject',
-            _key: nanoid(),
-            _id: item.id,
-            value: `"${JSON.stringify(item, null, 0)}"`,
-          },
-          date: new Date(),
-          hasSender: {
-            _type: 'digitalDevice',
-            _key: nanoid(),
-            _id: nanoid(36),
-            label: 'sparql.ub.uib.no',
-          },
+          /* _id: item.id, */
+          value: `"${JSON.stringify(item, null, 0)}"`,
         },
-      ],
+        timestamp: new Date(),
+        hasSender: {
+          _type: 'digitalDevice',
+          _key: nanoid(),
+          /* _id: nanoid(36), */
+          label: 'sparql.ub.uib.no',
+        },
+      },
     },
   ]
   console.log(doc)
