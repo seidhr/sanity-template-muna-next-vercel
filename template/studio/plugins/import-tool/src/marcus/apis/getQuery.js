@@ -27,8 +27,8 @@ export default function getQuery(uri) {
         foaf:maker ?maker .
       ?subject ?subjectP ?subjectO .
       ?spatial ?spatialP ?spatialO .
-      ?depicts ?depictsP ?depictsO .
-      ?maker ?makerP ?makerO .
+      ?depicts foaf:name ?depictsLabel .
+      ?maker foaf:name ?makerLabel .
     } WHERE { 
       GRAPH ?g {
         VALUES ?uri {<${uri}>}
@@ -72,13 +72,11 @@ export default function getQuery(uri) {
         }
         OPTIONAL { 
           ?uri foaf:depicts ?depicts . 
-          ?depicts ?depictsP ?depictsO .
-          FILTER(?depictsP != foaf:depiction && ?depictsP != foaf:made) .
+          ?depicts foaf:name ?depictsLabel .
         }
         OPTIONAL { 
           ?uri foaf:maker ?maker . 
-          ?maker ?makerP ?makerO .
-          FILTER(?makerP != foaf:depiction && ?makerP != foaf:made && ?makerP != ubbont:reproduced) .
+          ?maker foaf:name ?makerLabel .
         }
       } 
     }
