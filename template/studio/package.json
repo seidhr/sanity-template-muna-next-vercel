@@ -2,10 +2,6 @@
   "private": true,
   "name": "clean-muna-studio",
   "description": "Clean Sanity Studio with a Muna schema.",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:seidhr/sanity-muna-studio.git"
-  },
   "version": "0.0.0",
   "main": "package.json",
   "author": "Tarje Sælen Lavik <tarje.lavik@uib.no>",
