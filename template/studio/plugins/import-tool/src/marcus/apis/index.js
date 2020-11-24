@@ -35,7 +35,7 @@ export const chooseItem = async (uri) => {
 
     // Make sure we have arrays
     if (framed.subject && Array.isArray(framed.subject) === false) {
-      framed.subjects = [framed.subjects]
+      framed.subject = [framed.subject]
     }
     if (framed.spatial && Array.isArray(framed.spatial) === false) {
       framed.spatial = [framed.spatial]
