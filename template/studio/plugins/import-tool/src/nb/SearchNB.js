@@ -119,8 +119,8 @@ const SearchNB = () => {
 
   return (
     <div>
-      <p>{totalElements}</p>
       <Search search={search} />
+      <p>{totalElements}</p>
       <ReactPaginate
         previousLabel={'previous'}
         nextLabel={'next'}

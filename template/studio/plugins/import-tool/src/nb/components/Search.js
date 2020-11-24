@@ -19,7 +19,7 @@ const Search = (props) => {
   }
 
   return (
-    <form className="search">
+    <form>
       <Input
         value={searchValue}
         onChange={handleSearchInputChanges}
@@ -27,7 +27,7 @@ const Search = (props) => {
         isClearable
         onClear={() => handleClear('')}
       />
-      <Button onClick={callSearchFunction} type="submit">
+      <Button style={{marginTop: '0.5em'}} onClick={callSearchFunction} type="submit">
         Søk
       </Button>
     </form>

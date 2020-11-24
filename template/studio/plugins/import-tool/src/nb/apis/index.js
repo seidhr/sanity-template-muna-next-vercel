@@ -1,6 +1,6 @@
 import client from 'part:@sanity/base/client'
 import {nanoid} from 'nanoid'
-import {mapMediatypes} from '../helpers'
+import {mapMediatypes} from './mapMediatypes'
 
 export const chooseItem = async (item) => {
   // Get a 200x200px thumbnail. Maybe change to a bigger size based on thumbnail_custom.
