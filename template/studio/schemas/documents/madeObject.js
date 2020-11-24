@@ -1,3 +1,5 @@
+import React from 'react'
+import {Link} from 'part:@sanity/base/router'
 import jsonata from 'jsonata'
 import {FaBookDead} from 'react-icons/fa'
 
@@ -42,7 +44,7 @@ export default {
     {
       name: 'state',
       title: 'Status',
-      options: {collapsible: true, collapsed: false},
+      options: {collapsible: true, collapsed: false, columns: 2},
     },
     {
       name: 'minimum',
@@ -93,7 +95,14 @@ export default {
       type: 'array',
       title: 'Klassifisert som',
       titleEN: 'Classified as',
-      description: '',
+      description: (
+        <span>
+          If the correct type is not available, create it here{' '}
+          <Link target="blank" href={'/desk/typer;objectType'}>
+            Object type list
+          </Link>
+        </span>
+      ),
       descriptionEN: '',
       fieldset: 'minimum',
       of: [

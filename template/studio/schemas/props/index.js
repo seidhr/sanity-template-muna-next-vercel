@@ -1,3 +1,5 @@
+import React from 'react'
+import {Link} from 'part:@sanity/base/router'
 import {licenseTypes} from '../vocabularies/defaultVocabularies'
 
 export const editorialState = {
@@ -9,7 +11,6 @@ export const editorialState = {
   validation: (Rule) => Rule.required(),
   options: {
     list: [
-      {title: 'Utkast', value: 'draft'},
       {title: 'Til gjennomgang', value: 'review'},
       {title: 'Publisert', value: 'published'},
     ],
@@ -405,6 +406,14 @@ export const tookPlaceAt = {
   name: 'tookPlaceAt',
   title: 'Skjedde ved',
   titleEN: 'Took place at',
+  description: (
+    <span>
+      If the place is not available, create it here{' '}
+      <Link target="blank" href={'/desk/steder'}>
+        Place list
+      </Link>
+    </span>
+  ),
   type: 'array',
   of: [{type: 'reference', to: [{type: 'place'}]}],
 }
