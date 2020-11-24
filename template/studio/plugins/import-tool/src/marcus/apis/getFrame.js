@@ -10,9 +10,7 @@ export default async function getFrame(data, uri) {
         return o['@id'] === uri
       })
     } else {
-      res = find(data, function (o) {
-        return o['@id'] === uri
-      })
+      return data
     }
     return res
   }
