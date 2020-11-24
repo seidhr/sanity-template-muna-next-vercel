@@ -78,12 +78,13 @@ export const chooseItem = async (uri) => {
     await createDoc(doc)
 
     return {
-      statusCode: 200,
+      success: true,
       body: JSON.stringify(document, asset),
     }
   } else {
-    // Handle errors
-    console.log(response.status, response.statusText)
-    throw Error
+    return {
+      success: false,
+      body: JSON.stringify(response.status, response.statusText),
+    }
   }
 }

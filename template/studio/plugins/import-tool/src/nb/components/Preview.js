@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Button from 'part:@sanity/components/buttons/default'
 import Card from 'part:@sanity/components/previews/card'
 import DefaultBadge from 'part:@sanity/components/badges/default'
@@ -6,6 +6,27 @@ import DateBadge from '../../components/DateBadge'
 import styled, {keyframes} from 'styled-components'
 
 const Preview = ({item, searchValue, onClick}) => {
+  const [isFetching, setIsFetching] = useState(false)
+  const [isImported, setIsImported] = useState(false)
+  const [buttonLabel, setButtonLabel] = useState('Import')
+
+  const onChooseItem = async (item) => {
+    setIsFetching(true)
+    setButtonLabel('...importing')
+    const importStatus = await onClick(item)
+
+    if (!importStatus.success) {
+      setIsFetching(false)
+      setButtonLabel('Import failed!')
+      console.log(importStatus.body)
+      return
+    }
+
+    setIsFetching(false)
+    setIsImported(true)
+    setButtonLabel('Imported!')
+  }
+
   return (
     <Container key={item.id}>
       <Card
@@ -28,8 +49,8 @@ const Preview = ({item, searchValue, onClick}) => {
         <ul>
           {item.metadata.creators && item.metadata.creators.map((creator) => <li>{creator}</li>)}
         </ul>
-        <Button inverted onClick={() => onClick(item)}>
-          Import
+        <Button inverted={isImported} disabled={isFetching} onClick={() => onChooseItem(item)}>
+          {buttonLabel}
         </Button>
         <a
           style={{marginLeft: '10px'}}

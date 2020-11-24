@@ -215,6 +215,6 @@ export default function getDocument(item, types, assetID) {
       },
     },
   ]
-  console.log(doc)
+
   return doc.filter(Boolean)
 }

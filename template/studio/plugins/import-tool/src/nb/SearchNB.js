@@ -6,7 +6,7 @@ import Preview from './components/Preview'
 import Search from './components/Search'
 import styles from '../ImportTool.css'
 import {searchReducer} from './reducers/searchReducer'
-import {chooseItemNB} from './apis/nb'
+import {chooseItem} from './apis'
 
 const IMPORT_API_URL = 'https://api.nb.no/catalog/v1/items/?'
 
@@ -144,12 +144,7 @@ const SearchNB = () => {
           <div className="errorMessage">{errorMessage}</div>
         ) : (
           items.map((item) => (
-            <Preview
-              key={item.id}
-              item={item}
-              searchValue={searchParameter}
-              onClick={chooseItemNB}
-            />
+            <Preview key={item.id} item={item} searchValue={searchParameter} onClick={chooseItem} />
           ))
         )}
       </div>
