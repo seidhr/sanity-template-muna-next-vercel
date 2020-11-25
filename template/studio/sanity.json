@@ -26,11 +26,14 @@
     "muna-logo",
     "muna-docs-widget",
     "iiif-manifest-input",
-    "graph-view"
+    "graph-view",
+    "leaflet-input"
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": [
+        "@sanity/vision"
+      ]
     }
   },
   "parts": [

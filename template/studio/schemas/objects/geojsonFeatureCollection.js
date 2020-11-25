@@ -29,29 +29,13 @@ export default {
   preview: {
     select: {
       title: 'label',
-      types: 'features',
     },
     prepare(selection) {
-      function pickTypes(arr) {
-        if (!arr && !arr.properties && !arr.properties[0].type) {
-          return
-        }
-        const result = arr
-          .map((x) => {
-            return x.properties.type
-          })
-          .filter(Boolean)
-          .join(', ')
-        return result
-      }
-
-      const {title, types} = selection
-      const type = types ? pickTypes(types) : ''
+      const {title} = selection
       const label = coalesceLabel(title)
 
       return {
-        title: label,
-        subtitle: type,
+        title: label || 'GeoJSON Feature Collection',
       }
     },
   },
