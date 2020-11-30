@@ -11,6 +11,7 @@ export default function MiradorGallery(props) {
   }
 
   const manifests = props.items.map((item) => item.manifest)
+  console.log(manifests)
 
   return (
     <Grid
@@ -18,7 +19,7 @@ export default function MiradorGallery(props) {
       p={5}
       gridGap={5}
       alignContent="start"
-      gridTemplateAreas={{xl: `"image image metadata"`, base: `"image" "metadata"`}}
+      gridTemplateAreas={{xl: '"image image metadata"', base: '"image" "metadata"'}}
       gridTemplateColumns={{xl: '6fr 6fr 2fr', base: '100%'}}
     >
       <Box gridArea="metadata">

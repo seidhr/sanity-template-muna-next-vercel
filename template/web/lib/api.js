@@ -181,7 +181,21 @@ export async function getFrontpage() {
             ...,
             "route": landingPageRoute->.slug.current
           }
-        } 
+        },
+        content[] {
+          ...,
+          _type == 'miradorGallery' => @{
+            ...,
+            items[] {
+              ...,
+              "manifest": manifestUrl,
+              _type == 'reference' => @-> {
+                "id": _id,
+              "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id)
+              }
+            },
+          }
+        }
       },
       "latest": *[ _type == "madeObject"][0..10] {
         "id": _id,
@@ -226,10 +240,10 @@ export async function getRouteBySlug(id) {
             _type == 'miradorGallery' => @{
               ...,
               items[] {
+                ...,
                 "manifest": manifestUrl,
                 _type == 'reference' => @-> {
                   "id": _id,
-                subjectOfManifest,
                 "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id)
                 }
               },
