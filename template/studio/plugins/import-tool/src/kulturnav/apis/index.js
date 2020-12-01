@@ -1,18 +1,18 @@
 import client from 'part:@sanity/base/client'
 import {nanoid} from 'nanoid'
-import {mapMediatypes} from '../../helpers'
+import {mapMediatypes} from './mapMediatypes'
 
-export const chooseItemNB = async (item) => {
+export const chooseItem = async (item) => {
   // Get a 200x200px thumbnail. Maybe change to a bigger size based on thumbnail_custom.
   const imageUrl = item._links.thumbnail_custom.href
 
   function customImageSize(image, h, w) {
     if (!image) {
       console.error('No image input')
-      return error
+      throw Error
     }
-    const height = '600' || h,
-      width = '600' || w
+    const height = '600' || h
+    const width = '600' || w
     const template = image.replace('{height}', height).replace('{width}', width)
     return template
   }
@@ -51,26 +51,24 @@ export const chooseItemNB = async (item) => {
     ],
     subjectOfManifest: item._links.presentation.href,
     hasType: types,
-    wasOutputOf: [
-      {
-        _type: 'dataTransferEvent',
+    wasOutputOf: {
+      _type: 'dataTransferEvent',
+      _key: nanoid(),
+      /* _ref: nanoid(36), <- uncomment if changed to a document in schema */
+      transferred: {
+        _type: 'digitalObject',
         _key: nanoid(),
-        _id: nanoid(36),
-        transferred: {
-          _type: 'digitalObject',
-          _key: nanoid(),
-          _id: item.id,
-          value: `"${JSON.stringify(item, null, 0)}"`,
-        },
-        date: new Date(),
-        hasSender: {
-          _type: 'digitalDevice',
-          _key: nanoid(),
-          _id: nanoid(36),
-          label: 'api.nb.no',
-        },
+        /* _ref: item.id, */
+        value: `"${JSON.stringify(item, null, 0)}"`,
       },
-    ],
+      timestamp: new Date(),
+      hasSender: {
+        _type: 'digitalDevice',
+        _key: nanoid(),
+        /* _ref: nanoid(36), */
+        label: 'api.nb.no',
+      },
+    },
   }
 
   /* TODO
@@ -89,11 +87,13 @@ export const chooseItemNB = async (item) => {
   }
 
   const getImageBlob = async (url) => {
+    // eslint-disable-next-line no-undef
     const response = fetch(url)
       .then((response) => response.body)
       .then((rs) => {
         const reader = rs.getReader()
 
+        // eslint-disable-next-line no-undef
         return new ReadableStream({
           async start(controller) {
             while (true) {
@@ -115,6 +115,7 @@ export const chooseItemNB = async (item) => {
         })
       })
       // Create a new response out of the stream
+      // eslint-disable-next-line no-undef
       .then((rs) => new Response(rs))
       // Create an object URL for the response
       .then((response) => response.blob())
@@ -187,10 +188,13 @@ export const chooseItemNB = async (item) => {
     }
 
     return {
-      statusCode: 200,
+      success: true,
       body: JSON.stringify(document, asset),
     }
   } catch (err) {
-    console.log('There was an error', err)
+    return {
+      success: false,
+      body: JSON.stringify(response.status, response.statusText),
+    }
   }
 }

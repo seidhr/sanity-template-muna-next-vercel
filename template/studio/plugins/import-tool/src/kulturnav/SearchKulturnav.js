@@ -6,13 +6,13 @@ import Preview from './components/Preview'
 import Search from './components/Search'
 import styles from '../ImportTool.css'
 import {searchReducer} from './reducers/searchReducer'
-import {chooseItemNB} from './apis/nb'
+import {chooseItem} from './apis'
 
-const IMPORT_API_URL = 'https://api.nb.no/catalog/v1/items/?'
+const IMPORT_API_URL = 'https://kulturnav.org/api/search/'
 
 export const initialState = {
   sourceAPI: 'nb',
-  apiURL: 'https://api.nb.no/catalog/v1/items/?',
+  apiURL: 'https://kulturnav.org/api/search/',
   loading: true,
   searchParameter: '',
   items: [],
@@ -22,27 +22,20 @@ export const initialState = {
   errorMessage: null,
 }
 
-const SearchKulturnav = () => {
+const SearchNB = () => {
   const [state, dispatch] = useReducer(searchReducer, initialState)
 
-  useEffect(() => {
-    fetch(
-      state.apiURL +
-        new URLSearchParams({
-          page: state.page,
-          size: state.limit,
-          digitalAccessibleOnly: true,
-        }),
-    )
+  /* useEffect(() => {
+    fetch(state.apiURL + new URLSearchParams({}))
       .then((response) => response.json())
       .then((jsonResponse) => {
         dispatch({
           type: 'SEARCH_SUCCESS',
-          payload: jsonResponse._embedded.items,
-          totalElements: jsonResponse.page.totalElements,
+          payload: jsonResponse,
+          totalElements: jsonResponse.length,
         })
       })
-  }, [])
+  }, []) */
 
   const handlePageClick = (data) => {
     let selected = data.selected
@@ -54,21 +47,17 @@ const SearchKulturnav = () => {
     })
 
     fetch(
-      state.apiURL +
-        new URLSearchParams({
-          q: state.searchParameter ? state.searchParameter : '',
-          page: page,
-          size: state.limit,
-          digitalAccessibleOnly: true,
-        }),
+      state.apiURL + 'actualEntityType:Person%20OR%20Concept,compoundName:' + state.searchParameter
+        ? state.searchParameter
+        : '' + new URLSearchParams({}),
     )
       .then((response) => response.json())
       .then((jsonResponse) => {
-        if (jsonResponse.page && jsonResponse.page.totalElements) {
+        if (jsonResponse && jsonResponse.length) {
           dispatch({
             type: 'SEARCH_SUCCESS',
-            payload: jsonResponse._embedded.items,
-            totalElements: jsonResponse.page.totalElements,
+            payload: jsonResponse,
+            totalElements: jsonResponse.length,
             page: page,
           })
         } else {
@@ -90,20 +79,17 @@ const SearchKulturnav = () => {
 
     fetch(
       IMPORT_API_URL +
-        new URLSearchParams({
-          q: searchValue,
-          page: 0,
-          size: state.limit,
-          digitalAccessibleOnly: true,
-        }),
+        'actualEntityType:Person%20OR%20Concept,compoundName:' +
+        searchValue +
+        new URLSearchParams({}),
     )
       .then((response) => response.json())
       .then((jsonResponse) => {
-        if (jsonResponse.page && jsonResponse.page.totalElements) {
+        if (jsonResponse && jsonResponse.length) {
           dispatch({
             type: 'SEARCH_SUCCESS',
-            payload: jsonResponse._embedded.items,
-            totalElements: jsonResponse.page.totalElements,
+            payload: jsonResponse,
+            totalElements: jsonResponse.length,
             page: 0,
           })
         } else {
@@ -116,11 +102,11 @@ const SearchKulturnav = () => {
   }
 
   const {searchParameter, items, totalElements, page, limit, errorMessage, loading} = state
-
+  console.log(items)
   return (
-    <div className={styles.container}>
-      <p>{totalElements}</p>
+    <div>
       <Search search={search} />
+      <p>{totalElements}</p>
       <ReactPaginate
         previousLabel={'previous'}
         nextLabel={'next'}
@@ -144,12 +130,7 @@ const SearchKulturnav = () => {
           <div className="errorMessage">{errorMessage}</div>
         ) : (
           items.map((item) => (
-            <Preview
-              key={item.id}
-              item={item}
-              searchValue={searchParameter}
-              onClick={chooseItemNB}
-            />
+            <Preview key={item.id} item={item} searchValue={searchParameter} onClick={chooseItem} />
           ))
         )}
       </div>
@@ -157,4 +138,4 @@ const SearchKulturnav = () => {
   )
 }
 
-export default SearchKulturnav
+export default SearchNB
