@@ -187,12 +187,8 @@ export async function getFrontpage() {
           _type == 'miradorGallery' => @{
             ...,
             items[] {
-              ...,
-              "manifest": manifestUrl,
-              _type == 'reference' => @-> {
-                "id": _id,
-              "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id)
-              }
+              "manifest": coalesce(manifestRef->.subjectOfManifest, manifestUrl),
+              canvasUrl,
             },
           }
         }
@@ -240,12 +236,8 @@ export async function getRouteBySlug(id) {
             _type == 'miradorGallery' => @{
               ...,
               items[] {
-                ...,
-                "manifest": manifestUrl,
-                _type == 'reference' => @-> {
-                  "id": _id,
-                "manifest": coalesce(subjectOfManifest, "/api/manifest/" + _id)
-                }
+                "manifest": coalesce(manifestRef->.subjectOfManifest, manifestUrl),
+                canvasUrl,
               },
             }
           }

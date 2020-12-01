@@ -13,20 +13,13 @@ export default {
       title: 'Heading',
     },
     {
-      name: 'description',
-      type: 'simpleBlockContent',
-    },
-    {
       name: 'items',
       type: 'array',
-      validation: (Rule) => Rule.unique(),
-      of: [
-        {type: 'externalManifest'},
-        {
-          type: 'reference',
-          to: [{type: 'madeObject'}],
-        },
-      ],
+      of: [{type: 'miradorGalleryWindow'}],
+    },
+    {
+      name: 'description',
+      type: 'simpleBlockContent',
     },
   ],
   preview: {

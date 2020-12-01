@@ -115,26 +115,6 @@ export const identifiedBy = {
   },
 }
 
-export const hasType = {
-  name: 'hasType',
-  title: 'Klassifisert som',
-  titleEN: 'Classified as',
-  description: '',
-  descriptionEN: '',
-  type: 'array',
-  of: [
-    {
-      type: 'reference',
-      to: [{type: 'typeClass'}],
-      options: {
-        filter: 'references(*[_type == "systemCategory" && label.nor in [...($sysCat)]]._id)',
-        filterParams: {sysCat: ['Objekt-/verkstype', 'Seksjonstype']},
-      },
-    },
-  ],
-  validation: (Rule) => Rule.required(),
-}
-
 /**
  * License
  * dct:license
