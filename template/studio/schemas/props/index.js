@@ -1,4 +1,5 @@
 import React from 'react'
+import client from 'part:@sanity/base/client'
 import {Link} from 'part:@sanity/base/router'
 import {licenseTypes} from '../vocabularies/defaultVocabularies'
 
@@ -66,11 +67,14 @@ export const preferredIdentifier = {
   title: 'Foretrukket identifikator',
   titleEN: 'Preferred identifier',
   type: 'string',
-  /* validation: Rule => Rule.required().custom(async prefId => {
-    // eslint-disable-next-line no-template-curly-in-string
-    export const docs = await client.fetch('*[preferredIdentifier == "${prefId}" && !(_id in path("drafts.**"))] { preferredIdentifier }', {prefId})
-    return docs.length > 1 ? 'Value is not unique' : true
-  }) */
+  validation: (Rule) =>
+    Rule.required().custom(async (prefId) => {
+      const docs = await client.fetch(
+        `*[preferredIdentifier == "${prefId}" && !(_id in path("drafts.**"))] { preferredIdentifier }`,
+        {prefId},
+      )
+      return docs.length > 1 ? 'Value is not unique' : true
+    }),
 }
 
 export const label = {
