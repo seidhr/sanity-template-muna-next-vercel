@@ -1,4 +1,4 @@
-import {Box, Grid, Heading} from '@chakra-ui/core'
+import {Box, Grid, Heading} from '@chakra-ui/react'
 import PortableTextBlock from './PortableTextBlock'
 
 const formatDate = (date) => {

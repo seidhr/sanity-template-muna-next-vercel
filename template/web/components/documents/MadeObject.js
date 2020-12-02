@@ -17,7 +17,7 @@ import {
   Wrap,
   useDisclosure,
   useClipboard,
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import ReferredToBy from '../ReferredToBy'
 import Palette from '../Palette'
 import Depicts from '../Depicts'

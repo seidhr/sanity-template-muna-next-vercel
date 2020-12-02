@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {Avatar, Badge, Box, Container, Flex, Heading} from '@chakra-ui/core'
+import {Avatar, Badge, Box, Container, Flex, Heading} from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 import Cards from '../Cards'
 import {imageBuilder} from '../../lib/sanity'

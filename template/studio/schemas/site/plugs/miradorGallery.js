@@ -8,14 +8,14 @@ export default {
       name: 'disabled',
     },
     {
-      name: 'heading',
-      type: 'string',
-      title: 'Heading',
-    },
-    {
       name: 'items',
       type: 'array',
       of: [{type: 'miradorGalleryWindow'}],
+    },
+    {
+      name: 'heading',
+      type: 'string',
+      title: 'Heading',
     },
     {
       name: 'description',
@@ -27,8 +27,8 @@ export default {
       title: 'heading',
     },
     prepare: ({title}) => ({
-      title: `Mirador gallery`,
-      subtitle: title,
+      title: title,
+      subtitle: `Mirador gallery`,
     }),
   },
 }

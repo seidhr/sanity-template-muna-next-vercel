@@ -1,4 +1,4 @@
-import {Box, Container, Heading} from '@chakra-ui/core'
+import {Box, Container, Heading} from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 import Cards from '../Cards'
 

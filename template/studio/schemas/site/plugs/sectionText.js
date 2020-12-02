@@ -1,6 +1,6 @@
 export default {
-  title: 'Article',
-  name: 'generalArticle',
+  title: 'Text',
+  name: 'sectionText',
   type: 'object',
   fields: [
     {
@@ -24,11 +24,19 @@ export default {
   preview: {
     select: {
       title: 'title',
+      content: 'content',
     },
-    prepare({title}) {
+    prepare({title, content}) {
+      const text = content
+        ? content[0].children
+            .filter((child) => child._type === 'span')
+            .map((span) => span.text)
+            .join('')
+        : ''
+
       return {
-        title: 'Article',
-        subtitle: title,
+        title: title ? title : text ? text : '',
+        subtitle: 'Text',
       }
     },
   },

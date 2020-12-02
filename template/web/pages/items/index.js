@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Header from '../../components/Header'
 import Cards from '../../components/Cards'
-import {Container} from '@chakra-ui/core'
+import {Container} from '@chakra-ui/react'
 
 export default function Items({data, preview}) {
   return (

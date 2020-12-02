@@ -1,5 +1,6 @@
 import {Link as NextLink} from 'next/link'
-import {Link} from '@chakra-ui/core'
+import {Link, Text} from '@chakra-ui/react'
+
 const BlockContent = require('@sanity/block-content-to-react')
 
 export default function PortableTextBlock(props) {

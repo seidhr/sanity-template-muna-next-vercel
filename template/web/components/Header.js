@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {Flex, Box, Spacer, Button, Heading, Text, useColorMode} from '@chakra-ui/core'
+import {Flex, Box, Spacer, Button, Heading, Text, useColorMode} from '@chakra-ui/react'
 import {MoonIcon, SunIcon} from '@chakra-ui/icons'
 import {CMS_NAME} from '../lib/constants'
 

@@ -1,4 +1,4 @@
-import {Heading, SimpleGrid} from '@chakra-ui/core'
+import {Heading, SimpleGrid} from '@chakra-ui/react'
 import Card from './Card'
 
 export default function Cards({items}) {

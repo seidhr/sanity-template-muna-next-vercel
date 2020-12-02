@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import mirador from 'mirador'
-import {Box} from '@chakra-ui/core'
+import {Box} from '@chakra-ui/react'
 
 export default function Mirador(props) {
   if (!props) {

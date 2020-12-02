@@ -1,5 +1,5 @@
 import {imageBuilder} from '../lib/sanity'
-import {Avatar, Container, Flex, Heading, Link, Wrap} from '@chakra-ui/core'
+import {Avatar, Container, Flex, Heading, Link, Wrap} from '@chakra-ui/react'
 
 export default function Depicts({depicted}) {
   if (!depicted) {

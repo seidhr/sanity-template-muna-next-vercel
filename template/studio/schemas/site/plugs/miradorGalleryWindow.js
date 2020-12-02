@@ -36,10 +36,12 @@ export default {
     select: {
       internalManifest: 'manifestRef.label',
       manifestUrl: 'manifestUrl',
+      media: 'manifestRef.mainRepresentation',
     },
-    prepare({internalManifest, manifestUrl}) {
+    prepare({internalManifest, manifestUrl, media}) {
       return {
         title: internalManifest ? internalManifest : manifestUrl ? manifestUrl : '',
+        media: media,
       }
     },
   },

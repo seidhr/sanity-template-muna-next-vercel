@@ -15,7 +15,7 @@ export default {
     {
       title: 'Subtitle',
       name: 'subtitle',
-      type: 'simpleBlockContent',
+      type: 'string',
     },
     {
       title: 'First column',
@@ -36,11 +36,19 @@ export default {
   preview: {
     select: {
       title: 'title',
+      content: 'firstColumn'
     },
-    prepare({title}) {
+    prepare({title, content}) {
+      const text = content
+        ? content[0].children
+            .filter((child) => child._type === 'span')
+            .map((span) => span.text)
+            .join('')
+        : ''
+
       return {
-        title: 'Two column',
-        subtitle: title,
+        title: title ? title : text ? text : '',
+        subtitle: 'Two column',
       }
     },
   },

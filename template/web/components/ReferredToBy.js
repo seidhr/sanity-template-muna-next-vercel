@@ -1,4 +1,4 @@
-import {Box, Grid, Heading, Text} from '@chakra-ui/core'
+import {Box, Grid, Heading, Text} from '@chakra-ui/react'
 import PortableTextBlock from './PortableTextBlock'
 import {orderBy, head} from 'lodash'
 

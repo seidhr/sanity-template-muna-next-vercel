@@ -10,18 +10,23 @@ export default {
     },
     {
       title: 'Text',
-      name: 'text',
+      name: 'content',
       type: 'blockContent',
     },
   ],
   preview: {
     select: {
-      title: 'title',
+      content: 'content',
     },
-    prepare({title}) {
+    prepare({content}) {
       return {
-        title: 'Big Text',
-        subtitle: title,
+        title: content
+          ? content[0].children
+              .filter((child) => child._type === 'span')
+              .map((span) => span.text)
+              .join('')
+          : '',
+        subtitle: 'Big Text',
       }
     },
   },

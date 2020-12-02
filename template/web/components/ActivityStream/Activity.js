@@ -22,7 +22,7 @@ import {
   Tag,
   TagLeftIcon,
   TagLabel,
-} from '@chakra-ui/core'
+} from '@chakra-ui/react'
 import {SunIcon, ArrowForwardIcon} from '@chakra-ui/icons'
 import Timespan from '../Timespan'
 import PortableTextBlock from '../PortableTextBlock'

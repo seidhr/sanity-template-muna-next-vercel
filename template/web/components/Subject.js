@@ -1,4 +1,4 @@
-import {Container, Wrap, WrapItem, Badge} from '@chakra-ui/core'
+import {Container, Wrap, WrapItem, Badge} from '@chakra-ui/react'
 import Link from './Link'
 
 export default function Subject({subjects}) {

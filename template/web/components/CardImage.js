@@ -1,5 +1,5 @@
 import {imageBuilder} from '../lib/sanity'
-import {Image} from '@chakra-ui/core'
+import {Image} from '@chakra-ui/react'
 
 export default function ItemImage({label, url, id}) {
   return (

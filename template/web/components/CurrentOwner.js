@@ -1,4 +1,4 @@
-import {Heading, Link, Tag} from '@chakra-ui/core'
+import {Heading, Link, Tag} from '@chakra-ui/react'
 
 export default function CurrentOwner({owners}) {
   if (!owners) {

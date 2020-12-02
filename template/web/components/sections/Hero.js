@@ -1,7 +1,7 @@
 import {imageBuilder} from '../../lib/sanity'
-import {Grid, Box, Heading, Image, Badge} from '@chakra-ui/core'
+import {Grid, Box, Heading, Image, Badge} from '@chakra-ui/react'
 import styles from './Hero.module.css'
-import {useColorMode, useColorModeValue} from '@chakra-ui/core'
+import {useColorMode, useColorModeValue} from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 
 export default function Hero(props) {

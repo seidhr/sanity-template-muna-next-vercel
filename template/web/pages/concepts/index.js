@@ -3,7 +3,7 @@ import {getAllConcepts} from '../../lib/api'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Header from '../../components/Header'
-import {Container, List, ListItem} from '@chakra-ui/core'
+import {Container, List, ListItem} from '@chakra-ui/react'
 import Link from '../../components/Link'
 
 export default function Concepts({data, preview}) {

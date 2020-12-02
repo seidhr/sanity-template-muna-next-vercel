@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import {Grid, Container, Box, Center, Heading, Text} from '@chakra-ui/core'
+import {Grid, Container, Box, Center, Heading, Text} from '@chakra-ui/react'
 import styles from './PageHeader.module.css'
 import PortableTextBlock from '../PortableTextBlock'
 

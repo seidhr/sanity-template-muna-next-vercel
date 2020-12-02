@@ -1,4 +1,4 @@
-import {Container, Heading, List} from '@chakra-ui/core'
+import {Container, Heading, List} from '@chakra-ui/react'
 import Activity from './Activity'
 
 export default function ActivityStream({stream}) {

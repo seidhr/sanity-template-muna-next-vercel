@@ -1,4 +1,4 @@
-import {Box, Divider} from '@chakra-ui/core'
+import {Box, Divider} from '@chakra-ui/react'
 import styles from './Footer.module.css'
 
 export default function Footer() {

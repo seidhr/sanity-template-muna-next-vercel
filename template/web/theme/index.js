@@ -1,4 +1,4 @@
-import {extendTheme} from '@chakra-ui/core'
+import {extendTheme} from '@chakra-ui/react'
 
 const theme = extendTheme({
   fonts: {
@@ -22,6 +22,9 @@ const theme = extendTheme({
     global: {
       p: {
         fontSize: '1.25em',
+      },
+      '.big-text': {
+        fontSize: '1.75em',
       },
     },
   },

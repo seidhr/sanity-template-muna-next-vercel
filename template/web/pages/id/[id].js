@@ -1,6 +1,6 @@
 import {useRouter} from 'next/router'
 import ErrorPage from 'next/error'
-// import { Box, Container, Heading, Text } from '@chakra-ui/core'
+// import { Box, Container, Heading, Text } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import Layout from '../../components/Layout'
 import {getIdPaths, getId, getType} from '../../lib/api'

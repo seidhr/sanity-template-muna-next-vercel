@@ -1,4 +1,4 @@
-import {Stack, Badge} from '@chakra-ui/core'
+import {Stack, Badge} from '@chakra-ui/react'
 
 export default function HasType({types}) {
   if (!types) {

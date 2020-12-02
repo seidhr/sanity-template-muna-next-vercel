@@ -1,4 +1,4 @@
-import {Flex} from '@chakra-ui/core'
+import {Flex} from '@chakra-ui/react'
 import PortableTextBlock from './PortableTextBlock'
 
 export default function Alert({alert, preview}) {

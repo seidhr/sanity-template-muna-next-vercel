@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {Box, Badge} from '@chakra-ui/core'
+import {Box, Badge} from '@chakra-ui/react'
 import CardImage from './CardImage'
 
 export default function Card({item}) {

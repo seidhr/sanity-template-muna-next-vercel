@@ -26,8 +26,8 @@ export default {
     },
     prepare({title, illustration}) {
       return {
-        title: 'Page header',
-        subtitle: title,
+        title: title,
+        subtitle: 'Page header',
         media: illustration.image,
       }
     },

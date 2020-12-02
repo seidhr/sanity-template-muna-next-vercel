@@ -21,8 +21,8 @@ function searchKN(url, query) {
     .then(
       (r) =>
         r.map((i) => ({
-          _type: 'concept',
-          _key: i.uuid,
+          /* _type: 'concept', */
+          preferredIdentifier: i.uuid,
           label: i.caption.no || '',
           url: `https://kulturnav.org/${i.uuid}`,
         })),
@@ -33,14 +33,14 @@ function searchKN(url, query) {
 export default React.forwardRef((props, ref) => {
   const {type, value, onChange} = props
   const [query, setQuery] = useState()
-  const {data: queryResult} = useSWR([url, `${query}?lang=no`], searchKN)
+  const {data: queryResult} = useSWR([url, `${query}*?lang=no`], searchKN)
 
   return (
     <div>
       <DefaultLabel>{type.title}</DefaultLabel>
       <SearchableSelect
         ref={ref}
-        value={(queryResult || []).find((item) => item._key === value)}
+        value={value === undefined ? 'Nei' : 'value'}
         items={queryResult || []}
         inputValue={(queryResult || []).find((item) => item._key === value)?.label}
         onChange={(selectedItem) => onChange(createPatchFrom(selectedItem))}
@@ -49,6 +49,7 @@ export default React.forwardRef((props, ref) => {
         renderItem={(item) => (
           <div className={styles.item}>
             <span>{item.label}</span>
+            <span>{item.url}</span>
           </div>
         )}
       />

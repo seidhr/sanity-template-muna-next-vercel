@@ -1,4 +1,4 @@
-import {Box, Grid} from '@chakra-ui/core'
+import {Box, Grid} from '@chakra-ui/react'
 
 export default function Palette({colors}) {
   if (!colors) {

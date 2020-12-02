@@ -1,6 +1,6 @@
 import {imageBuilder} from '../../lib/sanity'
-import {Center, Container, Grid, Box, Heading, Image} from '@chakra-ui/core'
-import {useColorMode, useColorModeValue} from '@chakra-ui/core'
+import {Center, Container, Grid, Box, Heading, Image} from '@chakra-ui/react'
+import {useColorMode, useColorModeValue} from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 
 export default function PageHeader(props) {

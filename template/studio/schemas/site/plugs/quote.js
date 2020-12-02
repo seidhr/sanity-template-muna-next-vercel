@@ -1,3 +1,5 @@
+import jsonata from "jsonata"
+
 export default {
   name: 'quote',
   type: 'object',
@@ -18,7 +20,13 @@ export default {
     },
     prepare({content}) {
       return {
-        title: 'Quote',
+        title: content
+        ? content[0].children
+            .filter((child) => child._type === 'span')
+            .map((span) => span.text)
+            .join('')
+        : '',
+        subtitle: 'Quote',
       }
     },
   },
