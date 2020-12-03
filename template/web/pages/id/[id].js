@@ -23,7 +23,7 @@ export default function Document({data, preview}) {
         'Loading…'
       ) : (
         <>
-          <Header menu={data.navMenu} />
+          <Header menu={data.defaultNavMenu} />
           <main>{data.item && <RenderDocument document={data.item} />}</main>
         </>
       )}

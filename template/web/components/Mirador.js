@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import mirador from 'mirador'
-import {Box} from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
+import { nanoid } from 'nanoid'
 
 export default function Mirador(props) {
   if (!props) {
     return null
   }
+  const ID = `mirador-${nanoid()}`
 
   const arrayToWindows = (data) => {
     if (data.manifest.length === 1) {
@@ -32,7 +34,7 @@ export default function Mirador(props) {
     const manifests = arrayToWindows(props)
 
     let config = {
-      id: 'mirador',
+      id: ID,
       manifests: {
         test: {
           provider: 'Tarje Lavik',
@@ -79,7 +81,7 @@ export default function Mirador(props) {
 
   return (
     <Box position="relative" h={700}>
-      <Box h="100%" id="mirador" />
+      <Box h="100%" id={ID} />
     </Box>
   )
 }

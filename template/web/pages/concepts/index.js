@@ -14,16 +14,18 @@ export default function Concepts({data, preview}) {
           <title>{CMS_NAME}</title>
         </Head>
 
-        <Header menu={data.navMenu} />
+        <Header menu={data.defaultNavMenu} />
 
         <Container maxW="xl">
           {data.items && (
             <List>
-              {data.items.map((item) => (
-                <ListItem key={item._id}>
-                  <Link href={`/id/${item._id}`}>{item.label.nor}</Link>
-                </ListItem>
-              ))}
+              {data.items
+                .filter((item) => item.count > 0)
+                .map((item) => (
+                  <ListItem key={item._id}>
+                    <Link href={`/id/${item._id}`}>{item.label.nor}</Link> <span>{item.count}</span>
+                  </ListItem>
+                ))}
             </List>
           )}
         </Container>

@@ -13,7 +13,7 @@ export default function Items({data, preview}) {
         <Head>
           <title>{CMS_NAME}</title>
         </Head>
-        <Header menu={data.navMenu} />
+        <Header menu={data.defaultNavMenu} />
         <Container maxW="xl">
           <Cards items={data.items} />
         </Container>

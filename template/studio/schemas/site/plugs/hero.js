@@ -18,7 +18,7 @@ export default {
     },
     {
       name: 'tagline',
-      type: 'simpleBlockContent',
+      type: 'blockContent',
     },
     {
       name: 'illustration',
@@ -31,7 +31,7 @@ export default {
       subtitle: 'label',
       disabled: 'disabled',
     },
-    prepare({title, disabled}) {
+    prepare({ title, disabled }) {
       return {
         title: `${disabled ? 'DISABLED' : title}`,
         subtitle: 'Hero'

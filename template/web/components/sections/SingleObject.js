@@ -1,16 +1,14 @@
 import dynamic from 'next/dynamic'
 import { Grid, Container, Box, Center, Heading, Text } from '@chakra-ui/react'
-import styles from './PageHeader.module.css'
 import PortableTextBlock from '../PortableTextBlock'
 
 const MiradorWithNoSSR = dynamic(() => import('../Mirador'), { ssr: false })
 
-export default function MiradorGallery(props) {
+export default function SingleObject(props) {
   if (!props) {
     return null
   }
-
-  const manifests = props.items.map((item) => item.manifest)
+  console.log(props)
 
   return (
     <Container maxW="xl" centerContent>
@@ -34,9 +32,9 @@ export default function MiradorGallery(props) {
           )}
         </Box>
 
-        {manifests && (
+        {props?.item.manifest && (
           <Box gridArea="image">
-            <MiradorWithNoSSR manifest={manifests} />
+            <MiradorWithNoSSR manifest={[props.item.manifest]} />
           </Box>
         )}
       </Grid>

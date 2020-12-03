@@ -1,4 +1,4 @@
-import client, {previewClient} from './sanity'
+import client, { previewClient } from './sanity'
 const getClient = (preview) => (preview ? previewClient : client)
 
 const publicDocumentTypes = ['madeObject', 'actor', 'group', 'concept', 'objectType', 'place']
@@ -16,7 +16,7 @@ const getUniqueDocuments = (items) => {
 }
 
 const defaultNavMenu = `
-  "navMenu": *[_id == "main-menu"][0] {
+  "defaultNavMenu": *[_id == "main-menu"][0] {
     ...,
     items[]{
       ...,
@@ -163,12 +163,6 @@ const groupFields = `
   }
 `
 
-const conceptFields = `
-  "id": _id,
-  _type,
-  label
-`
-
 export async function getFrontpage() {
   const data = await getClient(true).fetch(
     `{
@@ -190,6 +184,13 @@ export async function getFrontpage() {
               "manifest": coalesce(manifestRef->.subjectOfManifest, manifestUrl),
               canvasUrl,
             },
+          },
+          _type == 'singleObject' => @{
+            ...,
+						item-> {
+            "manifest": coalesce(subjectOfManifest, manifestUrl),
+              canvasUrl,
+            }
           }
         }
       },
@@ -239,11 +240,18 @@ export async function getRouteBySlug(id) {
                 "manifest": coalesce(manifestRef->.subjectOfManifest, manifestUrl),
                 canvasUrl,
               },
+            },
+            _type == 'singleObject' => @{
+              ...,
+              item-> {
+              "manifest": coalesce(subjectOfManifest, manifestUrl),
+                canvasUrl,
+              }
             }
           }
         }
     }`,
-    {id},
+    { id },
   )
   return data
 }
@@ -253,7 +261,7 @@ export async function getPreviewMadeObjectByID(id) {
     `*[_type == "madeObject" && _id == $id]{
       ${madeObjectFields}
     }`,
-    {id},
+    { id },
   )
   return data[0]
 }
@@ -283,7 +291,8 @@ export async function getAllActors() {
       hasType[]-> {
         ...
       },
-      mainRepresentation
+      mainRepresentation,
+      "count": count(*[references(^._id)]),
     },
     ${defaultNavMenu}
   }`)
@@ -296,7 +305,8 @@ export async function getAllConcepts() {
       "id": _id,
       _id,
       _type,
-      label
+      label,
+      "count": count(*[references(^._id)]),
     },
     ${defaultNavMenu}
   }`)
@@ -308,7 +318,7 @@ export async function getType(id, preview) {
     `*[_id == $id] {
       "type": _type
     }`,
-    {id},
+    { id },
   )
   return results
 }
@@ -318,7 +328,7 @@ export async function getIdPaths(preview) {
     `*[_type in [...$publicDocumentTypes]] {
       "id": _id
     }`,
-    {publicDocumentTypes},
+    { publicDocumentTypes },
   )
   return results
 }
@@ -336,7 +346,7 @@ export async function getId(id, type, preview) {
       },
       ${defaultNavMenu}
     }`,
-    {id},
+    { id },
   )
   return results
 }
@@ -345,21 +355,5 @@ export async function getAlert(preview) {
   const results = await getClient(preview).fetch(`*[_type == "alert"][0] | order(_createdAt desc) {
       ...
     }`)
-  return results
-}
-
-export async function getManifest(id, preview = false) {
-  const results = await getClient(preview).fetch(
-    `*[_id == $id] {
-      _id,
-      mainRepresentation {
-        ...,
-        "iiifImage": asset-> {
-          url
-        }
-      }
-    }`,
-    {id},
-  )
   return results
 }

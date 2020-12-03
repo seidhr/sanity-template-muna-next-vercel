@@ -30,7 +30,7 @@ export default function Actors({data, preview}) {
       <Head>
         <title>{CMS_NAME}</title>
       </Head>
-      <Header menu={data.navMenu} />
+      <Header menu={data.defaultNavMenu} />
 
       <Container maxW="xl">
         <Heading>Aktører</Heading>
@@ -38,40 +38,42 @@ export default function Actors({data, preview}) {
 
       <Grid templateColumns="repeat(auto-fit, minmax(400px, 1fr))" gap={6} p="10">
         {data.items &&
-          data.items.map((item) => (
-            <Flex key={item.id}>
-              <Avatar
-                size="lg"
-                name={item.label}
-                src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()}
-              />
-              <Box p={2}>
-                <Heading size="md">
-                  <Link href={`/id/${item.id}`}>
-                    <a>{item.label}</a>
-                  </Link>
-                </Heading>
-                <Box d="flex" alignItems="baseline">
-                  {item.hasType &&
-                    item.hasType.map((type) => (
-                      <Badge key={type._id} borderRadius="full" px="2" colorScheme="teal">
-                        {type.label?.nor}
+          data.items
+            .filter((item) => item.count > 0)
+            .map((item) => (
+              <Flex key={item.id}>
+                <Avatar
+                  size="lg"
+                  name={item.label}
+                  src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()}
+                />
+                <Box p={2}>
+                  <Heading size="md">
+                    <Link href={`/id/${item.id}`}>
+                      <a>{item.label}</a>
+                    </Link>
+                  </Heading>
+                  <Box d="flex" alignItems="baseline">
+                    {item.hasType &&
+                      item.hasType.map((type) => (
+                        <Badge key={type._id} borderRadius="full" px="2" colorScheme="teal">
+                          {type.label?.nor}
+                        </Badge>
+                      ))}
+
+                    {!item.hasType && (
+                      <Badge borderRadius="full" px="2" colorScheme="teal">
+                        Person
                       </Badge>
+                    )}
+
+                    {item.referredToBy?.map((ref) => (
+                      <PortableTextBlock blocks={ref.body} />
                     ))}
-
-                  {!item.hasType && (
-                    <Badge borderRadius="full" px="2" colorScheme="teal">
-                      Person
-                    </Badge>
-                  )}
-
-                  {item.referredToBy?.map((ref) => (
-                    <PortableTextBlock blocks={ref.body} />
-                  ))}
+                  </Box>
                 </Box>
-              </Box>
-            </Flex>
-          ))}
+              </Flex>
+            ))}
       </Grid>
     </Layout>
   )

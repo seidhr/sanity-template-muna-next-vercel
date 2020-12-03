@@ -1,11 +1,11 @@
-import {imageBuilder} from '../../lib/sanity'
-import {Grid, Box, Heading, Image, Badge} from '@chakra-ui/react'
+import { imageBuilder } from '../../lib/sanity'
+import { Grid, Box, Heading, Image, Badge } from '@chakra-ui/react'
 import styles from './Hero.module.css'
-import {useColorMode, useColorModeValue} from '@chakra-ui/react'
+import { useColorMode, useColorModeValue } from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 
 export default function Hero(props) {
-  const {colorMode, toggleColorMode} = useColorMode()
+  const { colorMode, toggleColorMode } = useColorMode()
 
   const bg = useColorModeValue('gray.800', 'white')
   const color = useColorModeValue('white', 'gray.800')
@@ -24,7 +24,7 @@ export default function Hero(props) {
         color={color}
         p="10"
         zIndex="1"
-        selfAlign="center"
+        selfalign="center"
         marginTop="5%"
         marginRight="50%"
         marginBottom="50%"

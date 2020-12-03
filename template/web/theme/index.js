@@ -1,4 +1,4 @@
-import {extendTheme} from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
   fonts: {
@@ -22,6 +22,7 @@ const theme = extendTheme({
     global: {
       p: {
         fontSize: '1.25em',
+        mb: '5'
       },
       blockquote: {
         color: 'red.300',
