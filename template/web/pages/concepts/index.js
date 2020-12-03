@@ -20,10 +20,8 @@ export default function Concepts({data, preview}) {
           {data.items && (
             <List>
               {data.items.map((item) => (
-                <ListItem>
-                  <Link key={item._id} href={`/id/${item._id}`}>
-                    {item.label.nor}
-                  </Link>
+                <ListItem key={item._id}>
+                  <Link href={`/id/${item._id}`}>{item.label.nor}</Link>
                 </ListItem>
               ))}
             </List>
