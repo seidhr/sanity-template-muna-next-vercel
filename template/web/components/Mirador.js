@@ -51,10 +51,10 @@ export default function Mirador(props) {
           palette: {
             type: 'dark',
             primary: {
-              main: '#4db6ac',
+              main: '#789a5b',
             },
             secondary: {
-              main: '#4db6ac',
+              main: '#789a5b',
             },
             shades: {
               dark: '#000000',

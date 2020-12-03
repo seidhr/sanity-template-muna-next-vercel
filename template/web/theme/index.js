@@ -2,7 +2,7 @@ import {extendTheme} from '@chakra-ui/react'
 
 const theme = extendTheme({
   fonts: {
-    body: 'EBGaramond, sans-serif',
+    body: 'EB Garamond, sans-serif',
     heading: 'Montserrat, serif',
     mono: 'Menlo, monospace',
   },
@@ -23,8 +23,8 @@ const theme = extendTheme({
       p: {
         fontSize: '1.25em',
       },
-      '.big-text': {
-        fontSize: '1.75em',
+      blockquote: {
+        color: 'red.300',
       },
     },
   },

@@ -1,4 +1,4 @@
-import jsonata from "jsonata"
+import jsonata from 'jsonata'
 
 export default {
   name: 'quote',
@@ -11,6 +11,10 @@ export default {
     },
     {
       name: 'content',
+      type: 'quoteBlock',
+    },
+    {
+      name: 'credit',
       type: 'blockContent',
     },
   ],
@@ -21,11 +25,11 @@ export default {
     prepare({content}) {
       return {
         title: content
-        ? content[0].children
-            .filter((child) => child._type === 'span')
-            .map((span) => span.text)
-            .join('')
-        : '',
+          ? content[0].children
+              .filter((child) => child._type === 'span')
+              .map((span) => span.text)
+              .join('')
+          : '',
         subtitle: 'Quote',
       }
     },

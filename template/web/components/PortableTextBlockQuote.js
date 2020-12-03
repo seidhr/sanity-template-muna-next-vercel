@@ -3,7 +3,7 @@ import {Link, Text} from '@chakra-ui/react'
 
 const BlockContent = require('@sanity/block-content-to-react')
 
-export default function PortableTextBlock(props) {
+export default function PortableTextBlockQuote(props) {
   if (!props.blocks) {
     return null
   }
@@ -13,17 +13,8 @@ export default function PortableTextBlock(props) {
   const BlockRenderer = (props) => {
     const {style = 'normal'} = props.node
 
-    if (/^h\d/.test(style)) {
-      const level = style.replace(/[^\d]/g, '')
-      return React.createElement(style, {className: `heading-${level}`}, props.children)
-    }
-
-    if (style === 'blockquote') {
-      return <blockquote>- {props.children}</blockquote>
-    }
-
     return (
-      <Text fontSize={fontSize} fontWeight={fontWeight}>
+      <Text as="blockquote" fontSize={fontSize} fontWeight={fontWeight}>
         {props.children}
       </Text>
     )
@@ -57,11 +48,6 @@ export default function PortableTextBlock(props) {
       },
     },
     types: {
-      code: (props) => (
-        <pre data-language={props.node.language}>
-          <code>{props.node.code}</code>
-        </pre>
-      ),
       block: BlockRenderer,
     },
   }

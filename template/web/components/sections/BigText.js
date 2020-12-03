@@ -5,7 +5,12 @@ export default function SectionText(props) {
   return (
     <Container maxW="4xl" marginTop="10">
       <Box size="xl">
-        <PortableTextBlock className="big-text" fontSize="6xl" blocks={props.content} />
+        <PortableTextBlock
+          className="big-text"
+          fontSize="3xl"
+          fontWeight="600"
+          blocks={props.content}
+        />
       </Box>
     </Container>
   )

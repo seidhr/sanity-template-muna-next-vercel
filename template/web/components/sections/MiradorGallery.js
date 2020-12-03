@@ -11,7 +11,6 @@ export default function MiradorGallery(props) {
   }
 
   const manifests = props.items.map((item) => item.manifest)
-  console.log(manifests)
 
   return (
     <Grid
