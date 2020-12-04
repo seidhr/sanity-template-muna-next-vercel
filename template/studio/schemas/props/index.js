@@ -1,7 +1,7 @@
 import React from 'react'
 import client from 'part:@sanity/base/client'
-import {Link} from 'part:@sanity/base/router'
-import {licenseTypes} from '../vocabularies/defaultVocabularies'
+import { Link } from 'part:@sanity/base/router'
+import { licenseTypes } from '../vocabularies/defaultVocabularies'
 
 export const editorialState = {
   name: 'editorialState',
@@ -12,8 +12,8 @@ export const editorialState = {
   validation: (Rule) => Rule.required(),
   options: {
     list: [
-      {title: 'Til gjennomgang', value: 'review'},
-      {title: 'Publisert', value: 'published'},
+      { title: 'Til gjennomgang', value: 'review' },
+      { title: 'Publisert', value: 'published' },
     ],
     layout: 'radio',
     direction: 'horizontal',
@@ -29,8 +29,8 @@ export const accessState = {
   validation: (Rule) => Rule.required(),
   options: {
     list: [
-      {title: 'Privat', value: 'secret'},
-      {title: 'Open', value: 'open'},
+      { title: 'Privat', value: 'secret' },
+      { title: 'Open', value: 'open' },
     ],
     layout: 'radio',
     direction: 'horizontal',
@@ -59,7 +59,7 @@ export const iiifStructures = {
   title: 'IIIF structures',
   name: 'structures',
   type: 'array',
-  of: [{type: 'range'}],
+  of: [{ type: 'range' }],
 }
 
 export const preferredIdentifier = {
@@ -71,7 +71,7 @@ export const preferredIdentifier = {
     Rule.required().custom(async (prefId) => {
       const docs = await client.fetch(
         `*[preferredIdentifier == "${prefId}" && !(_id in path("drafts.**"))] { preferredIdentifier }`,
-        {prefId},
+        { prefId },
       )
       return docs.length > 1 ? 'Value is not unique' : true
     }),
@@ -109,7 +109,7 @@ export const identifiedBy = {
   description: 'Legg til titler, navn eller identifikatorer.',
   descriptionEN: 'Add all known titles, name or identifiers.',
   type: 'array',
-  of: [{type: 'name'}, {type: 'identifier'}],
+  of: [{ type: 'name' }, { type: 'identifier' }],
   options: {
     editModal: 'popup',
   },
@@ -141,7 +141,7 @@ export const subject = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'concept'}],
+      to: [{ type: 'concept' }],
     },
   ],
 }
@@ -154,7 +154,7 @@ export const referredToBy = {
     'Objektet kan ha mange beskrivelser, korte og/eller lange. Tekstene kan types for ulike brukeformål.',
   descriptionEN: 'A shortish description',
   type: 'array',
-  of: [{type: 'linguisticObject'}, {type: 'reference', to: [{type: 'text'}]}],
+  of: [{ type: 'linguisticObject' }, { type: 'reference', to: [{ type: 'text' }] }],
   options: {
     editModal: 'fullscreen',
   },
@@ -170,11 +170,11 @@ export const relation = {
     {
       type: 'reference',
       to: [
-        {type: 'madeObject'},
-        {type: 'actor'},
-        {type: 'group'},
-        {type: 'event'},
-        {type: 'activity'},
+        { type: 'madeObject' },
+        { type: 'actor' },
+        { type: 'group' },
+        { type: 'event' },
+        { type: 'activity' },
       ],
     },
   ],
@@ -189,7 +189,7 @@ export const wasPresentAt = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'event'}, {type: 'activity'}],
+      to: [{ type: 'event' }, { type: 'activity' }],
     },
   ],
 }
@@ -201,7 +201,7 @@ export const hasCurrentOwner = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'actor'}, {type: 'group'}],
+      to: [{ type: 'actor' }, { type: 'group' }],
     },
   ],
 }
@@ -213,7 +213,7 @@ export const hasFormerOrCurrentOwner = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'actor'}, {type: 'group'}],
+      to: [{ type: 'actor' }, { type: 'group' }],
     },
   ],
 }
@@ -226,7 +226,7 @@ export const composedOf = {
     'Andre identifiserte objekt som er en del av dette objektet. For eksempel: bokomslaget eller "Sult" av Hamsun bundet sammen med andre verk.',
   descriptionEN: 'Other identified madeObjects this object is composed of',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'madeObject'}]}],
+  of: [{ type: 'reference', to: [{ type: 'madeObject' }] }],
 }
 
 export const isSubjectOf = {
@@ -239,7 +239,7 @@ export const isSubjectOf = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'writtenText'}],
+      to: [{ type: 'writtenText' }],
     },
   ],
 }
@@ -252,7 +252,7 @@ export const depicts = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'madeObject'}, {type: 'actor'}, {type: 'group'}, {type: 'concept'}],
+      to: [{ type: 'madeObject' }, { type: 'actor' }, { type: 'group' }, { type: 'concept' }],
     },
   ],
 }
@@ -265,7 +265,7 @@ export const represents = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'madeObject'}, {type: 'actor'}, {type: 'group'}, {type: 'concept'}],
+      to: [{ type: 'madeObject' }, { type: 'actor' }, { type: 'group' }, { type: 'concept' }],
     },
   ],
 }
@@ -275,7 +275,7 @@ export const showsVisualObject = {
   title: 'Viser merke eller bilde',
   titleEN: 'Shown visual item',
   type: 'array',
-  of: [{type: 'visualObject'}],
+  of: [{ type: 'visualObject' }],
 }
 
 export const carries = {
@@ -283,7 +283,7 @@ export const carries = {
   title: 'Bærer verk',
   titleEN: 'Carries work',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'work'}]}],
+  of: [{ type: 'reference', to: [{ type: 'work' }] }],
 }
 
 export const measurement = {
@@ -291,7 +291,7 @@ export const measurement = {
   title: 'Måling',
   titleEN: 'Measurement',
   type: 'array',
-  of: [{type: 'measurement'}],
+  of: [{ type: 'measurement' }],
 }
 
 export const consistsOf = {
@@ -304,7 +304,7 @@ export const consistsOf = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'material'}],
+      to: [{ type: 'material' }],
     },
   ],
 }
@@ -317,7 +317,7 @@ export const usedGeneralTechnique = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'technique'}],
+      to: [{ type: 'technique' }],
     },
   ],
 }
@@ -327,7 +327,7 @@ export const usedSpecificTechnique = {
   title: 'Brukte spesifikk teknikk',
   titleEN: 'Used spesific technique',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'designOrProcedure'}]}],
+  of: [{ type: 'reference', to: [{ type: 'designOrProcedure' }] }],
 }
 
 export const usedObjectOfType = {
@@ -338,7 +338,7 @@ export const usedObjectOfType = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'objectType'}],
+      to: [{ type: 'objectType' }],
     },
   ],
 }
@@ -348,7 +348,7 @@ export const usedSpecificObject = {
   title: 'Brukte spesifikt objekt',
   titleEN: 'Used spesific object',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'madeObject'}]}],
+  of: [{ type: 'reference', to: [{ type: 'madeObject' }] }],
 }
 
 export const usedSpecificObjectSet = {
@@ -363,11 +363,21 @@ export const timespan = {
   title: 'Tidsspenn',
   titleEN: 'Timespan',
   type: 'array',
-  of: [{type: 'timespan'}],
+  of: [{ type: 'timespan' }],
   options: {
     editModal: 'fullscreen',
   },
   validation: (Rule) => Rule.length(1).warning('You should only register one timespan'),
+}
+
+export const timespanSingleton = {
+  name: 'timespan',
+  title: 'Tidsspenn',
+  titleEN: 'Timespan',
+  type: 'timespan',
+  options: {
+    editModal: 'fullscreen',
+  },
 }
 
 export const carriedOutBy = {
@@ -375,7 +385,7 @@ export const carriedOutBy = {
   title: 'Utført av',
   titleEN: 'Carried out by',
   type: 'array',
-  of: [{type: 'actorInRole'}],
+  of: [{ type: 'actorInRole' }],
 }
 
 export const hadParticipant = {
@@ -383,7 +393,7 @@ export const hadParticipant = {
   title: 'Hadde medvirkende',
   titleEN: 'Had participant',
   type: 'array',
-  of: [{type: 'actorInRole'}],
+  of: [{ type: 'actorInRole' }],
 }
 
 export const tookPlaceAt = {
@@ -399,7 +409,7 @@ export const tookPlaceAt = {
     </span>
   ),
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'place'}]}],
+  of: [{ type: 'reference', to: [{ type: 'place' }] }],
 }
 
 /**
@@ -420,7 +430,7 @@ export const hasIdentified = {
   title: 'Identifiserte tilstander',
   titleEN: 'Has identified condition states',
   type: 'array',
-  of: [{type: 'conditionState'}],
+  of: [{ type: 'conditionState' }],
 }
 
 export const valueSlider = {
@@ -431,7 +441,7 @@ export const valueSlider = {
   type: 'number',
   options: {
     layout: 'slider',
-    range: {min: 1, max: 100, step: 1},
+    range: { min: 1, max: 100, step: 1 },
   },
 }
 
@@ -440,7 +450,7 @@ export const language = {
   title: 'Språk',
   titleEN: 'Language',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'language'}]}],
+  of: [{ type: 'reference', to: [{ type: 'language' }] }],
 }
 
 export const memberOf = {
@@ -448,7 +458,7 @@ export const memberOf = {
   title: 'Medlem av',
   titleEN: 'Member of',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'group'}]}],
+  of: [{ type: 'reference', to: [{ type: 'group' }] }],
 }
 
 /**
@@ -460,7 +470,7 @@ export const hasMember = {
   title: 'Har deler',
   titleEN: 'Has member',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'madeObject'}]}],
+  of: [{ type: 'reference', to: [{ type: 'madeObject' }] }],
 }
 
 /**
@@ -472,7 +482,7 @@ export const broader = {
   title: 'Overordnet term',
   titleEN: 'Broader',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'typeClass'}]}],
+  of: [{ type: 'reference', to: [{ type: 'typeClass' }] }],
 }
 
 export const narrower = {
@@ -481,7 +491,7 @@ export const narrower = {
   titleEN: 'Narrower',
   description: 'Trenger vi narrower? Blir mye å registrere...',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'typeClass'}]}],
+  of: [{ type: 'reference', to: [{ type: 'typeClass' }] }],
 }
 
 export const domain = {
@@ -489,7 +499,7 @@ export const domain = {
   title: 'Domene',
   titleEN: 'Domain',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'typeClass'}]}],
+  of: [{ type: 'reference', to: [{ type: 'typeClass' }] }],
 }
 
 export const definedByGeoJSON = {
@@ -498,7 +508,7 @@ export const definedByGeoJSON = {
   titleEN: 'GeoJSON',
   description: 'Lag et GeoJSON objekt eller lim inn en hel GeoJSON fil.',
   type: 'array',
-  of: [{type: 'geojsonFeatureCollection'}, {type: 'geojson'}],
+  of: [{ type: 'geojsonFeatureCollection' }, { type: 'geojson' }],
 }
 
 export const transferredTitleTo = {
@@ -507,7 +517,7 @@ export const transferredTitleTo = {
   titleEN: 'Transferred title to',
   description: '',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'group'}, {type: 'actor'}]}],
+  of: [{ type: 'reference', to: [{ type: 'group' }, { type: 'actor' }] }],
 }
 
 export const transferredTitleFrom = {
@@ -516,7 +526,7 @@ export const transferredTitleFrom = {
   titleEN: 'Transferred title from',
   description: '',
   type: 'array',
-  of: [{type: 'reference', to: [{type: 'group'}, {type: 'actor'}]}],
+  of: [{ type: 'reference', to: [{ type: 'group' }, { type: 'actor' }] }],
 }
 
 export const transferredTitleOf = {
@@ -528,7 +538,7 @@ export const transferredTitleOf = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'madeObject'}, {type: 'collection'}],
+      to: [{ type: 'madeObject' }, { type: 'collection' }],
     },
   ],
 }
@@ -542,7 +552,7 @@ export const concerned = {
   of: [
     {
       type: 'reference',
-      to: [{type: 'madeObject'}, {type: 'collection'}],
+      to: [{ type: 'madeObject' }, { type: 'collection' }],
     },
   ],
 }
@@ -552,5 +562,5 @@ export const motivated = {
   title: 'Motiverte',
   titleEN: 'Motivated',
   type: 'array',
-  of: [{type: 'treatment'}],
+  of: [{ type: 'treatment' }],
 }

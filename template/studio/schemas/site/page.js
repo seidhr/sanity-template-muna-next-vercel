@@ -28,6 +28,7 @@ export default {
         { type: 'bigText' },
         { type: 'singleObject' },
         { type: 'miradorGallery' },
+        { type: 'timelineSection' },
         { type: 'illustration' },
         { type: 'twoColumn' },
         { type: 'social' },

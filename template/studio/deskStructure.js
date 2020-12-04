@@ -1,10 +1,10 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {FaCog, FaGlasses, FaMapMarkedAlt} from 'react-icons/fa'
-import {GiBoltSpellCast} from 'react-icons/gi'
-import {TiGroup, TiUser} from 'react-icons/ti'
-import {BsFileRichtext} from 'react-icons/bs'
-import {FcTimeline} from 'react-icons/fc'
-import {MdEvent} from 'react-icons/md'
+import { FaCog, FaGlasses, FaMapMarkedAlt } from 'react-icons/fa'
+import { GiBoltSpellCast } from 'react-icons/gi'
+import { TiGroup, TiUser } from 'react-icons/ti'
+import { BsFileRichtext } from 'react-icons/bs'
+import { FcTimeline } from 'react-icons/fc'
+import { MdEvent } from 'react-icons/md'
 import blog from './src/structure/blog'
 import pageBuilder from './src/structure/pageBuilder'
 import types from './src/structure/types'
@@ -62,6 +62,7 @@ const hiddenDocTypes = (listItem) =>
     'page',
     'post',
     'route',
+    'toc',
     'storage',
     'writtenText',
   ].includes(listItem.getId())
@@ -93,7 +94,7 @@ export default () =>
                         .schemaType('exhibition')
                         .title('Utstillinger')
                         .filter('_type == "exhibition" && $catId in hasType[]._ref')
-                        .params({catId}),
+                        .params({ catId }),
                     ),
                 ),
               S.listItem().title('Upubliserte utstillinger').icon(FaGlasses).child(
@@ -137,7 +138,7 @@ export default () =>
                         .schemaType('actor')
                         .title('Aktører')
                         .filter('_type == "actor" && $catId in hasType[]._ref')
-                        .params({catId}),
+                        .params({ catId }),
                     ),
                 ),
               S.listItem().title('Upubliserte poster').icon(TiUser).child(
@@ -180,7 +181,7 @@ export default () =>
                         .schemaType('group')
                         .title('Grupper')
                         .filter('_type == "group" && $catId in hasType[]._ref')
-                        .params({catId}),
+                        .params({ catId }),
                     ),
                 ),
               S.listItem().title('Upubliserte poster').icon(TiGroup).child(
@@ -223,7 +224,7 @@ export default () =>
                         .schemaType('place')
                         .title('Steder')
                         .filter('_type == "place" && $catId in hasType[]._ref')
-                        .params({catId}),
+                        .params({ catId }),
                     ),
                 ),
               S.listItem()
@@ -257,7 +258,7 @@ export default () =>
                         .schemaType('writtenText')
                         .title('Tekster')
                         .filter('_type == "writtenText" && $catId in hasType[]._ref')
-                        .params({catId}),
+                        .params({ catId }),
                     ),
                 ),
               S.listItem().title('Upubliserte tekster').icon(FaGlasses).child(
@@ -304,7 +305,7 @@ export default () =>
                         .schemaType('event')
                         .title('Hendelser')
                         .filter('_type == "event" && $catId in hasType[]._ref')
-                        .params({catId}),
+                        .params({ catId }),
                     ),
                 ),
               S.listItem()
@@ -336,7 +337,7 @@ export default () =>
                         .schemaType('activity')
                         .title('Aktiviteter')
                         .filter('_type == "activity" && $catId in hasType[]._ref')
-                        .params({catId}),
+                        .params({ catId }),
                     ),
                 ),
               S.listItem()
