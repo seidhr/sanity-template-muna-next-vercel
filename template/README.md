@@ -21,6 +21,10 @@ Deployed from [sanity.io/create](https://www.sanity.io/create/?template=sanity-i
 
 Netlify automatically deploys new changes committed to master on GitHub. If you want to change deployment branch, do so in [build & deploy settings on Netlify](https://www.netlify.com/docs/continuous-deployment/#branches-deploys).
 
+## Tokens
+
+In the studio you can embed Instagram posts, but you need a access token from Facebook. See https://www.npmjs.com/package/react-instagram-embed for details. Add the token to `.env.development` and as a enviroment variable on Vercel or Netlify.
+
 ## Stuck? Get help
 
 [![Slack Community Button](https://slack.sanity.io/badge.svg)](https://slack.sanity.io/)

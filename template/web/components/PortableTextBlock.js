@@ -1,5 +1,5 @@
-import { Link as NextLink } from 'next/link'
-import { Link, Text } from '@chakra-ui/react'
+import {Link as NextLink} from 'next/link'
+import {Link, Text} from '@chakra-ui/react'
 
 const BlockContent = require('@sanity/block-content-to-react')
 
@@ -8,14 +8,14 @@ export default function PortableTextBlock(props) {
     return null
   }
 
-  const { fontSize, fontWeight, my } = props
+  const {fontSize, fontWeight, my} = props
 
   const BlockRenderer = (props) => {
-    const { style = 'normal' } = props.node
+    const {style = 'normal'} = props.node
 
     if (/^h\d/.test(style)) {
       const level = style.replace(/[^\d]/g, '')
-      return React.createElement(style, { className: `heading-${level}` }, props.children)
+      return React.createElement(style, {className: `heading-${level}`}, props.children)
     }
 
     if (style === 'blockquote') {
@@ -33,8 +33,8 @@ export default function PortableTextBlock(props) {
 
   const serializers = {
     marks: {
-      internalLink: ({ mark, children }) => {
-        const { reference } = mark
+      internalLink: ({mark, children}) => {
+        const {reference} = mark
         const href = `/id/${reference._ref}`
         return (
           <Link as={NextLink} href={href}>
@@ -42,18 +42,18 @@ export default function PortableTextBlock(props) {
           </Link>
         )
       },
-      link: ({ mark, children }) => {
+      link: ({mark, children}) => {
         // Read https://css-tricks.com/use-target_blank/
-        const { blank, href } = mark
+        const {blank, href} = mark
         return blank ? (
           <Link as={NextLink} href={href} isExternal>
             {children}
           </Link>
         ) : (
-            <Link as={NextLink} href={href} isExternal>
-              {children}
-            </Link>
-          )
+          <Link as={NextLink} href={href} isExternal>
+            {children}
+          </Link>
+        )
       },
     },
     types: {
