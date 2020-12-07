@@ -5,7 +5,6 @@ import * as SectionComponents from './sections'
 import Header from './Header'
 
 function resolveSections(section) {
-  // eslint-disable-next-line import/namespace
   const Section = SectionComponents[upperFirst(section._type)]
 
   if (Section) {
@@ -19,14 +18,16 @@ function resolveSections(section) {
 function RenderSections(props) {
   const {sections} = props
 
-  if (!sections) {
+  const filteredSections = sections.filter((x) => x._type)
+
+  if (!filteredSections) {
     console.error('Missing section')
     return <div>Missing sections</div>
   }
 
   return (
     <Fragment>
-      {sections.map((section) => {
+      {filteredSections.map((section) => {
         const SectionComponent = resolveSections(section)
         if (!SectionComponent) {
           return <div>Missing section {section._type}</div>

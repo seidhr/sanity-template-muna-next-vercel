@@ -4,7 +4,6 @@ import {upperFirst} from 'lodash'
 import * as DocumentComponents from './documents'
 
 function resolveDocument(document) {
-  // eslint-disable-next-line import/namespace
   const Document = DocumentComponents[upperFirst(document._type)]
 
   if (Document) {

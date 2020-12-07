@@ -1,4 +1,4 @@
-import client, { previewClient } from './sanity'
+import client, {previewClient} from './sanity'
 const getClient = (preview) => (preview ? previewClient : client)
 
 const publicDocumentTypes = ['madeObject', 'actor', 'group', 'concept', 'objectType', 'place']
@@ -177,15 +177,17 @@ export async function getFrontpage() {
           }
         },
         content[] {
-          ...,
-          _type == 'miradorGallery' => @{
+          disabled != true => {
+            ...
+          },
+          _type == 'miradorGallery' && disabled != true => @{
             ...,
             items[] {
               "manifest": coalesce(manifestRef->.subjectOfManifest, manifestUrl),
               canvasUrl,
             },
           },
-          _type == 'singleObject' => @{
+          _type == 'singleObject'  && disabled != true => @{
             ...,
 						item-> {
             "manifest": coalesce(subjectOfManifest, manifestUrl),
@@ -251,7 +253,7 @@ export async function getRouteBySlug(id) {
           }
         }
     }`,
-    { id },
+    {id},
   )
   return data
 }
@@ -261,7 +263,7 @@ export async function getPreviewMadeObjectByID(id) {
     `*[_type == "madeObject" && _id == $id]{
       ${madeObjectFields}
     }`,
-    { id },
+    {id},
   )
   return data[0]
 }
@@ -318,7 +320,7 @@ export async function getType(id, preview) {
     `*[_id == $id] {
       "type": _type
     }`,
-    { id },
+    {id},
   )
   return results
 }
@@ -328,7 +330,7 @@ export async function getIdPaths(preview) {
     `*[_type in [...$publicDocumentTypes]] {
       "id": _id
     }`,
-    { publicDocumentTypes },
+    {publicDocumentTypes},
   )
   return results
 }
@@ -346,7 +348,7 @@ export async function getId(id, type, preview) {
       },
       ${defaultNavMenu}
     }`,
-    { id },
+    {id},
   )
   return results
 }

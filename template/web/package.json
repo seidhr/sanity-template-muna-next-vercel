@@ -23,6 +23,7 @@
     "next-google-fonts": "^1.2.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-instagram-embed": "^2.0.0",
     "react-map-gl": "^5.2.9",
     "react-twitter-embed": "^3.0.3"
   },
