@@ -1,4 +1,4 @@
-import { coalesceLabel } from "../../helpers/helpers"
+import {coalesceLabel} from '../../helpers/helpers'
 
 export default {
   name: 'timelineSection',
@@ -6,9 +6,13 @@ export default {
   type: 'object',
   fields: [
     {
+      type: 'boolean',
+      name: 'disabled',
+    },
+    {
       name: 'item',
       type: 'reference',
-      to: [{ type: 'timeline' }],
+      to: [{type: 'timeline'}],
     },
     {
       name: 'heading',
@@ -25,7 +29,7 @@ export default {
       title: 'item.headline',
       media: 'item.media',
     },
-    prepare({ title, media }) {
+    prepare({title, media}) {
       title = coalesceLabel(title)
 
       return {
