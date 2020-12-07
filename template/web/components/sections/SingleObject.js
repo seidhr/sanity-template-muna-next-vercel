@@ -1,14 +1,13 @@
 import dynamic from 'next/dynamic'
-import { Grid, Container, Box, Center, Heading, Text } from '@chakra-ui/react'
+import {Grid, Container, Box, Center, Heading, Text} from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 
-const MiradorWithNoSSR = dynamic(() => import('../Mirador'), { ssr: false })
+const MiradorWithNoSSR = dynamic(() => import('../Mirador'), {ssr: false})
 
 export default function SingleObject(props) {
   if (!props) {
     return null
   }
-  console.log(props)
 
   return (
     <Container maxW="xl" centerContent>
@@ -17,8 +16,8 @@ export default function SingleObject(props) {
         p={5}
         gridGap={5}
         alignContent="start"
-        gridTemplateAreas={{ xl: '"image image metadata"', base: '"image" "metadata"' }}
-        gridTemplateColumns={{ xl: '6fr 6fr 2fr', base: '100%' }}
+        gridTemplateAreas={{xl: '"image image metadata"', base: '"image" "metadata"'}}
+        gridTemplateColumns={{xl: '6fr 6fr 2fr', base: '100%'}}
       >
         <Box gridArea="metadata">
           <Heading fontSize="sm" mb={1} color="gray.600">
