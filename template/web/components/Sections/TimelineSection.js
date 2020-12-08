@@ -6,7 +6,7 @@ import PortableTextBlock from '../PortableTextBlock'
 /*
   NOT WORKING
  */
-const events = item.events.map(function (event, i) {
+/* const events = item.events.map(function (event, i) {
   if (event._type == "event") {
     return {
       start_date: {
@@ -129,9 +129,9 @@ const tl = Object.assign({}, item, {
         })
         : ""
     },
-    /* background: Object.assign({}, title.background, {
-        color: title.background.color.hex ? title.background.color.hex : '#dddddd'
-      }), */
+    // background: Object.assign({}, title.background, {
+    //   color: title.background.color.hex ? title.background.color.hex : '#dddddd'
+    // }),
     media: {
       url: item.media[0].url ? item.media[0].url : null,
       caption: item.media[0].caption
@@ -148,9 +148,9 @@ const tl = Object.assign({}, item, {
   },
   events
 });
+ */
 
-
-export default function Quote(props) {
+export default function TimelineSection(props) {
   return (
     <Container maxW="4xl" marginTop="10">
       <Head>

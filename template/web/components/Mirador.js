@@ -35,6 +35,9 @@ export default function Mirador(props) {
 
     let config = {
       id: ID,
+      createGenerateClassNameOptions: {
+        productionPrefix: ID,
+      },
       manifests: {
         test: {
           provider: 'Tarje Lavik',
