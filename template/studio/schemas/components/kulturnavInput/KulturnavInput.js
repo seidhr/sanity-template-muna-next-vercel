@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import useSWR from 'swr'
 
-import SearchableSelect from '@sanity/components/lib/selects/SearchableSelect'
-import DefaultLabel from '@sanity/components/lib/labels/DefaultLabel'
+import SearchableSelect from '@sanity/base/__legacy/@sanity/components'
+import DefaultLabel from '@sanity/base/__legacy/@sanity/components'
 
 import PatchEvent, {set, unset} from 'part:@sanity/form-builder/patch-event'
 
