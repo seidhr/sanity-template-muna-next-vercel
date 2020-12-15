@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
-import React, {useReducer, useEffect} from 'react'
+import React, { useReducer, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
 // import fetch from 'unfetch'
 import Preview from './components/Preview'
 import Search from './components/Search'
 import styles from '../ImportTool.css'
-import {searchReducer} from './reducers/searchReducer'
-import {chooseItem} from './apis'
+import { searchReducer } from './reducers/searchReducer'
+import { chooseItem } from './apis'
 
 const IMPORT_API_URL = 'https://api.nb.no/catalog/v1/items/?'
 
@@ -28,11 +28,11 @@ const SearchNB = () => {
   useEffect(() => {
     fetch(
       state.apiURL +
-        new URLSearchParams({
-          page: state.page,
-          size: state.limit,
-          digitalAccessibleOnly: true,
-        }),
+      new URLSearchParams({
+        page: state.page,
+        size: state.limit,
+        digitalAccessibleOnly: true,
+      }),
     )
       .then((response) => response.json())
       .then((jsonResponse) => {
@@ -55,12 +55,12 @@ const SearchNB = () => {
 
     fetch(
       state.apiURL +
-        new URLSearchParams({
-          q: state.searchParameter ? state.searchParameter : '',
-          page: page,
-          size: state.limit,
-          digitalAccessibleOnly: true,
-        }),
+      new URLSearchParams({
+        q: state.searchParameter ? state.searchParameter : '',
+        page: page,
+        size: state.limit,
+        digitalAccessibleOnly: true,
+      }),
     )
       .then((response) => response.json())
       .then((jsonResponse) => {
@@ -90,12 +90,12 @@ const SearchNB = () => {
 
     fetch(
       IMPORT_API_URL +
-        new URLSearchParams({
-          q: searchValue,
-          page: 0,
-          size: state.limit,
-          digitalAccessibleOnly: true,
-        }),
+      new URLSearchParams({
+        q: searchValue,
+        page: 0,
+        size: state.limit,
+        digitalAccessibleOnly: true,
+      }),
     )
       .then((response) => response.json())
       .then((jsonResponse) => {
@@ -115,7 +115,7 @@ const SearchNB = () => {
       })
   }
 
-  const {searchParameter, items, totalElements, page, limit, errorMessage, loading} = state
+  const { searchParameter, items, totalElements, page, limit, errorMessage, loading } = state
 
   return (
     <div>
@@ -143,10 +143,10 @@ const SearchNB = () => {
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
         ) : (
-          items.map((item) => (
-            <Preview key={item.id} item={item} searchValue={searchParameter} onClick={chooseItem} />
-          ))
-        )}
+              items.map((item) => (
+                <Preview key={item.id} item={item} searchValue={searchParameter} onClick={chooseItem} />
+              ))
+            )}
       </div>
     </div>
   )
