@@ -275,8 +275,10 @@ export async function getAllMadeObjects() {
       _type,
       label,
       hasType[]-> {
-        ...
+        _id,
+        label
       },
+      "aspectRatio": mainRepresentation.asset->.metadata.dimensions.aspectRatio,
       mainRepresentation
     },
     ${defaultNavMenu}
@@ -291,7 +293,8 @@ export async function getAllActors() {
       _type,
       label,
       hasType[]-> {
-        ...
+        _id,
+        label
       },
       mainRepresentation,
       "count": count(*[references(^._id)]),
