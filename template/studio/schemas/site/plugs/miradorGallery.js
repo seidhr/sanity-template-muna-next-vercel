@@ -1,24 +1,32 @@
 export default {
   name: 'miradorGallery',
   type: 'object',
-  title: 'Mirador gallery',
+  title: 'Mirador galleri',
+  titleEN: 'Mirador gallery',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       name: 'items',
+      title: 'Vinduer',
+      titleEN: 'Items',
       type: 'array',
       of: [{type: 'miradorGalleryWindow'}],
     },
     {
       name: 'heading',
+      title: 'Tittel',
+      titleEN: 'Heading',
       type: 'string',
-      title: 'Heading',
     },
     {
       name: 'description',
+      title: 'Beskrivelse',
+      titleEN: 'Description',
       type: 'simpleBlockContent',
     },
   ],
@@ -28,7 +36,7 @@ export default {
     },
     prepare: ({title}) => ({
       title: title,
-      subtitle: `Mirador gallery`,
+      subtitle: `Mirador galleri`,
     }),
   },
 }

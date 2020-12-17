@@ -1,11 +1,13 @@
 export default {
   type: 'object',
   name: 'illustration',
-  title: 'Illustration',
+  title: 'Illustrasjon',
+  titleEN: 'Illustration',
   fields: [
     {
-      title: 'Image',
       name: 'image',
+      title: 'Bilde',
+      titleEN: 'Image',
       type: 'mainImage',
     },
   ],
@@ -15,11 +17,11 @@ export default {
     },
     prepare({image}) {
       if (!image) {
-        return {title: 'Illustration with no image'}
+        return {title: 'Illustrasjon uten bilde'}
       }
       return {
-        title: `Illustration`,
-        subtitle: `${image.caption || image.alt || 'Missing capton or alt text'} | Size: ${
+        title: `Illustrasjon`,
+        subtitle: `${image.caption || image.alt || 'Mangler bildetekst eller "alt" tekst'} | Size: ${
           image.size || 'default'
         }`,
         media: image,

@@ -1,5 +1,5 @@
-import {timespan, carriedOutBy, referredToBy, tookPlaceAt} from '../../props'
-import {defaultFieldsets} from '../../fieldsets'
+import { timespan, carriedOutBy, referredToBy, tookPlaceAt } from '../../props'
+import { defaultFieldsets } from '../../fieldsets'
 
 export default {
   title: 'Sampling',
@@ -12,9 +12,9 @@ export default {
       date: 'productionDate',
     },
     prepare(selection) {
-      const {date} = selection
+      const { date } = selection
       return {
-        title: `Transformation${date ? ', dated ' + date : ''}`,
+        title: `Transformasjon${date ? ', datert ' + date : ''}`,
       }
     },
   },

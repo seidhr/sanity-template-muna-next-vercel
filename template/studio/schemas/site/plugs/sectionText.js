@@ -4,16 +4,22 @@ export default {
   type: 'object',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       name: 'title',
+      title: 'Tittel',
+      titleEN: 'Heading',
       type: 'string',
     },
     {
       name: 'subtitle',
-      type: 'string',
+      title: 'Undertittel',
+      titleEN: 'Subtitle',
+      type: 'simpleBlockContent',
     },
     {
       title: 'Content',

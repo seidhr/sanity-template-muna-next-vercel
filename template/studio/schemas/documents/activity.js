@@ -1,3 +1,6 @@
+import React from 'react'
+import { Link } from 'part:@sanity/base/router'
+import { FcSupport } from 'react-icons/fc'
 import {timespanAsString, coalesceLabel} from '../helpers/helpers'
 import {MdLocalActivity} from 'react-icons/md'
 import {

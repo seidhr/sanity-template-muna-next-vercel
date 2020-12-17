@@ -1,3 +1,6 @@
+import React from 'react'
+import { Link } from 'part:@sanity/base/router'
+import { FcSupport } from 'react-icons/fc'
 import {mainRepresentation, label, represents, referredToBy} from '../props'
 import {defaultFieldsets} from '../fieldsets'
 

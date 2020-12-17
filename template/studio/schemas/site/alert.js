@@ -3,28 +3,43 @@ import {timespanAsString} from '../helpers/helpers'
 export default {
   type: 'document',
   name: 'alert',
-  title: 'Alert',
+  title: 'Varsel',
+  titleEN: 'Alert',
+  fieldsets: [
+    {
+      name: 'validPeriod',
+      title: 'Gyldig fra og til dato',
+      options: {collapsible: false, collapsed: false, columns: 2},
+    },
+  ],
   fields: [
     {
       name: 'content',
       type: 'simpleBlockContent',
-      title: 'Content',
-      description: 'Describe what the alert is all about',
+      title: 'Innhold',
+      titleEN: 'Content',
+      description: 'Beskriv varselet',
+      descriptionEN: 'Describe what the alert is all about',
     },
     {
       name: 'showAlert',
       type: 'boolean',
-      title: 'Should the alert be public?',
+      title: 'Skal varselet være offentlig?',
+      titleEN: 'Should the alert be public?',
     },
     {
       name: 'validFrom',
       type: 'date',
-      title: 'Valid from',
+      title: 'Gyldig fra',
+      titleEN: 'Valid from',
+      fieldset: 'validPeriod'
     },
     {
       name: 'validTo',
       type: 'date',
-      title: 'Valid to',
+      title: 'Gyldig til',
+      titleEN: 'Valid to',
+      fieldset: 'validPeriod'
     },
   ],
   preview: {
@@ -41,7 +56,7 @@ export default {
         date = '',
         be = ''
       const timespan = timespanAsString(bb, eb, date, be, ee, 'nb')
-      const isPublic = showAlert === true ? '👁️' : ''
+      const isPublic = showAlert === true ? 'Offentlig' : 'Ikke synlig'
 
       return {
         title: block
@@ -50,7 +65,7 @@ export default {
               .map((span) => span.text)
               .join('')
           : '',
-        subtitle: `${isPublic ? isPublic + ' ' : ''}${timespan}`,
+        subtitle: `${isPublic ? isPublic + ': ' : ''}${timespan}`,
       }
     },
   },

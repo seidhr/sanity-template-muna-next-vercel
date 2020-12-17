@@ -1,7 +1,36 @@
 export default {
   name: 'tocLink',
   type: 'object',
-  title: 'Link',
+  title: 'Lenke',
+  titleEN: 'Link',
+  fields: [
+    {
+      name: 'title',
+      title: 'Tittel',
+      titleEN: 'Title',
+      description: 'Overstyr tittel fra målstien',
+      descriptionEN: 'Override title from the target article',
+      type: 'string',
+    },
+    {
+      name: 'target',
+      title: 'Målsti',
+      titleEN: 'Target route',
+      description: 'Uten målsti blir tittelen brukt som en undertittel',
+      descriptionEN: 'No target route turns the item into a subheading',
+      type: 'reference',
+      to: [{ type: 'route' }],
+    },
+    {
+      name: 'children',
+      title: 'Barn',
+      titleEN: 'Children',
+      description: 'Det er mulig å nøste flere nivåer, men pass på, ikke bruk for mange!',
+      descriptionEN: 'You could have sublevels, but use it sparingly!',
+      type: 'array',
+      of: [{ type: 'tocLink' }],
+    },
+  ],
   preview: {
     select: {
       title: 'title',
@@ -11,25 +40,4 @@ export default {
       title: title || targetTitle,
     }),
   },
-  fields: [
-    {
-      type: 'reference',
-      name: 'target',
-      title: 'Target article',
-      to: [{ type: 'route' }],
-      description: 'No target article turns the item into a subheading.',
-    },
-    {
-      type: 'string',
-      name: 'title',
-      title: 'Title',
-      description: 'Override title from the target article.',
-    },
-    {
-      type: 'array',
-      name: 'children',
-      title: 'Children',
-      of: [{ type: 'tocLink' }],
-    },
-  ],
 };

@@ -6,8 +6,10 @@ export default {
   title: 'Quote',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       name: 'content',

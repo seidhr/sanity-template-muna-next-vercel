@@ -6,53 +6,60 @@ const Preview = ({value: {blocks}}) => <BlockContent blocks={blocks} />
 export default {
   type: 'object',
   name: 'grid',
-  title: 'Grid',
+  title: 'Rutenett',
+  titleEN: 'Grid',
   preview: {
     select: {
       blocks: 'subtitle',
     },
     component: Preview,
   },
-  description: 'A big text. Centered. Keep it short to max 2-3 paragraphs.',
+  description: 'Et rutenett (grid) med tekstinnhold',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
-      title: 'Title',
       name: 'title',
+      title: 'Tittel',
+      titleEN: 'Title',
       type: 'text',
     },
     {
-      title: 'Subtitle',
       name: 'subtitle',
+      title: 'Undertittel',
+      titleEN: 'Subtitle',
       type: 'simpleBlockContent',
     },
     {
-      title: 'Columns',
       name: 'columns',
+      title: 'Kolonner',
+      titleEN: 'Columns',
       type: 'string',
       options: {
         list: [
           {
-            title: '1 column',
+            title: '1 kolonne',
             value: 'max1',
           },
           {
-            title: '2 column',
+            title: '2 kolonner',
             value: 'max2',
           },
           {
-            title: '3 column',
+            title: '3 kolonner',
             value: 'max3',
           },
         ],
       },
     },
     {
-      title: 'Items',
       name: 'items',
+      title: 'Blokker',
+      titleEN: 'Items',
       type: 'array',
       of: [
         {
@@ -72,8 +79,11 @@ export default {
       ],
     },
     {
-      title: 'Anchor',
       name: 'anchor',
+      title: 'Anker',
+      titleEN: 'Anchor',
+      description: 'Brukes til å lage en ankerlenke',
+      descriptionEN: 'Used for anchor link',
       type: 'string',
     },
   ],

@@ -1,18 +1,24 @@
 export default {
   type: 'object',
   name: 'iframe',
-  title: 'Iframe',
+  title: 'iFrame',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       name: 'title',
+      title: 'Tittel',
+      titleEN: 'Heading',
       type: 'string',
     },
     {
       name: 'url',
+      title: 'url',
+      description: 'Bruk selve nettadressen fra en iFrame. NB! Bruk med måte.',
       type: 'url',
     },
   ],

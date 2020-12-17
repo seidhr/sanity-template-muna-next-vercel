@@ -2,25 +2,33 @@ import {coalesceLabel} from '../../helpers/helpers'
 
 export default {
   name: 'timelineSection',
-  title: 'Timeline',
+  title: 'Tidslinje',
+  titleEN: 'Timeline',
   type: 'object',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       name: 'item',
+      title: 'Objekt',
+      titleEN: 'Item',
       type: 'reference',
       to: [{type: 'timeline'}],
     },
     {
-      name: 'heading',
+      name: 'title',
+      title: 'Tittel',
+      titleEN: 'Title',
       type: 'string',
-      title: 'Heading',
     },
     {
       name: 'description',
+      title: 'Beskrivelse',
+      titleEN: 'Description',
       type: 'simpleBlockContent',
     },
   ],
@@ -34,7 +42,7 @@ export default {
 
       return {
         title: title,
-        subtitle: 'Timeline',
+        subtitle: 'Tidslinje',
         media: media,
       }
     },

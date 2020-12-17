@@ -1,3 +1,6 @@
+import React from 'react'
+import { Link } from 'part:@sanity/base/router'
+import { FcSupport } from 'react-icons/fc'
 import {FaGifts} from 'react-icons/fa'
 import {
   editorialState,

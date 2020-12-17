@@ -1,5 +1,6 @@
 import React from 'react'
-import {Link} from 'part:@sanity/base/router'
+import { Link } from 'part:@sanity/base/router'
+import { FcSupport } from 'react-icons/fc'
 import jsonata from 'jsonata'
 import {FaBookDead} from 'react-icons/fa'
 
@@ -21,7 +22,7 @@ import {
   depicts,
   showsVisualObject,
   carries,
-  measurement,
+  measuredBy,
   consistsOf,
   labelSingleton,
   iiifStructures,
@@ -178,7 +179,7 @@ export default {
       fieldset: 'partsAndContent',
     },
     {
-      ...measurement,
+      ...measuredBy,
       fieldset: 'physicalDescription',
     },
     {

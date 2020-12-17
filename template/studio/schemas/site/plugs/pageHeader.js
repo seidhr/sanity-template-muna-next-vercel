@@ -1,21 +1,25 @@
 export default {
   type: 'object',
   name: 'pageHeader',
-  title: 'Page Header',
+  title: 'Side',
+  titleEN: 'Page Header',
   fields: [
     {
-      title: 'Title',
       name: 'title',
+      title: 'Tittel',
+      titleEN: 'Title',
       type: 'string',
     },
     {
-      title: 'Subtitle',
       name: 'subtitle',
+      title: 'Undertittel',
+      titleEN: 'Subtitle',
       type: 'simpleBlockContent',
     },
     {
-      title: 'Illustration',
       name: 'illustration',
+      title: 'Illustrasjon',
+      titleEN: 'Illustration',
       type: 'illustration',
     },
   ],

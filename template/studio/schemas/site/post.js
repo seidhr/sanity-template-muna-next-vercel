@@ -1,19 +1,23 @@
 export default {
   name: 'post',
   type: 'document',
-  title: 'Blog Post',
+  title: 'Blogg innlegg',
+  titleEN: 'Blog Post',
   fields: [
     {
       name: 'title',
-      type: 'string',
-      title: 'Title',
+      title: 'Tittel',
+      titleEN: 'Title',
       description: 'Titles should be catchy, descriptive, and not too long',
+      type: 'string',
     },
     {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
-      description: 'Some frontends will require a slug to be set to be able to show the post',
+      titleEN: 'Slug',
+      description: 'En "slug" bruks i sidens nettadresse. Basert på tittel',
+      descriptionEN: 'Some frontends will require a slug to be set to be able to show the post',
       options: {
         source: 'title',
         maxLength: 96,
@@ -21,26 +25,31 @@ export default {
     },
     {
       name: 'publishedAt',
+      title: 'Publikasjonsdato',
+      titleEN: 'Published at',
+      description: 'Denne datoen kan settes frem i tid for fremtidig publisering på en nettside',
+      descriptionEN: 'This can be used to schedule post for publishing',
       type: 'datetime',
-      title: 'Published at',
-      description: 'This can be used to schedule post for publishing',
     },
     {
       name: 'excerpt',
       type: 'simpleBlockContent',
-      title: 'Excerpt',
-      description:
-        'This ends up on summary pages, on Google, when people share your post in social media.',
+      title: 'Sammendrag',
+      titleEN: 'Excerpt',
+      description: 'Brukes på oversiktssider, på Google og på sosiale medier.',
+      descriptionEN: 'This ends up on summary pages, on Google, when people share your post in social media.',
     },
     {
       name: 'mainImage',
+      title: 'Hovedbilde',
+      titleEN: 'Main image',
       type: 'mainImage',
-      title: 'Main image',
     },
     {
       name: 'body',
+      title: 'Tekst',
+      titleEN: 'Body',
       type: 'blockContent',
-      title: 'Body',
     },
     {
       name: 'authors',
@@ -54,8 +63,9 @@ export default {
     },
     {
       name: 'categories',
+      title: 'Kategorier',
+      titleEN: 'Categories',
       type: 'array',
-      title: 'Categories',
       of: [
         {
           type: 'reference',
@@ -108,7 +118,7 @@ export default {
       return {
         title,
         media,
-        subtitle: publishedAt ? path : 'Missing publishing date',
+        subtitle: publishedAt ? path : 'Uten publiseringsdato',
       }
     },
   },

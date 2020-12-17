@@ -12,7 +12,8 @@ function myAsyncSlugifier(input) {
 export default {
   name: 'route',
   type: 'document',
-  title: 'Landing page routes',
+  title: 'Sti',
+  titleEN: 'Landing page routes',
   icon: MdLink,
   initialValue: {
     useSiteTitle: false,
@@ -26,9 +27,12 @@ export default {
   fields: [
     {
       name: 'page',
+      title: 'Side',
+      titleEN: 'Page',
+      description: 'Siden du vil at skal vises på denne adressen. Siden må være publisert.',
+      descriptionEN: 'The page you want to appear at this path. Remember it needs to be published.',
       type: 'reference',
       validation: (Rule) => Rule.required(),
-      description: 'The page you want to appear at this path. Remember it needs to be published.',
       to: [
         {
           type: 'page',
@@ -37,9 +41,11 @@ export default {
     },
     {
       name: 'slug',
+      title: 'Sti',
+      titleEN: 'Path',
+      description: 'Dette er adressen siden vil bli tilgjengelig på',
+      descriptionEN: 'This is the website path the page will accessible on',
       type: 'slug',
-      description: 'This is the website path the page will accessible on',
-      title: 'Path',
       validation: (Rule) =>
         Rule.required().custom((slug) => {
           if (slug && slug.current && slug.current === '/') {
@@ -54,31 +60,38 @@ export default {
       },
     },
     {
-      title: 'Use site title?',
-      description:
-        'Use the site settings title as page title instead of the title on the referenced page',
       name: 'useSiteTitle',
+      title: 'Bruk nettsidens tittel?',
+      titleEN: 'Use site title?',
+      description: 'Bruk nettsidens tittel som sidetittel istedenfor tittelen på siden på denne stien',
+      descriptionEN: 'Use the site settings title as page title instead of the title on the referenced page',
       type: 'boolean',
     },
     {
-      title: 'Open graph',
       name: 'openGraph',
-      description: 'These values populate meta tags',
+      title: 'Open graph',
+      titleEN: 'Open graph',
+      description: 'Disse vil bli brukt i "meta tags"',
+      descriptionEN: 'These values populate meta tags',
       type: 'openGraph',
     },
     {
-      title: 'Include in sitemap',
-      description: 'For search engines. Will be generateed to /sitemap.xml',
       name: 'includeInSitemap',
-      type: 'boolean',
+      title: 'Inkluder i sitemap',
+      titleEN: 'Include in sitemap',
+      description: 'For søkemotorer. Vil bli generert i /sitemap.xml',
+      descriptionEN: 'For search engines. Will be generateed to /sitemap.xml',
       fieldset: 'visibility',
+      type: 'boolean',
     },
     {
-      title: 'Disallow in robots.txt',
-      description: 'Hide this route for search engines like google',
       name: 'disallowRobots',
-      type: 'boolean',
+      title: 'Disallow in robots.txt',
+      titleEN: '"Disallow" i robots.txt',
+      description: 'Skjul denne stien fra søkemoterer',
+      descriptionEN: 'Hide this route for search engines like google',
       fieldset: 'visibility',
+      type: 'boolean',
     },
     /*
     // This can be used by a server-side rendered website. We plan to figure out proper JAMstack support
@@ -95,12 +108,12 @@ export default {
         layout: 'tags'
       }
     }, */
-    {
+    /* {
       name: 'campaign',
       type: 'string',
       title: 'Campaign',
       description: 'UTM for campaings',
-    },
+    }, */
     /*
     // This can be used by a server-side rendered website. We plan to figure out proper JAMstack support
     {

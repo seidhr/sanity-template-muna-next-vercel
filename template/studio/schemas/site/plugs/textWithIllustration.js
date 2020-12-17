@@ -1,26 +1,32 @@
 export default {
   type: 'object',
   name: 'textWithIllustration',
-  title: 'Text with illustration',
+  title: 'Tekst med illustrasjon',
+  titleEN: 'Text with illustration',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
-      type: 'string',
       name: 'title',
-      title: 'Title',
+      title: 'Tittel',
+      titleEN: 'Title',
+      type: 'string',
     },
     {
+      name: 'content',
+      title: 'Tekst',
+      titleEN: 'Text',
       type: 'simpleBlockContent',
-      name: 'text',
-      title: 'text',
     },
     {
-      type: 'illustration',
       name: 'illustration',
-      title: 'Illustration',
+      title: 'Illustrasjonsbilde',
+      titleEN: 'Illustration',
+      type: 'illustration',
     },
   ],
 }

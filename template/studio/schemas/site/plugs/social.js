@@ -23,19 +23,26 @@ export default {
   description: 'A big social. Centered',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       name: 'title',
+      title: 'Tittel',
+      titleEN: 'Heading',
       type: 'string',
     },
     {
       name: 'url',
+      title: 'url',
       type: 'url',
     },
     {
       name: 'service',
+      title: 'Tjeneste',
+      titleEN: 'Service',
       type: 'string',
       options: {
         list: ['twitter'],

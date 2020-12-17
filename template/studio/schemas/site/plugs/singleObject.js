@@ -5,16 +5,21 @@ export default {
   fields: [
     {
       name: 'item',
+      title: 'Objekt',
+      titleEN: 'Item',
       type: 'reference',
       to: [{ type: 'madeObject' }],
     },
     {
-      name: 'heading',
+      name: 'title',
+      title: 'Tittel',
+      titleEN: 'Heading',
       type: 'string',
-      title: 'Heading',
     },
     {
       name: 'description',
+      title: 'Beskrivelse',
+      titleEN: 'Description',
       type: 'simpleBlockContent',
     },
   ],

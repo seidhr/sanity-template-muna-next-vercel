@@ -1,3 +1,6 @@
+import React from 'react'
+import { Link } from 'part:@sanity/base/router'
+import { FcSupport } from 'react-icons/fc'
 import {FaGlasses} from 'react-icons/fa'
 import {
   editorialState,
@@ -6,7 +9,6 @@ import {
   labelSingleton,
   identifiedBy,
   language,
-  usedSpecificObjectSet,
   tookPlaceAt,
 } from '../props'
 import {defaultFieldsets} from '../fieldsets'
@@ -52,7 +54,6 @@ export default {
     },
     tookPlaceAt,
     referredToBy,
-    usedSpecificObjectSet,
   ],
   preview: {
     select: {

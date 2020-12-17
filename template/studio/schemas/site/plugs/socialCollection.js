@@ -4,11 +4,15 @@ export default {
   title: 'Social collection',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       name: 'items',
+      title: 'Objekt',
+      titleEN: 'Items',
       type: 'array',
       validation: (Rule) => Rule.unique(),
       of: [{type: 'social'}],

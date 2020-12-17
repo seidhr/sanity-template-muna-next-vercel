@@ -4,8 +4,10 @@ export default {
   title: 'UI component reference',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       type: 'string',

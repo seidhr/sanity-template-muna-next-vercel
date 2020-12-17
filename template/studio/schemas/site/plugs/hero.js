@@ -4,24 +4,39 @@ export default {
   title: 'Hero',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
       name: 'label',
+      title: 'Merkelapp',
+      titleEN: 'Label',
+      description: 'Brukes over tittelen',
+      descriptionEN: 'Used above the title',
       type: 'string',
     },
     {
-      name: 'heading',
+      name: 'title',
+      title: 'Tittel',
+      titleEN: 'Heading',
       type: 'string',
-      title: 'Heading',
     },
     {
       name: 'tagline',
+      title: 'Tagline',
+      titleEN: 'Tagline',
+      description: 'Tagline under tittelen. Bør ikke være lengre en to korte avsnitt.',
+      descriptionEN: 'Tagline under the title. Should not be longer than two short paragraphs.',
       type: 'blockContent',
     },
     {
       name: 'illustration',
+      title: 'Illustrasjonsbilde',
+      titleEN: 'Illustration',
+      description: 'Bakgrunnsbilde under teksten',
+      descriptionEN: 'Illustration below the text',
       type: 'illustration',
     },
   ],
@@ -33,7 +48,7 @@ export default {
     },
     prepare({ title, disabled }) {
       return {
-        title: `${disabled ? 'DISABLED' : title}`,
+        title: `${disabled ? 'Avslått' : title}`,
         subtitle: 'Hero'
       }
     },

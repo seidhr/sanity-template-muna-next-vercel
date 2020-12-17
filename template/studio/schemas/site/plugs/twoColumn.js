@@ -1,35 +1,43 @@
 export default {
   type: 'object',
   name: 'twoColumn',
-  title: 'Two column',
+  title: 'To kolonner',
+  titleEN: 'Two column',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
-      title: 'Title',
       name: 'title',
+      title: 'Tittel',
+      titleEN: 'Title',
       type: 'string',
     },
     {
-      title: 'Subtitle',
       name: 'subtitle',
+      title: 'Undertittel',
+      titleEN: 'Subtitle',
       type: 'string',
     },
     {
-      title: 'First column',
       name: 'firstColumn',
+      title: 'Første kolonne',
+      titleEN: 'First column',
       type: 'blockContent',
     },
     {
-      title: 'Second column',
       name: 'secondColumn',
+      title: 'Andre kolonne',
+      titleEN: 'Second column',
       type: 'blockContent',
     },
     {
-      title: 'Anchor',
       name: 'anchor',
+      title: 'Anker',
+      titleEN: 'Anchor',
       type: 'string',
     },
   ],
@@ -48,7 +56,7 @@ export default {
 
       return {
         title: title ? title : text ? text : '',
-        subtitle: 'Two column',
+        subtitle: 'To kolonner',
       }
     },
   },

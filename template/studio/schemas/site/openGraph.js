@@ -4,22 +4,27 @@ export default {
   type: 'object',
   fields: [
     {
-      title: 'Title',
       name: 'title',
+      title: 'Tittel',
+      titleEN: 'Title',
+      description: 'Advarsel! Dette vil overstyre sidens tittel.',
+      descriptionEN: 'Heads up! This will override the page title.',
       type: 'string',
-      description: 'Heads up! This will override the page title.',
       validation: (Rule) => Rule.max(60).warning('Should be under 60 characters'),
     },
     {
-      title: 'Description',
       name: 'description',
+      title: 'Beskrivelse',
+      titleEN: 'Description',
       type: 'text',
       validation: (Rule) => Rule.max(155).warning('Should be under 155 characters'),
     },
     {
-      title: 'Image',
-      description: 'Facebook recommends 1200x630 (will be auto resized)',
       name: 'image',
+      title: 'Bilde',
+      titleEN: 'Image',
+      description: 'Facebook anbefaler 1200x630 (størrelsen blir endret automatisk)',
+      descriptionEN: 'Facebook recommends 1200x630 (will be auto resized)',
       type: 'mainImage',
     },
     /*

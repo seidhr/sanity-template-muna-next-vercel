@@ -1,16 +1,21 @@
 export default {
   type: 'object',
   name: 'bigText',
-  title: 'Big text',
-  description: 'A big text. Centered. Keep it short to max 2-3 paragraphs.',
+  title: 'Stor tekst',
+  titleEN: 'Big text',
+  description: 'Stor tekst. Centered. Keep it short to max 2-3 paragraphs.',
+  descriptionEN: 'A big text. Centered. Keep it short to max 2-3 paragraphs.',
   fields: [
     {
-      type: 'boolean',
       name: 'disabled',
+      title: 'Avslått?',
+      titleEN: 'Disabled',
+      type: 'boolean',
     },
     {
-      title: 'Text',
       name: 'content',
+      title: 'Tekst',
+      titleEN: 'Text',
       type: 'blockContent',
     },
   ],
@@ -26,7 +31,7 @@ export default {
               .map((span) => span.text)
               .join('')
           : '',
-        subtitle: 'Big Text',
+        subtitle: 'Stor tekst',
       }
     },
   },

@@ -5,29 +5,37 @@ export default {
   fieldsets: [
     {
       name: 'internal',
-      title: 'Internt object',
+      title: 'Internt objekt',
+      titleEN: 'Internal object',
       options: {collapsible: true, collapsed: false},
     },
     {
       name: 'external',
-      title: 'Eksternt object',
+      title: 'Eksternt objekt',
+      titleEN: 'External object',
       options: {collapsible: true, collapsed: true},
     },
   ],
   fields: [
     {
       name: 'manifestRef',
+      title: 'Manifest',
+      titleEN: 'Manifest',
       type: 'reference',
       to: [{type: 'madeObject'}],
       fieldset: 'internal',
     },
     {
       name: 'manifestUrl',
+      title: 'Manifest adresse',
+      titleEN: 'Manifest URL',
       type: 'url',
       fieldset: 'external',
     },
     {
       name: 'canvasUrl',
+      title: 'Canvas URL',
+      titleEN: 'Canvas URL',
       type: 'url',
       fieldset: 'external',
     },
