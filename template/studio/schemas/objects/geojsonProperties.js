@@ -1,6 +1,6 @@
 export default {
-  title: 'Properties',
   name: 'geojsonProperties',
+  title: 'Properties',
   type: 'object',
   fields: [
     {

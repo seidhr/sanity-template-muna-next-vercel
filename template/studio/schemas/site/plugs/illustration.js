@@ -21,9 +21,9 @@ export default {
       }
       return {
         title: `Illustrasjon`,
-        subtitle: `${image.caption || image.alt || 'Mangler bildetekst eller "alt" tekst'} | Size: ${
-          image.size || 'default'
-        }`,
+        subtitle: `${
+          image.caption || image.alt || 'Mangler bildetekst eller "alt" tekst'
+        } | Size: ${image.size || 'default'}`,
         media: image,
       }
     },

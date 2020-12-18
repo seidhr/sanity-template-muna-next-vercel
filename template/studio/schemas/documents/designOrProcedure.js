@@ -1,6 +1,3 @@
-import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-import { FcSupport } from 'react-icons/fc'
 import {FaClipboard} from 'react-icons/fa'
 import {editorialState, accessState, label, referredToBy, identifiedBy} from '../props'
 import {defaultFieldsets} from '../fieldsets'

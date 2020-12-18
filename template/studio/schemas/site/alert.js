@@ -32,14 +32,14 @@ export default {
       type: 'date',
       title: 'Gyldig fra',
       titleEN: 'Valid from',
-      fieldset: 'validPeriod'
+      fieldset: 'validPeriod',
     },
     {
       name: 'validTo',
       type: 'date',
       title: 'Gyldig til',
       titleEN: 'Valid to',
-      fieldset: 'validPeriod'
+      fieldset: 'validPeriod',
     },
   ],
   preview: {

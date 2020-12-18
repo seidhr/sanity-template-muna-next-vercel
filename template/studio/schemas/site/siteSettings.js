@@ -3,7 +3,7 @@ import {FaCog} from 'react-icons/fa'
 export default {
   name: 'siteSettings',
   type: 'document',
-  title: 'Sideinnstillinger',
+  title: 'Nettsideinnstillinger',
   titleEN: 'Site Settings',
   icon: FaCog,
   __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],

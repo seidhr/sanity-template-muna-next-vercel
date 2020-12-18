@@ -1,15 +1,17 @@
 import InstagramPreview from '../previews/instagramPreview'
 
 export default {
-  type: 'object',
   name: 'instagramPost',
-  title: 'Instagram Post',
+  title: 'Instagram innlegg',
+  titleEN: 'Instagram Post',
+  type: 'object',
   fields: [
     {
       name: 'url',
       title: 'URL',
       titleEN: 'URL',
-      description: 'Visit an Instagram post in a browser and copy the URL',
+      description: 'Finn et Instagram innlegg i en nettleser og kopier nettadressen',
+      descriptionEN: 'Visit an Instagram post in a browser and copy the URL',
       type: 'url',
     },
   ],

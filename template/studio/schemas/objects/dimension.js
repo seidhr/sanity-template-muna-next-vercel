@@ -1,8 +1,9 @@
 import {coalesceLabel} from '../helpers/helpers'
 
 export default {
-  title: 'Dimension',
   name: 'dimension',
+  title: 'Dimensjon',
+  titleEN: 'Dimension',
   type: 'object',
   fields: [
     {

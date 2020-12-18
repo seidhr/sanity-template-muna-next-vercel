@@ -1,6 +1,3 @@
-import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-import { FcSupport } from 'react-icons/fc'
 import {FaEmpire} from 'react-icons/fa'
 import {timespan, editorialState, accessState, label, referredToBy, tookPlaceAt} from '../props'
 import {coalesceLabel} from '../helpers/helpers'

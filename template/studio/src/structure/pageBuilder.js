@@ -1,17 +1,17 @@
 import S from '@sanity/desk-tool/structure-builder'
 // import PreviewIFrame from '../../src/components/previewIFrame'
-import { FaSitemap, FaRoute } from 'react-icons/fa'
-import { MdMenu } from 'react-icons/md'
-import { FcHome, FcTemplate } from 'react-icons/fc'
-import { RiSideBarFill } from 'react-icons/ri'
-import { AiFillAlert } from 'react-icons/ai'
+import {FaSitemap, FaRoute} from 'react-icons/fa'
+import {MdMenu} from 'react-icons/md'
+import {FcHome, FcTemplate} from 'react-icons/fc'
+import {RiSideBarFill} from 'react-icons/ri'
+import {AiFillAlert} from 'react-icons/ai'
 
 export default S.listItem()
-  .title('Page Builder')
+  .title('Sidebygger')
   .icon(FaSitemap)
   .child(
     S.list()
-      .title('Landing Pages')
+      .title('Sidebygger')
       .items([
         S.documentListItem()
           .title('Frontpage')
@@ -19,51 +19,51 @@ export default S.listItem()
           .icon(FcHome)
           .child(S.document().schemaType('page').documentId('frontpage')),
         S.listItem()
-          .title('Pages')
+          .title('Sider')
           .icon(FcTemplate)
           .schemaType('page')
           .child(
             S.documentList('page')
-              .title('Pages')
+              .title('Sider')
               .menuItems(S.documentTypeList('page').getMenuItems())
               .filter('_type == "page" && _id != "frontpage"'),
           ),
         S.listItem()
-          .title('Navigation Menus')
+          .title('Navigasjonsmenyer')
           .icon(MdMenu)
           .schemaType('navigationMenu')
-          .child(S.documentTypeList('navigationMenu').title('Navigation Menus')),
+          .child(S.documentTypeList('navigationMenu').title('Navigasjonsmenyer')),
         S.listItem()
-          .title('Table of contents')
+          .title('Innholdsfortegnelser')
           .icon(RiSideBarFill)
           .schemaType('toc')
           .child(
             S.documentTypeList('toc')
-              .title('ToCs')
+              .title('Innholdsfortegnelser')
               .child(
                 (documentId) => S.document().documentId(documentId).schemaType('toc'),
                 // .views([S.view.form(), PreviewIFrame()])
               ),
           ),
         S.listItem()
-          .title('Routes')
+          .title('Stier')
           .icon(FaRoute)
           .schemaType('route')
           .child(
             S.documentTypeList('route')
-              .title('Routes')
+              .title('Stier')
               .child(
                 (documentId) => S.document().documentId(documentId).schemaType('route'),
                 // .views([S.view.form(), PreviewIFrame()])
               ),
           ),
         S.listItem()
-          .title('Alerts')
+          .title('Varsler')
           .icon(AiFillAlert)
           .schemaType('alert')
           .child(
             S.documentList('alert')
-              .title('Alerts')
+              .title('Varsler')
               .menuItems(S.documentTypeList('alert').getMenuItems())
               .filter('_type == "alert"'),
           ),

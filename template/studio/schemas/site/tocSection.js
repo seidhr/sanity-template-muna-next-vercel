@@ -19,7 +19,7 @@ export default {
       description: 'Dersom denne brukes blir tittelen en lenke',
       descriptionEN: 'If used the title becomes a link',
       type: 'reference',
-      to: [{ type: 'route' }],
+      to: [{type: 'route'}],
     },
     {
       name: 'links',
@@ -28,7 +28,7 @@ export default {
       description: 'Lenker gruppert i denne seksjonen',
       descriptionEN: 'Links grouped in this section',
       type: 'array',
-      of: [{ type: 'tocLink' }],
+      of: [{type: 'tocLink'}],
     },
   ],
-};
+}

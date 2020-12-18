@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-import { FcSupport } from 'react-icons/fc'
+import {Link} from 'part:@sanity/base/router'
 import jsonata from 'jsonata'
 import {FaBookDead} from 'react-icons/fa'
 
@@ -26,7 +25,7 @@ import {
   consistsOf,
   labelSingleton,
   iiifStructures,
-  wasPresentAt,
+  presentAt,
 } from '../props'
 import {coalesceLabel} from '../helpers/helpers'
 
@@ -159,7 +158,7 @@ export default {
       fieldset: 'relations',
     },
     {
-      ...wasPresentAt,
+      ...presentAt,
       fieldset: 'relations',
     },
     {

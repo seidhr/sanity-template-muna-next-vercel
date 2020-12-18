@@ -2,8 +2,9 @@ import {editorialState, accessState} from '../props'
 import {defaultFieldsets} from '../fieldsets'
 
 export default {
-  title: 'Text',
   name: 'linguisticObject',
+  title: 'Tekst',
+  titleEN: 'Text',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [
@@ -39,7 +40,7 @@ export default {
     {
       name: 'creator',
       title: 'Skaper',
-      titleEN: 'Author',
+      titleEN: 'Creator',
       description:
         'Registrer en eller flere aktører som har skapt dette dokumentet, gjerne med hvilken rolle de hadde.',
       type: 'array',

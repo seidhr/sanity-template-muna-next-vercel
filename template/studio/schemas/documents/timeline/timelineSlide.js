@@ -1,5 +1,5 @@
-import { timespan, timespanSingleton } from '../../props'
-import { timespanAsString } from '../../helpers/helpers'
+import {timespan, timespanSingleton} from '../../props'
+import {timespanAsString} from '../../helpers/helpers'
 
 // TODO: Finish timeline with references to internal stuff and external. +datamodell
 // See http://timeline.knightlab.com/docs/json-format.html#json-slide for more info
@@ -29,9 +29,10 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{ type: 'madeObject' }]
+          to: [{type: 'madeObject'}],
         },
-        { type: 'mediaObject' }, { type: 'externalMediaObject' }
+        {type: 'mediaObject'},
+        {type: 'externalMediaObject'},
       ],
       validation: (Rule) => Rule.length(1).error('You can only register one media object'),
     },
@@ -41,7 +42,7 @@ export default {
       title: 'Gruppe',
       titleEN: 'Group',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{type: 'string'}],
       options: {
         layout: 'tags',
       },
@@ -64,7 +65,7 @@ export default {
       ee: 'timespan.endOfTheEnd',
     },
     prepare(selection) {
-      const { title, bb, eb, date, be, ee } = selection
+      const {title, bb, eb, date, be, ee} = selection
       const timespan = timespanAsString(bb, eb, date, be, ee, 'nb')
       return {
         title: title,

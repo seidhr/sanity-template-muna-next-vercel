@@ -3,8 +3,9 @@ import {defaultFieldsets} from '../../fieldsets'
 import {coalesceLabel} from '../../helpers/helpers'
 
 export default {
-  title: 'Measurement',
   name: 'measurement',
+  title: 'Måling',
+  titleEN: 'Measurement',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [
@@ -68,7 +69,7 @@ export default {
 
       return {
         title: `${d0 ? d0 : ''}${d1 ? ', ' + d1 : ''}${d2 ? ', ' + d2 : ''}`,
-        subtitle: `Measurement ${actor ? 'by ' + actor : ''}`,
+        subtitle: `Måling ${actor ? 'utført av ' + actor : ''}`,
       }
     },
   },

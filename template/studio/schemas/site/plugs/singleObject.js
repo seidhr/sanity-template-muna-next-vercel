@@ -8,7 +8,7 @@ export default {
       title: 'Objekt',
       titleEN: 'Item',
       type: 'reference',
-      to: [{ type: 'madeObject' }],
+      to: [{type: 'madeObject'}],
     },
     {
       name: 'title',
@@ -28,7 +28,7 @@ export default {
       title: 'item.label',
       media: 'item.mainRepresentation',
     },
-    prepare({ title, media }) {
+    prepare({title, media}) {
       return {
         title: title,
         subtitle: 'Single Object',

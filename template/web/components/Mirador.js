@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
 import mirador from 'mirador'
-import { Box } from '@chakra-ui/react'
-import { nanoid } from 'nanoid'
+import {Box} from '@chakra-ui/react'
+import {nanoid} from 'nanoid'
 
 export default function Mirador(props) {
   if (!props) {
@@ -106,7 +106,6 @@ export default function Mirador(props) {
         setTimeout(() => {
           miradorInstance.store.dispatch(action);
         }, 1000); */
-
   }, [])
 
   return (

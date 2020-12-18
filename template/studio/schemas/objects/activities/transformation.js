@@ -2,8 +2,9 @@ import {timespan, carriedOutBy, tookPlaceAt, referredToBy} from '../../props'
 import {defaultFieldsets} from '../../fieldsets'
 
 export default {
-  title: 'Transformation',
   name: 'transformation',
+  title: 'Transformasjon',
+  titleEN: 'Transformation',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [
@@ -31,7 +32,7 @@ export default {
     prepare(selection) {
       const {date} = selection
       return {
-        title: `Transformation${date ? ', dated ' + date : ''}`,
+        title: `Transformasjon${date ? ', datert ' + date : ''}`,
       }
     },
   },

@@ -3,8 +3,9 @@ import {timespan, referredToBy, tookPlaceAt} from '../../props'
 var capitalize = require('capitalize')
 
 export default {
-  title: 'Joining',
   name: 'joining',
+  title: 'Innlemmelse',
+  titleEN: 'Joining',
   type: 'object',
   fieldsets: [
     {

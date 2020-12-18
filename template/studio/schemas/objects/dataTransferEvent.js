@@ -1,6 +1,7 @@
 export default {
-  title: 'Data transfer event',
   name: 'dataTransferEvent',
+  title: 'Dataoverføringshendelse',
+  titleEN: 'Data transfer event',
   type: 'object',
   fields: [
     {

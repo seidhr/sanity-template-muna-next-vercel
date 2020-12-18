@@ -1,6 +1,6 @@
 export default {
-  title: 'Actor in role as',
   name: 'actorInRole',
+  title: 'Actor in role as',
   type: 'object',
   fields: [
     {

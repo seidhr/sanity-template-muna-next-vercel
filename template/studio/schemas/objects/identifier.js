@@ -2,8 +2,9 @@ import {referredToBy} from '../props'
 import {defaultFieldsets} from '../fieldsets'
 
 export default {
-  title: 'Identifier',
   name: 'identifier',
+  title: 'Identifikator',
+  titleEN: 'Identifier',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [

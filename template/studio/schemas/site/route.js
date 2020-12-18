@@ -63,8 +63,10 @@ export default {
       name: 'useSiteTitle',
       title: 'Bruk nettsidens tittel?',
       titleEN: 'Use site title?',
-      description: 'Bruk nettsidens tittel som sidetittel istedenfor tittelen på siden på denne stien',
-      descriptionEN: 'Use the site settings title as page title instead of the title on the referenced page',
+      description:
+        'Bruk nettsidens tittel som sidetittel istedenfor tittelen på siden på denne stien',
+      descriptionEN:
+        'Use the site settings title as page title instead of the title on the referenced page',
       type: 'boolean',
     },
     {

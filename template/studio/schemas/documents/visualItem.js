@@ -1,6 +1,3 @@
-import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-import { FcSupport } from 'react-icons/fc'
 import {FaImage} from 'react-icons/fa'
 
 export default {

@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import PropTypes from 'prop-types'
-import { upperFirst } from 'lodash'
+import {upperFirst} from 'lodash'
 import * as SectionComponents from './Sections'
 import Header from './Header'
 
@@ -16,7 +16,7 @@ function resolveSections(section) {
 }
 
 function RenderSections(props) {
-  const { sections } = props
+  const {sections} = props
 
   const filteredSections = sections.filter((x) => x._type)
 

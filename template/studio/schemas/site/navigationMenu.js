@@ -1,4 +1,4 @@
-import { language } from "../props";
+import {language} from '../props'
 
 export default {
   type: 'document',

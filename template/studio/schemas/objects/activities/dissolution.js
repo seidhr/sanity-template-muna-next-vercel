@@ -1,4 +1,4 @@
-import {timespan, tookPlaceAt, referredToBy} from '../../props'
+import {timespan, tookPlaceAt, referredToBy, motivatedBy} from '../../props'
 import {defaultFieldsets} from '../../fieldsets'
 
 var capitalize = require('capitalize')
@@ -6,8 +6,9 @@ var capitalize = require('capitalize')
 // Implisit 'wasFormedBy' to parent group
 
 export default {
-  title: 'Dissolution',
   name: 'dissolution',
+  title: 'Oppløsing',
+  titleEN: 'Dissolution',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [
@@ -25,13 +26,7 @@ export default {
     },
     timespan,
     tookPlaceAt,
-    {
-      name: 'wasMotivatedBy',
-      title: 'Motivert av',
-      titleEN: 'Motivated by',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'event'}]}],
-    },
+    motivatedBy,
     referredToBy,
   ],
   preview: {

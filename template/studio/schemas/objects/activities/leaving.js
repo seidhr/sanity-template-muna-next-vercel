@@ -4,8 +4,9 @@ import {defaultFieldsets} from '../../fieldsets'
 var capitalize = require('capitalize')
 
 export default {
-  title: 'Leaving',
   name: 'leaving',
+  title: 'Utmeldelse',
+  titleEN: 'Leaving',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [

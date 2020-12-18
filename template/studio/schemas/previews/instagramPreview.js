@@ -6,7 +6,7 @@ const token = process.env.SANITY_STUDIO_INSTAGRAM_TOKEN
 const InstagramPreview = ({value}) => {
   const {url} = value
   if (!url) {
-    return <p>Missing URL for Instagram post</p>
+    return <p>Mangler URL til Instagram innlegg</p>
   }
 
   return (

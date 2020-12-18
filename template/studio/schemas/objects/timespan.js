@@ -1,13 +1,15 @@
 import {timespanAsString} from '../helpers/helpers'
 
 export default {
-  title: 'Timespan',
   name: 'timespan',
+  title: 'Tidsspenn',
+  titleEN: 'Timespan',
   type: 'object',
   fieldsets: [
     {
       name: 'beginning',
-      title: 'Beginning',
+      title: 'Start',
+      titleEN: 'Beginning',
       options: {
         collapsible: false,
         columns: 2,
@@ -15,7 +17,8 @@ export default {
     },
     {
       name: 'ending',
-      title: 'Ending',
+      title: 'Slutt',
+      titleEN: 'Ending',
       options: {
         collapsible: false,
         columns: 2,
@@ -107,7 +110,7 @@ export default {
               .filter((child) => child._type === 'span')
               .map((span) => span.text)
               .join('')
-          : 'No description',
+          : '',
       }
     },
   },

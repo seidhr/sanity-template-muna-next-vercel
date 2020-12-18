@@ -9,19 +9,19 @@ export const icons = {
 }
 
 const blog = S.listItem()
-  .title('Blog')
+  .title('Blogg')
   .icon(BlogIcon)
   .child(
     S.list()
       .title('/blog')
       .items([
         S.listItem()
-          .title('Published posts')
+          .title('Publiserte blogginnlegg')
           .schemaType('post')
           .icon(BlogIcon)
           .child(
             S.documentTypeList('post')
-              .title('Published posts')
+              .title('Publiserte blogginnlegg')
               .menuItems(S.documentTypeList('post').getMenuItems())
               .filter('_type == "post" && publishedAt < now() && !(_id in path("drafts.**"))'),
             /* .child((documentId) =>
@@ -32,7 +32,7 @@ const blog = S.listItem()
               ) */
           ),
         S.documentTypeListItem('post')
-          .title('All posts')
+          .title('Alle blogginnlegg')
           .icon(
             AllIcon,
           ) /* ,

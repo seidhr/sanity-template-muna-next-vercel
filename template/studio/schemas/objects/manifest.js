@@ -1,6 +1,7 @@
 export default {
-  title: 'Manifest',
   name: 'manifest',
+  title: 'IIIF Manifest',
+  titleEN: 'IIIF Manifest',
   type: 'object',
   fields: [
     {

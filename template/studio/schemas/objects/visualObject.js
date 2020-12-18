@@ -1,12 +1,10 @@
-import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-import { FcSupport } from 'react-icons/fc'
 import {mainRepresentation, label, represents, referredToBy} from '../props'
 import {defaultFieldsets} from '../fieldsets'
 
 export default {
-  title: 'Visual object',
   name: 'visualObject',
+  title: 'Visuelt objekt',
+  titleEN: 'Visual object',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [represents, label, mainRepresentation, referredToBy],

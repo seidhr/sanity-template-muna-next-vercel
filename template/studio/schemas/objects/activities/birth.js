@@ -5,8 +5,9 @@ import {timespanAsString} from '../../helpers/helpers'
 var capitalize = require('capitalize')
 
 export default {
-  title: 'Birth',
   name: 'birth',
+  title: 'Fødsel',
+  titleEN: 'Birth',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [carriedOutBy, timespan, tookPlaceAt, referredToBy],

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-import { FcSupport } from 'react-icons/fc'
+import {Link} from 'part:@sanity/base/router'
+import {FcSupport} from 'react-icons/fc'
 import {timespan, referredToBy, carriedOutBy, tookPlaceAt} from '../../props'
 import {defaultFieldsets} from '../../fieldsets'
 
@@ -24,11 +24,31 @@ export default {
       name: 'images',
       title: 'Documentasjonsfotografi',
       titleEN: 'Documentation images',
-      description: (<span>Bilder som dokumenterer behandlingsresultatet. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}><FcSupport /></Link></span>),
-      descriptionEN: (<span>Images that documents the results of the treatment. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}><FcSupport /></Link></span>),
+      description: (
+        <span>
+          Bilder som dokumenterer behandlingsresultatet.{' '}
+          <Link
+            target="blank"
+            href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}
+          >
+            <FcSupport />
+          </Link>
+        </span>
+      ),
+      descriptionEN: (
+        <span>
+          Images that documents the results of the treatment.{' '}
+          <Link
+            target="blank"
+            href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}
+          >
+            <FcSupport />
+          </Link>
+        </span>
+      ),
       fieldset: 'documentation',
       type: 'array',
-      of: [{ type: 'figure' }],
+      of: [{type: 'figure'}],
       options: {
         layout: 'grid',
       },

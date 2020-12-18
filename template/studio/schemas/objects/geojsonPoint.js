@@ -1,6 +1,6 @@
 export default {
-  title: 'Point',
   name: 'geojsonPoint',
+  title: 'Point',
   type: 'object',
   fields: [
     {

@@ -11,7 +11,7 @@ export default {
       description: 'Permanent navn på innholdsfortegnelsen (for intern bruk)',
       descriptionEN: 'Permanent name of the table of content (for internal use)',
       type: 'string',
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'title',
@@ -26,7 +26,7 @@ export default {
       title: 'Seksjoner',
       titleEN: 'Sections',
       type: 'array',
-      of: [{ type: 'tocSection' }],
+      of: [{type: 'tocSection'}],
     },
   ],
-};
+}

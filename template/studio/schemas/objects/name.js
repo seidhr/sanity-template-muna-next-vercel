@@ -2,13 +2,14 @@ import {timespan, referredToBy} from '../props'
 import {defaultFieldsets} from '../fieldsets'
 
 export default {
-  title: 'Name',
   name: 'name',
+  title: 'Navn',
+  titleEN: 'Name',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [
     {
-      name: 'name',
+      name: 'content',
       title: 'Navn',
       titleEN: 'Name',
       type: 'string',
@@ -32,7 +33,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'name',
+      title: 'content',
       type: 'hasType.label.nor',
       lang: 'language.0.label.nor',
     },

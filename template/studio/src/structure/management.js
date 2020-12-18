@@ -6,11 +6,11 @@ import {ImLibrary} from 'react-icons/im'
 // import PreviewIFrame from '../../src/components/previewIFrame'
 
 const management = S.listItem()
-  .title('Samlingsadministrasjon')
+  .title('Samlingsadm.')
   .icon(ImLibrary)
   .child(
     S.list()
-      .title('Samlingsadministrasjon')
+      .title('Samlingsadm.')
       .items([
         S.documentTypeListItem('collection').title('Samlinger'),
         S.listItem()

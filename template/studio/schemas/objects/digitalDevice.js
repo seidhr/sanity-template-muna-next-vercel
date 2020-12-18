@@ -1,6 +1,7 @@
 export default {
-  title: 'Digital device',
   name: 'digitalDevice',
+  title: 'Digital ting',
+  titleEN: 'Digital device',
   type: 'object',
   fields: [
     {

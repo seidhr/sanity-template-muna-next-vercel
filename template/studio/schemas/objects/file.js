@@ -1,8 +1,8 @@
 import {label, license} from '../props'
 
 export default {
-  title: 'Manuscript',
-  name: 'manuscript',
+  name: 'digitalFile',
+  title: 'Fil',
   type: 'file',
   fields: [
     label,

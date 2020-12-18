@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Container, Box } from '@chakra-ui/react'
+import {Container, Box} from '@chakra-ui/react'
 import PortableTextBlockQuote from '../PortableTextBlockQuote'
 import PortableTextBlock from '../PortableTextBlock'
 
@@ -168,7 +168,7 @@ export default function TimelineSection(props) {
           }}
         />
       </Head>
-      <div id="timeline-embed" style={{ width: '100%', height: '500px' }}></div>
+      <div id="timeline-embed" style={{width: '100%', height: '500px'}}></div>
       <Box>
         <Box size="md">
           <PortableTextBlockQuote fontSize="2xl" blocks={props.content} />

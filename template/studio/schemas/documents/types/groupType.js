@@ -4,8 +4,9 @@ import {defaultFieldsets} from '../../fieldsets'
 import {coalesceLabel} from '../../helpers/helpers.js'
 
 export default {
-  title: 'Gryppetype',
   name: 'groupType',
+  title: 'Gruppetype',
+  titleEN: 'Group type',
   type: 'document',
   initialValue: {
     editorialState: 'published',

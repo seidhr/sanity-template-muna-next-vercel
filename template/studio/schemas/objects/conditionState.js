@@ -19,6 +19,7 @@ export default {
       name: 'attributes',
       title: 'Egenskaper',
       titleEN: 'Attributes',
+      description: 'Eksempel på custom felt for spesialistvurderinger',
       type: 'array',
       of: [{type: 'string'}],
       options: {

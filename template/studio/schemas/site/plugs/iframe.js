@@ -27,11 +27,11 @@ export default {
       title: 'title',
       url: 'url',
     },
-    prepare({ title, url }) {
+    prepare({title, url}) {
       return {
         title: title ? title : url,
-        subtitle: 'iFrame'
+        subtitle: 'iFrame',
       }
-    }
+    },
   },
 }

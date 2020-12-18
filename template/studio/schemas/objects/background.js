@@ -1,6 +1,7 @@
 export default {
-  title: 'Background',
   name: 'background',
+  title: 'Bakgrunn',
+  titleEN: 'Background',
   type: 'object',
   fields: [
     {

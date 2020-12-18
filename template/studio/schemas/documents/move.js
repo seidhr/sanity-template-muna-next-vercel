@@ -1,6 +1,3 @@
-import React from 'react'
-import { Link } from 'part:@sanity/base/router'
-import { FcSupport } from 'react-icons/fc'
 import {FaTruckLoading} from 'react-icons/fa'
 import {
   timespan,
@@ -10,6 +7,7 @@ import {
   carriedOutBy,
   tookPlaceAt,
   referredToBy,
+  motivatedBy,
 } from '../props'
 import {defaultFieldsets} from '../fieldsets'
 
@@ -59,13 +57,7 @@ export default {
       type: 'reference',
       to: [{type: 'place'}, {type: 'storage'}],
     },
-    {
-      name: 'wasMotivatedBy',
-      title: 'Motivert av',
-      titleEN: 'Motivated by',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'event'}]}],
-    },
+    motivatedBy,
   ],
   preview: {
     select: {

@@ -1,8 +1,9 @@
 import {timespan, carriedOutBy, tookPlaceAt} from '../../props'
 
 export default {
-  title: 'Destruction',
   name: 'destruction',
+  title: 'Ødeleggelse',
+  titleEN: 'Destruction',
   type: 'object',
   fields: [
     {

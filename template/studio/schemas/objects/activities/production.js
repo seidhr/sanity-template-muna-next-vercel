@@ -12,8 +12,9 @@ import {timespanAsString} from '../../helpers/helpers'
 var capitalize = require('capitalize')
 
 export default {
-  title: 'Production',
   name: 'production',
+  title: 'Production',
+  titleEN: 'Produksjon',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [

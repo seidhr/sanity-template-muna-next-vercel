@@ -3,8 +3,8 @@ import {defaultFieldsets} from '../fieldsets'
 import {coalesceLabel} from '../helpers/helpers'
 
 export default {
-  title: 'Feature Collection',
   name: 'geojsonFeatureCollection',
+  title: 'Feature Collection',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [

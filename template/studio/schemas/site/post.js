@@ -37,7 +37,8 @@ export default {
       title: 'Sammendrag',
       titleEN: 'Excerpt',
       description: 'Brukes på oversiktssider, på Google og på sosiale medier.',
-      descriptionEN: 'This ends up on summary pages, on Google, when people share your post in social media.',
+      descriptionEN:
+        'This ends up on summary pages, on Google, when people share your post in social media.',
     },
     {
       name: 'mainImage',

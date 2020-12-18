@@ -44,7 +44,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      content: 'firstColumn'
+      content: 'firstColumn',
     },
     prepare({title, content}) {
       const text = content

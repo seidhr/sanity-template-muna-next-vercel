@@ -3,6 +3,10 @@ import {definedByGeoJSON} from '../props'
 export default {
   title: 'Spacetime volume',
   name: 'spacetimeVolume',
+  description:
+    'Comprises of 4 dimensional point sets (volumes) in physical spacetime regardless its true geometric form. Example: the spatio-temporal trajectory of the H.M.S. Victory from its building to its actual location.',
+  descriptionEN:
+    'Comprises of 4 dimensional point sets (volumes) in physical spacetime regardless its true geometric form. Example: the spatio-temporal trajectory of the H.M.S. Victory from its building to its actual location.',
   type: 'object',
   fields: [
     {

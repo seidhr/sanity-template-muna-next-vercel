@@ -1,7 +1,8 @@
 import {timespan, carriedOutBy, tookPlaceAt} from '../../props'
 export default {
-  title: 'Creation',
   name: 'creation',
+  title: 'Skapelse',
+  titleEN: 'Creation',
   type: 'object',
   fields: [carriedOutBy, timespan, tookPlaceAt],
   preview: {
