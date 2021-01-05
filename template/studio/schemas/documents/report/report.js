@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'part:@sanity/base/router'
-import {FcSupport} from 'react-icons/fc'
+import {BsFillQuestionCircleFill} from 'react-icons/bs'
 import {GiCrackedGlass} from 'react-icons/gi'
 import {
   editorialState,
@@ -53,11 +53,12 @@ export default {
       title: 'Felt relatert til deler eller innhold',
       options: {collapsible: true, collapsed: false},
     },
-    {
+    /* {
       name: 'technique',
+      description: 'Disse bør fjernes eller flyttes til aktiviteter denne rapporten dokumenterer.',
       title: 'Felt relatert til teknikk',
       options: {collapsible: true, collapsed: false},
-    },
+    }, */
     {
       name: 'documentation',
       title: 'Dokumentasjon',
@@ -76,17 +77,25 @@ export default {
         <span>
           Brukes til å <i>spesifisere</i> typen av ting. For eksempel <strong>Rapport</strong>{' '}
           klassifisert som <i>konververingsrapport</i>.{' '}
+          Legg til{' '}
+          <Link target="blank" href={'/desk/typer;reportType'}>
+            ny rapporttype.
+          </Link>{' '}
           <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#classified-as'}>
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
-      description: (
+      descriptionEN: (
         <span>
           Used to <i>specify</i> the things type. Example: <strong>Report</strong> classified as{' '}
           <i>conservation report</i>.{' '}
+          Legg til{' '}
+          <Link target="blank" href={'/desk/typer;reportType'}>
+            ny rapporttype.
+          </Link>{' '}
           <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#classified-as'}>
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -104,9 +113,9 @@ export default {
       ...referredToBy,
       fieldset: 'minimum',
     },
+    concerned,
     carriedOutBy,
     timespan,
-    concerned,
     hasIdentified,
     motivated,
     {
@@ -117,7 +126,7 @@ export default {
         <span>
           Hendelser og aktiviteter relatert til rapporten.{' '}
           <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#activity-stream'}>
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -125,14 +134,14 @@ export default {
         <span>
           Events and activities connected to this object.{' '}
           <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#activity-stream'}>
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
       type: 'array',
-      of: [{type: 'measurement'}, {type: 'sampling'}, {type: 'treatment'}],
+      of: [{type: 'measurement'}, {type: 'sampling'}],
     },
-    {
+    /* {
       ...usedGeneralTechnique,
       fieldset: 'technique',
     },
@@ -147,7 +156,7 @@ export default {
     {
       ...usedSpecificObject,
       fieldset: 'technique',
-    },
+    }, */
     {
       name: 'images',
       title: 'Dokumentasjonsfotografi',
@@ -159,7 +168,7 @@ export default {
             target="blank"
             href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}
           >
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -170,7 +179,7 @@ export default {
             target="blank"
             href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}
           >
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -192,7 +201,7 @@ export default {
             target="blank"
             href={'https://docs.muna.xyz/docs/model/properties#documentation-files'}
           >
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -203,7 +212,7 @@ export default {
             target="blank"
             href={'https://docs.muna.xyz/docs/model/properties#documentation-files'}
           >
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -220,7 +229,7 @@ export default {
           Dersom det er flere selvstendige rapporter som inngår i en serie, legg til disse til her.
           Den overordene rapportens metadata bør reflektere at det er en samlepost.{' '}
           <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#sub-report'}>
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -229,7 +238,7 @@ export default {
           If there is several indepentent reports that forms part of a larger rapport these can be
           added here.{' '}
           <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#sub-report'}>
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),

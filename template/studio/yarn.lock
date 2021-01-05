@@ -28,6 +28,15 @@
     three-forcegraph "^1.37.0"
     three-render-objects "^1.24.6"
 
+"@andre-brdoch/sanity-plugin-schema-inspector@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@andre-brdoch/sanity-plugin-schema-inspector/-/sanity-plugin-schema-inspector-1.1.0.tgz#eee18c3c00e002d7fc163a3941e5006571613c15"
+  dependencies:
+    "@sanity/desk-tool" "^2.0.9"
+    react "^17.0.1"
+    react-icons "^4.1.0"
+    react-json-inspector "^7.1.1"
+
 "@appbaseio/reactivecore@9.6.23":
   version "9.6.23"
   resolved "https://registry.npmjs.org/@appbaseio/reactivecore/-/reactivecore-9.6.23.tgz#3b89b43f0cb56668e0ad02fb2a2a5927c19b2d3d"
@@ -1588,7 +1597,7 @@
     scroll "^3.0.1"
     shallow-equals "^1.0.0"
 
-"@sanity/desk-tool@^2.0.2", "@sanity/desk-tool@^2.1.3":
+"@sanity/desk-tool@^2.0.2", "@sanity/desk-tool@^2.0.9", "@sanity/desk-tool@^2.1.3":
   version "2.1.3"
   resolved "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-2.1.3.tgz#61658b5fd8baa8665b8e710b42b959f136270c2a"
   dependencies:
@@ -4733,7 +4742,7 @@ debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   dependencies:
     ms "2.1.2"
 
-"debug@github:ngokevin/debug#noTimestamp":
+debug@ngokevin/debug#noTimestamp:
   version "2.2.0"
   resolved "https://codeload.github.com/ngokevin/debug/tar.gz/ef5f8e66d49ce8bc64c6f282c15f8b7164409e3a"
 
@@ -4915,7 +4924,7 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-"document-register-element@github:dmarcos/document-register-element#8ccc532b7f3744be954574caf3072a5fd260ca90":
+document-register-element@dmarcos/document-register-element#8ccc532b7f3744be954574caf3072a5fd260ca90:
   version "0.5.4"
   resolved "https://codeload.github.com/dmarcos/document-register-element/tar.gz/8ccc532b7f3744be954574caf3072a5fd260ca90"
 
@@ -9833,6 +9842,10 @@ react-icons@^3.10.0, react-icons@^3.11.0, react-icons@^3.8.0:
   dependencies:
     camelcase "^5.0.0"
 
+react-icons@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/react-icons/-/react-icons-4.1.0.tgz#9ca9bcbf2e3aee8e86e378bb9d465842947bbfc3"
+
 react-immutable-proptypes@^2.1.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/react-immutable-proptypes/-/react-immutable-proptypes-2.2.0.tgz#cce96d68cc3c18e89617cbf3092d08e35126af4a"
@@ -10131,6 +10144,13 @@ react@^16.13.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
+
+react@^17.0.1:
+  version "17.0.1"
+  resolved "https://registry.npmjs.org/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
 
 reactcss@^1.2.0:
   version "1.2.3"
@@ -10647,6 +10667,12 @@ sanity-plugin-leaflet-input@^1.0.0:
     leaflet "^1.6.0"
     prop-types "^15.7.2"
     react-leaflet "^2.6.3"
+
+sanity-plugin-media-library@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/sanity-plugin-media-library/-/sanity-plugin-media-library-1.0.2.tgz#1acdbc6333e0a799f15974257d8cb239e624f643"
+  dependencies:
+    styled-components "^5.2.1"
 
 sanity-plugin-media@^0.4.0:
   version "0.4.0"
@@ -11600,7 +11626,7 @@ text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
-"three-bmfont-text@github:dmarcos/three-bmfont-text#1babdf8507c731a18f8af3b807292e2b9740955e":
+three-bmfont-text@dmarcos/three-bmfont-text#1babdf8507c731a18f8af3b807292e2b9740955e:
   version "2.3.0"
   resolved "https://codeload.github.com/dmarcos/three-bmfont-text/tar.gz/1babdf8507c731a18f8af3b807292e2b9740955e"
   dependencies:

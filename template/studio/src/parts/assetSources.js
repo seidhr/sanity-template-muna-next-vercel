@@ -1,6 +1,7 @@
 // import SanitySource from 'part:@sanity/form-builder/input/image/asset-source-default'
 import NBiiif from 'sanity-plugin-asset-source-nbiiif'
 import Marcus from 'sanity-plugin-asset-source-marcus'
-import MediaAssetSource from 'part:sanity-plugin-media/asset-source'
+// import MediaAssetSource from 'part:sanity-plugin-media/asset-source'
+import AssetSource from "part:sanity-plugin-media-library/asset-source";
 
-export default [MediaAssetSource, NBiiif, Marcus]
+export default [/* MediaAssetSource */ AssetSource, NBiiif, Marcus]

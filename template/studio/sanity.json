@@ -19,7 +19,6 @@
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
-    "media",
     "asset-source-nbiiif",
     "asset-source-marcus",
     "import-tool",
@@ -27,7 +26,9 @@
     "muna-docs-widget",
     "iiif-manifest-input",
     "graph-view",
-    "leaflet-input"
+    "leaflet-input",
+    "@andre-brdoch/sanity-plugin-schema-inspector",
+    "media-library"
   ],
   "env": {
     "development": {
@@ -50,6 +51,10 @@
     {
       "implements": "part:@sanity/form-builder/input/image/asset-sources",
       "path": "./src/parts/assetSources.js"
+    },
+    {
+      "implements": "part:@sanity/form-builder/input-resolver",
+      "path": "./src/parts/inputResolver.js"
     }
   ]
 }

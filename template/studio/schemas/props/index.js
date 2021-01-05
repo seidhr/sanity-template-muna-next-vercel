@@ -1,5 +1,5 @@
 import React from 'react'
-import {FcSupport} from 'react-icons/fc'
+import {BsFillQuestionCircleFill} from 'react-icons/bs'
 import client from 'part:@sanity/base/client'
 import {Link} from 'part:@sanity/base/router'
 import {licenseTypes} from '../vocabularies/defaultVocabularies'
@@ -46,7 +46,7 @@ export const mainRepresentation = {
     <span>
       Last opp eller velg et bilde. Dette er bildet som brukes som forhåndsvisning.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#main-representation'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -54,7 +54,7 @@ export const mainRepresentation = {
     <span>
       Upload or choose a image. This image will be used for previews.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#main-representation'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -68,7 +68,7 @@ export const subjectOfManifest = {
     <span>
       Hovedmanifestet til objektet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#main-representation'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -76,7 +76,7 @@ export const subjectOfManifest = {
     <span>
       The main manifest of this object.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#main-representation'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -114,7 +114,7 @@ export const preferredIdentifier = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#preferred-identifier'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -126,7 +126,7 @@ export const preferredIdentifier = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#preferred-identifier'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -145,8 +145,8 @@ export const label = {
   name: 'label',
   title: 'Tittel',
   titleEN: 'Title',
-  // description: (<span>Tittel. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#label'}><FcSupport /></Link></span>),
-  // descriptionEN: (<span>Title. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#label'}><FcSupport /></Link></span>),
+  // description: (<span>Tittel. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#label'}><BsFillQuestionCircleFill /></Link></span>),
+  // descriptionEN: (<span>Title. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#label'}><BsFillQuestionCircleFill /></Link></span>),
   type: 'localeString',
   validation: (Rule) => Rule.required(),
 }
@@ -155,8 +155,8 @@ export const labelSingleton = {
   name: 'label',
   title: 'Tittel',
   titleEN: 'Title',
-  // description: (<span>Tittel. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#label'}><FcSupport /></Link></span>),
-  // descriptionEN: (<span>Title. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#label'}><FcSupport /></Link></span>),
+  // description: (<span>Tittel. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#label'}><BsFillQuestionCircleFill /></Link></span>),
+  // descriptionEN: (<span>Title. <Link target='blank' href={'https://docs.muna.xyz/docs/model/properties#label'}><BsFillQuestionCircleFill /></Link></span>),
   type: 'string',
   validation: (Rule) => Rule.required(),
 }
@@ -176,7 +176,7 @@ export const identifiedBy = {
     <span>
       Gjeldende, alternative, eksterne eller ugyldige identifikatorer.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#identified-by'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -184,7 +184,7 @@ export const identifiedBy = {
     <span>
       Current, alternative, external or invalid ifentifiers.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#identified-by'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -225,7 +225,7 @@ export const subject = {
       </Link>
       .{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#subject'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -237,7 +237,7 @@ export const subject = {
       </Link>
       .{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#subject'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -259,7 +259,7 @@ export const referredToBy = {
       Objektet kan ha mange beskrivelser, korte og/eller lange. Tekstene kan types for ulike
       brukeformål.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#description'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -267,7 +267,7 @@ export const referredToBy = {
     <span>
       The object can have multiple descriptions of varying lengths and purposes.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#description'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -307,7 +307,7 @@ export const presentAt = {
     <span>
       Dette objektet var tilstede ved en hendelse eller aktivitet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#present-at'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -315,7 +315,7 @@ export const presentAt = {
     <span>
       This object was present at an event or activity.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#present-at'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -336,7 +336,7 @@ export const motivatedBy = {
     <span>
       Dette objektet var tilstede ved en hendelse eller aktivitet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#motivated-by'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -344,7 +344,7 @@ export const motivatedBy = {
     <span>
       This object was present at an event or activity.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#motivated-by'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -365,7 +365,7 @@ export const hasCurrentOwner = {
     <span>
       Nåværende eier av dette objektet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#current-owner'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -373,7 +373,7 @@ export const hasCurrentOwner = {
     <span>
       Current owner of this object.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#current-owner'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -397,7 +397,7 @@ export const hasFormerOrCurrentOwner = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#former-or-current-owner'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -408,7 +408,7 @@ export const hasFormerOrCurrentOwner = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#former-or-current-owner'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -429,7 +429,7 @@ export const composedOf = {
     <span>
       Andre identifiserte objekt som er en del av dette objektet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#composed-of'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -437,7 +437,7 @@ export const composedOf = {
     <span>
       Other identified madeObjects this object is composed of.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#composed-of'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -453,7 +453,7 @@ export const isSubjectOf = {
     <span>
       <strong>Eksperimentel:</strong> Tekster om dette objektet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#subject-of'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -462,7 +462,7 @@ export const isSubjectOf = {
       <strong>Experimental:</strong> Texts that have this object as its main subject, both internal
       and other texts.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#subject-of'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -483,7 +483,7 @@ export const depicts = {
     <span>
       Avbildet på dette objektet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#depicts'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -491,7 +491,7 @@ export const depicts = {
     <span>
       Depictions on this object.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#depicts'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -512,7 +512,7 @@ export const represents = {
     <span>
       Hva dette motivet representerer.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#represents'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -520,7 +520,7 @@ export const represents = {
     <span>
       What this visual image represents.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#represents'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -541,7 +541,7 @@ export const showsVisualObject = {
     <span>
       Motiv vist på dette objectet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#shown-visual-item'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -549,7 +549,7 @@ export const showsVisualObject = {
     <span>
       Visual item shown on this object.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#shown-visual-item'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -565,7 +565,7 @@ export const carries = {
     <span>
       Verk som er representert i dette objektet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#carries'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -573,7 +573,7 @@ export const carries = {
     <span>
       Work represented on this object.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#carries'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -589,7 +589,7 @@ export const measuredBy = {
     <span>
       <strong>Eksperimentel:</strong> Måling av objektet.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#measurement'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -597,7 +597,7 @@ export const measuredBy = {
     <span>
       <strong>Experimental:</strong> Measurment of the object.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#measurement'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -613,7 +613,7 @@ export const hasDimension = {
     <span>
       <strong>Eksperimentel:</strong> Objektets dimension.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#dimension'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -621,7 +621,7 @@ export const hasDimension = {
     <span>
       <strong>Experimental:</strong> Dimension of the object.{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#dimension'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -641,7 +641,7 @@ export const consistsOf = {
       </Link>
       .{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#consists-of'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -653,7 +653,7 @@ export const consistsOf = {
       </Link>
       .{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#consists-of'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -681,7 +681,7 @@ export const usedGeneralTechnique = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#used-general-technique'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -696,7 +696,7 @@ export const usedGeneralTechnique = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#used-general-technique'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -724,7 +724,7 @@ export const usedSpecificTechnique = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#used-spesific-technique'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -739,7 +739,7 @@ export const usedSpecificTechnique = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#used-spesific-technique'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -759,7 +759,7 @@ export const usedObjectOfType = {
       </Link>
       .{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#used-object-of-type'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -771,7 +771,7 @@ export const usedObjectOfType = {
       </Link>
       .{' '}
       <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#used-object-of-type'}>
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -799,7 +799,7 @@ export const usedSpecificObject = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#used-spesific-object'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
@@ -814,7 +814,7 @@ export const usedSpecificObject = {
         target="blank"
         href={'https://docs.muna.xyz/docs/model/properties#used-spesific-object'}
       >
-        <FcSupport />
+        <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),

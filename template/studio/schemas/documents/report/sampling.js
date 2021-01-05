@@ -1,12 +1,25 @@
-import {timespan, carriedOutBy, referredToBy, tookPlaceAt} from '../../props'
+import {timespan, carriedOutBy, referredToBy, tookPlaceAt, usedGeneralTechnique, usedSpecificTechnique, usedObjectOfType, usedSpecificObject} from '../../props'
 import {defaultFieldsets} from '../../fieldsets'
 
+// Se https://link.springer.com/article/10.1007/s00799-016-0199-x for eksempel på modellering
+
 export default {
-  title: 'Sampling',
   name: 'sampling',
+  title: 'Prøvetaking',
+  titleEN: 'Sampling',
   type: 'object',
   fieldsets: defaultFieldsets,
-  fields: [carriedOutBy, timespan, tookPlaceAt, referredToBy],
+  fields: [
+    carriedOutBy, 
+    timespan, 
+    tookPlaceAt, 
+    referredToBy,
+    
+    usedGeneralTechnique,
+    usedSpecificTechnique,
+    usedObjectOfType,
+    usedSpecificObject,
+  ],
   preview: {
     select: {
       date: 'productionDate',
@@ -14,7 +27,7 @@ export default {
     prepare(selection) {
       const {date} = selection
       return {
-        title: `Transformasjon${date ? ', datert ' + date : ''}`,
+        title: `Prøvetaking ${date ? ', datert ' + date : ''}`,
       }
     },
   },

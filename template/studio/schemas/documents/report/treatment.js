@@ -1,12 +1,13 @@
 import React from 'react'
 import {Link} from 'part:@sanity/base/router'
-import {FcSupport} from 'react-icons/fc'
-import {timespan, tookPlaceAt, referredToBy, carriedOutBy} from '../../props'
+import {BsFillQuestionCircleFill} from 'react-icons/bs'
+import {timespan, tookPlaceAt, referredToBy, carriedOutBy, usedGeneralTechnique, usedSpecificTechnique, usedObjectOfType, usedSpecificObject} from '../../props'
 import {defaultFieldsets} from '../../fieldsets'
 
 export default {
-  title: 'Treatment',
   name: 'treatment',
+  title: 'Behandling',
+  titleEN: 'Treatment',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [
@@ -14,6 +15,10 @@ export default {
     timespan,
     tookPlaceAt,
     referredToBy,
+    usedGeneralTechnique,
+    usedSpecificTechnique,
+    usedObjectOfType,
+    usedSpecificObject,
     {
       name: 'assessedBy',
       title: 'Vurdert av',
@@ -22,7 +27,7 @@ export default {
         <span>
           Legg til en vurdering av behandlingen. Var det en suksess?{' '}
           <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#assessment'}>
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -30,7 +35,7 @@ export default {
         <span>
           Add an assessment of the treatment, was it a success?{' '}
           <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#assessment'}>
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),

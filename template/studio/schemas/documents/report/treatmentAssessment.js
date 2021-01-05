@@ -1,12 +1,13 @@
 import React from 'react'
 import {Link} from 'part:@sanity/base/router'
-import {FcSupport} from 'react-icons/fc'
+import {BsFillQuestionCircleFill} from 'react-icons/bs'
 import {timespan, referredToBy, carriedOutBy, tookPlaceAt} from '../../props'
 import {defaultFieldsets} from '../../fieldsets'
 
 export default {
-  title: 'Treatment assessment',
   name: 'treatmentAssessment',
+  title: 'Behandlingsvurdering',
+  titleEN: 'Treatment assessment',
   type: 'object',
   fieldsets: defaultFieldsets,
   fields: [
@@ -31,7 +32,7 @@ export default {
             target="blank"
             href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}
           >
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -42,7 +43,7 @@ export default {
             target="blank"
             href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}
           >
-            <FcSupport />
+            <BsFillQuestionCircleFill />
           </Link>
         </span>
       ),
@@ -61,7 +62,7 @@ export default {
     prepare(selection) {
       const {date} = selection
       return {
-        title: `Assessed${date ? ', dated ' + date : ''}`,
+        title: `Vurdering av behandling${date ? ', datert ' + date : ''}`,
       }
     },
   },
