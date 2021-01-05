@@ -31,7 +31,7 @@ export default function Hero(props) {
         marginLeft="5%"
       >
         <Badge>{props.label}</Badge>
-        <Heading size="2xl">{props.heading}</Heading>
+        <Heading size="2xl">{props.title}</Heading>
         {props?.tagline && (
           <Box size="xl">
             <PortableTextBlock blocks={props.tagline} />

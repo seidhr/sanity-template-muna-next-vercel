@@ -42,7 +42,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'heading',
+      title: 'title',
       subtitle: 'label',
       disabled: 'disabled',
     },
