@@ -120,6 +120,20 @@ const madeObjectFields = `
   },
   referredToBy[] {
     ...,
+    body[] {
+    ...,
+      _type == 'reference' => @->{
+        _id,
+        _type,
+        preferredIdentifier,
+        label,
+        subjectOfManifest,
+        mainRepresentation{
+          ...,
+          asset->
+        }
+      }
+    },
     hasType[]-> {
       ...
     },

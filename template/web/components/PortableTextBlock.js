@@ -63,6 +63,14 @@ export default function PortableTextBlock(props) {
         </pre>
       ),
       block: BlockRenderer,
+      place: (props) => (
+        <div>
+          <h2>Demo: referanse til dokument i en Portable Text blokk</h2>
+          <p>
+            <Link href={`/id/${props.node._id}`}>{props.node.label.nor}</Link>
+          </p>
+        </div>
+      )
     },
   }
 
