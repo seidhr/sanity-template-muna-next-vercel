@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 import {Flex, Box, Spacer, Button, Heading, Text, useColorMode} from '@chakra-ui/react'
 import {MoonIcon, SunIcon} from '@chakra-ui/icons'
