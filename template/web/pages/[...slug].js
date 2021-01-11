@@ -13,7 +13,7 @@ export default function Page({data, preview}) {
           <title>{CMS_NAME}</title>
         </Head>
 
-        <Header menu={data.page.navMenu} />
+        <Header menu={data.page?.navMenu} />
 
         {data.page.content && <Sections sections={data.page.content} />}
       </Layout>
@@ -34,7 +34,7 @@ export async function getStaticPaths() {
     paths:
       routes?.map((item) => ({
         params: {
-          slug: item.slug.current,
+          slug: item.slug.current.split('/'),
         },
       })) || [],
     fallback: false,

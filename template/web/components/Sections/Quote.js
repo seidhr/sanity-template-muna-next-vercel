@@ -4,7 +4,7 @@ import PortableTextBlock from '../PortableTextBlock'
 
 export default function Quote(props) {
   return (
-    <Container maxW="4xl" marginTop="10">
+    <Container maxW="2xl" marginTop="10">
       <Box>
         <Box size="md">
           <PortableTextBlockQuote fontSize="2xl" blocks={props.content} />

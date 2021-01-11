@@ -22,6 +22,13 @@ export default {
       to: [{type: 'appelationType'}],
     },
     {
+      name: 'part',
+      title: 'Deler',
+      titleEN: 'Part',
+      type: 'array',
+      of: [{type: 'name'}],
+    },
+    {
       name: 'language',
       title: 'Språk',
       titleEN: 'Language',

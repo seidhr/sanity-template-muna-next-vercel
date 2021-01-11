@@ -5,7 +5,7 @@ import {MoonIcon, SunIcon} from '@chakra-ui/icons'
 import {CMS_NAME} from '../lib/constants'
 
 const MenuItems = ({children}) => (
-  <Text mt={{base: 4, md: 0}} mr={6} display="block">
+  <Text mt={{base: 4, md: 0}} mr={6} mb="0" display="block">
     {children}
   </Text>
 )
@@ -19,7 +19,7 @@ export default function Header({menu}) {
     <header>
       <Flex as="nav" align="center" justify="space-between" wrap="wrap" padding="1.5rem">
         <Flex align="center" mr={5}>
-          <Heading fontSize="lg">
+          <Heading fontSize="xl">
             <Link href="/">
               <a>{CMS_NAME}</a>
             </Link>
@@ -36,7 +36,7 @@ export default function Header({menu}) {
         <Flex
           display={{base: show ? 'block' : 'none', sm: show ? 'block' : 'none', md: 'flex'}}
           width={{base: 'full', sm: 'full', md: 'auto'}}
-          alignItems="center"
+          align="center"
           flexGrow={1}
         >
           {menu?.items &&

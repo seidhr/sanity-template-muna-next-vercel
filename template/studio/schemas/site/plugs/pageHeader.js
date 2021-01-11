@@ -1,7 +1,7 @@
 export default {
   type: 'object',
   name: 'pageHeader',
-  title: 'Side',
+  title: 'Sideoverskrift',
   titleEN: 'Page Header',
   fields: [
     {
@@ -31,8 +31,8 @@ export default {
     prepare({title, illustration}) {
       return {
         title: title,
-        subtitle: 'Page header',
-        media: illustration.image,
+        subtitle: 'Sideoverskrift',
+        media: illustration?.image,
       }
     },
   },

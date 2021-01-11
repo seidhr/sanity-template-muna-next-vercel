@@ -235,8 +235,9 @@ export async function getRoutes() {
 }
 
 export async function getRouteBySlug(id) {
+  const joinID = id.join('/')
   const data = await getClient(true).fetch(
-    `*[ _type == "route" && slug.current == $id ][0] {
+    `*[ _type == "route" && slug.current == $joinID ][0] {
         "id": _id,
         ...,
         page->{
@@ -267,7 +268,7 @@ export async function getRouteBySlug(id) {
           }
         }
     }`,
-    {id},
+    {joinID},
   )
   return data
 }

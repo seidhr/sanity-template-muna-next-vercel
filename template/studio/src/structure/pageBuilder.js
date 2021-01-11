@@ -26,7 +26,7 @@ export default S.listItem()
             S.documentList('page')
               .title('Sider')
               .menuItems(S.documentTypeList('page').getMenuItems())
-              .filter('_type == "page" && _id != "frontpage"'),
+              .filter('_type == "page" && !(_id match "**frontpage")'),
           ),
         S.listItem()
           .title('Navigasjonsmenyer')

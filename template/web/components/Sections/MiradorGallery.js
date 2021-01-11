@@ -12,10 +12,10 @@ export default function MiradorGallery(props) {
   const manifests = props.items.map((item) => item.manifest)
 
   return (
-    <Container maxW="xl" centerContent>
+    <Container maxW="6xl" centerContent>
       <Grid
         w="full"
-        p={5}
+        my={5}
         gridGap={5}
         alignContent="start"
         gridTemplateAreas={{xl: '"image image metadata"', base: '"image" "metadata"'}}

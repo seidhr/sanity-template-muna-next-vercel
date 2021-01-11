@@ -3,7 +3,7 @@ import PortableTextBlock from '../PortableTextBlock'
 
 export default function SectionText(props) {
   return (
-    <Container maxW="4xl" marginTop="10">
+    <Container maxW="3xl" marginTop="10">
       <Box>
         <Center>
           <Heading size="xl">{props.title}</Heading>
