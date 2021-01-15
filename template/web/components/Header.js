@@ -15,6 +15,8 @@ export default function Header({menu}) {
   const [show, setShow] = React.useState(false)
   const handleToggle = () => setShow(!show)
 
+  console.log(menu)
+
   return (
     <header>
       <Flex as="nav" align="center" justify="space-between" wrap="wrap" padding="1.5rem">
