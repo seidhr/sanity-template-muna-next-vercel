@@ -16,6 +16,10 @@ export default function Mirador(props) {
           allowFullscreen: true,
           manifestId: data.manifest[0],
           maximized: true,
+          allowClose: false,
+          allowMaximize: false,
+          allowWindowSideBar: false,
+          allowTopMenuButton: false,
         },
       ]
       return res

@@ -1,6 +1,6 @@
 import {CMS_NAME} from '../lib/constants'
 import {getRouteBySlug, getRoutes} from '../lib/api'
-import Head from 'next/head'
+import Head from 'pages/node_modules/pages/node_modules/next/head'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import Sections from '../components/Sections/Sections'

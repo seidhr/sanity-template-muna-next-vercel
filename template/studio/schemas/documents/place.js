@@ -8,7 +8,7 @@ import {
   definedByGeoJSON,
 } from '../props'
 import {defaultFieldsets} from '../fieldsets'
-import KulturnavInput from '../components/kulturnavInput/KulturnavInput'
+// import {KulturnavInput} from '../components/kulturnavInput/KulturnavInput'
 
 export default {
   title: 'Place',
@@ -42,7 +42,7 @@ export default {
       name: 'hasType',
       title: 'Klassifisert som',
       titleEN: 'Classified as',
-      type: 'concept',
+      type: 'string',
       inputComponent: KulturnavInput,
     }, */
     referredToBy,

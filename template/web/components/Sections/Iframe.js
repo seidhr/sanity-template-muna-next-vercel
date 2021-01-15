@@ -4,9 +4,9 @@ export default function Iframe(props) {
   const getId = (thePath) => thePath.substring(thePath.lastIndexOf('/') + 1)
 
   return (
-    <Container maxW="6xl" marginTop="10"  centerContent>
+    <Container maxW="3xl" marginTop="10"  centerContent>
       <Heading size="xl">{props.title}</Heading>
-      <Box w={['sm', 'md', '6xl']} px="4">
+      <Box w={['sm', 'md', '3xl']} px="4">
         <iframe
           src={props.url}
           width="100%"

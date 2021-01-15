@@ -1,12 +1,12 @@
 module.exports = {
-  // basePath: '/exhibition/chk',
-  /* async redirects() {
+  basePath: '/exhibition',
+  async redirects() {
     return [
       {
-        source: '/',
+        source: '/exhibition',
         destination: '/exhibition/chk',
         permanent: true,
       },
     ]
-  }, */
+  },
 }
