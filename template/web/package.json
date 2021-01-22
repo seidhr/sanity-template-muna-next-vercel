@@ -9,6 +9,9 @@
   "dependencies": {
     "@blueprintjs/core": "^3.36.0",
     "@blueprintjs/icons": "^3.23.0",
+    "@canvas-panel/core": "^0.2.0",
+    "@canvas-panel/full-page-plugin": "^0.2.0",
+    "@canvas-panel/patchwork-plugin": "^0.2.0",
     "@chakra-ui/icons": "^1.0.2",
     "@chakra-ui/react": "^1.1.2",
     "@emotion/react": "^11.1.4",

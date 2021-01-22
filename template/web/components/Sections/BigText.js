@@ -7,7 +7,7 @@ export default function SectionText(props) {
       <Box size="xl">
         <PortableTextBlock
           className="big-text"
-          fontSize="3xl"
+          fontSize="2xl"
           fontWeight="600"
           blocks={props.content}
         />

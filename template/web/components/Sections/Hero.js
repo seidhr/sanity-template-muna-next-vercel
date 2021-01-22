@@ -1,6 +1,5 @@
 import {imageBuilder} from '../../lib/sanity'
 import {Grid, Box, Heading, Image, Badge} from '@chakra-ui/react'
-import styles from './Hero.module.css'
 import {useColorMode, useColorModeValue} from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 
@@ -16,32 +15,41 @@ export default function Hero(props) {
   const image = props.illustration.image
 
   return (
-    <Grid gridTemplateAreas='"hero"' w="full" height="100vh" maxHeight="600px" marginBottom="10">
+    <Grid gridTemplateAreas='"hero"' w="full" maxHeight="600px" marginBottom="10">
       <Box
-        d="inline-block"
+        d="flex"
         gridArea="hero"
-        backgroundColor={bg}
         color={color}
-        p="10"
+        p="5"
         zIndex="1"
         selfalign="center"
-        marginTop="5%"
-        marginRight="50%"
-        marginBottom="50%"
-        marginLeft="5%"
+        justifyContent="flex-end"
+        alignItems="flex-end"
       >
-        <Badge>{props.label}</Badge>
-        <Heading size="2xl">{props.title}</Heading>
-        {props?.tagline && (
-          <Box size="xl">
-            <PortableTextBlock blocks={props.tagline} />
-          </Box>
-        )}
+        <Box
+          w="md"
+          px="10"
+          pt="4"
+          backgroundColor={bg}
+          opacity="80%"
+        >
+          <Badge 
+            opacity="100%"
+            backgroundColor={bg} 
+            color={color}>
+              {props.label}
+          </Badge>
+          <Heading size="xl" opacity="100%">{props.title}</Heading>
+          {props?.tagline && (
+            <Box size="xl" opacity="100%" >
+              <PortableTextBlock blocks={props.tagline} />
+            </Box>
+          )}
+        </Box>
       </Box>
       <Image
         gridArea="hero"
         objectFit="cover"
-        height="100vh"
         maxHeight="600px"
         width="100%"
         justifyContent="end"

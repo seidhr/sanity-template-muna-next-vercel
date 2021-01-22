@@ -25,6 +25,7 @@ import ActivityStream from '../ActivityStream'
 import HasType from '../HasType'
 import Subject from '../Subject'
 import CurrentOwner from '../CurrentOwner'
+import Description from '../Description'
 
 const MiradorWithNoSSR = dynamic(() => import('../Mirador'), {ssr: false})
 
@@ -55,6 +56,10 @@ export default function MadeObject(item) {
             <Box>
               <ReferredToBy array={item.referredToBy} />
             </Box>
+          )}
+          
+          {item?.description && (
+            <Description description={item.description} /> 
           )}
 
           {item.subject && <Subject subjects={item.subject} />}

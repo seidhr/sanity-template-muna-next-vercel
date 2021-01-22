@@ -29,4 +29,13 @@ export default {
       of: [{type: 'tocSection'}],
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      targetTitle: 'title',
+    },
+    prepare: ({title, targetTitle}) => ({
+      title: title || targetTitle,
+    }),
+  },
 }

@@ -2,13 +2,18 @@ import {Box, Grid, Heading, Text} from '@chakra-ui/react'
 import PortableTextBlock from './PortableTextBlock'
 import {orderBy, head} from 'lodash'
 
-export default function ReferredToBy(array) {
-  if (!array) {
+export default function ReferredToBy(props) {
+  if (!props) {
     return null
   }
 
-  array.array.map((obj) => (obj.lang = obj.language.identifiedByISO6393))
-  const sorted = orderBy(array.array, ['lang'], ['desc'])
+  props.array?.map((obj) => (obj.lang = obj.language.identifiedByISO6393))
+  
+  let sorted = []
+  if (props.array) {
+    sorted = orderBy(props?.array, ['lang'], ['desc'])
+  }
+
   return (
     <>
       {sorted?.map((ref) => (
@@ -19,6 +24,7 @@ export default function ReferredToBy(array) {
           <PortableTextBlock blocks={ref.body} />
         </Box>
       ))}
+      {props.description && (<PortableTextBlock description={props.description}/>)}
     </>
   )
 }

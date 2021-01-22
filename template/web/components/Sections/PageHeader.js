@@ -16,10 +16,10 @@ export default function PageHeader(props) {
   const image = props.illustration?.image
 
   return (
-    <Grid gridTemplateAreas='"hero"' w="100%" height="200px" alignItems="center" backgroundColor={bg}>
-      <Box gridArea="hero" color={color} height="100%" zIndex="1">
-        <Container marginTop="10">
-          <Heading size="2xl">{props.title}</Heading>
+    <Grid gridTemplateAreas='"hero"' w="100%" h="200px" backgroundColor={bg}>
+      <Box gridArea="hero" color={color} h="100%" zIndex="1">
+        <Container marginTop="10" maxW="3xl">
+          <Heading size="2xl" w="100%" >{props.title}</Heading>
 
           {props?.subtitle && (
             <Box size="xl">
@@ -38,7 +38,7 @@ export default function PageHeader(props) {
         overflow="hidden"
         opacity={opacity}
         src={imageBuilder.image(image).width('1000').height('300').url()}
-        alt={'No label'}
+        alt={''}
       />)}
     </Grid>
   )

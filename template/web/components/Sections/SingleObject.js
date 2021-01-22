@@ -1,13 +1,16 @@
+import React from 'react'
 import dynamic from 'next/dynamic'
 import {Grid, Container, Box, Center, Heading, Text} from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 
 const MiradorWithNoSSR = dynamic(() => import('../Mirador'), {ssr: false})
+const CanvasPanelFullScreedWithNoSSR = dynamic(() => import('../CanvasPanelFullScreen'), {ssr: false})
 
 export default function SingleObject(props) {
   if (!props) {
     return null
   }
+  const ref = React.createRef();
 
   return (
     <Container maxW="6xl" centerContent>
@@ -33,7 +36,8 @@ export default function SingleObject(props) {
 
         {props?.item.manifest && (
           <Box gridArea="image">
-            <MiradorWithNoSSR manifest={[props.item.manifest]} />
+            {/* <MiradorWithNoSSR manifest={[props.item.manifest]} /> */}
+            <CanvasPanelFullScreedWithNoSSR ref={ref} manifest={[props.item.manifest]} />
           </Box>
         )}
       </Grid>

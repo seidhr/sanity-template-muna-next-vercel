@@ -1,10 +1,10 @@
-import {useRouter} from 'pages/id/node_modules/pages/id/node_modules/next/router'
-import ErrorPage from 'pages/id/node_modules/pages/id/node_modules/next/error'
+import {useRouter} from 'next/router'
+import ErrorPage from 'next/error'
 // import { Box, Container, Heading, Text } from '@chakra-ui/react'
 import Header from '../../components/Header'
 import Layout from '../../components/Layout'
 import {getIdPaths, getId, getType} from '../../lib/api'
-import Head from 'pages/id/node_modules/pages/id/node_modules/next/head'
+import Head from 'next/head'
 import {CMS_NAME} from '../../lib/constants'
 import RenderDocument from '../../components/RenderDocument'
 
