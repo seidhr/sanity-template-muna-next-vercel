@@ -69,6 +69,7 @@ export default {
     editorialState,
     accessState,
     label,
+    concerned,
     {
       name: 'hasType',
       title: 'Klassifisert som',
@@ -113,7 +114,6 @@ export default {
       ...referredToBy,
       fieldset: 'minimum',
     },
-    concerned,
     carriedOutBy,
     timespan,
     hasIdentified,

@@ -1,3 +1,6 @@
+import React from "react"
+import {Link} from 'part:@sanity/base/router'
+import {BsFillQuestionCircleFill} from 'react-icons/bs'
 import {valueSlider} from '../props'
 
 export default {
@@ -27,6 +30,38 @@ export default {
           {title: 'Missing', value: 'missing'},
           {title: 'Partial remains', value: 'partialRemains'},
         ],
+      },
+    },
+    {
+      name: 'images',
+      title: 'Dokumentasjonsfotografi',
+      titleEN: 'Documentation images',
+      description: (
+        <span>
+          Bilder knyttet til rapporten som dokumentere det rapporten omhandler.{' '}
+          <Link
+            target="blank"
+            href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}
+          >
+            <BsFillQuestionCircleFill />
+          </Link>
+        </span>
+      ),
+      descriptionEN: (
+        <span>
+          Images that documents the subject of the report.{' '}
+          <Link
+            target="blank"
+            href={'https://docs.muna.xyz/docs/model/properties#documentation-images'}
+          >
+            <BsFillQuestionCircleFill />
+          </Link>
+        </span>
+      ),
+      type: 'array',
+      of: [{type: 'figure'}],
+      options: {
+        layout: 'grid',
       },
     },
   ],
