@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Header from '../../components/Header'
 import Cards from '../../components/Cards'
-import {Container} from '@chakra-ui/react'
+import {Box, Container} from '@chakra-ui/react'
 
 export default function Items({data, preview}) {
   return (
@@ -13,10 +13,10 @@ export default function Items({data, preview}) {
         <Head>
           <title>{CMS_NAME}</title>
         </Head>
-        <Header menu={data.defaultNavMenu} />
-        <Container maxW="xl">
+        <Header menu={data.defaultNavMenu} />          
+        <Box maxW="full">
           <Cards items={data.items} />
-        </Container>
+        </Box>
       </Layout>
     </>
   )

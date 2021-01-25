@@ -55,7 +55,7 @@ export default function Hero(props) {
         justifyContent="end"
         overflow="hidden"
         src={imageBuilder.image(image).url()}
-        alt={'No label'}
+        alt={''}
       />
     </Grid>
   )

@@ -9,12 +9,12 @@ export default function Actor(item) {
     <Container maxW="xl" centerContent>
       <Flex key={item.id}>
         <Avatar
-          size="2xl"
+          size="xl"
           name={item.label}
           src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()}
         />
         <Box p={5}>
-          <Heading size="4xl">
+          <Heading size={["2xl", "4xl"]}>
             <Link href={`/id/${item.id}`}>
               <a>{item.label}</a>
             </Link>

@@ -4,10 +4,10 @@ import Cards from '../Cards'
 
 export default function Concept(item) {
   return (
-    <Container maxW="xl" centerContent>
+    <Container maxW="2xl" centerContent>
       <Heading p={5}>{item.label.nor}</Heading>
 
-      <Box maxW="lg">
+      <Box maxW="2xl">
         {item?.referredToBy?.map((ref) => (
           <PortableTextBlock blocks={ref.body} />
         ))}

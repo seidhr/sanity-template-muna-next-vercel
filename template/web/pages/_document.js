@@ -6,6 +6,8 @@ export default class MyDocument extends Document {
     return Document.getInitialProps(ctx)
   }
 
+  // https://stackoverflow.com/questions/62297280/dynamic-html-lang-property-in-statically-generated-next-js-pages
+
   render() {
     return (
       <Html lang="en">

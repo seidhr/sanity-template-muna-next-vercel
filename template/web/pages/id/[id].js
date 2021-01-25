@@ -17,6 +17,9 @@ export default function Document({data, preview}) {
     <Layout preview={preview}>
       <Head>
         <title>{data.item?.label + ' | ' + CMS_NAME}</title>
+        <script type="application/ld+json">
+          {JSON.stringify(data.item, null, 2)}
+        </script>
       </Head>
 
       {router.isFallback ? (

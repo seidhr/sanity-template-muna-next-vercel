@@ -4,13 +4,13 @@ import CardImage from './CardImage'
 
 export default function Card({item}) {
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="md" overflow="hidden">
+    <Box maxW="md" m="4" borderWidth="1px" borderRadius="md">
       {item.mainRepresentation && (
         <CardImage id={item.id} label={item.label} url={item.mainRepresentation} />
       )}
 
       <Box fontFamily="Montserrat" p="5">
-        <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
+        <Box mt="1" fontWeight="semibold" as="h4" s={['sm', 'xl']} lineHeight="tight" >
           <Link href={`/id/${encodeURIComponent(item.id)}`}>
             <a>{item.label}</a>
           </Link>

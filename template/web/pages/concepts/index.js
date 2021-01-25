@@ -18,7 +18,7 @@ export default function Concepts({data, preview}) {
 
         <Container maxW="xl">
           {data.items && (
-            <List>
+            <List fontSize="xl">
               {data.items
                 .filter((item) => item.count > 0)
                 .map((item) => (

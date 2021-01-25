@@ -16,7 +16,7 @@ const getUniqueDocuments = (items) => {
 }
 
 const defaultNavMenu = `
-  "defaultNavMenu": *[_id == "main-menu"][0] {
+  "defaultNavMenu": *[_id == "0709e2aa-f6d6-41af-a3e0-ac23783cdaa4"][0] {
     ...,
     items[]{
       ...,

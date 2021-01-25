@@ -1,4 +1,4 @@
-import {Heading, SimpleGrid} from '@chakra-ui/react'
+import {Heading, Wrap, WrapItem} from '@chakra-ui/react'
 import Card from './Card'
 
 export default function Cards({items}) {
@@ -7,10 +7,12 @@ export default function Cards({items}) {
   }
 
   return (
-    <SimpleGrid columns={[1, 2, 4, 5]} spacing={5} padding={5}>
+    <Wrap spacing="30px" justify="center">
       {items.map((item, index) => (
-        <Card key={index} item={item} />
+        <WrapItem>
+          <Card key={index} item={item} />  
+        </WrapItem>
       ))}
-    </SimpleGrid>
+    </Wrap>
   )
 }
