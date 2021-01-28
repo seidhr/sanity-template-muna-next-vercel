@@ -1,3 +1,5 @@
+import { TextPreview } from "../../components/preview/TextPreview"
+
 export default {
   type: 'object',
   name: 'bigText',
@@ -21,18 +23,17 @@ export default {
   ],
   preview: {
     select: {
+      title: 'title',
       content: 'content',
+      disabled: 'disabled',
     },
-    prepare({content}) {
+    prepare({title, content}) {
       return {
-        title: content
-          ? content[0].children
-              .filter((child) => child._type === 'span')
-              .map((span) => span.text)
-              .join('')
-          : '',
-        subtitle: 'Stor tekst',
+        title: title ? title : '',
+        content: content ? content : '',
+        type: 'Big text'
       }
     },
+    component: TextPreview,
   },
 }

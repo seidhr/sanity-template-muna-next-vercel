@@ -1,17 +1,17 @@
-import {timespan, contributionAssignedBy, tookPlaceAt} from '../../props'
+import {timespan, tookPlaceAt, contributionAssignedBy} from '../../props'
 export default {
-  name: 'creation',
-  title: 'Skapelse',
-  titleEN: 'Creation',
+  name: 'beginningOfExistence',
+  title: 'Start på eksistens',
+  titleEN: 'Beginning of existence',
   type: 'object',
   fields: [
-    contributionAssignedBy, 
+    contributionAssignedBy,
     timespan, 
     tookPlaceAt
   ],
   preview: {
     select: {
-      contributor: 'contributionAssignedBy.0.asignedActor.label',
+      contributor: 'contributionAssignedBy.0.assignedActor.label',
       contributorName: 'contributionAssignedBy.0.usedName.content',
       bb: 'timespan.0.beginOfTheBegin',
       eb: 'timespan.0.endOfTheBegin',
@@ -26,7 +26,7 @@ export default {
       dayjs.extend(localizedFormat)
       require('dayjs/locale/nb')
 
-      const {creator, bb, eb, date, be, ee} = selection
+      const {contributor, contributorName, bb, eb, date, be, ee} = selection
       var dates = _.pickBy({bb: bb, eb: eb, date: date, be: be, ee: ee}, _.identity)
 
       let d = Object.assign(
@@ -35,7 +35,7 @@ export default {
       )
 
       return {
-        title: `Creation, by ${contributor || contributorName || 'unknown'}`,
+        title: `Beginning of existence, by ${contributor || contributorName || 'unknown'}`,
         subtitle:
           `${d.date || ''}${d.bb || ''}${d.bb && d.eb ? '~' : ''}${d.eb || ''}` +
           `${(d.bb || d.eb) && (d.be || d.ee) ? ' / ' : ''}` +

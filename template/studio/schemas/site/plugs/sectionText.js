@@ -1,3 +1,5 @@
+import { TextPreview } from "../../components/preview/TextPreview"
+
 export default {
   title: 'Text',
   name: 'sectionText',
@@ -16,14 +18,8 @@ export default {
       type: 'string',
     },
     {
-      name: 'subtitle',
-      title: 'Undertittel',
-      titleEN: 'Subtitle',
-      type: 'simpleBlockContent',
-    },
-    {
-      title: 'Content',
       name: 'content',
+      title: 'Content',
       type: 'simpleBlockContent',
     },
   ],
@@ -31,19 +27,15 @@ export default {
     select: {
       title: 'title',
       content: 'content',
+      disabled: 'disabled',
     },
     prepare({title, content}) {
-      const text = content
-        ? content[0].children
-            .filter((child) => child._type === 'span')
-            .map((span) => span.text)
-            .join('')
-        : ''
-
       return {
-        title: title ? title : text ? text : '',
-        subtitle: 'Text',
+        title: title ? title : '',
+        content: content ? content : '',
+        type: 'Text'
       }
     },
+    component: TextPreview,
   },
 }

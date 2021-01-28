@@ -6,15 +6,15 @@ import {imageBuilder} from '../../lib/sanity'
 
 export default function Actor(item) {
   return (
-    <Container maxW="xl" centerContent>
+    <Container maxW="full" centerContent>
       <Flex key={item.id}>
         <Avatar
-          size="xl"
+          
           name={item.label}
           src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()}
         />
         <Box p={5}>
-          <Heading size={["2xl", "4xl"]}>
+          <Heading fontSize={{sm:"2xl", md:"4xl"}}>
             <Link href={`/id/${item.id}`}>
               <a>{item.label}</a>
             </Link>

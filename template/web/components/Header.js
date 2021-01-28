@@ -66,6 +66,11 @@ export default function Header({menu}) {
           </Flex>
           <Spacer />
           <MenuItems>
+            <ActiveLink href={`/actors`} activeClassName="active">
+              <a>Aktører</a>
+            </ActiveLink>
+          </MenuItems>
+          <MenuItems>
             <ActiveLink href={`/items`} activeClassName="active">
               <a>Ting</a>
             </ActiveLink>

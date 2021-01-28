@@ -15,6 +15,13 @@ export default {
     component: Preview,
   },
   description: 'Et rutenett (grid) med tekstinnhold',
+  fieldsets: [
+    {
+      name: 'subtitle',
+      title: 'Undertittel',
+      options: {collapsible: true, collapsed: true},
+    },
+  ],
   fields: [
     {
       name: 'disabled',
@@ -32,6 +39,7 @@ export default {
       name: 'subtitle',
       title: 'Undertittel',
       titleEN: 'Subtitle',
+      fieldset: 'subtitle',
       type: 'simpleBlockContent',
     },
     {

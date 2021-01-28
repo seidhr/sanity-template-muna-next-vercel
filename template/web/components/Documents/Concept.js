@@ -4,15 +4,15 @@ import Cards from '../Cards'
 
 export default function Concept(item) {
   return (
-    <Container maxW="2xl" centerContent>
-      <Heading p={5}>{item.label.nor}</Heading>
-
+    <Container maxW="full" centerContent>
+      <Heading fontSize={{sm:"2xl", md:"4xl"}}>{item.label.nor}</Heading>
+      
       <Box maxW="2xl">
         {item?.referredToBy?.map((ref) => (
           <PortableTextBlock blocks={ref.body} />
         ))}
       </Box>
-
+      
       {item.mentionedIn && <Cards items={item.mentionedIn} />}
     </Container>
   )

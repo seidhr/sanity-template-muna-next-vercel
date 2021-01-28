@@ -1,6 +1,7 @@
 import {nanoid} from 'nanoid'
 import {parse} from 'date-fns'
 import {mapLicenses} from './mapLicenses'
+import {mapOwner} from './mapOwner'
 
 export default function getDocument(item, types, assetID) {
   const parseDate = (date) => {
@@ -22,7 +23,7 @@ export default function getDocument(item, types, assetID) {
             editorialState: 'published',
             label: {
               _type: 'localeString',
-              nor: s.prefLabel,
+              nor: Array.isArray(s.prefLabel) === false ? s.prefLabel : s.prefLabel[0],
             },
           }
         }),
@@ -38,7 +39,7 @@ export default function getDocument(item, types, assetID) {
             _rev: nanoid(),
             accessState: 'open',
             editorialState: 'published',
-            label: s.name,
+            label: Array.isArray(s.name) === false ? s.name : s.name[0],s
           }
         }),
       ]
@@ -53,7 +54,7 @@ export default function getDocument(item, types, assetID) {
             _rev: nanoid(),
             accessState: 'open',
             editorialState: 'published',
-            label: s.name,
+            label: Array.isArray(s.name) === false ? s.name : s.name[0],
           }
         }),
       ]
@@ -62,14 +63,14 @@ export default function getDocument(item, types, assetID) {
   const activityStream = [
     {
       _key: nanoid(),
-      _type: 'production',
+      _type: 'beginningOfExistence',
       ...(item.maker && {
-        carriedOutBy: [
+        contributionAssignedBy: [
           ...item.maker.map((s) => {
             return {
               _key: nanoid(),
-              _type: 'actorInRole',
-              actor: {
+              _type: 'contributionAssignment',
+              assignedActor: {
                 _ref: s.identifier,
                 _type: 'reference',
               },
@@ -187,13 +188,7 @@ export default function getDocument(item, types, assetID) {
           }),
         ],
       }),
-      hasCurrentOwner: [
-        {
-          _type: 'reference',
-          _key: nanoid(),
-          _ref: '782c5364-7324-4f16-b5af-2c60b73fc707',
-        },
-      ],
+      hasCurrentOwner: mapOwner(item.identifier),
       ...(types.length > 0 && {hasType: types}),
       wasOutputOf: {
         _type: 'dataTransferEvent',

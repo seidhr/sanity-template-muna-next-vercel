@@ -1,4 +1,5 @@
 import jsonata from 'jsonata'
+import { QuotePreview } from '../../components/preview/QuotePreview'
 
 export default {
   name: 'quote',
@@ -22,18 +23,17 @@ export default {
   ],
   preview: {
     select: {
+      title: 'title',
       content: 'content',
+      disabled: 'disabled',
     },
-    prepare({content}) {
+    prepare({title, content}) {
       return {
-        title: content
-          ? content[0].children
-              .filter((child) => child._type === 'span')
-              .map((span) => span.text)
-              .join('')
-          : '',
-        subtitle: 'Quote',
+        title: title ? title : '',
+        content: content ? content : '',
+        type: 'Text'
       }
     },
+    component: QuotePreview,
   },
 }

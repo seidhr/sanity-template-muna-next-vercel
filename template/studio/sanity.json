@@ -24,11 +24,10 @@
     "import-tool",
     "muna-logo",
     "muna-docs-widget",
-    "iiif-manifest-input",
     "graph-view",
     "leaflet-input",
     "@andre-brdoch/sanity-plugin-schema-inspector",
-    "media-library"
+    "media"
   ],
   "env": {
     "development": {

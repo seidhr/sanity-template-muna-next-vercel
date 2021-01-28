@@ -66,7 +66,7 @@ export const createDoc = async (doc) => {
   const transaction = client.transaction()
 
   doc.forEach((o) => {
-    transaction.createIfNotExists(o)
+    transaction.createOrReplace(o)
   })
 
   transaction

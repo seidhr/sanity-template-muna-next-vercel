@@ -14,6 +14,7 @@ const Card = ({item}) => {
     setIsFetching(true)
     setButtonLabel('...importing')
     const importStatus = await chooseItem(item)
+    console.log(JSON.stringify(importStatus, null, 2))
 
     if (!importStatus.success) {
       setIsFetching(false)

@@ -11,7 +11,7 @@ export default function getQuery(uri) {
     PREFIX bibo: <http://purl.org/ontology/bibo/>
     
     CONSTRUCT {
-    ?uri a ?type ;
+      ?uri a ?type ;
         dct:title ?title ; 
         dct:identifier ?id ;
         dct:description ?description ;
@@ -64,12 +64,12 @@ export default function getQuery(uri) {
         OPTIONAL { 
           ?uri dct:subject ?subject . 
           ?subject ?subjectP ?subjectO . 
-          FILTER(?subjectP != ubbont:isSubjectOf && ?subjectP != skos:related && ?subjectP != skos:inScheme && ?subjectP != skos:narrower && ?subjectP != skos:broader &&?subjectP != ubbont:previousIdentifier)
+          FILTER(?subjectP != ubbont:isSubjectOf && ?subjectP != skos:related && ?subjectP != skos:inScheme && ?subjectP != skos:narrower && ?subjectP != skos:broader && ?subjectP != ubbont:previousIdentifier && ?subjectP != dct:relation)
         }
         OPTIONAL { 
           ?uri dct:spatial ?spatial . 
           ?spatial ?spatialP ?spatialO . 
-          FILTER(?spatialP != skos:narrower && ?spatialP != skos:broader && ?spatialP != ubbont:previousIdentifier && ?spatialP != ubbont:locationFor)
+          FILTER(?spatialP != skos:narrower && ?spatialP != skos:broader && ?spatialP != ubbont:previousIdentifier && ?spatialP != ubbont:locationFor && ?spatialP != dct:relation  && ?spatialP != dc:relation)
         }
         OPTIONAL { 
           ?uri foaf:depicts ?depicts . 

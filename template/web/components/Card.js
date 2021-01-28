@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import {Box, Badge} from '@chakra-ui/react'
+import {GridItem, Box, Badge} from '@chakra-ui/react'
 import CardImage from './CardImage'
 
 export default function Card({item}) {
   return (
-    <Box maxW="md" m="4" borderWidth="1px" borderRadius="md">
+    <GridItem alignSelf="center" maxW="md" m="4" borderWidth="1px" borderRadius="md">
       {item.mainRepresentation && (
         <CardImage id={item.id} label={item.label} url={item.mainRepresentation} />
       )}
@@ -25,6 +25,6 @@ export default function Card({item}) {
             ))}
         </Box>
       </Box>
-    </Box>
+    </GridItem>
   )
 }

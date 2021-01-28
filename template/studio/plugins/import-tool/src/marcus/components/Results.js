@@ -49,7 +49,7 @@ const Results = () => {
             return (
               <ReactiveList.ResultCardsWrapper>
                 {data.map((item) => (
-                  <Card item={item} />
+                  <Card key={item._id} item={item} />
                 ))}
               </ReactiveList.ResultCardsWrapper>
             )

@@ -16,7 +16,7 @@ export default function Document({data, preview}) {
   return (
     <Layout preview={preview}>
       <Head>
-        <title>{data.item?.label + ' | ' + CMS_NAME}</title>
+        <title>{`${data.item.label.nor || data.item.label}` + ' | ' + CMS_NAME}</title>
         <script type="application/ld+json">
           {JSON.stringify(data.item, null, 2)}
         </script>

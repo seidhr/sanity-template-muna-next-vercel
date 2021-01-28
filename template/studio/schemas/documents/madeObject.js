@@ -114,6 +114,24 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'activityStream',
+      title: 'Aktivitetsstrøm',
+      titleEN: 'Activity stream',
+      description: 'Hendelser og aktiviteter knyttet til dette objektet.',
+      descriptionEN: 'Events and activities connected to this object',
+      fieldset: 'minimum',
+      type: 'array',
+      of: [
+        {type: 'beginningOfExistence'},
+        {type: 'production'},
+        {type: 'transformation'},
+        {type: 'reference', to: [{type: 'acquisition'}]},
+        {type: 'move'},
+        {type: 'activity'},
+        {type: 'destruction'},
+      ],
+    },
+    {
       ...subject,
       fieldset: 'minimum',
     },
@@ -136,22 +154,6 @@ export default {
     {
       ...iiifStructures,
       fieldset: 'representation',
-    },
-    {
-      name: 'activityStream',
-      title: 'Aktivitetsstrøm',
-      titleEN: 'Activity stream',
-      description: 'Hendelser og aktiviteter knyttet til dette objektet.',
-      descriptionEN: 'Events and activities connected to this object',
-      type: 'array',
-      of: [
-        {type: 'production'},
-        {type: 'transformation'},
-        {type: 'reference', to: [{type: 'acquisition'}]},
-        {type: 'move'},
-        {type: 'activity'},
-        {type: 'destruction'},
-      ],
     },
     {
       ...relation,

@@ -1,6 +1,6 @@
 import {
   timespan,
-  carriedOutBy,
+  contributionAssignedBy,
   tookPlaceAt,
   referredToBy,
   usedGeneralTechnique,
@@ -37,7 +37,7 @@ export default {
         },
       ],
     },
-    carriedOutBy,
+    contributionAssignedBy,
     timespan,
     tookPlaceAt,
     referredToBy,
@@ -62,6 +62,8 @@ export default {
   ],
   preview: {
     select: {
+      contributor: 'contributionAssignedBy.0.assignedActor.label',
+      contributorName: 'contributionAssignedBy.0.usedName.content',
       bb: 'timespan.0.beginOfTheBegin',
       eb: 'timespan.0.endOfTheBegin',
       date: 'timespan.0.date',
@@ -70,11 +72,11 @@ export default {
       type: '_type',
     },
     prepare(selection) {
-      const {type, bb, eb, date, be, ee} = selection
+      const {type, contributor, contributorName, bb, eb, date, be, ee} = selection
       const timespan = timespanAsString(bb, eb, date, be, ee, 'nb')
 
       return {
-        title: `${capitalize(type)}`,
+        title: `${capitalize(type)}, by ${contributor || contributorName || 'unknown'}`,
         subtitle: timespan,
       }
     },

@@ -1,4 +1,4 @@
-import {Heading, Wrap, WrapItem} from '@chakra-ui/react'
+import {Heading, Flex, WrapItem, Grid} from '@chakra-ui/react'
 import Card from './Card'
 
 export default function Cards({items}) {
@@ -7,12 +7,10 @@ export default function Cards({items}) {
   }
 
   return (
-    <Wrap spacing="30px" justify="center">
+    <Grid gap={2} autoFlow="row dense" templateColumns={{sm:"repeat(1, 1fr)", md:"repeat(2, 1fr)", lg:"repeat(3, 1fr)"}}>
       {items.map((item, index) => (
-        <WrapItem>
-          <Card key={index} item={item} />  
-        </WrapItem>
+        <Card w="160px" key={index} item={item} />  
       ))}
-    </Wrap>
+    </Grid>
   )
 }

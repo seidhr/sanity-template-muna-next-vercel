@@ -1,8 +1,3 @@
-import React from 'react'
-
-const highlightIcon = () => <span style={{fontWeight: 'bold'}}>H</span>
-const highlightRender = (props) => <span style={{backgroundColor: 'yellow'}}>{props.children}</span>
-
 /* 
   Used in Quote section
 */
@@ -23,14 +18,6 @@ export default {
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Emphasis', value: 'em'},
-          {
-            title: 'Highlight',
-            value: 'highlight',
-            blockEditor: {
-              icon: highlightIcon,
-              render: highlightRender,
-            },
-          },
         ],
       },
     },

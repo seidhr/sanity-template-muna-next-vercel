@@ -81,7 +81,7 @@ export const subjectOfManifest = {
     </span>
   ),
   name: 'subjectOfManifest',
-  type: 'iiifManifest',
+  type: 'url',
 }
 
 export const iiifStructures = {
@@ -715,9 +715,9 @@ export const usedSpecificTechnique = {
   titleEN: 'Used spesific technique',
   description: (
     <span>
-      Teknikker eller metoder brukt i aktiviteten. Legg til{' '}
+      Spesifikk teknikk brukt i aktiviteten. Legg til{' '}
       <Link target="blank" href={'/desk/samlingsadministrasjon;designOrProcedure'}>
-        ny teknikk
+        ny tekniskbeskrivelse
       </Link>
       .{' '}
       <Link
@@ -730,9 +730,9 @@ export const usedSpecificTechnique = {
   ),
   descriptionEN: (
     <span>
-      The techniques or methods that was employed in an activity. Add{' '}
+      The spesific technique that was employed in an activity. Add{' '}
       <Link target="blank" href={'/desk/samlingsadministrasjon;designOrProcedure'}>
-        new technique
+        new procedure
       </Link>
       .{' '}
       <Link
@@ -844,12 +844,28 @@ export const timespanSingleton = {
   },
 }
 
+export const contributionAssignedBy = {
+  name: 'contributionAssignedBy',
+  title: 'Utført av',
+  titleEN: 'Contribution assigned by',
+  type: 'array',
+  of: [
+    {type: 'contributionAssignment'}
+  ],
+}
+
 export const carriedOutBy = {
   name: 'carriedOutBy',
   title: 'Utført av',
   titleEN: 'Carried out by',
   type: 'array',
-  of: [{type: 'actorInRole'}],
+  of: [{
+    type: 'reference', 
+    to:[
+      {type: 'actor'}, 
+      {type: 'group'}
+    ]
+  }],
 }
 
 export const hadParticipant = {
@@ -857,7 +873,7 @@ export const hadParticipant = {
   title: 'Hadde medvirkende',
   titleEN: 'Had participant',
   type: 'array',
-  of: [{type: 'actorInRole'}],
+  of: [{type: 'contributionAssignment'}],
 }
 
 export const tookPlaceAt = {

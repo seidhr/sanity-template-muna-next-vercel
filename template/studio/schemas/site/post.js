@@ -58,7 +58,7 @@ export default {
       type: 'array',
       of: [
         {
-          type: 'actorInRole',
+          type: 'contributionAssignment',
         },
       ],
     },
