@@ -15,44 +15,53 @@ export default function Hero(props) {
   const image = props.illustration.image
 
   return (
-    <Grid gridTemplateAreas='"hero"' w="full" maxHeight="600px" marginBottom="10">
+    <Grid 
+      /* gridTemplateAreas='"hero"'  */
+      gridTemplateAreas={{md: '"hero"', base: '"hero" "text"'}}
+      w="full" 
+      /* maxHeight="600px"  */
+      marginBottom="10"
+    >
       <Box
+        gridArea={{md: 'hero', base: 'text'}}
         d="flex"
-        gridArea="hero"
+        
         color={color}
-        p="5"
+        p={["0", "5"]}
         zIndex="1"
         selfalign="center"
         justifyContent="flex-end"
         alignItems="flex-end"
       >
         <Box
-          w="md"
-          px="10"
-          pt="4"
+          w={{base: "full", md: "md"}}
+          px={["3", "8"]}
+          pt={["2", "4"]}
           backgroundColor={bg}
           opacity="80%"
         >
           <Badge 
             opacity="100%"
             backgroundColor={bg} 
-            color={color}>
-              {props.label}
+            color={color}
+          >
+            {props.label}
           </Badge>
-          <Heading size="xl" opacity="100%">{props.title}</Heading>
+          <Heading fontSize={["md", "2xl"]} opacity="100%">{props.title}</Heading>
           {props?.tagline && (
-            <Box size="xl" opacity="100%" >
-              <PortableTextBlock blocks={props.tagline} />
+            <Box opacity="100%" >
+              <PortableTextBlock fontSize={["md", "xl"]} blocks={props.tagline} />
             </Box>
           )}
         </Box>
       </Box>
+      
       <Image
         gridArea="hero"
         objectFit="cover"
         maxHeight="600px"
         width="100%"
-        justifyContent="end"
+        justifyContent="flex-end"
         overflow="hidden"
         src={imageBuilder.image(image).url()}
         alt={''}

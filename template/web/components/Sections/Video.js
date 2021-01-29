@@ -1,27 +1,22 @@
-import {AspectRatio, Box, Center, Container, Heading} from '@chakra-ui/react'
-import ReactPlayer from 'react-player/lazy'
+import {AspectRatio, Container, Heading} from '@chakra-ui/react'
 
 export default function Video(props) {
   return (
-    <Container maxW="4xl" marginTop="10" centerContent>
-      <Heading size="xl">{props.title}</Heading>
-      <Center>
-        <Box w="3xl">
-          {/* <ReactPlayer
-            url={props.url}
-            controls="true"
-            width="1000px"
-          /> */}
-          <AspectRatio ratio={16/9}>
-            <iframe
-              width="100%"
-              title="naruto"
-              src={props.url}
-              allowFullScreen
-            />
-          </AspectRatio>
-        </Box>
-      </Center>
+    <Container maxW="3xl" marginTop="10" centerContent>
+      <Heading fontSize="xl">{props.title}</Heading>
+      <Container maxW="2xl" position="relative">
+        {/* <ReactPlayer
+          url={props.url}
+          controls="true"
+          width="1000px"
+        /> */}
+        <AspectRatio ratio={16 / 9}>
+          <iframe
+            src={props.url}
+            allowFullScreen
+          />
+        </AspectRatio>
+      </Container>
     </Container>
   )
 }
