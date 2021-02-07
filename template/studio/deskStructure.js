@@ -10,6 +10,11 @@ import pageBuilder from './src/structure/pageBuilder'
 import types from './src/structure/types'
 import management from './src/structure/management'
 import madeObject from './src/structure/madeObject'
+import React, {Fragment} from 'react'
+import {Spinner, Container, Box} from '@sanity/ui'
+import Preview from 'part:@sanity/base/preview'
+import QueryContainer from 'part:@sanity/base/query-container';
+import schema from 'part:@sanity/base/schema';
 
 const hiddenDocTypes = (listItem) =>
   ![
@@ -65,12 +70,54 @@ const hiddenDocTypes = (listItem) =>
     'toc',
     'storage',
     'writtenText',
+    'media.tag',
   ].includes(listItem.getId())
+
+
+
+const Incoming = ({ document }) => (
+  <Container>
+    <Box padding={[3, 3, 4, 5]}>
+      <QueryContainer
+        query="*[references($id)]"
+        params={{ id: document.displayed._id }}
+      >
+        {({ result, loading }) =>
+          loading ? (
+            <Spinner center message="Loading items…" />
+          ) : (
+            result && (
+              <div>
+                {result.documents.map(document => (
+                  <Box padding="2" key={document._id}>
+                    <Preview value={document} type={schema.get(document._type)} />
+                  </Box>
+                ))}
+              </div>
+            )
+          )
+        }
+      </QueryContainer>
+    </Box>
+  </Container>
+);
+
+export const getDefaultDocumentNode = () => {
+  // Give all documents the JSON preview, 
+  // as well as the default form view
+  return S.document().views([
+    S.view.form(),
+    S.view.component(Incoming).title('Innkommende')
+  ])
+}
+
 
 export default () =>
   S.list()
     .title('Innhold')
     .items([
+      pageBuilder,
+      S.divider(),
       madeObject,
       S.listItem()
         .title('Utstillinger')
@@ -377,8 +424,6 @@ export default () =>
                 .child(S.documentTypeList('timeline').title('Alle tidslinjer')),
             ]),
         ),
-      pageBuilder,
-      S.divider(),
       management,
       S.divider(),
       // SETTINGS SINGLETON

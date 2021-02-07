@@ -1,8 +1,7 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {upperFirst} from 'lodash'
 import * as SectionComponents from './Sections'
-import Header from './Header'
 
 function resolveSections(section) {
   const Section = SectionComponents[upperFirst(section._type)]
@@ -26,7 +25,7 @@ function RenderSections(props) {
   }
 
   return (
-    <Fragment>
+    <>
       {filteredSections.map((section) => {
         const SectionComponent = resolveSections(section)
         if (!SectionComponent) {
@@ -34,7 +33,7 @@ function RenderSections(props) {
         }
         return <SectionComponent {...section} key={section._key} />
       })}
-    </Fragment>
+    </>
   )
 }
 

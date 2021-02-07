@@ -1,6 +1,5 @@
 import S from '@sanity/desk-tool/structure-builder'
 import {FaTags} from 'react-icons/fa'
-
 // import PreviewIFrame from '../../src/components/previewIFrame'
 
 const types = S.listItem()

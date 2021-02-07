@@ -4,12 +4,12 @@ import PortableTextBlock from '../PortableTextBlock'
 export default function SectionText(props) {
   return (
     <Container maxW="3xl" marginTop="10">
-      <Box size="xl">
+      <Box color="gray.500" maxW="xl">
         <PortableTextBlock
-          className="big-text"
           fontSize="2xl"
-          fontWeight="600"
+          fontWeight="500"
           blocks={props.content}
+          
         />
       </Box>
     </Container>

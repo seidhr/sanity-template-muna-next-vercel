@@ -22,13 +22,13 @@ export default function SingleObject(props) {
         gridTemplateAreas={{xl: '"image image metadata"', base: '"image" "metadata"'}}
         gridTemplateColumns={{xl: '6fr 6fr 2fr', base: '100%'}}
       >
-        <Box gridArea="metadata">
-          <Heading fontSize="sm" mb={1} color="gray.600">
-            {props.heading}
+        <Box fontFamily="Montserrat" gridArea="metadata">
+          <Heading fontFamily="Montserrat" fontSize="sm" mb={1}>
+            {props.title}
           </Heading>
 
           {props?.description && (
-            <Box fontSize="xs" fontFamily="Montserrat" fontWeight="200">
+            <Box fontSize="xs" fontWeight="200">
               <PortableTextBlock blocks={props.description} />
             </Box>
           )}

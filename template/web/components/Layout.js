@@ -6,10 +6,10 @@ export default function Layout({alert, preview, children}) {
   return (
     <>
       <Meta />
-      <div>
         <Alert preview={(alert, preview)} />
-        <main>{children}</main>
-      </div>
+        <>
+          {children}
+        </>
       <Footer />
     </>
   )

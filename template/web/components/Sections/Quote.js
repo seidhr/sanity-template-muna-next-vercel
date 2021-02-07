@@ -4,17 +4,14 @@ import PortableTextBlock from '../PortableTextBlock'
 
 export default function Quote(props) {
   return (
-    <Container maxW="2xl" marginTop="10">
-      <Box>
-        <Box size="md">
-          <PortableTextBlockQuote fontSize="2xl" blocks={props.content} />
-        </Box>
-      </Box>
-      {props?.credit && (
-        <Box size="xl">
+    <Container maxW="3xl" marginTop="10">
+      <Box maxW="xl">
+        <PortableTextBlockQuote fontSize="2xl" blocks={props.content} />
+        
+        {props.credit && (
           <PortableTextBlock blocks={props.credit} />
-        </Box>
-      )}
+        )}
+      </Box>
     </Container>
   )
 }

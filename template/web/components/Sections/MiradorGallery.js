@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import {Grid, Container, Box, Center, Heading, Text} from '@chakra-ui/react'
+import {Grid, Container, Box, Heading} from '@chakra-ui/react'
 import PortableTextBlock from '../PortableTextBlock'
 
 const MiradorWithNoSSR = dynamic(() => import('../Mirador'), {ssr: false})
@@ -21,13 +21,13 @@ export default function MiradorGallery(props) {
         gridTemplateAreas={{xl: '"image image metadata"', base: '"image" "metadata"'}}
         gridTemplateColumns={{xl: '6fr 6fr 2fr', base: '100%'}}
       >
-        <Box gridArea="metadata">
-          <Heading fontSize="sm" mb={1} color="gray.600">
+        <Box fontFamily="Montserrat" gridArea="metadata">
+          <Heading fontSize="sm" mb={1}>
             {props.heading}
           </Heading>
 
           {props?.description && (
-            <Box fontSize="xs" fontFamily="Montserrat" fontWeight="200">
+            <Box fontSize="xs" fontWeight="200">
               <PortableTextBlock blocks={props.description} />
             </Box>
           )}

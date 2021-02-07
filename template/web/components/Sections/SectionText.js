@@ -3,21 +3,19 @@ import PortableTextBlock from '../PortableTextBlock'
 
 export default function SectionText(props) {
   return (
-    <Container maxW="3xl" marginTop="10">
-      <Box>
+    <Container maxW="3xl">
+      <Box maxW="xl">
         <Center>
-          <Heading size="xl">{props.title}</Heading>
+          <Heading fontSize="xl">{props.title}</Heading>
         </Center>
         <Center>
           {props?.subtitle && (
-            <Box size="xl">
+            <Box>
               <PortableTextBlock blocks={props.subtitle} />
             </Box>
           )}
         </Center>
-        <Box size="md">
-          <PortableTextBlock blocks={props.content} />
-        </Box>
+        <PortableTextBlock blocks={props.content} />
       </Box>
     </Container>
   )

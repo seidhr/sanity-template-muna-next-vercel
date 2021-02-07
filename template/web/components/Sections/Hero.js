@@ -6,8 +6,9 @@ import PortableTextBlock from '../PortableTextBlock'
 export default function Hero(props) {
   const {colorMode, toggleColorMode} = useColorMode()
 
-  const bg = useColorModeValue('gray.800', 'white')
+  const bg = useColorModeValue('green.800', 'green.300')
   const color = useColorModeValue('white', 'gray.800')
+  const height = '60vh'
 
   if (!props.illustration) {
     return null
@@ -16,40 +17,43 @@ export default function Hero(props) {
 
   return (
     <Grid 
-      /* gridTemplateAreas='"hero"'  */
       gridTemplateAreas={{md: '"hero"', base: '"hero" "text"'}}
       w="full" 
-      /* maxHeight="600px"  */
       marginBottom="10"
+      maxH={height}
     >
       <Box
         gridArea={{md: 'hero', base: 'text'}}
         d="flex"
-        
         color={color}
         p={["0", "5"]}
         zIndex="1"
         selfalign="center"
-        justifyContent="flex-end"
+        justifyContent="center"
         alignItems="flex-end"
+        placeItems="center"
       >
         <Box
-          w={{base: "full", md: "md"}}
+          w={{base: "full", md: "6xl"}}
           px={["3", "8"]}
           pt={["2", "4"]}
           backgroundColor={bg}
-          opacity="80%"
         >
           <Badge 
-            opacity="100%"
             backgroundColor={bg} 
             color={color}
           >
             {props.label}
           </Badge>
-          <Heading fontSize={["md", "2xl"]} opacity="100%">{props.title}</Heading>
+
+          <Heading 
+            fontSize={["md", "6xl"]} 
+          >
+            {props.title}
+          </Heading>
+
           {props?.tagline && (
-            <Box opacity="100%" >
+            <Box>
               <PortableTextBlock fontSize={["md", "xl"]} blocks={props.tagline} />
             </Box>
           )}
@@ -59,7 +63,9 @@ export default function Hero(props) {
       <Image
         gridArea="hero"
         objectFit="cover"
-        maxHeight="600px"
+        objectPosition="0% 100%"
+        /* h="100%" */
+        maxH={height}
         width="100%"
         justifyContent="flex-end"
         overflow="hidden"
