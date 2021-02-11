@@ -8,7 +8,7 @@ export default {
       name: 'image',
       title: 'Bilde',
       titleEN: 'Image',
-      type: 'mainImage',
+      type: 'digitalImageObject',
     },
   ],
   preview: {

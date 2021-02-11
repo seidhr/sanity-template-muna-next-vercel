@@ -6,7 +6,8 @@ import {FaBookDead} from 'react-icons/fa'
 import {
   editorialState,
   accessState,
-  mainRepresentation,
+  image,
+  digitallyShownBy,
   subjectOfManifest,
   preferredIdentifier,
   license,
@@ -24,7 +25,6 @@ import {
   measuredBy,
   consistsOf,
   labelSingleton,
-  iiifStructures,
   presentAt,
 } from '../props'
 import {coalesceLabel} from '../helpers/helpers'
@@ -52,8 +52,13 @@ export default {
       options: {collapsible: true, collapsed: false},
     },
     {
+      name: 'mainImage',
+      title: 'Hovedbilde',
+      options: {collapsible: true, collapsed: false},
+    },
+    {
       name: 'representation',
-      title: 'Hovedbilde og IIIF manifest',
+      title: 'Alle bilder',
       options: {collapsible: true, collapsed: false},
     },
     {
@@ -144,15 +149,15 @@ export default {
       fieldset: 'minimum',
     },
     {
-      ...mainRepresentation,
+      ...image,
+      fieldset: 'mainImage',
+    },
+    {
+      ...digitallyShownBy,
       fieldset: 'representation',
     },
     {
       ...subjectOfManifest,
-      fieldset: 'representation',
-    },
-    {
-      ...iiifStructures,
       fieldset: 'representation',
     },
     {
@@ -208,7 +213,7 @@ export default {
       id: 'preferredIdentifier',
       type: 'hasType.0.label',
       blocks: 'description',
-      media: 'mainRepresentation',
+      media: 'image',
       published: 'accessState',
     },
     prepare(selection) {

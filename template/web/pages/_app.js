@@ -7,9 +7,9 @@ import fonts from '../styles/font-face'
 function MyApp({Component, pageProps}) {
   return (
     <ChakraProvider theme={theme}>
-      <Global
+      {/* <Global
         styles={fonts}
-      />
+      /> */}
       <Component {...pageProps} />
     </ChakraProvider>
   )

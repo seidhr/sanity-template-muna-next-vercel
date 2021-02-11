@@ -6,7 +6,7 @@ import {
   labelSingleton,
   identifiedBy,
   memberOf,
-  mainRepresentation,
+  image,
 } from '../props'
 import {timespanAsString} from '../helpers/helpers'
 
@@ -67,7 +67,7 @@ export default {
       ],
     },
     {
-      ...mainRepresentation,
+      ...image,
       fieldset: 'representation',
     },
     memberOf,
@@ -100,7 +100,7 @@ export default {
       date: 'activityStream.0.timespan.0.date',
       be: 'activityStream.0.timespan.0.beginOfTheEnd',
       ee: 'activityStream.0.timespan.0.endOfTheEnd',
-      media: 'mainRepresentation',
+      media: 'image',
     },
     prepare(selection) {
       const {title, media, bb, eb, date, be, ee} = selection

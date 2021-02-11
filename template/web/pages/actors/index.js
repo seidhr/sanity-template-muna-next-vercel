@@ -45,7 +45,7 @@ export default function Actors({data, preview}) {
                 <Avatar
                   size="lg"
                   name={item.label}
-                  src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()}
+                  src={imageBuilder.image(item.image).height('200').width('200').url()}
                 />
                 <Box p={2}>
                   <Heading size="md">

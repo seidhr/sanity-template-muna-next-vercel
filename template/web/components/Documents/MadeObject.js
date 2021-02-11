@@ -44,7 +44,7 @@ export default function MadeObject(item) {
         gridTemplateColumns={{xl: '1fr 1fr 1fr', base: '1fr'}}
       >
         <Container maxW="md" gridArea="metadata">
-          {item.mainRepresentation?.palette && <Palette colors={item.mainRepresentation.palette} />}
+          {item.image?.palette && <Palette colors={item.image.palette} />}
 
           <Heading mt={5} mb={5}>
             {item.label}
@@ -73,7 +73,7 @@ export default function MadeObject(item) {
           </Wrap>
         </Container>
 
-        {/* {item.mainRepresentation && !item.subjectOfManifest && (
+        {/* {item.image && !item.subjectOfManifest && (
           <Center 
             gridArea="image"
             borderRight={{xl: "1px"}} 
@@ -82,7 +82,7 @@ export default function MadeObject(item) {
             <ItemImage 
               id={item.id} 
               label={item.label}
-              url={item.mainRepresentation} 
+              url={item.image} 
             />
           </Center>
         )} */}

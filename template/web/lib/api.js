@@ -32,14 +32,14 @@ const madeObjectFields = `
   depicts[]-> {
     "id": _id,
     label,
-    mainRepresentation
+    image
   },
   label,
   hasType[]-> {
     ...
   },
   subjectOfManifest,
-  mainRepresentation{
+  image{
     ...,
     "palette": asset->.metadata.palette{
     	darkMuted,
@@ -70,7 +70,7 @@ const madeObjectFields = `
         actor->{
           _id,
           label,
-          mainRepresentation{
+          image{
             asset->
           }
         }
@@ -96,7 +96,7 @@ const madeObjectFields = `
         'actor': {
           _id,
           label,
-          mainRepresentation{
+          image{
             asset->
           }
         }
@@ -105,7 +105,7 @@ const madeObjectFields = `
       actor->{
         _id,
         label,
-        mainRepresentation{
+        image{
           asset->
         }
       }
@@ -113,7 +113,7 @@ const madeObjectFields = `
     target->{
       _id,
       label,
-      mainRepresentation{
+      image{
         asset->
       }
     }
@@ -128,7 +128,7 @@ const madeObjectFields = `
         preferredIdentifier,
         label,
         subjectOfManifest,
-        mainRepresentation{
+        image{
           ...,
           asset->
         }
@@ -158,7 +158,7 @@ const groupFields = `
   hasType[]-> {
     ...
   },
-  mainRepresentation {
+  image {
     ...
   },
   referredToBy[] {
@@ -173,7 +173,7 @@ const groupFields = `
     "id": _id,
     _type,
     label,
-    mainRepresentation
+    image
   }
 `
 
@@ -216,7 +216,7 @@ export async function getFrontpage() {
         hasType[]-> {
           ...
         },
-        mainRepresentation,	
+        image,	
       }
     }`,
   )
@@ -235,7 +235,9 @@ export async function getRoutes() {
 }
 
 export async function getRouteBySlug(id) {
-  const joinID = id.join('/')
+  // Next passes an array based on the path. Join with / if array.
+  const joinID = (typeof id === 'string') ? id : id.join('/')
+
   const data = await getClient(true).fetch(
     `*[ _type == "route" && slug.current == $joinID ][0] {
         "id": _id,
@@ -293,8 +295,8 @@ export async function getAllMadeObjects() {
         _id,
         label
       },
-      "aspectRatio": mainRepresentation.asset->.metadata.dimensions.aspectRatio,
-      mainRepresentation
+      "aspectRatio": image.asset->.metadata.dimensions.aspectRatio,
+      image
     },
     ${defaultNavMenu}
   }`)
@@ -311,7 +313,7 @@ export async function getAllActors() {
         _id,
         label
       },
-      mainRepresentation,
+      image,
       "count": count(*[references(^._id)]),
     },
     ${defaultNavMenu}

@@ -41,10 +41,10 @@ export default {
         'This ends up on summary pages, on Google, when people share your post in social media.',
     },
     {
-      name: 'mainImage',
+      name: 'image',
       title: 'Hovedbilde',
       titleEN: 'Main image',
-      type: 'mainImage',
+      type: 'digitalImageObject',
     },
     {
       name: 'body',
@@ -112,7 +112,7 @@ export default {
       title: 'title',
       publishedAt: 'publishedAt',
       slug: 'slug',
-      media: 'mainImage',
+      media: 'image',
     },
     prepare({title = 'No title', publishedAt, slug = {}, media}) {
       const path = `/blog/${slug.current}`

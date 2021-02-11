@@ -1,7 +1,11 @@
+/* 
+  Subclass of D1 Digital Object
+*/
+
 export default {
-  name: 'mainImage',
-  type: 'image',
+  name: 'digitalImageObject',
   title: 'Image',
+  type: 'image',
   options: {
     hotspot: true,
     metadata: ['exif', 'location', 'lqip', 'palette'],
@@ -11,18 +15,27 @@ export default {
       name: 'caption',
       title: 'Bildetekst',
       titleEN: 'Caption',
-      type: 'string',
-      options: {
-        isHighlighted: true,
-      },
+      type: 'localeString',
     },
     {
       name: 'alt',
       title: 'Alternative tekst',
       titleEN: 'Alternative text',
       description: 'Important for SEO and accessiblity.',
-      type: 'string',
+      type: 'localeString',
       validation: (Rule) => Rule.warning('You should to fill out the alternative text.'),
+      options: {
+        isHighlighted: true,
+      },
+    },
+    {
+      name: 'annotations',
+      title: 'Annoteringer',
+      titleEN: 'Annotations',
+      type: 'array',
+      of: [{
+        type: 'annotationPage'
+      }]
     },
   ],
   preview: {

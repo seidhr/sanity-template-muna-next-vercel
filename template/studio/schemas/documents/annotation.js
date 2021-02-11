@@ -9,7 +9,7 @@ export default {
     {
       title: 'Body',
       name: 'body',
-      type: 'painting',
+      type: 'blockContent',
     },
   ],
 }

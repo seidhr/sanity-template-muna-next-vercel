@@ -26,7 +26,7 @@ export default {
   preview: {
     select: {
       title: 'item.label',
-      media: 'item.mainRepresentation',
+      media: 'item.image',
     },
     prepare({title, media}) {
       return {

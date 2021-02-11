@@ -95,6 +95,6 @@ export default {
     {type: 'instagramPost'},
     {type: 'imageCompare'},
     {type: 'geojson'},
-    {type: 'figure'},
+    {type: 'digitalImageObject'},
   ],
 }

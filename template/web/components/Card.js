@@ -5,8 +5,8 @@ import CardImage from './CardImage'
 export default function Card({item}) {
   return (
     <GridItem alignSelf="center" maxW="md" m="4" borderWidth="1px" borderRadius="md">
-      {item.mainRepresentation && (
-        <CardImage id={item.id} label={item.label} url={item.mainRepresentation} />
+      {item.image && (
+        <CardImage id={item.id} label={item.label} url={item.digitalImageObject} />
       )}
 
       <Box fontFamily="Montserrat" p="5">

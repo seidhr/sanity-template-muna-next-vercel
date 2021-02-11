@@ -160,8 +160,8 @@ export const chooseItem = async (item) => {
     await client
       .patch(docID)
       .set({
-        mainRepresentation: {
-          _type: 'mainRepresentation',
+        image: {
+          _type: 'digitalImageObject',
           asset: {
             _type: 'reference',
             _ref: assetID,

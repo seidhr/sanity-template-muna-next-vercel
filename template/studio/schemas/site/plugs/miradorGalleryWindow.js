@@ -50,7 +50,7 @@ export default {
     select: {
       internalManifest: 'manifestRef.label',
       manifestUrl: 'manifestUrl',
-      media: 'manifestRef.mainRepresentation',
+      media: 'manifestRef.image',
     },
     prepare({internalManifest, manifestUrl, media}) {
       return {

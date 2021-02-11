@@ -82,7 +82,7 @@ export default function Activity({data}) {
                     <Avatar
                       name={inRole.actor.label}
                       src={imageBuilder
-                        .image(inRole.actor.mainRepresentation)
+                        .image(inRole.actor.image)
                         .height('300')
                         .width('300')
                         .url()}
@@ -113,7 +113,7 @@ export default function Activity({data}) {
                   <Avatar
                     name={data.target.label}
                     src={imageBuilder
-                      .image(data.target.mainRepresentation)
+                      .image(data.target.image)
                       .height('300')
                       .width('300')
                       .url()}

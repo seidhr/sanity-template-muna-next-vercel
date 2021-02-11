@@ -51,7 +51,7 @@ export default {
         ],
       },
     },
-    {type: 'figure'},
+    {type: 'digitalImageObject'},
     {
       type: 'reference',
       to: [

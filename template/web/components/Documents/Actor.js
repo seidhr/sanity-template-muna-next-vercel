@@ -11,7 +11,7 @@ export default function Actor(item) {
         <Avatar
           
           name={item.label}
-          src={imageBuilder.image(item.mainRepresentation).height('200').width('200').url()}
+          src={imageBuilder.image(item.image).height('200').width('200').url()}
         />
         <Box p={5}>
           <Heading fontSize={{sm:"2xl", md:"4xl"}}>

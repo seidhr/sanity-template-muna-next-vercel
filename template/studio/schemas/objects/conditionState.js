@@ -59,7 +59,7 @@ export default {
         </span>
       ),
       type: 'array',
-      of: [{type: 'figure'}],
+      of: [{type: 'digitalImageObject'}],
       options: {
         layout: 'grid',
       },

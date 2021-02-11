@@ -15,7 +15,7 @@ export default function Depicts({depicted}) {
             <Avatar
               size="2xl"
               name={actor.label}
-              src={imageBuilder.image(actor.mainRepresentation).height('300').width('300').url()}
+              src={imageBuilder.image(actor.image).height('300').width('300').url()}
             />
           </Link>
         ))}

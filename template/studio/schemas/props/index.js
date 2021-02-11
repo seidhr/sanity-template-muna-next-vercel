@@ -38,14 +38,14 @@ export const accessState = {
   },
 }
 
-export const mainRepresentation = {
-  title: 'Hovedrepresentasjon',
-  titleEN: 'Main representation',
-  name: 'mainRepresentation',
+export const image = {
+  name: 'image',
+  title: 'Thumbnail',
+  titleEN: 'Thumbnail',
   description: (
     <span>
       Last opp eller velg et bilde. Dette er bildet som brukes som forhåndsvisning.{' '}
-      <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#main-representation'}>
+      <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#image'}>
         <BsFillQuestionCircleFill />
       </Link>
     </span>
@@ -53,17 +53,35 @@ export const mainRepresentation = {
   descriptionEN: (
     <span>
       Upload or choose a image. This image will be used for previews.{' '}
-      <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#main-representation'}>
+      <Link target="blank" href={'https://docs.muna.xyz/docs/model/properties#image'}>
         <BsFillQuestionCircleFill />
       </Link>
     </span>
   ),
-  type: 'mainRepresentation',
+  type: 'digitalImageObject',
+}
+
+export const digitallyShownBy = { 
+  name: 'digitallyShownBy',
+  title: 'Digitale bilder',
+  titleEN: 'Digital images',
+  description: 'For objekt med flere bilder, blad, versjoner eller sider av objektet. Bruk "hovedrepresentasjon" til forhåndsvisning.',
+  descriptionEN: 'For objects with multiple images of pages, versions or sides of the object. Use "main representation" for thumbnail.',
+  fieldset: 'representation',
+  type: 'array',
+  of: [
+    {type: 'digitalImageObject'},
+  ],
+  options: {
+    layout: 'grid'
+  }
 }
 
 export const subjectOfManifest = {
+  name: 'subjectOfManifest',
   title: 'Hovedmanifest',
   titleEN: 'Main manifest',
+  type: 'url',
   description: (
     <span>
       Hovedmanifestet til objektet.{' '}
@@ -79,9 +97,7 @@ export const subjectOfManifest = {
         <BsFillQuestionCircleFill />
       </Link>
     </span>
-  ),
-  name: 'subjectOfManifest',
-  type: 'url',
+  )
 }
 
 export const iiifStructures = {

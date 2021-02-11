@@ -14,14 +14,28 @@ export default {
       name: 'before',
       title: 'Before',
       type: 'array',
-      of: [{type: 'figure'}, {type: 'reference', to: [{type: 'madeObject'}]}],
+      of: [{
+        type: 'digitalImageObject'}, 
+        {
+          type: 'reference', 
+          to: [{
+            type: 'madeObject'}
+          ]
+      }],
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'after',
       title: 'After',
       type: 'array',
-      of: [{type: 'figure'}, {type: 'reference', to: [{type: 'madeObject'}]}],
+      of: [{
+        type: 'digitalImageObject'}, 
+        {
+          type: 'reference', 
+          to: [{
+            type: 'madeObject'}
+          ]
+      }],
       validation: (Rule) => Rule.required(),
     },
     {

@@ -1,4 +1,4 @@
-import {mainRepresentation, label, represents, referredToBy} from '../props'
+import {digitallyShownBy, label, represents, referredToBy} from '../props'
 import {defaultFieldsets} from '../fieldsets'
 
 export default {
@@ -7,11 +7,11 @@ export default {
   titleEN: 'Visual object',
   type: 'object',
   fieldsets: defaultFieldsets,
-  fields: [represents, label, mainRepresentation, referredToBy],
+  fields: [represents, label, digitallyShownBy, referredToBy],
   preview: {
     select: {
       title: 'label.nor',
-      media: 'mainRepresentation',
+      media: 'digitallyShownBy.0',
     },
     prepare(selection) {
       const {title, media} = selection

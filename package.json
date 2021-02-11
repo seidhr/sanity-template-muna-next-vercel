@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "sanity-template-muna",
+  "name": "@seidhr/sanity-template-muna",
   "description": "Muna (remember) is a Sanity Studio tieh a data schema for describing and presenting cultural heritage objects.",
   "scripts": {
     "build": "sanity-template build --template-values template-values-production.json",

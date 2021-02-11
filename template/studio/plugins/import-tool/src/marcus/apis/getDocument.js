@@ -117,8 +117,8 @@ export default function getDocument(item, types, assetID) {
         },
       ],
       license: mapLicenses(item.license),
-      mainRepresentation: {
-        _type: 'mainRepresentation',
+      image: {
+        _type: 'digitalImageObject',
         asset: {
           _type: 'reference',
           _ref: assetID,

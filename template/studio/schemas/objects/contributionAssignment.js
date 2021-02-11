@@ -9,7 +9,10 @@ export default {
       title: 'Aktør',
       titleEN: 'Actor',
       type: 'reference',
-      to: [{type: 'actor', title: 'Actor'}],
+      to: [
+        {type: 'actor'},
+        {type: 'group'},
+      ],
     },
     {
       name: 'assignedRole',

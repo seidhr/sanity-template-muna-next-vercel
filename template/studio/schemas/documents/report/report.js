@@ -185,7 +185,7 @@ export default {
       ),
       fieldset: 'documentation',
       type: 'array',
-      of: [{type: 'figure'}],
+      of: [{type: 'digitalImageObject'}],
       options: {
         layout: 'grid',
       },

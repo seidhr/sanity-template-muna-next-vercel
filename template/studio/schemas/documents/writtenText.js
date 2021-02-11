@@ -105,7 +105,7 @@ export default {
       name: 'mainImage',
       title: 'Hovedbilde',
       titleEN: 'Main image',
-      type: 'mainImage',
+      type: 'digitalImageObject',
     },
 
     {
