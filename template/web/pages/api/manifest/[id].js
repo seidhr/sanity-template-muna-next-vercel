@@ -14,7 +14,7 @@ const fixIIIFUrl = i => {
 const constructManifest = async (object) => {
   const iiified = {
     ...object,
-    images: object.mainRepresentation.images.map(i => ({
+    images: object.image.images.map(i => ({
       ...i,
       url: fixIIIFUrl(i.url)
     }))
@@ -136,7 +136,7 @@ export default async function handler(req, res) {
       `*[_id == $id] {
         _id,
         label,
-        mainRepresentation {
+        image {
           "images": [
             asset-> {
               url, 
