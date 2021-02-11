@@ -27,16 +27,7 @@ export default {
       options: {
         isHighlighted: true,
       },
-    },
-    {
-      name: 'annotations',
-      title: 'Annoteringer',
-      titleEN: 'Annotations',
-      type: 'array',
-      of: [{
-        type: 'annotationPage'
-      }]
-    },
+    }
   ],
   preview: {
     select: {
