@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'
 import mirador from 'mirador'
+import miradorImageToolsPlugin from 'mirador-image-tools/es/plugins/miradorImageToolsPlugin'
 import {Box} from '@chakra-ui/react'
 import {nanoid} from 'nanoid'
 
@@ -27,6 +28,7 @@ export default function Mirador(props) {
     if (data.manifest.length > 1) {
       const windows = data.manifest.map((window) => ({
         allowFullscreen: true,
+        imageToolsEnabled: true,
         manifestId: window,
       }))
       return windows
@@ -36,6 +38,10 @@ export default function Mirador(props) {
 
   useEffect(() => {
     const manifests = arrayToWindows(props)
+
+    const plugins = [
+      ...miradorImageToolsPlugin
+    ]
 
     let config = {
       id: ID,
@@ -83,7 +89,7 @@ export default function Mirador(props) {
       },
     }
 
-    const miradorInstance = mirador.viewer(config)
+    const miradorInstance = mirador.viewer(config, plugins)
 
     /*     // We could set this in the config if we want to if we do not want to get it from the state (or to account for multiple windows)
         const windowId = Object.keys(miradorInstance.store.getState().windows)[0];
