@@ -21,7 +21,7 @@ export default {
       name: 'title',
       title: 'Tittel',
       titleEN: 'Title',
-      type: 'text',
+      type: 'string',
     },
     {
       name: 'subtitle',
